@@ -5,8 +5,9 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 1. Add `README.md`
 2. Implement Docker
-3. Docker > use project-related binaries globally
+3. Docker: use project-related binaries globally
 4. Reorganize documentation & update [Readme](README.md)
+5. Composer: add phpunit/phpunit package
 
 ## 0.0.1
 

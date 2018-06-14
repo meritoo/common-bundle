@@ -10,5 +10,16 @@
             "email": "github@meritoo.pl"
         }
     ],
-    "require": {}
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^7.2"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Meritoo\\Test\\CommonBundle\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
 }
