@@ -6,6 +6,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 1. Add `README.md`
 2. Implement Docker
 3. Docker > use project-related binaries globally
+4. Reorganize documentation & update [Readme](README.md)
 
 ## 0.0.1
 

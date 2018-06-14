@@ -8,31 +8,11 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 Run [Composer](https://getcomposer.org) to install this package in your project:
 
 ```bash
-$ composer require meritoo/common-bundle
+composer require meritoo/common-bundle
 ```
 
 > [How to install Composer?](https://getcomposer.org/download)
 
-# Docker
+# Development
 
-Build, create and start Docker's containers by running command:
-
-```bash
-$ docker-compose up -d
-```
-
-> [What is Docker?](https://www.docker.com/what-docker)
-
-# Composer
-
-Install packages by running command:
-
-```bash
-$ docker-compose run composer install
-```
-
-Update packages by running command:
-
-```bash
-$ docker-compose run composer update
-```
+More information [you can find here](docs/Development.md)
