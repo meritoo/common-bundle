@@ -1,6 +1,11 @@
 # Meritoo Common Bundle
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+## 0.0.2
+
+1. Add `README.md`
+2. Implement Docker
+
 ## 0.0.1
 
 1. Add this changelog
