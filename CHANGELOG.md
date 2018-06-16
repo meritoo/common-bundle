@@ -8,6 +8,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 3. Docker: use project-related binaries globally
 4. Reorganize documentation & update [Readme](README.md)
 5. Composer: add phpunit/phpunit package
+6. StyleCI > disable & remove
 
 ## 0.0.1
 
