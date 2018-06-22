@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * (c) Meritoo.pl, http://www.meritoo.pl
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace Meritoo\Test\CommonBundle;
 
 use PHPUnit\Framework\TestCase;
@@ -12,7 +20,7 @@ use PHPUnit\Framework\TestCase;
  */
 class DummyTest extends TestCase
 {
-    public function testEquality()
+    public function testEquality(): void
     {
         static::assertEquals(1, 1);
     }
