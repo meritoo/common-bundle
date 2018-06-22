@@ -10,6 +10,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 5. Composer: add phpunit/phpunit package
 6. StyleCI > disable & remove
 7. Documentation > Development > update
+8. Composer > add packages > meritoo/common-library & symfony/framework-bundle. Require PHP 7.2+.
 
 ## 0.0.1
 

@@ -10,7 +10,11 @@
             "email": "github@meritoo.pl"
         }
     ],
-    "require": {},
+    "require": {
+        "php": "^7.2",
+        "meritoo/common-library": "^0.0.20",
+        "symfony/framework-bundle": "^4.1"
+    },
     "require-dev": {
         "phpunit/phpunit": "^7.2"
     },
