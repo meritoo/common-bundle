@@ -9,6 +9,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 4. Reorganize documentation & update [Readme](README.md)
 5. Composer: add phpunit/phpunit package
 6. StyleCI > disable & remove
+7. Documentation > Development > update
 
 ## 0.0.1
 

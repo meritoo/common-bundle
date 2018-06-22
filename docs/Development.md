@@ -1,4 +1,5 @@
 # Meritoo Common Bundle
+
 Development-related information
 
 # Requirements
@@ -27,7 +28,7 @@ Development-related information
 Available as `composer` service. You can run any Composer's command using the `composer` service:
 
 ```bash
-docker-compose run composer <command>
+docker-compose run composer [command]
 ```
 
 Examples below.
@@ -47,14 +48,30 @@ docker-compose run composer update
 ##### Add package
 
 ```bash
-docker-compose run composer require <vendor>/<package>
+docker-compose run composer require [vendor]/[package]
 ```
 
 ##### Remove package
 
 ```bash
-docker-compose run composer remove <vendor>/<package>
+docker-compose run composer remove [vendor]/[package]
 ```
+
+# Coding Standards Fixer
+
+Fix coding standard by running command:
+
+```bash
+docker-compose exec php-cli php-cs-fixer fix
+```
+
+Omit cache and run the Fixer from scratch by running command:
+
+```bash
+docker-compose exec php-cli rm .php_cs.cache && docker-compose exec php-cli php-cs-fixer fix
+```
+
+> [Want more?](https://cs.sensiolabs.org)
 
 # Tests
 
