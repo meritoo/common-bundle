@@ -14,6 +14,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 9. PHP Coding Standards Fixer > configuration > update
 10. Descriptor of bundles & collection of descriptors
 11. Composer > add friendsofphp/php-cs-fixer package
+12. .gitignore > add PHPUnit section
 
 ## 0.0.1
 
