@@ -1,0 +1,455 @@
+<?php
+
+/**
+ * (c) Meritoo.pl, http://www.meritoo.pl
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
+namespace Meritoo\CommonBundle\Bundle;
+
+use Meritoo\Common\Collection\Collection;
+use Meritoo\Common\Utilities\Miscellaneous;
+use Meritoo\Common\Utilities\Regex;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+/**
+ * Descriptor of bundle
+ *
+ * @author    Meritoo <github@meritoo.pl>
+ * @copyright Meritoo.pl
+ */
+class Descriptor
+{
+    /**
+     * Path of directory with classes for the DataFixtures
+     *
+     * @var string
+     */
+    public const PATH_DATA_FIXTURES = 'DataFixtures/ORM';
+
+    /**
+     * Name of the bundle
+     *
+     * @var string
+     */
+    private $name;
+
+    /**
+     * Short, simple name of the bundle
+     *
+     * @var string
+     */
+    private $shortName;
+
+    /**
+     * Name of configuration root node of the bundle
+     *
+     * @var string
+     */
+    private $configurationRootName;
+
+    /**
+     * Root namespace of the bundle
+     *
+     * @var string
+     */
+    private $rootNamespace;
+
+    /**
+     * Physical path of the bundle
+     *
+     * @var string
+     */
+    private $path;
+
+    /**
+     * Descriptor of the parent bundle
+     *
+     * @var Descriptor
+     */
+    private $parentBundleDescriptor;
+
+    /**
+     * Descriptor of the child bundle
+     *
+     * @var Descriptor
+     */
+    private $childBundleDescriptor;
+
+    /**
+     * Names of files with data fixtures from this bundle
+     *
+     * @var Collection
+     */
+    private $dataFixtures;
+
+    /**
+     * Class constructor
+     *
+     * @param string     $name                   (optional) Name of the bundle
+     * @param string     $configurationRootName  (optional) Name of configuration root node of the bundle
+     * @param string     $rootNamespace          (optional) Root namespace of the bundle
+     * @param string     $path                   (optional) Physical path of the bundle
+     * @param Descriptor $parentBundleDescriptor (optional) Descriptor of the parent bundle
+     * @param Descriptor $childBundleDescriptor  (optional) Descriptor of the child bundle
+     */
+    public function __construct(
+        $name = '',
+        $configurationRootName = '',
+        $rootNamespace = '',
+        $path = '',
+        Descriptor $parentBundleDescriptor = null,
+        Descriptor $childBundleDescriptor = null
+    ) {
+        $this
+            ->setName($name)
+            ->setConfigurationRootName($configurationRootName)
+            ->setRootNamespace($rootNamespace)
+            ->setPath($path)
+            ->setParentBundleDescriptor($parentBundleDescriptor)
+            ->setChildBundleDescriptor($childBundleDescriptor);
+
+        $this->dataFixtures = new Collection();
+    }
+
+    /**
+     * Returns name of the bundle
+     *
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * Sets name of the bundle
+     *
+     * @param string $name The name
+     * @return Descriptor
+     */
+    public function setName(string $name): Descriptor
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Returns name of configuration root node of the bundle
+     *
+     * @return string
+     */
+    public function getConfigurationRootName(): string
+    {
+        return $this->configurationRootName;
+    }
+
+    /**
+     * Sets name of configuration root node of the bundle
+     *
+     * @param string $configurationRootName The name
+     * @return Descriptor
+     */
+    public function setConfigurationRootName(string $configurationRootName): Descriptor
+    {
+        $this->configurationRootName = $configurationRootName;
+
+        return $this;
+    }
+
+    /**
+     * Returns root namespace of the bundle
+     *
+     * @return string
+     */
+    public function getRootNamespace(): string
+    {
+        return $this->rootNamespace;
+    }
+
+    /**
+     * Sets root namespace of the bundle
+     *
+     * @param string $rootNamespace The root namespace
+     * @return Descriptor
+     */
+    public function setRootNamespace(string $rootNamespace): Descriptor
+    {
+        $this->rootNamespace = $rootNamespace;
+
+        return $this;
+    }
+
+    /**
+     * Returns physical path of the bundle
+     *
+     * @return string
+     */
+    public function getPath(): string
+    {
+        return $this->path;
+    }
+
+    /**
+     * Sets physical path of the bundle
+     *
+     * @param string $path The path
+     * @return Descriptor
+     */
+    public function setPath(string $path): Descriptor
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Returns descriptor of the parent bundle
+     *
+     * @return Descriptor|null
+     */
+    public function getParentBundleDescriptor(): ?Descriptor
+    {
+        return $this->parentBundleDescriptor;
+    }
+
+    /**
+     * Sets descriptor of the parent bundle
+     *
+     * @param Descriptor $parentBundleDescriptor (optional) The parent's descriptor
+     * @return Descriptor
+     */
+    public function setParentBundleDescriptor(?Descriptor $parentBundleDescriptor): Descriptor
+    {
+        $this->parentBundleDescriptor = $parentBundleDescriptor;
+
+        return $this;
+    }
+
+    /**
+     * Returns descriptor of the child bundle
+     *
+     * @return Descriptor|null
+     */
+    public function getChildBundleDescriptor(): ?Descriptor
+    {
+        return $this->childBundleDescriptor;
+    }
+
+    /**
+     * Sets descriptor of the child bundle
+     *
+     * @param Descriptor $childBundleDescriptor (optional) The child's descriptor
+     * @return Descriptor
+     */
+    public function setChildBundleDescriptor(?Descriptor $childBundleDescriptor): Descriptor
+    {
+        $this->childBundleDescriptor = $childBundleDescriptor;
+
+        return $this;
+    }
+
+    /**
+     * Returns names of files with data fixtures from this bundle
+     *
+     * @return Collection
+     */
+    public function getDataFixtures(): Collection
+    {
+        return $this->dataFixtures;
+    }
+
+    /**
+     * Adds names of files with data fixtures from this bundle
+     *
+     * @param array $fixturesPaths Names of files with data fixtures
+     * @return Descriptor
+     */
+    public function addDataFixtures(array $fixturesPaths): Descriptor
+    {
+        if (!empty($fixturesPaths)) {
+            foreach ($fixturesPaths as $path) {
+                $this->dataFixtures->add($path);
+            }
+        }
+
+        return $this;
+    }
+
+    /*
+     * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+     * Additional/extra methods (neither getters, nor setters)
+     * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+     */
+
+    /**
+     * Returns short, simple name of the bundle
+     *
+     * @return string
+     */
+    public function getShortName(): string
+    {
+        if (empty($this->shortName)) {
+            $name = strtolower($this->getName());
+            $replaced = preg_replace('|bundle$|', '', $name);
+
+            $this->shortName = trim($replaced);
+        }
+
+        return $this->shortName;
+    }
+
+    /**
+     * Returns real/full path of directory from this bundle with classes for the DataFixtures
+     *
+     * @return string|null
+     */
+    public function getDataFixturesDirectoryPath(): ?string
+    {
+        $path = $this->getPath();
+
+        if (empty($path)) {
+            return null;
+        }
+
+        return Miscellaneous::concatenatePaths([
+            $path,
+            static::PATH_DATA_FIXTURES,
+        ]);
+    }
+
+    /**
+     * Returns information if given file belongs to this bundle
+     *
+     * @param string $filePath Path of file to verify
+     * @return bool
+     */
+    public function hasFile(string $filePath): bool
+    {
+        return Regex::isSubPathOf($filePath, $this->getPath());
+    }
+
+    /**
+     * Returns an array representation of the descriptor
+     *
+     * @param bool $withParentAndChild (optional) If is set to true, includes descriptor of the parent and child
+     *                                 bundle (default behaviour). Otherwise - not.
+     * @return array
+     */
+    public function toArray(bool $withParentAndChild = true): array
+    {
+        $array = [
+            'name'                  => $this->getName(),
+            'shortName'             => $this->getShortName(),
+            'configurationRootName' => $this->getConfigurationRootName(),
+            'rootNamespace'         => $this->getRootNamespace(),
+            'path'                  => $this->getPath(),
+            'dataFixtures'          => $this->getDataFixtures()->toArray(),
+        ];
+
+        if ($withParentAndChild) {
+            if (null !== $this->getParentBundleDescriptor()) {
+                $array['parentBundleDescriptor'] = $this->getParentBundleDescriptor()->toArray(false);
+            }
+
+            if (null !== $this->getChildBundleDescriptor()) {
+                $array['childBundleDescriptor'] = $this->getChildBundleDescriptor()->toArray(false);
+            }
+        }
+
+        return $array;
+    }
+
+    /**
+     * Creates and returns descriptor from given data
+     *
+     * @param array $data Data of descriptor
+     * @return Descriptor
+     */
+    public static function fromArray(array $data): Descriptor
+    {
+        /*
+         * Default values
+         */
+        $name = '';
+        $configurationRootName = '';
+        $rootNamespace = '';
+        $path = '';
+        $parentBundleDescriptor = null;
+        $childBundleDescriptor = null;
+
+        /*
+         * Grab values from provided array
+         */
+
+        if (array_key_exists('name', $data) && !empty($data['name'])) {
+            $name = $data['name'];
+        }
+
+        if (array_key_exists('configurationRootName', $data) && !empty($data['configurationRootName'])) {
+            $configurationRootName = $data['configurationRootName'];
+        }
+
+        if (array_key_exists('rootNamespace', $data) && !empty($data['rootNamespace'])) {
+            $rootNamespace = $data['rootNamespace'];
+        }
+
+        if (array_key_exists('path', $data) && !empty($data['path'])) {
+            $path = $data['path'];
+        }
+
+        if (array_key_exists('parentBundleDescriptor', $data) && !empty($data['parentBundleDescriptor'])) {
+            $parentData = $data['parentBundleDescriptor'];
+            $parentBundleDescriptor = static::fromArray($parentData);
+        }
+
+        if (array_key_exists('childBundleDescriptor', $data) && !empty($data['childBundleDescriptor'])) {
+            $childData = $data['childBundleDescriptor'];
+            $childBundleDescriptor = static::fromArray($childData);
+        }
+
+        /*
+         * Return the descriptor
+         */
+
+        return new static(
+            $name,
+            $configurationRootName,
+            $rootNamespace,
+            $path,
+            $parentBundleDescriptor,
+            $childBundleDescriptor
+        );
+    }
+
+    /**
+     * Creates and returns descriptor of given bundle
+     *
+     * @param Bundle $bundle The bundle
+     * @return Descriptor
+     */
+    public static function fromBundle(Bundle $bundle): Descriptor
+    {
+        /*
+         * Values from bundle
+         */
+        $name = $bundle->getName();
+        $rootNamespace = $bundle->getNamespace();
+        $path = $bundle->getPath();
+
+        /*
+         * Default values, not provided by bundle directly
+         */
+        $configurationRootName = '';
+
+        /*
+         * Return the descriptor
+         */
+
+        return new static($name, $configurationRootName, $rootNamespace, $path);
+    }
+}

@@ -12,6 +12,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 7. Documentation > Development > update
 8. Composer > add packages > meritoo/common-library & symfony/framework-bundle. Require PHP 7.2+.
 9. PHP Coding Standards Fixer > configuration > update
+10. Descriptor of bundles & collection of descriptors
 
 ## 0.0.1
 
