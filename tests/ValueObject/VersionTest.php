@@ -11,11 +11,10 @@ declare(strict_types=1);
 namespace Meritoo\Test\CommonBundle\ValueObject;
 
 use Generator;
-use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
+use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\Common\Utilities\Reflection;
 use Meritoo\CommonBundle\ValueObject\Version;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Test case for the version of software
@@ -23,10 +22,8 @@ use PHPUnit\Framework\TestCase;
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
  */
-class VersionTest extends TestCase
+class VersionTest extends BaseTestCase
 {
-    use BaseTestCaseTrait;
-
     public function testConstructor(): void
     {
         static::assertConstructorVisibilityAndArguments(Version::class, OopVisibilityType::IS_PUBLIC, 3, 3);

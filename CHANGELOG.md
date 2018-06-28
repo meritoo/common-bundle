@@ -1,7 +1,8 @@
 # Meritoo Common Bundle
+
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
-## 0.0.2
+# 0.0.2
 
 1. Add `README.md`
 2. Implement Docker
@@ -16,8 +17,9 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 11. Composer > add friendsofphp/php-cs-fixer package
 12. .gitignore > add PHPUnit section
 13. Value Object > Version of software
+14. Tests > use BaseTestCase class instead of BaseTestCaseTrait
 
-## 0.0.1
+# 0.0.1
 
 1. Add this changelog
 2. Add composer.json

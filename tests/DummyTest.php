@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle;
 
-use PHPUnit\Framework\TestCase;
+use Meritoo\Common\Test\Base\BaseTestCase;
 
 /**
  * Dummy Test
@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
  */
-class DummyTest extends TestCase
+class DummyTest extends BaseTestCase
 {
     public function testEquality(): void
     {

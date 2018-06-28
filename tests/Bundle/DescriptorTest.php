@@ -11,11 +11,10 @@ declare(strict_types=1);
 namespace Meritoo\Test\CommonBundle\Bundle;
 
 use Meritoo\Common\Collection\Collection;
-use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
+use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Bundle\Descriptor;
 use Meritoo\Test\CommonBundle\Bundle\Descriptor\SimpleBundle;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -24,10 +23,8 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
  */
-class DescriptorTest extends TestCase
+class DescriptorTest extends BaseTestCase
 {
-    use BaseTestCaseTrait;
-
     public function testConstructor(): void
     {
         static::assertConstructorVisibilityAndArguments(Descriptor::class, OopVisibilityType::IS_PUBLIC, 6);
