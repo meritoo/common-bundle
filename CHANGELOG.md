@@ -15,6 +15,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 10. Descriptor of bundles & collection of descriptors
 11. Composer > add friendsofphp/php-cs-fixer package
 12. .gitignore > add PHPUnit section
+13. Value Object > Version of software
 
 ## 0.0.1
 
