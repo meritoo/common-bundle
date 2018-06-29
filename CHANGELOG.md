@@ -18,6 +18,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 12. .gitignore > add PHPUnit section
 13. Value Object > Version of software
 14. Tests > use BaseTestCase class instead of BaseTestCaseTrait
+15. Tests > remove the Dummy Test
 
 # 0.0.1
 
