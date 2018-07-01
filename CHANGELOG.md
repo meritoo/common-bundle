@@ -19,6 +19,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 13. Value Object > Version of software
 14. Tests > use BaseTestCase class instead of BaseTestCaseTrait
 15. Tests > remove the Dummy Test
+16. Composer > require ext-pcre
 
 # 0.0.1
 
