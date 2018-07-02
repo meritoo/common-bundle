@@ -3,7 +3,6 @@
     "description": "Common & useful classes, resources, extensions. Based on Symfony framework.",
     "type": "library",
     "license": "MIT",
-    "version": "0.0.2",
     "authors": [
         {
             "name": "Meritoo.pl",
