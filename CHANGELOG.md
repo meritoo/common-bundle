@@ -28,6 +28,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 22. Add Dependency Injection (DI) Extension (and configuration) for this bundle
 23. Tests > add kernel
 24. Composer > require `symfony/phpunit-bridge` and `symfony/yaml` packages
+25. Groundwork of Symfony's service, the `BaseService` class
 
 # 0.0.1
 
