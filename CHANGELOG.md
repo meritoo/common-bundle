@@ -27,6 +27,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 21. Add main class of this bundle, the `MeritooCommonBundle` class
 22. Add Dependency Injection (DI) Extension (and configuration) for this bundle
 23. Tests > add kernel
+24. Composer > require `symfony/phpunit-bridge` and `symfony/yaml` packages
 
 # 0.0.1
 
