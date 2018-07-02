@@ -24,6 +24,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 18. Docker > rename `php-cli` service to `php`
 19. Remove `Version` class (Value Object > Version of software). Use `Version` class from `meritoo/common-library` package.
 20. Base Dependency Injection (DI) extension, the `BaseExtension` class
+21. Add main class of this bundle, the `MeritooCommonBundle` class
 
 # 0.0.1
 
