@@ -13,7 +13,7 @@ namespace Meritoo\Test\CommonBundle\DependencyInjection\Base;
 use Generator;
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\CommonBundle\DependencyInjection\Base\BaseExtension;
-use Meritoo\CommonBundle\Exception\Type\UnknownConfigurationFileTypeException;
+use Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfigurationFileTypeException;
 use Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\{
     EmptyBundlePath\Extension as EmptyBundlePathExtension,
     NotExistingServicesFile\Extension as NotExistingServicesFileExtension,
