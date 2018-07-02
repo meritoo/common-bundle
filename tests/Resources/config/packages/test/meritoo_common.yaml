@@ -1,0 +1,4 @@
+meritoo_common:
+    application:
+        version:
+            file_path: '%kernel.project_dir%/Resources/data/VERSION'
