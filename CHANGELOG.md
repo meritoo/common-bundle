@@ -22,6 +22,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 16. Composer > require ext-pcre
 17. Documentation > Development > update
 18. Docker > rename `php-cli` service to `php`
+19. Remove `Version` class (Value Object > Version of software). Use `Version` class from `meritoo/common-library` package.
 
 # 0.0.1
 
