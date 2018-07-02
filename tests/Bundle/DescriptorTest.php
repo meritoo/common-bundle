@@ -1120,7 +1120,7 @@ class DescriptorTest extends BaseTestCase
                 'SimpleBundle',
                 '',
                 'Meritoo\Test\CommonBundle\Bundle\Descriptor',
-                '/project/tests/Bundle/Descriptor'
+                '/tests/Bundle/Descriptor'
             ),
         ];
     }
