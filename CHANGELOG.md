@@ -31,6 +31,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 25. Groundwork of Symfony's service, the `BaseService` class
 26. Service > add service that serves application, the `ApplicationService` class
 27. Move version of this package to `VERSION` file (from `composer.json` file)
+28. Travis CI > do not run using PHP < 7.2 (because bundle requires PHP >= 7.2 in `composer.json`)
 
 # 0.0.1
 
