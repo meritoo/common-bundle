@@ -18,7 +18,7 @@ Development-related information
 2. Install packages by running command:
 
     ```bash
-    docker-compose run composer install
+    docker-compose run --rm composer install
     ```
 
 > [What is Docker?](https://www.docker.com/what-docker)
@@ -28,7 +28,7 @@ Development-related information
 Available as `composer` service. You can run any Composer's command using the `composer` service:
 
 ```bash
-docker-compose run composer [command]
+docker-compose run --rm composer [command]
 ```
 
 Examples below.
@@ -36,25 +36,25 @@ Examples below.
 ##### Install packages
 
 ```bash
-docker-compose run composer install
+docker-compose run --rm composer install
 ```
 
 ##### Update packages
 
 ```bash
-docker-compose run composer update
+docker-compose run --rm composer update
 ```
 
 ##### Add package
 
 ```bash
-docker-compose run composer require [vendor]/[package]
+docker-compose run --rm composer require [vendor]/[package]
 ```
 
 ##### Remove package
 
 ```bash
-docker-compose run composer remove [vendor]/[package]
+docker-compose run --rm composer remove [vendor]/[package]
 ```
 
 # Coding Standards Fixer
@@ -77,7 +77,7 @@ docker-compose exec php-cli rm .php_cs.cache && docker-compose exec php-cli php-
 
 ### Prerequisites
 
-Install required packages by running command: `docker-compose run composer install`.
+Install required packages by running command: `docker-compose run --rm composer install`.
 
 ### Running tests
 
