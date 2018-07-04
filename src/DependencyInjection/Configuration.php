@@ -32,8 +32,9 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-            ->append($this->getApplicationNode())
-            ->end();
+                ->append($this->getApplicationNode())
+            ->end()
+        ;
 
         return $treeBuilder;
     }
@@ -51,17 +52,18 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-            ->arrayNode('version')
-            ->addDefaultsIfNotSet()
-            ->children()
-            ->scalarNode('file_path')
-            ->info('Path of a file who contains version of the application')
-            ->defaultValue('%kernel.project_dir%/VERSION')
-            ->cannotBeEmpty()
+                ->arrayNode('version')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('file_path')
+                            ->info('Path of a file who contains version of the application')
+                            ->defaultValue('%kernel.project_dir%/VERSION')
+                            ->cannotBeEmpty()
+                        ->end()
+                    ->end()
+                ->end()
             ->end()
-            ->end()
-            ->end()
-            ->end();
+        ;
 
         return $rootNode;
     }
