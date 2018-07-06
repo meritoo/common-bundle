@@ -62,6 +62,14 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
+                ->scalarNode('name')
+                    ->info('Name of application. May be displayed near logo.')
+                    ->defaultValue('')
+                ->end()
+                ->scalarNode('description')
+                    ->info('Description of application. May be displayed near logo.')
+                    ->defaultValue('')
+                ->end()
             ->end()
         ;
 

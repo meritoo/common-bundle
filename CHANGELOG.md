@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.1.1
+
+1. Add descriptor of application
+
 # 0.1.0
 
 1. Bump version

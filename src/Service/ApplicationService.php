@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Meritoo\CommonBundle\Service;
 
 use Meritoo\Common\ValueObject\Version;
+use Meritoo\CommonBundle\Application\Descriptor;
 use Meritoo\CommonBundle\Exception\Service\EmptyVersionFilePathException;
 use Meritoo\CommonBundle\Exception\Service\UnreadableVersionFileException;
 use Meritoo\CommonBundle\Service\Base\BaseService;
@@ -31,13 +32,33 @@ class ApplicationService extends BaseService
     private $versionFilePath;
 
     /**
+     * Descriptor of application
+     *
+     * @var Descriptor
+     */
+    private $descriptor;
+
+    /**
      * Class constructor
      *
-     * @param string $versionFilePath Path of a file who contains version of the application
+     * @param string $versionFilePath        Path of a file who contains version of the application
+     * @param string $applicationName        Name of application. May be displayed near logo.
+     * @param string $applicationDescription Description of application. May be displayed near logo.
      */
-    public function __construct(string $versionFilePath)
+    public function __construct(string $versionFilePath, string $applicationName, string $applicationDescription)
     {
         $this->versionFilePath = $versionFilePath;
+        $this->createDescriptor($applicationName, $applicationDescription);
+    }
+
+    /**
+     * Returns descriptor of application
+     *
+     * @return Descriptor
+     */
+    public function getDescriptor(): Descriptor
+    {
+        return $this->descriptor;
     }
 
     /**
@@ -45,7 +66,7 @@ class ApplicationService extends BaseService
      *
      * @return Version
      */
-    public function getVersion(): Version
+    private function getVersion(): Version
     {
         /*
          * Oops, unknown/empty path of a file who contains version
@@ -64,5 +85,17 @@ class ApplicationService extends BaseService
         $contents = file_get_contents($this->versionFilePath);
 
         return Version::fromString($contents);
+    }
+
+    /**
+     * Creates descriptor of application
+     *
+     * @param string $name        Name of application. May be displayed near logo.
+     * @param string $description Description of application. May be displayed near logo.
+     */
+    private function createDescriptor(string $name, string $description): void
+    {
+        $version = $this->getVersion();
+        $this->descriptor = new Descriptor($name, $description, $version);
     }
 }
