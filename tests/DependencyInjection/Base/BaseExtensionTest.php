@@ -24,7 +24,7 @@ use Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\{
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Class BaseExtensionTest
+ * Test case of base Dependency Injection (DI) extension
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>

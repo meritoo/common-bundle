@@ -16,7 +16,7 @@ use Meritoo\CommonBundle\Bundle\Descriptor;
 use Meritoo\CommonBundle\Bundle\Descriptors;
 
 /**
- * Class DescriptorsTest
+ * Test case of the descriptors of bundles
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>

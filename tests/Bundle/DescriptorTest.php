@@ -18,7 +18,7 @@ use Meritoo\Test\CommonBundle\Bundle\Descriptor\SimpleBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class DescriptorTest
+ * Test case of the descriptor of bundle
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
