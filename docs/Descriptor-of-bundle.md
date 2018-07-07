@@ -132,7 +132,9 @@ $array = $descriptor->toArray();
 
 # More
 
-1. [Descriptor of application](docs/Descriptor-of-application.md)
-2. [**Descriptor of bundle**](docs/Descriptor-of-bundle.md)
+1. [Descriptor of application](Descriptor-of-application.md)
+2. [**Descriptor of bundle**](Descriptor-of-bundle.md)
+3. Services:
+	- [ApplicationService](Services/ApplicationService.md)
 
 [&lsaquo; Back to `Readme`](../README.md)
