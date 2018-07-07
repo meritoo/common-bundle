@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.1.2
+
+1. Twig extension related to the `ApplicationService` service
+
 # 0.1.1
 
 1. Add descriptor of application

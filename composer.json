@@ -13,7 +13,8 @@
         "php": "^7.2",
         "ext-pcre": "*",
         "meritoo/common-library": "^0.1.0",
-        "symfony/framework-bundle": "^4.1"
+        "symfony/framework-bundle": "^4.1",
+        "twig/extensions": "^1.5"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.12",

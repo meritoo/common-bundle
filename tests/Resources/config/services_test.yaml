@@ -9,3 +9,5 @@ services:
     # test.App\Service\MyService: '@App\Service\MyService'
 
     test.meritoo_common.service.application_service: '@Meritoo\CommonBundle\Service\ApplicationService'
+    test.meritoo_common.twig.application_runtime: '@Meritoo\CommonBundle\Twig\ApplicationRuntime'
+    test.meritoo_common.twig.application_extension: '@Meritoo\CommonBundle\Twig\ApplicationExtension'

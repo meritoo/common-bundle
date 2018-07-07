@@ -21,6 +21,8 @@ composer require meritoo/common-bundle
 3. [Descriptors of bundles](docs/Descriptors-of-bundles.md)
 4. Services:
 	- [ApplicationService](docs/Services/ApplicationService.md)
+5. Twig extensions:
+	- [ApplicationExtension](docs/Twig-Extensions/ApplicationExtension.md)
 
 # Development
 

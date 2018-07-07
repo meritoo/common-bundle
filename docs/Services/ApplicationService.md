@@ -31,5 +31,7 @@ Returns descriptor of application, instance of `Meritoo\CommonBundle\Application
 3. [Descriptors of bundles](../Descriptors-of-bundles.md)
 4. Services:
 	- [**ApplicationService**](ApplicationService.md)
+5. Twig extensions:
+	- [ApplicationExtension](../Twig-Extensions/ApplicationExtension.md)
 
 [&lsaquo; Back to `Readme`](../../README.md)

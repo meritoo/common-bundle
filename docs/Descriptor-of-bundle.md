@@ -137,5 +137,7 @@ $array = $descriptor->toArray();
 3. [Descriptors of bundles](Descriptors-of-bundles.md)
 4. Services:
 	- [ApplicationService](Services/ApplicationService.md)
+5. Twig extensions:
+	- [ApplicationExtension](Twig-Extensions/ApplicationExtension.md)
 
 [&lsaquo; Back to `Readme`](../README.md)
