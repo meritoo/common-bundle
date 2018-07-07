@@ -14,6 +14,11 @@ composer require meritoo/common-bundle
 
 > [How to install Composer?](https://getcomposer.org/download)
 
+# Usage
+
+1. [Descriptor of application](docs/Descriptor-of-application.md)
+2. [Descriptor of bundle](docs/Descriptor-of-bundle.md)
+
 # Development
 
 More information [you can find here](docs/Development.md)

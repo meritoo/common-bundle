@@ -91,30 +91,30 @@ class DescriptorTest extends BaseTestCase
      */
     public function testFromArray(array $array, Descriptor $expected): void
     {
-        $fromArray = Descriptor::fromArray($array);
+        $descriptor = Descriptor::fromArray($array);
 
-        static::assertInstanceOf(Descriptor::class, $fromArray);
-        static::assertSame($expected->toArray(), $fromArray->toArray());
+        static::assertInstanceOf(Descriptor::class, $descriptor);
+        static::assertSame($expected->toArray(), $descriptor->toArray());
 
-        static::assertSame($expected->getName(), $fromArray->getName());
-        static::assertSame($expected->getConfigurationRootName(), $fromArray->getConfigurationRootName());
-        static::assertSame($expected->getRootNamespace(), $fromArray->getRootNamespace());
-        static::assertSame($expected->getPath(), $fromArray->getPath());
-        static::assertSame($expected->getDataFixtures()->toArray(), $fromArray->getDataFixtures()->toArray());
-        static::assertSame($expected->getShortName(), $fromArray->getShortName());
-        static::assertSame($expected->getDataFixturesDirectoryPath(), $fromArray->getDataFixturesDirectoryPath());
+        static::assertSame($expected->getName(), $descriptor->getName());
+        static::assertSame($expected->getConfigurationRootName(), $descriptor->getConfigurationRootName());
+        static::assertSame($expected->getRootNamespace(), $descriptor->getRootNamespace());
+        static::assertSame($expected->getPath(), $descriptor->getPath());
+        static::assertSame($expected->getDataFixtures()->toArray(), $descriptor->getDataFixtures()->toArray());
+        static::assertSame($expected->getShortName(), $descriptor->getShortName());
+        static::assertSame($expected->getDataFixturesDirectoryPath(), $descriptor->getDataFixturesDirectoryPath());
 
         if (null !== $expected->getParentBundleDescriptor()) {
             static::assertSame(
                 $expected->getParentBundleDescriptor()->toArray(),
-                $fromArray->getParentBundleDescriptor()->toArray()
+                $descriptor->getParentBundleDescriptor()->toArray()
             );
         }
 
         if (null !== $expected->getChildBundleDescriptor()) {
             static::assertSame(
                 $expected->getChildBundleDescriptor()->toArray(),
-                $fromArray->getChildBundleDescriptor()->toArray()
+                $descriptor->getChildBundleDescriptor()->toArray()
             );
         }
     }

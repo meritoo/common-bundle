@@ -31,35 +31,35 @@ class Descriptor
     public const PATH_DATA_FIXTURES = 'DataFixtures/ORM';
 
     /**
-     * Name of the bundle
+     * Name of bundle
      *
      * @var string
      */
     private $name;
 
     /**
-     * Short, simple name of the bundle
+     * Short, simple name of bundle
      *
      * @var string
      */
     private $shortName;
 
     /**
-     * Name of configuration root node of the bundle
+     * Name of configuration root node of bundle
      *
      * @var string
      */
     private $configurationRootName;
 
     /**
-     * Root namespace of the bundle
+     * Root namespace of bundle
      *
      * @var string
      */
     private $rootNamespace;
 
     /**
-     * Physical path of the bundle
+     * Physical path of bundle
      *
      * @var string
      */
@@ -80,7 +80,7 @@ class Descriptor
     private $childBundleDescriptor;
 
     /**
-     * Names of files with data fixtures from this bundle
+     * Names of files with data fixtures from bundle
      *
      * @var Collection
      */
@@ -89,10 +89,10 @@ class Descriptor
     /**
      * Class constructor
      *
-     * @param string     $name                   (optional) Name of the bundle
-     * @param string     $configurationRootName  (optional) Name of configuration root node of the bundle
-     * @param string     $rootNamespace          (optional) Root namespace of the bundle
-     * @param string     $path                   (optional) Physical path of the bundle
+     * @param string     $name                   (optional) Name of bundle
+     * @param string     $configurationRootName  (optional) Name of configuration root node of bundle
+     * @param string     $rootNamespace          (optional) Root namespace of bundle
+     * @param string     $path                   (optional) Physical path of bundle
      * @param Descriptor $parentBundleDescriptor (optional) Descriptor of the parent bundle
      * @param Descriptor $childBundleDescriptor  (optional) Descriptor of the child bundle
      */
@@ -116,7 +116,7 @@ class Descriptor
     }
 
     /**
-     * Returns name of the bundle
+     * Returns name of bundle
      *
      * @return string
      */
@@ -126,7 +126,7 @@ class Descriptor
     }
 
     /**
-     * Sets name of the bundle
+     * Sets name of bundle
      *
      * @param string $name The name
      * @return Descriptor
@@ -139,7 +139,7 @@ class Descriptor
     }
 
     /**
-     * Returns name of configuration root node of the bundle
+     * Returns name of configuration root node of bundle
      *
      * @return string
      */
@@ -149,7 +149,7 @@ class Descriptor
     }
 
     /**
-     * Sets name of configuration root node of the bundle
+     * Sets name of configuration root node of bundle
      *
      * @param string $configurationRootName The name
      * @return Descriptor
@@ -162,7 +162,7 @@ class Descriptor
     }
 
     /**
-     * Returns root namespace of the bundle
+     * Returns root namespace of bundle
      *
      * @return string
      */
@@ -172,7 +172,7 @@ class Descriptor
     }
 
     /**
-     * Sets root namespace of the bundle
+     * Sets root namespace of bundle
      *
      * @param string $rootNamespace The root namespace
      * @return Descriptor
@@ -185,7 +185,7 @@ class Descriptor
     }
 
     /**
-     * Returns physical path of the bundle
+     * Returns physical path of bundle
      *
      * @return string
      */
@@ -195,7 +195,7 @@ class Descriptor
     }
 
     /**
-     * Sets physical path of the bundle
+     * Sets physical path of bundle
      *
      * @param string $path The path
      * @return Descriptor
@@ -254,7 +254,7 @@ class Descriptor
     }
 
     /**
-     * Returns names of files with data fixtures from this bundle
+     * Returns names of files with data fixtures from bundle
      *
      * @return Collection
      */
@@ -264,7 +264,7 @@ class Descriptor
     }
 
     /**
-     * Adds names of files with data fixtures from this bundle
+     * Adds names of files with data fixtures from bundle
      *
      * @param array $fixturesPaths Names of files with data fixtures
      * @return Descriptor
@@ -287,7 +287,7 @@ class Descriptor
      */
 
     /**
-     * Returns short, simple name of the bundle
+     * Returns short, simple name of bundle
      *
      * @return string
      */
@@ -304,7 +304,7 @@ class Descriptor
     }
 
     /**
-     * Returns real/full path of directory from this bundle with classes for the DataFixtures
+     * Returns real/full path of directory from bundle with classes for the DataFixtures
      *
      * @return string|null
      */
@@ -323,7 +323,7 @@ class Descriptor
     }
 
     /**
-     * Returns information if given file belongs to this bundle
+     * Returns information if given file belongs to bundle
      *
      * @param string $filePath Path of file to verify
      * @return bool
