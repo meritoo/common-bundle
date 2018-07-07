@@ -26,9 +26,10 @@ Returns descriptor of application, instance of `Meritoo\CommonBundle\Application
 
 # More
 
-1. [Descriptor of application](/Descriptor-of-application.md)
-2. [Descriptor of bundle](Descriptor-of-bundle.md)
-3. Services:
-	- [**ApplicationService**](Services/ApplicationService.md)
+1. [Descriptor of application](../Descriptor-of-application.md)
+2. [Descriptor of bundle](../Descriptor-of-bundle.md)
+3. [Descriptors of bundles](../Descriptors-of-bundles.md)
+4. Services:
+	- [**ApplicationService**](ApplicationService.md)
 
-[&lsaquo; Back to `Readme`](../README.md)
+[&lsaquo; Back to `Readme`](../../README.md)

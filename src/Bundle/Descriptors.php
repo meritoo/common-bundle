@@ -13,7 +13,7 @@ namespace Meritoo\CommonBundle\Bundle;
 use Meritoo\Common\Collection\Collection;
 
 /**
- * Descriptors of bundles
+ * Descriptors of bundles.
  * Collection used to store descriptors of all bundles.
  *
  * @author    Meritoo <github@meritoo.pl>

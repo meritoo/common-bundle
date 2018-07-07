@@ -7,6 +7,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 1. Add descriptor of application
 2. Replenish documentation:
 	- Descriptor of bundle
+	- Descriptors of bundles
 	- Descriptor of application
 	- Services: ApplicationService
 

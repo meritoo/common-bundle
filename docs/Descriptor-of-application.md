@@ -57,7 +57,8 @@ $string = (string)$descriptor;
 
 1. [**Descriptor of application**](Descriptor-of-application.md)
 2. [Descriptor of bundle](Descriptor-of-bundle.md)
-3. Services:
+3. [Descriptors of bundles](Descriptors-of-bundles.md)
+4. Services:
 	- [ApplicationService](Services/ApplicationService.md)
 
 [&lsaquo; Back to `Readme`](../README.md)
