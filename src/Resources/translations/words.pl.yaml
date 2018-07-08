@@ -1,0 +1,34 @@
+meritoo_common:
+    version: Wersja
+    group: Grupa
+    email: Email
+    email_address: Adres email
+    calculator: Kalkulator
+    recommendation: Rekomendacja
+    resale_shop: Komis
+    directory: Katalog
+    country: Kraj
+    county: Hrabstwo
+    province: Województwo
+    district: Powiat
+    commune: Gmina
+    password: Hasło
+    old_password: Stare hasło
+    current_password: Obecne hasło
+    new_password: Nowe hasło
+    yes: Tak
+    no: Nie
+    actions: Akcje
+    created_at: Utworzono
+    updated_at: Zmodyfikowano
+    uploaded_at: Przesłano
+    disabled_at: Zablokowano
+    downloaded_at: Pobrano
+    deleted_at: Usunięto
+    beginning: Początek
+    end: Koniec
+    no_results: Brak wyników
+    quantity: Ilość
+    homepage: Strona główna
+    homepage_short: Główna
+    contact: Kontakt

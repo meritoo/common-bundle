@@ -1,0 +1,13 @@
+meritoo_common:
+    repeat_password: Repeat password
+    repeat_new_password: Repeat new password
+    remember_me: Remember me
+    change_forgotten_password: Change forgotten password
+    up: Up
+    down: Down
+    more: More
+    less: Less
+    move:
+        up: Move up
+        down: Move down
+        anywhere: Move

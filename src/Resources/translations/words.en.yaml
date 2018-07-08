@@ -1,0 +1,34 @@
+meritoo_common:
+    version: Version
+    group: Group
+    email: Email
+    email_address: Email address
+    calculator: Calculator
+    recommendation: Recommendation
+    resale_shop: Resale shop
+    directory: Directory
+    country: Country
+    county: County
+    province: Province
+    district: District
+    commune: Commune
+    password: Password
+    old_password: Old password
+    current_password: Current password
+    new_password: New password
+    yes: Yes
+    no: No
+    actions: Actions
+    created_at: Created at
+    updated_at: Updated at
+    uploaded_at: Uploaded at
+    disabled_at: Disabled at
+    downloaded_at: Downloaded at
+    deleted_at: Deleted at
+    beginning: Beginning
+    end: End
+    no_results: No results
+    quantity: Quantity
+    homepage: Homepage
+    homepage_short: Home
+    contact: Contact
