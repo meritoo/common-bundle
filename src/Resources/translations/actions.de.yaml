@@ -11,3 +11,4 @@ meritoo_common:
         up: Nach oben
         down: Nach unten
         anywhere: Bewegen
+    toggle_navigation: Menü umschalten

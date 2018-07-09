@@ -32,3 +32,7 @@ meritoo_common:
     homepage: Startseite
     homepage_short: Start
     contact: Kontakt
+    current:
+        male: Aktuell
+        female: Aktuell
+        neutral: Aktuell

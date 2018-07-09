@@ -32,3 +32,7 @@ meritoo_common:
     homepage: Homepage
     homepage_short: Home
     contact: Contact
+    current:
+        male: Current
+        female: Current
+        neutral: Current

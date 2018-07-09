@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.1.4
+
+1. Resources > translations > add new
+
 # 0.1.3
 
 1. Resources > translations > common translations

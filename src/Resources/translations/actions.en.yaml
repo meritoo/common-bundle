@@ -11,3 +11,4 @@ meritoo_common:
         up: Move up
         down: Move down
         anywhere: Move
+    toggle_navigation: Toggle navigation
