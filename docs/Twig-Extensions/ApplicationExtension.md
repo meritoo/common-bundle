@@ -14,7 +14,7 @@ Returns descriptor of application. Exactly as `Meritoo\CommonBundle\Service\Appl
 
 Example below.
 
-Name of application should be defined in `config/packages/meritoo_common.yaml` configuration file:
+Name of application may be defined in `config/packages/meritoo_common.yaml` configuration file:
 
 ```yaml
 meritoo_common:
@@ -40,8 +40,10 @@ Result:
 2. [Descriptor of bundle](../Descriptor-of-bundle.md)
 3. [Descriptors of bundles](../Descriptors-of-bundles.md)
 4. Services:
-	- [**ApplicationService**](../Services/ApplicationService.md)
+	- [ApplicationService](../Services/ApplicationService.md)
+	- [FormService](../Services/FormService.md)
 5. Twig extensions:
-	- [ApplicationExtension](ApplicationExtension.md)
+	- [**ApplicationExtension**](ApplicationExtension.md)
+	- [FormExtension](FormExtension.md)
 
 [&lsaquo; Back to `Readme`](../../README.md)

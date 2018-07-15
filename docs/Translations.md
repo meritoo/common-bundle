@@ -33,8 +33,10 @@ Prefixed by `meritoo_common`. Grouped by translation domain:
 3. [Descriptors of bundles](Descriptors-of-bundles.md)
 4. Services:
 	- [ApplicationService](Services/ApplicationService.md)
+	- [FormService](Services/FormService.md)
 5. [**Translations**](Translations.md)
 6. Twig extensions:
 	- [ApplicationExtension](Twig-Extensions/ApplicationExtension.md)
+	- [FormExtension](Twig-Extensions/FormExtension.md)
 
 [&lsaquo; Back to `Readme`](../README.md)
