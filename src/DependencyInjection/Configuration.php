@@ -33,6 +33,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->append($this->getApplicationNode())
+                ->append($this->getFormNode())
             ->end()
         ;
 
@@ -69,6 +70,29 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('description')
                     ->info('Description of application. May be displayed near logo.')
                     ->defaultValue('')
+                ->end()
+            ->end()
+        ;
+
+        return $rootNode;
+    }
+
+    /**
+     * Returns the "form" node
+     *
+     * @return NodeDefinition
+     */
+    private function getFormNode(): NodeDefinition
+    {
+        $treeBuilder = new TreeBuilder();
+        $rootNode = $treeBuilder->root('form');
+
+        $rootNode
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->booleanNode('novalidate')
+                    ->info('Information if HTML5 inline validation is disabled')
+                    ->defaultFalse()
                 ->end()
             ->end()
         ;

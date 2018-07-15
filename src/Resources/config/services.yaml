@@ -14,10 +14,13 @@ services:
         resource: '../../*'
         exclude: '../../{Bundle,Controller/Base,DependencyInjection,Exception,Resources,Type}'
 
-    # Service Parameters
+    # Parameters of services
     #
     Meritoo\CommonBundle\Service\ApplicationService:
         arguments:
             $versionFilePath: '%meritoo_common.application.version.file_path%'
             $applicationName: '%meritoo_common.application.name%'
             $applicationDescription: '%meritoo_common.application.description%'
+    Meritoo\CommonBundle\Service\FormService:
+        arguments:
+            $novalidateDisabled: '%meritoo_common.form.novalidate%'
