@@ -1,38 +1,46 @@
 meritoo_common:
-    version: Version
-    group: Gruppe
-    email: Email
-    email_address: Email adresse
-    calculator: Taschenrechner
-    recommendation: Empfehlung
-    resale_shop: Weiterverkauf
-    directory: Verzeichnis
-    country: Land
-    county: Bezirk
-    province: Provinz
-    district: Kreis
-    commune: Kommune
-    password: Passwort
-    old_password: Altes Passwort
-    current_password: Aktuelles Passwort
-    new_password: Neues Passwort
-    yes: Ja
-    no: Nein
-    actions: Aktionen
-    created_at: Erstellt um
-    updated_at: Aktualisiert um
-    uploaded_at: Hochgeladen um
-    disabled_at: Deaktiviert bei
-    downloaded_at: Heruntergeladen um
-    deleted_at: Gelöscht um
-    beginning: Anfang
-    end: Ende
-    no_results: Keine Ergebnisse
-    quantity: Menge
-    homepage: Startseite
-    homepage_short: Start
-    contact: Kontakt
-    current:
-        male: Aktuell
-        female: Aktuell
-        neutral: Aktuell
+    general:
+        version: Version
+        group: Gruppe
+        email: Email
+        email_address: Email adresse
+        calculator: Taschenrechner
+        recommendation: Empfehlung
+        resale_shop: Weiterverkauf
+        directory: Verzeichnis
+        actions: Aktionen
+    area:
+        country: Land
+        county: Bezirk
+        province: Provinz
+        district: Kreis
+        commune: Kommune
+    authentication:
+        password: Passwort
+        old_password: Altes Passwort
+        current_password: Aktuelles Passwort
+        new_password: Neues Passwort
+    short:
+        yes: Ja
+        no: Nein
+    information:
+        created_at: Erstellt um
+        updated_at: Aktualisiert um
+        uploaded_at: Hochgeladen um
+        disabled_at: Deaktiviert bei
+        downloaded_at: Heruntergeladen um
+        deleted_at: Gelöscht um
+        beginning: Anfang
+        start: Start
+        end: Ende
+        no_results: Keine Ergebnisse
+        quantity: Menge
+    page:
+        homepage: Startseite
+        homepage_short: Start
+        contact: Kontakt
+    adjective:
+        current:
+            male: Aktuell
+            female: Aktuell
+            neutral: Aktuell

@@ -5,6 +5,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.1.5
 
 1. Resources > translations > add new
+2. Resources > translations > group by destination in each translation domain
 
 # 0.1.4
 

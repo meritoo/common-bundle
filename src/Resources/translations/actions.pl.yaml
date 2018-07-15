@@ -1,20 +1,26 @@
 meritoo_common:
-    repeat_password: Powtórz hasło
-    repeat_new_password: Powtórz nowe hasło
-    remember_me: Zapamiętaj mnie
-    change_forgotten_password: Przypomnij hasło
-    register: Zarejestruj się
-    register_short: Zarejestruj
-    login: Zaloguj się
-    login_short: Zaloguj
-    change_password: Zmień hasło
-    change: Zmień
-    up: W górę
-    down: W dół
-    more: Więcej
-    less: Mniej
-    move:
-        up: Przesuń wyżej
-        down: Przesuń niżej
-        anywhere: Przesuń
-    toggle_navigation: Włącz/wyłącz menu
+    general:
+        change: Zmień
+        more: Więcej
+        less: Mniej
+    authentication:
+        repeat_password: Powtórz hasło
+        repeat_new_password: Powtórz nowe hasło
+        remember_me: Zapamiętaj mnie
+        change_forgotten_password: Przypomnij hasło
+        register: Zarejestruj się
+        register_short: Zarejestruj
+        login: Zaloguj się
+        login_short: Zaloguj
+        change_password: Zmień hasło
+    navigation:
+        up: W górę
+        down: W dół
+        left: W lewo
+        right: W prawo
+        move:
+            up: Przesuń wyżej
+            down: Przesuń niżej
+            anywhere: Przesuń
+    menu:
+        toggle_navigation: Włącz/wyłącz menu

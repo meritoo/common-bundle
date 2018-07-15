@@ -1,3 +1,4 @@
 meritoo_common:
-    forgot_password: Czy zapomniałeś hasła?
-    forgot_password_short: Zapomniałeś hasło?
+    authentication:
+        forgot_password: Czy zapomniałeś hasła?
+        forgot_password_short: Zapomniałeś hasło?

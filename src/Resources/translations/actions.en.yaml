@@ -1,20 +1,26 @@
 meritoo_common:
-    repeat_password: Repeat password
-    repeat_new_password: Repeat new password
-    remember_me: Remember me
-    change_forgotten_password: Change forgotten password
-    register: Register
-    register_short: Register
-    login: Login
-    login_short: Login
-    change_password: Change password
-    change: Change
-    up: Up
-    down: Down
-    more: More
-    less: Less
-    move:
-        up: Move up
-        down: Move down
-        anywhere: Move
-    toggle_navigation: Toggle navigation
+    general:
+        change: Change
+        more: More
+        less: Less
+    authentication:
+        repeat_password: Repeat password
+        repeat_new_password: Repeat new password
+        remember_me: Remember me
+        change_forgotten_password: Change forgotten password
+        register: Register
+        register_short: Register
+        login: Login
+        login_short: Login
+        change_password: Change password
+    navigation:
+        up: Up
+        down: Down
+        left: Left
+        right: Right
+        move:
+            up: Move up
+            down: Move down
+            anywhere: Move
+    menu:
+        toggle_navigation: Toggle navigation

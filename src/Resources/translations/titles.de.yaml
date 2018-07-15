@@ -1,10 +1,12 @@
 meritoo_common:
-    your_password_changing: Dein Passwort ändern
-    password_changing: Passwort ändert sich
-    programming_and_little_magic: Programmierung und ein bisschen Magie
-    design_and_little_magic: Design und ein bisschen Magie
-    designed_by: Entworfen von
-    register: Registrieren
-    login: Anmeldung
-    logged_as: Du bist angemeldet als
-    logged_as_short: Angemeldet als
+    authentication:
+        your_password_changing: Dein Passwort ändern
+        password_changing: Passwort ändert sich
+        register: Registrieren
+        login: Anmeldung
+        logged_as: Du bist angemeldet als
+        logged_as_short: Angemeldet als
+    project:
+        programming_and_little_magic: Programmierung und ein bisschen Magie
+        design_and_little_magic: Design und ein bisschen Magie
+        designed_by: Entworfen von
