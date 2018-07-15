@@ -1,0 +1,5 @@
+#
+# I want to use the same services as in "test" environment
+#
+imports:
+    - { resource: services_test.yaml }

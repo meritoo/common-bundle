@@ -1,0 +1,5 @@
+#
+# I want to use the same configuration as in "test" environment
+#
+imports:
+    - { resource: ../test/framework.yaml }

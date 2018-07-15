@@ -80,6 +80,20 @@ class ApplicationServiceTest extends KernelTestCase
         static::assertEquals($expected, $descriptor);
     }
 
+    public function testGetVersionUsingDefaults(): void
+    {
+        $this->expectException(UnreadableVersionFileException::class);
+
+        static::bootKernel([
+            'environment' => 'defaults',
+        ]);
+
+        static::$container
+            ->get(ApplicationService::class)
+            ->getDescriptor()
+            ->getVersion();
+    }
+
     public function testGetVersionUsingDependencyInjection(): void
     {
         $expected = new Version(1, 2, 0);
