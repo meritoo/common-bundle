@@ -203,13 +203,15 @@ $descriptor = $descriptors->toArray();
 ```
 # More
 
-1. [Descriptor of application](Descriptor-of-application.md)
-2. [Descriptor of bundle](Descriptor-of-bundle.md)
-3. [**Descriptors of bundles**](Descriptors-of-bundles.md)
-4. Services:
+1. [Configuration](Configuration.md)
+2. [Descriptor of application](Descriptor-of-application.md)
+3. [Descriptor of bundle](Descriptor-of-bundle.md)
+4. [**Descriptors of bundles**](Descriptors-of-bundles.md)
+5. Services:
 	- [ApplicationService](Services/ApplicationService.md)
 	- [FormService](Services/FormService.md)
-5. Twig extensions:
+6. [Translations](Translations.md)
+7. Twig extensions:
 	- [ApplicationExtension](Twig-Extensions/ApplicationExtension.md)
 	- [FormExtension](Twig-Extensions/FormExtension.md)
 
