@@ -3,6 +3,12 @@ meritoo_common:
     repeat_new_password: Wiederhole das neue Passwort
     remember_me: Erinnere dich an mich
     change_forgotten_password: Passwort vergessen
+    register: Registrieren
+    register_short: Registrieren
+    login: Einloggen
+    login_short: Einloggen
+    change_password: Passwort ändern
+    change: Ändern
     up: Oben
     down: Nieder
     more: Mehr

@@ -3,6 +3,12 @@ meritoo_common:
     repeat_new_password: Repeat new password
     remember_me: Remember me
     change_forgotten_password: Change forgotten password
+    register: Register
+    register_short: Register
+    login: Login
+    login_short: Login
+    change_password: Change password
+    change: Change
     up: Up
     down: Down
     more: More
