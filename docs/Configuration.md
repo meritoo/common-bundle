@@ -62,29 +62,29 @@ meritoo_common:
 
 ### Available parameters
 
-##### meritoo_common.application.version.file_path
+* meritoo_common.application.version.file_path
 
-> Path of a file who contains version of the application.
+    > Path of a file who contains version of the application.
 
-Default value: `%kernel.project_dir%/VERSION`.
+    Default value: `%kernel.project_dir%/VERSION`.
 
-##### meritoo_common.application.name
+* meritoo_common.application.name
 
-> Name of application. May be displayed near logo.
+    > Name of application. May be displayed near logo.
+    
+    Default value: `""`
 
-Default value: `""`
+* meritoo_common.application.description
 
-##### meritoo_common.application.description
+    > Description of application. May be displayed near logo.
+    
+    Default value: `""`
 
-> Description of application. May be displayed near logo.
+* meritoo_common.form.novalidate
 
-Default value: `""`
-
-##### meritoo_common.form.novalidate
-
-> Information if HTML5 inline validation is disabled
-
-Default value: `false`
+    > Information if HTML5 inline validation is disabled
+    
+    Default value: `false`
 
 # More
 
