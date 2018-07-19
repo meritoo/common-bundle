@@ -14,6 +14,23 @@ composer require meritoo/common-bundle
 
 > [How to install Composer?](https://getcomposer.org/download)
 
+# Configuration
+
+All parameters have default values. After installation of this bundle, you have to do nothing. If you want to tweak 
+some of parameters, create proper configuration file and enter desired parameters.
+
+Example:
+
+```yaml
+# config/packages/meritoo_common.yaml
+
+meritoo_common:
+    application:
+        name: YourApp
+```
+
+[Read more](docs/Configuration.md)
+
 # Usage
 
 1. [Descriptor of application](docs/Descriptor-of-application.md)
@@ -21,9 +38,11 @@ composer require meritoo/common-bundle
 3. [Descriptors of bundles](docs/Descriptors-of-bundles.md)
 4. Services:
 	- [ApplicationService](docs/Services/ApplicationService.md)
+	- [FormService](docs/Services/FormService.md)
 5. [Translations](docs/Translations.md)
 6. Twig extensions:
 	- [ApplicationExtension](docs/Twig-Extensions/ApplicationExtension.md)
+	- [FormExtension](docs/Twig-Extensions/FormExtension.md)
 
 # Development
 
