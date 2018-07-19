@@ -1,7 +1,7 @@
 {
     "name": "meritoo/common-bundle",
     "description": "Common & useful classes, resources, extensions. Based on Symfony framework.",
-    "type": "library",
+    "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
         {
