@@ -59,12 +59,21 @@ class FormService extends BaseService
      */
     public function addFormOptions(array &$existingOptions = []): void
     {
+        /*
+         * HTML5 inline validation is enabled?
+         * Nothing to do
+         */
         if ($this->isHtml5ValidationEnabled()) {
-            if (!isset($existingOptions['attr'])) {
-                $existingOptions['attr'] = [];
-            }
-
-            $existingOptions['attr']['novalidate'] = 'novalidate';
+            return;
         }
+
+        /*
+         * Let's add the "novalidate" attribute
+         */
+        if (!isset($existingOptions['attr'])) {
+            $existingOptions['attr'] = [];
+        }
+
+        $existingOptions['attr']['novalidate'] = 'novalidate';
     }
 }

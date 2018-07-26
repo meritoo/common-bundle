@@ -96,7 +96,11 @@ class FormServiceTest extends KernelTestCase
     {
         yield[
             [],
-            [],
+            [
+                'attr' => [
+                    'novalidate' => 'novalidate',
+                ],
+            ],
         ];
 
         yield[
@@ -107,6 +111,9 @@ class FormServiceTest extends KernelTestCase
             [
                 'option1' => 'value1',
                 'option2' => 'value2',
+                'attr'    => [
+                    'novalidate' => 'novalidate',
+                ],
             ],
         ];
     }
@@ -120,12 +127,9 @@ class FormServiceTest extends KernelTestCase
     {
         yield[
             [],
-            [
-                'attr' => [
-                    'novalidate' => 'novalidate',
-                ],
-            ],
+            [],
         ];
+
         yield[
             [
                 'option1' => 'value1',
@@ -134,9 +138,6 @@ class FormServiceTest extends KernelTestCase
             [
                 'option1' => 'value1',
                 'option2' => 'value2',
-                'attr'    => [
-                    'novalidate' => 'novalidate',
-                ],
             ],
         ];
     }
