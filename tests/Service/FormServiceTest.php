@@ -40,7 +40,7 @@ class FormServiceTest extends KernelTestCase
         static::assertFalse($enabled);
     }
 
-    public function testIsHtml5ValidationEnabledUsingDependencyInjection(): void
+    public function testIsHtml5ValidationEnabledUsingCustomConfiguration(): void
     {
         static::bootKernel([
             'environment' => 'defaults',
