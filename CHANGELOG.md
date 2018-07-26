@@ -2,6 +2,15 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.1.8
+
+1. Service > FormService > add addFormOptions() method > adds options to the existing options that may be used while creating a form
+
+# 0.1.7
+
+1. Composer > update type > required to fix validation error of recipe (Type must be "symfony-bundle" as the manifest registers a bundle, "library" detected)
+2. Update documentation > Configuration
+
 # 0.1.6
 
 1. Update [Readme](README.md)

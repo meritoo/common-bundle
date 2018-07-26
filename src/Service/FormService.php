@@ -46,4 +46,25 @@ class FormService extends BaseService
     {
         return false === $this->novalidateDisabled;
     }
+
+    /**
+     * Adds options to the existing options that may be used while creating a form
+     *
+     * Example of usage:
+     * $formOptions = [];
+     * $formService->addFormOptions($formOptions);
+     * $form = $formFactory->create('', MyFormType::class, [], $formOptions);
+     *
+     * @param array $existingOptions (optional) Existing options
+     */
+    public function addFormOptions(array &$existingOptions = []): void
+    {
+        if ($this->isHtml5ValidationEnabled()) {
+            if (!isset($existingOptions['attr'])) {
+                $existingOptions['attr'] = [];
+            }
+
+            $existingOptions['attr']['novalidate'] = 'novalidate';
+        }
+    }
 }

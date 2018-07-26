@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Service;
 
+use Generator;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Service\FormService;
@@ -50,6 +51,94 @@ class FormServiceTest extends KernelTestCase
             ->isHtml5ValidationEnabled();
 
         static::assertTrue($enabled);
+    }
+
+    /**
+     * @param array $existingOptions Existing options
+     * @param array $expected        Expected options
+     *
+     * @dataProvider provideExistingFormOptionsUsingDefaults
+     */
+    public function testAddFormOptionsUsingDefaults(array $existingOptions, array $expected): void
+    {
+        static::$container
+            ->get(FormService::class)
+            ->addFormOptions($existingOptions);
+
+        static::assertSame($expected, $existingOptions);
+    }
+
+    /**
+     * @param array $existingOptions Existing options
+     * @param array $expected        Expected options
+     *
+     * @dataProvider provideExistingFormOptionsCustomConfiguration
+     */
+    public function testAddFormOptionsUsingCustomConfiguration(array $existingOptions, array $expected): void
+    {
+        static::bootKernel([
+            'environment' => 'defaults',
+        ]);
+
+        static::$container
+            ->get(FormService::class)
+            ->addFormOptions($existingOptions);
+
+        static::assertSame($expected, $existingOptions);
+    }
+
+    /**
+     * Provides existing form options while using default values
+     *
+     * @return Generator
+     */
+    public function provideExistingFormOptionsUsingDefaults(): Generator
+    {
+        yield[
+            [],
+            [],
+        ];
+
+        yield[
+            [
+                'option1' => 'value1',
+                'option2' => 'value2',
+            ],
+            [
+                'option1' => 'value1',
+                'option2' => 'value2',
+            ],
+        ];
+    }
+
+    /**
+     * Provides existing form options while using values loaded from custom configuration
+     *
+     * @return Generator
+     */
+    public function provideExistingFormOptionsCustomConfiguration(): Generator
+    {
+        yield[
+            [],
+            [
+                'attr' => [
+                    'novalidate' => 'novalidate',
+                ],
+            ],
+        ];
+        yield[
+            [
+                'option1' => 'value1',
+                'option2' => 'value2',
+            ],
+            [
+                'option1' => 'value1',
+                'option2' => 'value2',
+                'attr'    => [
+                    'novalidate' => 'novalidate',
+                ],
+            ],
+        ];
     }
 
     /**
