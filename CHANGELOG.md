@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.1.9
+
+1. Docker > improve performance
+
 # 0.1.8
 
 1. Service > FormService > add addFormOptions() method > adds options to the existing options that may be used while creating a form
