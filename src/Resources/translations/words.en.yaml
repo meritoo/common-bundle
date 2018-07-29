@@ -39,6 +39,8 @@ meritoo_common:
         homepage: Homepage
         homepage_short: Home
         contact: Contact
+        login: Login
+        registration: Registration
     adjective:
         current:
             male: Current

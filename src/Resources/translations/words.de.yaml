@@ -39,6 +39,8 @@ meritoo_common:
         homepage: Startseite
         homepage_short: Start
         contact: Kontakt
+        login: Einloggen
+        registration: Anmeldung
     adjective:
         current:
             male: Aktuell

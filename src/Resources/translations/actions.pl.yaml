@@ -13,6 +13,8 @@ meritoo_common:
         login: Zaloguj się
         login_short: Zaloguj
         change_password: Zmień hasło
+        logout: Wyloguj się
+        logout_short: Wyloguj
     navigation:
         up: W górę
         down: W dół
