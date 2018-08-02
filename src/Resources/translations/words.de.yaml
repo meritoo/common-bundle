@@ -9,6 +9,9 @@ meritoo_common:
         resale_shop: Weiterverkauf
         directory: Verzeichnis
         actions: Aktionen
+        error: Fehler|Fehler
+        type: Art
+        kind: Art
     area:
         country: Land
         county: Bezirk
@@ -46,3 +49,16 @@ meritoo_common:
             male: Aktuell
             female: Aktuell
             neutral: Aktuell
+    person:
+        first_name: Vorname
+        last_name: Nachname
+        age: Alter
+        height: Höhe
+    greeting:
+        hi: Hallo
+        hey: Hallo
+        good_morning: Guten Morgen
+        good_evening: Guten Abend
+        regards: Grüße
+        i_regard: Grüße
+        we_regard: Freundliche Grüße

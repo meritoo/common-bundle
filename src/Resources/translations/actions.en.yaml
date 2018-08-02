@@ -26,3 +26,13 @@ meritoo_common:
             anywhere: Move
     menu:
         toggle_navigation: Toggle navigation
+    web:
+        click:
+            link: Click link
+            button: Click button
+            image: Click image
+            icon: Click icon
+        open:
+            in_browser: Open in browser
+            address: Open address
+            link: Open link

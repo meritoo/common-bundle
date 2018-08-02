@@ -9,6 +9,9 @@ meritoo_common:
         resale_shop: Komis
         directory: Katalog
         actions: Akcje
+        error: Błąd|Błędy
+        type: Typ
+        kind: Rodzaj
     area:
         country: Kraj
         county: Hrabstwo
@@ -46,3 +49,16 @@ meritoo_common:
             male: Bieżący
             female: Bieżąca
             neutral: Bieżące
+    person:
+        first_name: Imię
+        last_name: Nazwisko
+        age: Wiek
+        height: Wzrost
+    greeting:
+        hi: Cześć
+        hey: Hej
+        good_morning: Dzień dobry
+        good_evening: Dobry wieczór
+        regards: Pozdrowienia
+        i_regard: Pozdrawiam
+        we_regard: Pozdrawiamy

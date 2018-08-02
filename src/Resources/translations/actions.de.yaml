@@ -26,3 +26,13 @@ meritoo_common:
             anywhere: Bewegen
     menu:
         toggle_navigation: Menü umschalten
+    web:
+        click:
+            link: Klicken Link
+            button: Klicktaste
+            image: Klicken Bild
+            icon: Klicken Symbol
+        open:
+            in_browser: Im Browser öffnen
+            address: Adresse öffnen
+            link: Link öffnen

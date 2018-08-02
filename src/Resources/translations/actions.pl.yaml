@@ -26,3 +26,13 @@ meritoo_common:
             anywhere: Przesuń
     menu:
         toggle_navigation: Włącz/wyłącz menu
+    web:
+        click:
+            link: Kliknij link
+            button: Kliknij przycisk
+            image: Kliknij obrazek
+            icon: Kliknij ikonkę
+        open:
+            in_browser: Otwórz w przeglądarce
+            address: Otwórz adres
+            link: Otwórz link

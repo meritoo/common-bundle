@@ -9,6 +9,9 @@ meritoo_common:
         resale_shop: Resale shop
         directory: Directory
         actions: Actions
+        error: Error|Errors
+        type: Type
+        kind: Kind
     area:
         country: Country
         county: County
@@ -46,3 +49,16 @@ meritoo_common:
             male: Current
             female: Current
             neutral: Current
+    person:
+        first_name: First name
+        last_name: Last name
+        age: Age
+        height: Height
+    greeting:
+        hi: Hi
+        hey: Hey
+        good_morning: Good morning
+        good_evening: Good evening
+        regards: Regards
+        i_regard: Regards
+        we_regard: Best regards
