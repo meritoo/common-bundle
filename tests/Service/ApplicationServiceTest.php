@@ -69,7 +69,7 @@ class ApplicationServiceTest extends KernelTestCase
         static::assertEquals($expected, $service->getDescriptor());
     }
 
-    public function testGetDescriptorUsingDependencyInjection(): void
+    public function testGetDescriptorUsingTestEnvironment(): void
     {
         $expected = new Descriptor('', '', new Version(1, 2, 0));
 
@@ -94,7 +94,7 @@ class ApplicationServiceTest extends KernelTestCase
             ->getVersion();
     }
 
-    public function testGetVersionUsingDependencyInjection(): void
+    public function testGetVersionUsingTestEnvironment(): void
     {
         $expected = new Version(1, 2, 0);
 

@@ -31,7 +31,7 @@ class FormServiceTest extends KernelTestCase
         static::assertConstructorVisibilityAndArguments(FormService::class, OopVisibilityType::IS_PUBLIC, 1, 1);
     }
 
-    public function testIsHtml5ValidationEnabledUsingDefaults(): void
+    public function testIsHtml5ValidationEnabledUsingTestEnvironment(): void
     {
         $enabled = static::$container
             ->get(FormService::class)
@@ -40,7 +40,7 @@ class FormServiceTest extends KernelTestCase
         static::assertFalse($enabled);
     }
 
-    public function testIsHtml5ValidationEnabledUsingCustomConfiguration(): void
+    public function testIsHtml5ValidationEnabledUsingDefaults(): void
     {
         static::bootKernel([
             'environment' => 'defaults',
@@ -59,7 +59,7 @@ class FormServiceTest extends KernelTestCase
      *
      * @dataProvider provideExistingFormOptionsUsingDefaults
      */
-    public function testAddFormOptionsUsingDefaults(array $existingOptions, array $expected): void
+    public function testAddFormOptionsUsingTestEnvironment(array $existingOptions, array $expected): void
     {
         static::$container
             ->get(FormService::class)
@@ -74,7 +74,7 @@ class FormServiceTest extends KernelTestCase
      *
      * @dataProvider provideExistingFormOptionsCustomConfiguration
      */
-    public function testAddFormOptionsUsingCustomConfiguration(array $existingOptions, array $expected): void
+    public function testAddFormOptionsUsingDefaults(array $existingOptions, array $expected): void
     {
         static::bootKernel([
             'environment' => 'defaults',
