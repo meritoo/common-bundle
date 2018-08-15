@@ -3,6 +3,7 @@ meritoo_common:
         change: Zmień
         more: Więcej
         less: Mniej
+        edit: Edytuj
     authentication:
         repeat_password: Powtórz hasło
         repeat_new_password: Powtórz nowe hasło
@@ -36,3 +37,7 @@ meritoo_common:
             in_browser: Otwórz w przeglądarce
             address: Otwórz adres
             link: Otwórz link
+    user:
+        profile:
+            show: Pokaż profil
+            edit: Edytuj profil
