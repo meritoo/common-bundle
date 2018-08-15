@@ -2,5 +2,6 @@ meritoo_common:
     application:
         version:
             file_path: '%kernel.project_dir%/../data/tests/VERSION'
+        empty_value_replacement: '...'
     form:
         novalidate: true

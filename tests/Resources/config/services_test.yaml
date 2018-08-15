@@ -14,3 +14,5 @@ services:
     test.meritoo_common.twig.application_extension: '@Meritoo\CommonBundle\Twig\ApplicationExtension'
     test.meritoo_common.twig.form_runtime: '@Meritoo\CommonBundle\Twig\FormRuntime'
     test.meritoo_common.twig.form_extension: '@Meritoo\CommonBundle\Twig\FormExtension'
+    test.meritoo_common.twig.common_runtime: '@Meritoo\CommonBundle\Twig\CommonRuntime'
+    test.meritoo_common.twig.common_extension: '@Meritoo\CommonBundle\Twig\CommonExtension'

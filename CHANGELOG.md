@@ -5,6 +5,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.1.11
 
 1. Resources > translations > add new
+2. CommonExtension > Twig extension that provides functions and filters for common operations
 
 # 0.1.10
 

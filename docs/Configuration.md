@@ -56,6 +56,7 @@ meritoo_common:
             file_path: '%kernel.project_dir%/VERSION'
         name: ''
         description: ''
+        empty_value_replacement: '-'
     form:
         novalidate: false
 ```
@@ -79,6 +80,12 @@ meritoo_common:
     > Description of application. May be displayed near logo.
     
     Default value: `""`
+
+* meritoo_common.application.empty_value_replacement
+
+    > Replacement of empty value. May be used to filter values in templates/views.
+    
+    Default value: `"-"`
 
 * meritoo_common.form.novalidate
 

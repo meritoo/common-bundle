@@ -72,6 +72,10 @@ class Configuration implements ConfigurationInterface
                     ->info('Description of application. May be displayed near logo.')
                     ->defaultValue('')
                 ->end()
+                ->scalarNode('empty_value_replacement')
+                    ->info('Replacement of empty value. May be used to filter values in templates/views.')
+                    ->defaultValue('-')
+                ->end()
             ->end()
         ;
 

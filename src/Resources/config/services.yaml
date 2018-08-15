@@ -24,3 +24,6 @@ services:
     Meritoo\CommonBundle\Service\FormService:
         arguments:
             $novalidateDisabled: '%meritoo_common.form.novalidate%'
+    Meritoo\CommonBundle\Twig\CommonRuntime:
+        arguments:
+            $emptyValueReplacement: '%meritoo_common.application.empty_value_replacement%'
