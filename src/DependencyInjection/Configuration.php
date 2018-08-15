@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\DependencyInjection;
 
+use Meritoo\CommonBundle\Service\ApplicationService;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -58,7 +59,7 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('file_path')
                             ->info('Path of a file who contains version of the application')
-                            ->defaultValue('%kernel.project_dir%/VERSION')
+                            ->defaultValue(sprintf('%%kernel.project_dir%%/%s', ApplicationService::VERSION_FILE_NAME))
                             ->cannotBeEmpty()
                         ->end()
                     ->end()

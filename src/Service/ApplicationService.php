@@ -25,6 +25,13 @@ use Meritoo\CommonBundle\Service\Base\BaseService;
 class ApplicationService extends BaseService
 {
     /**
+     * Name of a file who contains version of the application
+     *
+     * @var string
+     */
+    public const VERSION_FILE_NAME = 'VERSION';
+
+    /**
      * Path of a file who contains version of the application
      *
      * @var string
