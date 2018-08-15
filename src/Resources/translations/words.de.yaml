@@ -4,6 +4,11 @@ meritoo_common:
         group: Gruppe
         email: Email
         email_address: Email adresse
+        phone: Telefon
+        phone_optional: Telefon (fakultativ)
+        phone_number: Telefonnummer
+        phone_number_short: Tel.
+        phone_contact: Kontakt Telefon
         calculator: Taschenrechner
         recommendation: Empfehlung
         resale_shop: Weiterverkauf
@@ -12,6 +17,10 @@ meritoo_common:
         error: Fehler|Fehler
         type: Art
         kind: Art
+        locality: Lokalität
+        description: Beschreibung
+        description_short: Kurze Beschreibung
+        description_general: Allgemeine Beschreibung
     area:
         country: Land
         county: Bezirk

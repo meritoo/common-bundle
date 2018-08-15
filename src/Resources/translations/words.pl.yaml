@@ -4,6 +4,11 @@ meritoo_common:
         group: Grupa
         email: Email
         email_address: Adres email
+        phone: Telefon
+        phone_short: Tel.
+        phone_optional: Telefon (opcjonalnie)
+        phone_number: Numer telefonu
+        phone_contact: Telefon kontaktowy
         calculator: Kalkulator
         recommendation: Rekomendacja
         resale_shop: Komis
@@ -12,6 +17,10 @@ meritoo_common:
         error: Błąd|Błędy
         type: Typ
         kind: Rodzaj
+        locality: Miejscowość
+        description: Opis
+        description_short: Krótki opis
+        description_general: Opis ogólny
     area:
         country: Kraj
         county: Hrabstwo

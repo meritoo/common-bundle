@@ -4,6 +4,11 @@ meritoo_common:
         group: Group
         email: Email
         email_address: Email address
+        phone: Phone
+        phone_short: Tel.
+        phone_optional: Phone (optional)
+        phone_number: Phone number
+        phone_contact: Contact phone
         calculator: Calculator
         recommendation: Recommendation
         resale_shop: Resale shop
@@ -12,6 +17,10 @@ meritoo_common:
         error: Error|Errors
         type: Type
         kind: Kind
+        locality: Locality
+        description: Description
+        description_short: Short description
+        description_general: General description
     area:
         country: Country
         county: County
