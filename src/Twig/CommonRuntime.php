@@ -10,6 +10,8 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Twig;
 
+use Twig\Extension\RuntimeExtensionInterface;
+
 /**
  * Runtime class related to CommonExtension Twig Extension.
  * Required to create lazy-loaded Twig Extension.
@@ -17,7 +19,7 @@ namespace Meritoo\CommonBundle\Twig;
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
  */
-class CommonRuntime
+class CommonRuntime implements RuntimeExtensionInterface
 {
     /**
      * Replacement of empty value
