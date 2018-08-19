@@ -1,5 +1,6 @@
 meritoo_common:
     general:
+        name: Nazwa
         version: Wersja
         group: Grupa
         email: Email
