@@ -95,7 +95,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-                ->booleanNode('novalidate')
+                ->scalarNode('novalidate')
                     ->info('Information if HTML5 inline validation is disabled')
                     ->defaultFalse()
                 ->end()
