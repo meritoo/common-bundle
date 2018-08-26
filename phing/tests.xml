@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Meritoo Application" basedir="." default="build:main" phingVersion="2.16.0">
+    <autoloader/>
+
+    <!-- Properties -->
+    <if>
+        <available file="phing/properties" property="custom.properties.available"/>
+        <then>
+            <property file="phing/properties"/>
+        </then>
+        <else>
+            <property file="phing/properties.dist"/>
+        </else>
+    </if>
+
+    <!-- Filesets -->
+    <fileset id="sourcecode" dir="${dir.src}">
+        <include name="**/*.php"/>
+        <exclude name="*Test.php"/>
+        <exclude name="**/*Test.php"/>
+        <exclude name="**/Resources/**"/>
+        <exclude name="**/DataFixtures/**"/>
+        <exclude name="**/Tests/**"/>
+    </fileset>
+    <fileset id="tests" dir="${dir.tests}">
+        <include name="**/*Test*.php"/>
+    </fileset>
+
+    <!-- Default / main target -->
+    <target name="build:main"
+            depends="build:fix-coding-standards, build:clean, build:prepare, build:check, build:test, app:checkout"
+            description="Runs all tests and builds everything"/>
+
+    <!-- Fixing coding standards using the PHP Coding Standards Fixer (http://cs.sensiolabs.org) -->
+    <target name="build:fix-coding-standards" description="Fixes coding standards using the PHP Coding Standards Fixer">
+        <echo msg="Fixing coding standards using the PHP Coding Standards Fixer (http://cs.sensiolabs.org)..."/>
+
+        <!--
+        Attention.
+        Rules for formatting are defined in /.php_cs.dist file.
+        -->
+
+        <exec
+                passthru="true"
+                command="${tests.cs_fixer.path} fix --verbose"
+        />
+    </target>
+
+    <!-- Check target -->
+    <target name="build:check"
+            depends="check:cs, check:md, check:cpd, check:depend, check:loc"
+            description="Analyzes code"/>
+
+    <!-- Test target -->
+    <target name="build:test"
+            depends="tests:run"
+            description="Executes all tests"/>
+
+    <!-- Project build clean -->
+    <target name="build:clean" description="Cleans up build directories">
+        <echo msg="Cleaning docs and reports directories..."/>
+        <delete dir="${dir.reports}"/>
+    </target>
+
+    <!-- Project build prepare -->
+    <target name="build:prepare" description="Create build directories">
+        <echo msg="Creating build directories..."/>
+        <mkdir dir="${dir.reports}"/>
+        <mkdir dir="${dir.reports.pdepend}"/>
+    </target>
+
+    <!-- Symfony2 code sniffer -->
+    <target name="check:cs" description="Checks coding standard">
+        <echo msg="Checking coding standard..."/>
+        <phpcodesniffer standard="PSR2" showWarnings="true">
+            <fileset refid="sourcecode"/>
+            <formatter type="checkstyle" outfile="${dir.reports}/checkstyle.xml"/>
+            <formatter type="csv" outfile="${dir.reports}/checkstyle.csv"/>
+            <formatter type="summary" outfile="${dir.reports}/checkstyle_summary.txt"/>
+        </phpcodesniffer>
+    </target>
+
+    <!-- copy/paste detector -->
+    <target name="check:cpd" description="Checks similar code blocks.">
+        <echo msg="Checking similar code blocks..."/>
+        <phpcpd>
+            <fileset refid="sourcecode"/>
+            <formatter type="pmd" outfile="${dir.reports}/pmd-cpd.xml"/>
+        </phpcpd>
+    </target>
+
+    <!-- Mess detector -->
+    <target name="check:md" description="Generate code metrics">
+        <echo msg="Generating code metrics..."/>
+        <phpmd rulesets="codesize,controversial,design,naming,unusedcode">
+            <fileset refid="sourcecode"/>
+            <formatter type="html" outfile="${dir.reports}/phpmd.html"/>
+            <formatter type="text" outfile="${dir.reports}/phpmd.txt"/>
+        </phpmd>
+    </target>
+
+    <!-- Code dependency -->
+    <target name="check:depend" description="Checks coupling and dependency">
+        <echo msg="Checking coupling and dependency..."/>
+        <phpdepend>
+            <fileset refid="sourcecode"/>
+            <logger type="jdepend-xml" outfile="${dir.reports.pdepend}/jdepend.xml"/>
+            <logger type="jdepend-chart" outfile="${dir.reports.pdepend}/dependencies.svg"/>
+            <logger type="overview-pyramid" outfile="${dir.reports.pdepend}/overview-pyramid.svg"/>
+        </phpdepend>
+    </target>
+
+    <!-- Measure the size and analyzing the structure of a project -->
+    <target name="check:loc" description="Measures the size and analyzes the structure of a project">
+        <echo msg="Measuring the size and analyzing the structure of a project..."/>
+        <phploc reportType="txt" reportName="phploc" reportDirectory="${dir.reports}">
+            <fileset refid="sourcecode"/>
+        </phploc>
+    </target>
+
+    <!-- Run tests -->
+    <target name="tests:run" description="Run all tests">
+        <echo msg="Running all tests..."/>
+        <exec command="${tests.framework.path}" passthru="true"/>
+    </target>
+
+    <!-- Checkout and finalization -->
+    <target name="app:checkout">
+        <tstamp>
+            <format property="date_end" pattern="%Y-%m-%d %H:%M"/>
+        </tstamp>
+
+        <echo msg="--------------------------------------------"/>
+        <echo msg="Build tests finished at: ${date_end}"/>
+        <echo msg="--------------------------------------------"/>
+    </target>
+</project>

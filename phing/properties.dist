@@ -1,0 +1,102 @@
+# --------------------------------------------------------------------------------
+# Information
+# --------------------------------------------------------------------------------
+
+# Property files contain key/value pairs
+# key = value
+#
+# Property keys may contain alphanumeric chars and colons, but
+# not special chars. This way you can create pseudo-namespaces
+#
+# You can refer to values of other properties by enclosing their keys in "${}".
+# Example: dir.js = ${dir.public}/js
+#
+# Everything behind the equal sign is the value, you do
+# not have to enclose strings: text=This is some text, Your OS is ${php.os}
+
+# --------------------------------------------------------------------------------
+# Common, e.g. default environment
+# --------------------------------------------------------------------------------
+
+# Default environment
+#
+env = dev
+
+# Clear cache with the "warmup" option
+#
+# The cache:clear command should always be called with the --no-warmup option. Warmup should be done via the cache:warmup command.
+# https://github.com/symfony/symfony/blob/master/UPGRADE-3.3.md#frameworkbundle
+#
+# Meritoo <github@meritoo.pl>
+# 2017-06-06
+#
+cache.clearWithWarmup = false
+
+# --------------------------------------------------------------------------------
+# Composer
+# --------------------------------------------------------------------------------
+
+composer.download_command = php -r "eval('?>'.file_get_contents('https://getcomposer.org/installer'));"
+
+# Path to composer executable or composer.phar file
+#
+composer.path = composer.phar
+
+# Path to php executable used by composer
+#
+composer.php = php
+
+# Self update of the composer
+#
+composer.self-update = false
+
+# Validate the composer.json file
+#
+composer.validate = false
+
+# --------------------------------------------------------------------------------
+# Directories
+# --------------------------------------------------------------------------------
+
+# System directories
+#
+dir.src = ${project.basedir}/src
+dir.var = ${project.basedir}/tests/Resources/var
+dir.cache = ${dir.var}/cache
+dir.logs = ${dir.var}/log
+dir.sessions = ${dir.var}/sessions
+dir.data = ${project.basedir}/data
+dir.tests = ${project.basedir}/tests
+
+# Build directories
+#
+dir.build = ${project.basedir}/build
+dir.reports = ${dir.build}/logs
+dir.reports.pdepend = ${dir.reports}/pdepend
+
+# Data directories
+#
+dir.data.tests = ${dir.data}/tests
+dir.data.temporary = ${dir.data}/tmp
+
+# Docker directories
+#
+dir.docker = ${project.basedir}/docker
+dir.docker.data = ${dir.docker}/data/db
+dir.docker.logs = ${dir.docker}/logs/nginx
+
+# --------------------------------------------------------------------------------
+# Testing
+# --------------------------------------------------------------------------------
+
+# Path of the PHP Coding Standards Fixer (http://cs.sensiolabs.org)
+#
+tests.cs_fixer.path = ./vendor/bin/php-cs-fixer
+
+# Test database path
+#
+tests.database = ${dir.data.temporary}/database.sqlite
+
+# Path of the framework used to run unit tests
+#
+tests.framework.path = ./vendor/bin/phpunit --verbose --no-coverage --testdox
