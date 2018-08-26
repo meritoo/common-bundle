@@ -14,13 +14,12 @@ use Generator;
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\CommonBundle\DependencyInjection\Base\BaseExtension;
 use Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfigurationFileTypeException;
-use Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\{
-    EmptyBundlePath\Extension as EmptyBundlePathExtension,
-    NotExistingServicesFile\Extension as NotExistingServicesFileExtension,
-    PhpServicesFileType\Extension as PhpServicesFileTypeExtension,
-    UnknownServicesFileType\Extension as UnknownServicesFileTypeExtension,
-    WithoutParameters\Extension as WithoutParametersExtension,
-    XmlServicesFileType\Extension as XmlServicesFileTypeExtension};
+use Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\EmptyBundlePath\Extension as EmptyBundlePathExtension;
+use Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\NotExistingServicesFile\Extension as NotExistingServicesFileExtension;
+use Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\PhpServicesFileType\Extension as PhpServicesFileTypeExtension;
+use Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\UnknownServicesFileType\Extension as UnknownServicesFileTypeExtension;
+use Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\WithoutParameters\Extension as WithoutParametersExtension;
+use Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\XmlServicesFileType\Extension as XmlServicesFileTypeExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
