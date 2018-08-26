@@ -142,6 +142,7 @@ $array = $descriptor->toArray();
 6. [Translations](Translations.md)
 7. Twig extensions:
 	- [ApplicationExtension](Twig-Extensions/ApplicationExtension.md)
+	- [CommonExtension](Twig-Extensions/CommonExtension.md)
 	- [FormExtension](Twig-Extensions/FormExtension.md)
 
 [&lsaquo; Back to `Readme`](../README.md)

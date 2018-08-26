@@ -42,6 +42,7 @@ meritoo_common:
 5. [Translations](docs/Translations.md)
 6. Twig extensions:
 	- [ApplicationExtension](docs/Twig-Extensions/ApplicationExtension.md)
+	- [CommonExtension](docs/Twig-Extensions/CommonExtension.md)
 	- [FormExtension](docs/Twig-Extensions/FormExtension.md)
 
 # Development

@@ -46,6 +46,7 @@ Result:
 6. [Translations](../Translations.md)
 7. Twig extensions:
 	- [**ApplicationExtension**](ApplicationExtension.md)
+	- [CommonExtension](CommonExtension.md)
 	- [FormExtension](FormExtension.md)
 
 [&lsaquo; Back to `Readme`](../../README.md)
