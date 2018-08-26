@@ -14,6 +14,7 @@ use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Twig\CommonRuntime;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Twig\Extension\RuntimeExtensionInterface;
 
 /**
  * Test case for the runtime class related to CommonExtension Twig Extension
@@ -28,6 +29,12 @@ class CommonRuntimeTest extends KernelTestCase
     public function testConstructor(): void
     {
         static::assertConstructorVisibilityAndArguments(CommonRuntime::class, OopVisibilityType::IS_PUBLIC, 1, 1);
+    }
+
+    public function testIsInstanceOfRuntimeExtensionInterface(): void
+    {
+        $runtime = static::$container->get(CommonRuntime::class);
+        static::assertInstanceOf(RuntimeExtensionInterface::class, $runtime);
     }
 
     /**

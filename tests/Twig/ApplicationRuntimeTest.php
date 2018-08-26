@@ -16,6 +16,7 @@ use Meritoo\Common\ValueObject\Version;
 use Meritoo\CommonBundle\Application\Descriptor;
 use Meritoo\CommonBundle\Twig\ApplicationRuntime;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Twig\Extension\RuntimeExtensionInterface;
 
 /**
  * Test case for the runtime class related to ApplicationExtension Twig Extension
@@ -30,6 +31,12 @@ class ApplicationRuntimeTest extends KernelTestCase
     public function testConstructor(): void
     {
         static::assertConstructorVisibilityAndArguments(ApplicationRuntime::class, OopVisibilityType::IS_PUBLIC, 1, 1);
+    }
+
+    public function testIsInstanceOfRuntimeExtensionInterface(): void
+    {
+        $runtime = static::$container->get(ApplicationRuntime::class);
+        static::assertInstanceOf(RuntimeExtensionInterface::class, $runtime);
     }
 
     public function testGetDescriptor(): void
