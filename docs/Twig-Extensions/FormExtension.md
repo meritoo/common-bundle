@@ -45,8 +45,9 @@ Result:
 5. Services:
 	- [ApplicationService](../Services/ApplicationService.md)
 	- [FormService](../Services/FormService.md)
-6. [Translations](../Translations.md)
-7. Twig extensions:
+6. [Tests](../Tests.md)
+7. [Translations](../Translations.md)
+8. Twig extensions:
 	- [ApplicationExtension](ApplicationExtension.md)
 	- [CommonExtension](CommonExtension.md)
 	- [**FormExtension**](FormExtension.md)

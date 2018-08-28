@@ -6,6 +6,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 1. Configuration > form.novalidate parameter > information if HTML5 inline validation is disabled > make compatible with environment variables and Symfony 3.4
 2. Phing > implement missing configuration
+3. BaseTwigExtensionTestCase > base test case for Twig extension
 
 # 0.1.11
 
