@@ -71,7 +71,7 @@ class ApplicationServiceTest extends KernelTestCase
 
     public function testGetDescriptorUsingTestEnvironment(): void
     {
-        $expected = new Descriptor('', '', new Version(1, 2, 0));
+        $expected = new Descriptor('This is a Test', 'Just for Testing', new Version(1, 2, 0));
 
         $descriptor = static::$container
             ->get(ApplicationService::class)

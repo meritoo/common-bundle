@@ -14,6 +14,7 @@ use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\Common\ValueObject\Version;
 use Meritoo\CommonBundle\Application\Descriptor;
+use Meritoo\CommonBundle\Exception\Service\UnreadableVersionFileException;
 use Meritoo\CommonBundle\Twig\ApplicationRuntime;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Twig\Extension\RuntimeExtensionInterface;
@@ -39,15 +40,28 @@ class ApplicationRuntimeTest extends KernelTestCase
         static::assertInstanceOf(RuntimeExtensionInterface::class, $runtime);
     }
 
-    public function testGetDescriptor(): void
+    public function testGetDescriptorUsingTestEnvironment(): void
     {
-        $expected = new Descriptor('', '', new Version(1, 2, 0));
+        $expected = new Descriptor('This is a Test', 'Just for Testing', new Version(1, 2, 0));
 
         $descriptor = static::$container
             ->get(ApplicationRuntime::class)
             ->getDescriptor();
 
         static::assertEquals($expected, $descriptor);
+    }
+
+    public function testGetDescriptorUsingDefaults(): void
+    {
+        $this->expectException(UnreadableVersionFileException::class);
+
+        static::bootKernel([
+            'environment' => 'defaults',
+        ]);
+
+        static::$container
+            ->get(ApplicationRuntime::class)
+            ->getDescriptor();
     }
 
     /**

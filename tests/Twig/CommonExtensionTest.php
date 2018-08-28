@@ -10,10 +10,9 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Twig;
 
-use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
+use Meritoo\CommonBundle\Test\Twig\Base\BaseTwigExtensionTestCase;
 use Meritoo\CommonBundle\Twig\CommonExtension;
 use Meritoo\CommonBundle\Twig\CommonRuntime;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Twig\TwigFilter;
 
 /**
@@ -22,19 +21,12 @@ use Twig\TwigFilter;
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
  */
-class CommonExtensionTest extends KernelTestCase
+class CommonExtensionTest extends BaseTwigExtensionTestCase
 {
-    use BaseTestCaseTrait;
-
-    public function testConstructor(): void
-    {
-        static::assertHasNoConstructor(CommonExtension::class);
-    }
-
     public function testGetFilters(): void
     {
         $filters = static::$container
-            ->get(CommonExtension::class)
+            ->get($this->getExtensionNamespace())
             ->getFilters();
 
         /* @var TwigFilter $verifyEmptyValue */
@@ -50,11 +42,138 @@ class CommonExtensionTest extends KernelTestCase
     }
 
     /**
+     * @param string $name       Name of the rendered template (used internally only)
+     * @param string $sourceCode Source code of the rendered template
+     * @param mixed  $expected   Expected result of rendering
+     *
+     * @dataProvider provideTemplateForFilterEmptyValueUsingTestEnvironment
+     */
+    public function testFilterEmptyValueUsingTestEnvironment(string $name, string $sourceCode, $expected): void
+    {
+        $this->verifyRenderedTemplate($name, $sourceCode, $expected);
+    }
+
+    /**
+     * @param string $name       Name of the rendered template (used internally only)
+     * @param string $sourceCode Source code of the rendered template
+     * @param mixed  $expected   Expected result of rendering
+     *
+     * @dataProvider provideTemplateForFilterEmptyValueUsingDefaults
+     */
+    public function testFilterEmptyValueUsingDefaults(string $name, string $sourceCode, $expected): void
+    {
+        static::bootKernel([
+            'environment' => 'defaults',
+        ]);
+
+        $this->verifyRenderedTemplate($name, $sourceCode, $expected);
+    }
+
+    /**
+     * Provide template for filter empty value (using "test" environment)
+     *
+     * @return \Generator
+     */
+    public function provideTemplateForFilterEmptyValueUsingTestEnvironment(): \Generator
+    {
+        yield[
+            'filter_null',
+            '{{ null | meritoo_common_empty_value }}',
+            '...',
+        ];
+
+        yield[
+            'filter_iterable',
+            '{{ [] | meritoo_common_empty_value }}',
+            '...',
+        ];
+
+        yield[
+            'filter_iterable',
+            '{{ {} | meritoo_common_empty_value }}',
+            '...',
+        ];
+
+        yield[
+            'filter_string',
+            '{{ "" | meritoo_common_empty_value }}',
+            '...',
+        ];
+
+        yield[
+            'filter_not_null',
+            '{{ {1: "test 1", 2: "test 2"} | meritoo_common_empty_value | length }}',
+            '2',
+        ];
+
+        yield[
+            'filter_not_empty_iterable',
+            '{{ {test1: 1, test2: 2, test3: 3} | meritoo_common_empty_value | length }}',
+            '3',
+        ];
+
+        yield[
+            'filter_not_empty_string',
+            '{{ "test" | meritoo_common_empty_value }}',
+            'test',
+        ];
+    }
+
+    /**
+     * Provide template for filter empty value (using default configuration)
+     *
+     * @return \Generator
+     */
+    public function provideTemplateForFilterEmptyValueUsingDefaults(): \Generator
+    {
+        yield[
+            'filter_null',
+            '{{ null | meritoo_common_empty_value }}',
+            '-',
+        ];
+
+        yield[
+            'filter_iterable',
+            '{{ [] | meritoo_common_empty_value }}',
+            '-',
+        ];
+
+        yield[
+            'filter_iterable',
+            '{{ {} | meritoo_common_empty_value }}',
+            '-',
+        ];
+
+        yield[
+            'filter_string',
+            '{{ "" | meritoo_common_empty_value }}',
+            '-',
+        ];
+
+        yield[
+            'filter_not_null',
+            '{{ {1: "test 1", 2: "test 2"} | meritoo_common_empty_value | length }}',
+            '2',
+        ];
+
+        yield[
+            'filter_not_empty_iterable',
+            '{{ {test1: 1, test2: 2, test3: 3} | meritoo_common_empty_value | length }}',
+            '3',
+        ];
+
+        yield[
+            'filter_not_empty_string',
+            '{{ "test" | meritoo_common_empty_value }}',
+            'test',
+        ];
+    }
+
+    /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function getExtensionNamespace(): string
     {
-        parent::setUp();
-        static::bootKernel();
+        return CommonExtension::class;
     }
 }

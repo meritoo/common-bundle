@@ -10,10 +10,9 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Twig;
 
-use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
+use Meritoo\CommonBundle\Test\Twig\Base\BaseTwigExtensionTestCase;
 use Meritoo\CommonBundle\Twig\FormExtension;
 use Meritoo\CommonBundle\Twig\FormRuntime;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Twig\TwigFunction;
 
 /**
@@ -22,23 +21,16 @@ use Twig\TwigFunction;
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
  */
-class FormExtensionTest extends KernelTestCase
+class FormExtensionTest extends BaseTwigExtensionTestCase
 {
-    use BaseTestCaseTrait;
-
-    public function testConstructor(): void
-    {
-        static::assertHasNoConstructor(FormExtension::class);
-    }
-
     public function testGetFunctions(): void
     {
         $functions = static::$container
-            ->get(FormExtension::class)
+            ->get($this->getExtensionNamespace())
             ->getFunctions();
 
         $filters = static::$container
-            ->get(FormExtension::class)
+            ->get($this->getExtensionNamespace())
             ->getFilters();
 
         /* @var TwigFunction $isHtml5ValidationEnabledFunction */
@@ -53,6 +45,50 @@ class FormExtensionTest extends KernelTestCase
             FormRuntime::class,
             'isHtml5ValidationEnabled',
         ], $isHtml5ValidationEnabledFunction->getCallable());
+    }
+
+    public function testIsHtml5ValidationEnabledUsingTestEnvironment(): void
+    {
+        $name = 'is_html5_validation_enabled';
+        $sourceCode = '{{ dump(meritoo_common_form_is_html5_validation_enabled()) }}';
+
+        $templates = [
+            $name => $sourceCode,
+        ];
+
+        $rendered = $this
+            ->getTwigEnvironment($templates)
+            ->render($name);
+
+        static::assertRegExp('/bool\(false\)/', $rendered);
+    }
+
+    public function testIsHtml5ValidationEnabledUsingDefaults(): void
+    {
+        static::bootKernel([
+            'environment' => 'defaults',
+        ]);
+
+        $name = 'is_html5_validation_enabled';
+        $sourceCode = '{{ dump(meritoo_common_form_is_html5_validation_enabled()) }}';
+
+        $templates = [
+            $name => $sourceCode,
+        ];
+
+        $rendered = $this
+            ->getTwigEnvironment($templates)
+            ->render($name);
+
+        static::assertRegExp('/bool\(true\)/', $rendered);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getExtensionNamespace(): string
+    {
+        return FormExtension::class;
     }
 
     /**
