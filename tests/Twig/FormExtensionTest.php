@@ -12,8 +12,6 @@ namespace Meritoo\Test\CommonBundle\Twig;
 
 use Meritoo\CommonBundle\Test\Twig\Base\BaseTwigExtensionTestCase;
 use Meritoo\CommonBundle\Twig\FormExtension;
-use Meritoo\CommonBundle\Twig\FormRuntime;
-use Twig\TwigFunction;
 
 /**
  * Test case for the Twig extension related to the FormService service
@@ -29,22 +27,7 @@ class FormExtensionTest extends BaseTwigExtensionTestCase
             ->get($this->getExtensionNamespace())
             ->getFunctions();
 
-        $filters = static::$container
-            ->get($this->getExtensionNamespace())
-            ->getFilters();
-
-        /* @var TwigFunction $isHtml5ValidationEnabledFunction */
-        $isHtml5ValidationEnabledFunction = $functions[0];
-
         static::assertCount(1, $functions);
-        static::assertCount(0, $filters);
-
-        static::assertInstanceOf(TwigFunction::class, $isHtml5ValidationEnabledFunction);
-        static::assertSame('meritoo_common_form_is_html5_validation_enabled', $isHtml5ValidationEnabledFunction->getName());
-        static::assertSame([
-            FormRuntime::class,
-            'isHtml5ValidationEnabled',
-        ], $isHtml5ValidationEnabledFunction->getCallable());
     }
 
     public function testIsHtml5ValidationEnabledUsingTestEnvironment(): void

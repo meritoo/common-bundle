@@ -12,9 +12,7 @@ namespace Meritoo\Test\CommonBundle\Twig;
 
 use Meritoo\CommonBundle\Test\Twig\Base\BaseTwigExtensionTestCase;
 use Meritoo\CommonBundle\Twig\ApplicationExtension;
-use Meritoo\CommonBundle\Twig\ApplicationRuntime;
 use Twig\Error\RuntimeError;
-use Twig\TwigFunction;
 
 /**
  * Test case for the Twig extension related to the ApplicationService service
@@ -30,16 +28,7 @@ class ApplicationExtensionTest extends BaseTwigExtensionTestCase
             ->get($this->getExtensionNamespace())
             ->getFunctions();
 
-        /* @var TwigFunction $getDescriptorFunction */
-        $getDescriptorFunction = $functions[0];
-
         static::assertCount(1, $functions);
-        static::assertInstanceOf(TwigFunction::class, $getDescriptorFunction);
-        static::assertSame('meritoo_common_application_descriptor', $getDescriptorFunction->getName());
-        static::assertSame([
-            ApplicationRuntime::class,
-            'getDescriptor',
-        ], $getDescriptorFunction->getCallable());
     }
 
     /**

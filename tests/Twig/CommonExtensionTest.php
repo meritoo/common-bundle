@@ -12,8 +12,6 @@ namespace Meritoo\Test\CommonBundle\Twig;
 
 use Meritoo\CommonBundle\Test\Twig\Base\BaseTwigExtensionTestCase;
 use Meritoo\CommonBundle\Twig\CommonExtension;
-use Meritoo\CommonBundle\Twig\CommonRuntime;
-use Twig\TwigFilter;
 
 /**
  * Test case for the twig extension that provides functions and filters for common operations
@@ -29,16 +27,7 @@ class CommonExtensionTest extends BaseTwigExtensionTestCase
             ->get($this->getExtensionNamespace())
             ->getFilters();
 
-        /* @var TwigFilter $verifyEmptyValue */
-        $verifyEmptyValue = $filters[0];
-
         static::assertCount(1, $filters);
-        static::assertInstanceOf(TwigFilter::class, $verifyEmptyValue);
-        static::assertSame('meritoo_common_empty_value', $verifyEmptyValue->getName());
-        static::assertSame([
-            CommonRuntime::class,
-            'verifyEmptyValue',
-        ], $verifyEmptyValue->getCallable());
     }
 
     /**
