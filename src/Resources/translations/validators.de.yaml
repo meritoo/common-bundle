@@ -1,3 +1,6 @@
 meritoo_common:
     consent:
         is_required: Diese Zustimmung ist erforderlich
+    email:
+        is_required: E-Mail-Adresse ist erforderlich
+        have_to_enter: Sie müssen eine E-Mail-Adresse eingeben
