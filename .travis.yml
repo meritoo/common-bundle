@@ -7,7 +7,7 @@ before_install:
   - composer global require hirak/prestissimo
 
 install:
-  - composer install --dev
+  - composer install
 
 script:
   - php ./vendor/bin/phpunit
