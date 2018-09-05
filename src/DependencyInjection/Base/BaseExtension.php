@@ -84,6 +84,60 @@ abstract class BaseExtension extends ConfigurableExtension
     }
 
     /**
+     * Returns patterns of keys or paths from configuration that should match to stop loading parameters
+     *
+     * If matched, the process of building name of parameter is stopped on processed key. To container will load
+     * parameter with name where the process was interrupted and with children of those key as value of the parameter.
+     *
+     * Example:
+     * -> keys or paths to stop loading parameters
+     * [
+     *      'ipsum.sit',
+     *      'elit',
+     * ];
+     *
+     * -> configuration
+     * [
+     *      'lorem' => [
+     *          'ipsum' => [
+     *              'dolor',
+     *              'sit' => [
+     *                  'consectetur',
+     *                  'adipiscing',
+     *              ]
+     *          ],
+     *          'elit' => [
+     *              'tincidunt' => [
+     *                  123,
+     *                  456,
+     *              ]
+     *          ]
+     *      ]
+     * ];
+     *
+     * -> result
+     * [
+     *      'lorem.ipsum.0' => 'dolor',
+     *      'lorem.ipsum.sit' => [
+     *          'consectetur',
+     *          'adipiscing',
+     *      ],
+     *      'lorem.elit' => [
+     *          'tincidunt' => [
+     *              123,
+     *              456,
+     *          ]
+     *      ]
+     * ];
+     *
+     * @return array
+     */
+    protected function getKeysToStopLoadingParametersOn(): array
+    {
+        return [];
+    }
+
+    /**
      * Returns global patterns of keys or paths from configuration that should match to stop loading parameters
      *
      * @return array
@@ -210,60 +264,6 @@ abstract class BaseExtension extends ConfigurableExtension
         }
 
         return $loader;
-    }
-
-    /**
-     * Returns patterns of keys or paths from configuration that should match to stop loading parameters
-     *
-     * If matched, the process of building name of parameter is stopped on processed key. To container will load
-     * parameter with name where the process was interrupted and with children of those key as value of the parameter.
-     *
-     * Example:
-     * -> keys or paths to stop loading parameters
-     * [
-     *      'ipsum.sit',
-     *      'elit',
-     * ];
-     *
-     * -> configuration
-     * [
-     *      'lorem' => [
-     *          'ipsum' => [
-     *              'dolor',
-     *              'sit' => [
-     *                  'consectetur',
-     *                  'adipiscing',
-     *              ]
-     *          ],
-     *          'elit' => [
-     *              'tincidunt' => [
-     *                  123,
-     *                  456,
-     *              ]
-     *          ]
-     *      ]
-     * ];
-     *
-     * -> result
-     * [
-     *      'lorem.ipsum.0' => 'dolor',
-     *      'lorem.ipsum.sit' => [
-     *          'consectetur',
-     *          'adipiscing',
-     *      ],
-     *      'lorem.elit' => [
-     *          'tincidunt' => [
-     *              123,
-     *              456,
-     *          ]
-     *      ]
-     * ];
-     *
-     * @return array
-     */
-    private function getKeysToStopLoadingParametersOn(): array
-    {
-        return [];
     }
 
     /**

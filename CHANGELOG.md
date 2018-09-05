@@ -2,6 +2,11 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.1.13
+
+1. BaseExtension > allow to define patterns of keys or paths from configuration that should match to stop loading 
+parameters (by make getKeysToStopLoadingParametersOn() method protected)
+
 # 0.1.12
 
 1. Configuration > form.novalidate parameter > information if HTML5 inline validation is disabled > make compatible with environment variables and Symfony 3.4
