@@ -4,3 +4,5 @@ meritoo_common:
     email:
         is_required: Email address is required
         have_to_enter: You have to enter an email address
+        not_email: It's not an email address
+        is_incorrect: Incorrect email address

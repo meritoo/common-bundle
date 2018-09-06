@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.1.15
+
+1. Resources > translations > add new
+
 # 0.1.14
 
 1. Travis CI > update configuration (You are using the deprecated option "dev". Dev packages are installed by default
