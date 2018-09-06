@@ -14,6 +14,10 @@ Uses parameters:
 
 ### Methods
 
+##### addFormOptions()
+
+Adds related to HTML5 inline validation options into the existing options. If HTML5 inline validation is disabled, does nothing.
+
 ##### isHtml5ValidationEnabled()
 
 Returns information if HTML5 inline validation is enabled.
@@ -27,6 +31,7 @@ Returns information if HTML5 inline validation is enabled.
 5. Services:
 	- [ApplicationService](ApplicationService.md)
 	- [**FormService**](FormService.md)
+	- [ResponseService](ResponseService.md)
 6. [Tests](../Tests.md)
 7. [Translations](../Translations.md)
 8. Twig extensions:

@@ -48,7 +48,8 @@ class FormService extends BaseService
     }
 
     /**
-     * Adds options to the existing options that may be used while creating a form
+     * Adds related to HTML5 inline validation options into the existing options.
+     * If HTML5 inline validation is disabled, does nothing.
      *
      * Example of usage:
      * $formOptions = [];

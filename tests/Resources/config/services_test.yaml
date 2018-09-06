@@ -10,6 +10,8 @@ services:
 
     test.meritoo_common.service.application_service: '@Meritoo\CommonBundle\Service\ApplicationService'
     test.meritoo_common.service.form_service: '@Meritoo\CommonBundle\Service\FormService'
+    test.meritoo_common.service.response_service: '@Meritoo\CommonBundle\Service\ResponseService'
+
     test.meritoo_common.twig.application_runtime: '@Meritoo\CommonBundle\Twig\ApplicationRuntime'
     test.meritoo_common.twig.application_extension: '@Meritoo\CommonBundle\Twig\ApplicationExtension'
     test.meritoo_common.twig.form_runtime: '@Meritoo\CommonBundle\Twig\FormRuntime'

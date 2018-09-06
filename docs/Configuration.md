@@ -102,6 +102,7 @@ meritoo_common:
 5. Services:
 	- [ApplicationService](Services/ApplicationService.md)
 	- [FormService](Services/FormService.md)
+	- [ResponseService](Services/ResponseService.md)
 6. [Tests](Tests.md)
 7. [Translations](Translations.md)
 8. Twig extensions:

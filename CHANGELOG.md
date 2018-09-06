@@ -5,6 +5,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.1.15
 
 1. Resources > translations > add new
+2. Service > ResponseService > service who serves responses
 
 # 0.1.14
 
