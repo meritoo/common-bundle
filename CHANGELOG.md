@@ -5,6 +5,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.1.16
 
 1. Phing > tests > missing path of directory with code coverage report
+2. Phing > tests > PHPUnit > do not use dox format (for output results)
 
 # 0.1.15
 
