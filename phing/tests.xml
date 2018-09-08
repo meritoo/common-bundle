@@ -67,6 +67,7 @@
         <echo msg="Creating build directories..."/>
         <mkdir dir="${dir.reports}"/>
         <mkdir dir="${dir.reports.pdepend}"/>
+        <mkdir dir="${dir.reports.coverage}"/>
     </target>
 
     <!-- Symfony2 code sniffer -->
