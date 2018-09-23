@@ -2,12 +2,6 @@ FROM php:7.2-cli
 MAINTAINER Meritoo <github@meritoo.pl>
 
 #
-# Enable the Handy Apt Terminal Progress Bar
-# Source: https://www.omgubuntu.co.uk/2014/04/how-to-enable-apt-terminal-progress-bar
-#
-RUN echo 'Dpkg::Progress-Fancy "1";' > /etc/apt/apt.conf.d/99progressbar
-
-#
 # Tools & libraries
 #
 RUN apt-get update \

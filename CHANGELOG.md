@@ -6,6 +6,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 1. Phing > tests > missing path of directory with code coverage report
 2. Phing > tests > PHPUnit > do not use dox format (for output results)
+3. Docker > Dockerfile > remove not working the Handy Apt Terminal Progress Bar
 
 # 0.1.15
 
