@@ -40,10 +40,7 @@
         Rules for formatting are defined in /.php_cs.dist file.
         -->
 
-        <exec
-                passthru="true"
-                command="${tests.cs_fixer.path} fix --verbose"
-        />
+        <exec command="${tests.cs_fixer.command}" passthru="true"/>
     </target>
 
     <!-- Check target -->
@@ -53,7 +50,7 @@
 
     <!-- Test target -->
     <target name="build:test"
-            depends="tests:run"
+            depends="tests:run, test:infection"
             description="Executes all tests"/>
 
     <!-- Project build clean -->
@@ -122,7 +119,13 @@
     <!-- Run tests -->
     <target name="tests:run" description="Run all tests">
         <echo msg="Running all tests..."/>
-        <exec command="${tests.framework.path}" passthru="true"/>
+        <exec command="${tests.framework.command}" passthru="true"/>
+    </target>
+
+    <!-- Run mutation testing -->
+    <target name="test:infection" description="Runs mutation testing">
+        <echo msg="Running mutation testing..."/>
+        <exec command="${tests.mutation.command}" passthru="true"/>
     </target>
 
     <!-- Checkout and finalization -->

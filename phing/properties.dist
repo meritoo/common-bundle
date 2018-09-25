@@ -92,12 +92,15 @@ dir.docker.logs = ${dir.docker}/logs/nginx
 
 # Path of the PHP Coding Standards Fixer (http://cs.sensiolabs.org)
 #
-tests.cs_fixer.path = ./vendor/bin/php-cs-fixer
+tests.cs_fixer.command = ./vendor/bin/php-cs-fixer fix --verbose
 
 # Test database path
 #
 tests.database = ${dir.data.temporary}/database.sqlite
 
-# Path of the framework used to run unit tests
+# Paths of frameworks used to run tests:
+# - PHPUnit (unit tests)
+# - Infection (mutation tests)
 #
-tests.framework.path = ./vendor/bin/phpunit --verbose --no-coverage
+tests.phpunit.command = ./vendor/bin/phpunit --verbose --no-coverage
+tests.mutation.command = ./vendor/bin/infection --threads=5
