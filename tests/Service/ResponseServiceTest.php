@@ -49,8 +49,7 @@ class ResponseServiceTest extends KernelTestCase
         array $routeParameters,
         string $url,
         RedirectResponse $expected
-    ):
-    void {
+    ): void {
         $redirectResponse = $this
             ->getResponseService($routeName, $routeParameters, $url)
             ->getRedirectResponse($routeName, $routeParameters);
