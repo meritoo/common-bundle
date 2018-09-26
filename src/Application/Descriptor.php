@@ -60,7 +60,7 @@ class Descriptor
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         $name = $this->getName();
         $description = $this->getDescription();

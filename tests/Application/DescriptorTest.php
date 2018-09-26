@@ -85,6 +85,7 @@ class DescriptorTest extends BaseTestCase
      * @param string     $expected   Expected string representation of descriptor
      *
      * @dataProvider provideDescriptorAsString
+     * @covers       \Meritoo\CommonBundle\Application\Descriptor::__toString
      */
     public function testToString(Descriptor $descriptor, string $expected): void
     {

@@ -143,8 +143,10 @@ class DescriptorsTest extends BaseTestCase
 
     /**
      * Provides array with data of descriptors and the expected descriptors
+     *
+     * @return \Generator
      */
-    public function provideArrayForDescriptors()
+    public function provideArrayForDescriptors(): \Generator
     {
         yield[
             [],
@@ -204,8 +206,10 @@ class DescriptorsTest extends BaseTestCase
 
     /**
      * Provides not existing descriptor and class namespace
+     *
+     * @return \Generator
      */
-    public function provideNotExistingDescriptorAndClassNamespace()
+    public function provideNotExistingDescriptorAndClassNamespace(): \Generator
     {
         yield[
             new Descriptors(),
@@ -256,8 +260,10 @@ class DescriptorsTest extends BaseTestCase
 
     /**
      * Provides descriptor and class namespace
+     *
+     * @return \Generator
      */
-    public function provideDescriptorAndClassNamespace()
+    public function provideDescriptorAndClassNamespace(): \Generator
     {
         yield[
             new Descriptors([
@@ -321,8 +327,10 @@ class DescriptorsTest extends BaseTestCase
 
     /**
      * Provides not existing descriptor and name
+     *
+     * @return \Generator
      */
-    public function provideNotExistingDescriptorAndName()
+    public function provideNotExistingDescriptorAndName(): \Generator
     {
         yield[
             new Descriptors(),
@@ -373,8 +381,10 @@ class DescriptorsTest extends BaseTestCase
 
     /**
      * Provides descriptor and name
+     *
+     * @return \Generator
      */
-    public function provideDescriptorAndName()
+    public function provideDescriptorAndName(): \Generator
     {
         yield[
             new Descriptors([
@@ -438,8 +448,10 @@ class DescriptorsTest extends BaseTestCase
 
     /**
      * Provides descriptors of bundles and an array representation of the descriptors
+     *
+     * @return \Generator
      */
-    public function provideArrayFromDescriptors()
+    public function provideArrayFromDescriptors(): \Generator
     {
         yield[
             new Descriptors(),

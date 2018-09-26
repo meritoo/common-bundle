@@ -13,6 +13,7 @@ namespace Meritoo\Test\CommonBundle\Bundle;
 use Meritoo\Common\Collection\Collection;
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\Common\Type\OopVisibilityType;
+use Meritoo\Common\Utilities\Reflection;
 use Meritoo\CommonBundle\Bundle\Descriptor;
 use Meritoo\Test\CommonBundle\Bundle\Descriptor\SimpleBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -219,7 +220,7 @@ class DescriptorTest extends BaseTestCase
         static::assertSame($expected, $descriptor->hasFile($filePath));
     }
 
-    public function testSetParentBundleDescriptor()
+    public function testSetParentBundleDescriptor(): void
     {
         $descriptor = new Descriptor();
         $result = $descriptor->setParentBundleDescriptor(null);
@@ -252,6 +253,7 @@ class DescriptorTest extends BaseTestCase
      * @param Collection $expected      Expected names of files with data fixtures after add
      *
      * @dataProvider provideDataFixturesToAdd
+     * @covers       \Meritoo\CommonBundle\Bundle\Descriptor::addDataFixtures
      */
     public function testAddDataFixtures(Descriptor $descriptor, array $fixturesPaths, Collection $expected): void
     {
@@ -304,8 +306,10 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * Provides array with data of descriptor and the expected descriptor
+     *
+     * @return \Generator
      */
-    public function provideArrayForDescriptor()
+    public function provideArrayForDescriptor(): \Generator
     {
         yield[
             [],
@@ -426,8 +430,10 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * Provides descriptor of bundle who short, simple name should be returned and the short name
+     *
+     * @return \Generator
      */
-    public function provideShortName()
+    public function provideShortName(): \Generator
     {
         yield[
             new Descriptor(),
@@ -452,8 +458,10 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * Provides descriptor of bundle and physical path of the bundle
+     *
+     * @return \Generator
      */
-    public function providePath()
+    public function providePath(): \Generator
     {
         yield[
             new Descriptor(),
@@ -473,8 +481,10 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * Provides descriptor of bundle and real/full path of directory with classes for the DataFixtures
+     *
+     * @return \Generator
      */
-    public function provideDataFixturesPath()
+    public function provideDataFixturesPath(): \Generator
     {
         yield[
             new Descriptor(),
@@ -489,8 +499,10 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * Provides descriptor of bundle and descriptor of the child bundle
+     *
+     * @return \Generator
      */
-    public function provideChildBundleDescriptor()
+    public function provideChildBundleDescriptor(): \Generator
     {
         yield[
             new Descriptor(),
@@ -543,9 +555,199 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * Provides descriptor of bundle and an array representation of the descriptor
+     * Provides descriptor of bundle and an array representation of the descriptor (using default arguments)
+     *
+     * @return \Generator
      */
-    public function provideArrayFromDescriptor()
+    public function provideArrayFromDescriptorUsingDefaults(): \Generator
+    {
+        yield[
+            new Descriptor(),
+            [
+                'name'                   => '',
+                'shortName'              => '',
+                'configurationRootName'  => '',
+                'rootNamespace'          => '',
+                'path'                   => '',
+                'dataFixtures'           => [],
+                'parentBundleDescriptor' => null,
+                'childBundleDescriptor'  => null,
+            ],
+        ];
+
+        yield[
+            new Descriptor(
+                'PortaCommodoBundle',
+                'Commodo',
+                'Porta\CommodoBundle',
+                'etiam/risus/parturient'
+            ),
+            [
+                'name'                   => 'PortaCommodoBundle',
+                'shortName'              => 'portacommodo',
+                'configurationRootName'  => 'Commodo',
+                'rootNamespace'          => 'Porta\CommodoBundle',
+                'path'                   => 'etiam/risus/parturient',
+                'dataFixtures'           => [],
+                'parentBundleDescriptor' => null,
+                'childBundleDescriptor'  => null,
+            ],
+        ];
+
+        yield[
+            new Descriptor(
+                'PortaCommodoBundle',
+                'Commodo',
+                'Porta\CommodoBundle',
+                'etiam/risus/parturient',
+                new Descriptor()
+            ),
+            [
+                'name'                   => 'PortaCommodoBundle',
+                'shortName'              => 'portacommodo',
+                'configurationRootName'  => 'Commodo',
+                'rootNamespace'          => 'Porta\CommodoBundle',
+                'path'                   => 'etiam/risus/parturient',
+                'dataFixtures'           => [],
+                'parentBundleDescriptor' => [
+                    'name'                  => '',
+                    'shortName'             => '',
+                    'configurationRootName' => '',
+                    'rootNamespace'         => '',
+                    'path'                  => '',
+                    'dataFixtures'          => [],
+                ],
+                'childBundleDescriptor'  => null,
+            ],
+        ];
+
+        yield[
+            new Descriptor(
+                'PortaCommodoBundle',
+                'Commodo',
+                'Porta\CommodoBundle',
+                'etiam/risus/parturient',
+                new Descriptor(),
+                new Descriptor()
+            ),
+            [
+                'name'                   => 'PortaCommodoBundle',
+                'shortName'              => 'portacommodo',
+                'configurationRootName'  => 'Commodo',
+                'rootNamespace'          => 'Porta\CommodoBundle',
+                'path'                   => 'etiam/risus/parturient',
+                'dataFixtures'           => [],
+                'parentBundleDescriptor' => [
+                    'name'                  => '',
+                    'shortName'             => '',
+                    'configurationRootName' => '',
+                    'rootNamespace'         => '',
+                    'path'                  => '',
+                    'dataFixtures'          => [],
+                ],
+                'childBundleDescriptor'  => [
+                    'name'                  => '',
+                    'shortName'             => '',
+                    'configurationRootName' => '',
+                    'rootNamespace'         => '',
+                    'path'                  => '',
+                    'dataFixtures'          => [],
+                ],
+            ],
+        ];
+
+        yield[
+            new Descriptor(
+                'PortaCommodoBundle',
+                'Commodo',
+                'Porta\CommodoBundle',
+                'etiam/risus/parturient',
+                new Descriptor(
+                    'OrnareEgestasBundle',
+                    'Ornare',
+                    'Ornare\EgestasBundle',
+                    'condimentum/fusce/risus'
+                ),
+                new Descriptor()
+            ),
+            [
+                'name'                   => 'PortaCommodoBundle',
+                'shortName'              => 'portacommodo',
+                'configurationRootName'  => 'Commodo',
+                'rootNamespace'          => 'Porta\CommodoBundle',
+                'path'                   => 'etiam/risus/parturient',
+                'dataFixtures'           => [],
+                'parentBundleDescriptor' => [
+                    'name'                  => 'OrnareEgestasBundle',
+                    'shortName'             => 'ornareegestas',
+                    'configurationRootName' => 'Ornare',
+                    'rootNamespace'         => 'Ornare\EgestasBundle',
+                    'path'                  => 'condimentum/fusce/risus',
+                    'dataFixtures'          => [],
+                ],
+                'childBundleDescriptor'  => [
+                    'name'                  => '',
+                    'shortName'             => '',
+                    'configurationRootName' => '',
+                    'rootNamespace'         => '',
+                    'path'                  => '',
+                    'dataFixtures'          => [],
+                ],
+            ],
+        ];
+
+        yield[
+            new Descriptor(
+                'PortaCommodoBundle',
+                'Commodo',
+                'Porta\CommodoBundle',
+                'etiam/risus/parturient',
+                new Descriptor(
+                    'OrnareEgestasBundle',
+                    'Ornare',
+                    'Ornare\EgestasBundle',
+                    'condimentum/fusce/risus'
+                ),
+                new Descriptor(
+                    'ParturientPharetraBundle',
+                    'OrnareMattis',
+                    'Parturient\PharetraBundle',
+                    'tortor/ullamcorper/mattis'
+                )
+            ),
+            [
+                'name'                   => 'PortaCommodoBundle',
+                'shortName'              => 'portacommodo',
+                'configurationRootName'  => 'Commodo',
+                'rootNamespace'          => 'Porta\CommodoBundle',
+                'path'                   => 'etiam/risus/parturient',
+                'dataFixtures'           => [],
+                'parentBundleDescriptor' => [
+                    'name'                  => 'OrnareEgestasBundle',
+                    'shortName'             => 'ornareegestas',
+                    'configurationRootName' => 'Ornare',
+                    'rootNamespace'         => 'Ornare\EgestasBundle',
+                    'path'                  => 'condimentum/fusce/risus',
+                    'dataFixtures'          => [],
+                ],
+                'childBundleDescriptor'  => [
+                    'name'                  => 'ParturientPharetraBundle',
+                    'shortName'             => 'parturientpharetra',
+                    'configurationRootName' => 'OrnareMattis',
+                    'rootNamespace'         => 'Parturient\PharetraBundle',
+                    'path'                  => 'tortor/ullamcorper/mattis',
+                    'dataFixtures'          => [],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * Provides descriptor of bundle and an array representation of the descriptor
+     *
+     * @return \Generator
+     */
+    public function provideArrayFromDescriptor(): \Generator
     {
         yield[
             new Descriptor(),
@@ -904,8 +1106,10 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * Provides descriptor of bundle and root namespace of bundle
+     *
+     * @return \Generator
      */
-    public function provideRootNamespace()
+    public function provideRootNamespace(): \Generator
     {
         yield[
             new Descriptor(),
@@ -925,8 +1129,10 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * Provides descriptor of bundle and names of files with data fixtures
+     *
+     * @return \Generator
      */
-    public function provideDataFixtures()
+    public function provideDataFixtures(): \Generator
     {
         yield[
             new Descriptor(),
@@ -956,8 +1162,10 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * Provides descriptor of bundle and path of file to verify
+     *
+     * @return \Generator
      */
-    public function provideFilePath()
+    public function provideFilePath(): \Generator
     {
         yield[
             new Descriptor(),
@@ -992,8 +1200,10 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * Provides descriptor of bundle and name of configuration root node
+     *
+     * @return \Generator
      */
-    public function provideConfigurationRootName()
+    public function provideConfigurationRootName(): \Generator
     {
         yield[
             new Descriptor(),
@@ -1013,8 +1223,10 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * Provides descriptor of bundle and names of files with data fixtures to add
+     *
+     * @return \Generator
      */
-    public function provideDataFixturesToAdd()
+    public function provideDataFixturesToAdd(): \Generator
     {
         yield[
             new Descriptor(),
@@ -1056,8 +1268,10 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * Provides descriptor of bundle and descriptor of the child bundle
+     *
+     * @return \Generator
      */
-    public function provideParentBundleDescriptor()
+    public function provideParentBundleDescriptor(): \Generator
     {
         yield[
             new Descriptor(),
@@ -1111,8 +1325,10 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * Provides bundle and descriptor of the bundle
+     *
+     * @return \Generator
      */
-    public function provideBundle()
+    public function provideBundle(): \Generator
     {
         yield[
             new SimpleBundle(),
@@ -1127,8 +1343,10 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * Provides descriptor and name of the bundle
+     *
+     * @return \Generator
      */
-    public function provideName()
+    public function provideName(): \Generator
     {
         yield[
             new Descriptor(),
