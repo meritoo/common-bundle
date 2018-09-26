@@ -50,10 +50,6 @@ composer.php = php
 #
 composer.self-update = false
 
-# Validate the composer.json file
-#
-composer.validate = false
-
 # --------------------------------------------------------------------------------
 # Directories
 # --------------------------------------------------------------------------------

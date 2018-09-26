@@ -132,13 +132,6 @@
             </then>
         </if>
 
-        <if>
-            <istrue value="${composer.validate}"/>
-            <then>
-                <composer php="${composer.php}" composer="${composer.path}" command="validate"/>
-            </then>
-        </if>
-
         <composer php="${composer.php}" composer="${composer.path}" command="install">
             <arg value="--optimize-autoloader"/>
             <arg value="--prefer-dist"/>
