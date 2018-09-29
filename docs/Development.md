@@ -108,6 +108,40 @@ You can also run them in container. In this case you have to run 2 commands:
 docker-compose exec php phpunit
 ```
 
+# Mutation Tests
+
+Served by [Infection — Mutation Testing Framework](https://infection.github.io).
+
+### Running tests
+
+```bash
+docker-compose exec php vendor/bin/infection --threads=5
+```
+
+### Result of testing
+
+##### Terminal
+
+Example of output:
+```bash
+125 mutations were generated:
+     105 mutants were killed
+       3 mutants were not covered by tests
+       5 covered mutants were not detected
+       0 errors were encountered
+      12 time outs were encountered
+
+Metrics:
+         Mutation Score Indicator (MSI): 93%
+         Mutation Code Coverage: 97%
+         Covered Code MSI: 95%
+```
+
+##### Stored in `build/reports/infection` directory
+
+* `build/reports/infection/infection-log.txt`
+* `build/reports/infection/summary-log.txt`
+
 # Other
 
 Rebuild project and run tests by running command:
