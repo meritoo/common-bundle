@@ -6,8 +6,8 @@
         ]
     },
     "logs": {
-        "text": "build/infection/infection-log.txt",
-        "summary": "build/infection/summary-log.txt",
-        "debug": "build/infection/debug-log.txt"
+        "text": "build/reports/infection/infection-log.txt",
+        "summary": "build/reports/infection/summary-log.txt",
+        "debug": "build/reports/infection/debug-log.txt"
     }
 }

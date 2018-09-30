@@ -8,6 +8,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 2. Phing > tests > PHPUnit > do not use dox format (for output results)
 3. Docker > Dockerfile > remove not working the Handy Apt Terminal Progress Bar
 4. Implement Mutation Testing Framework (infection/infection package)
+5. Phing > update configuration & fix coding standard
 
 # 0.1.15
 
