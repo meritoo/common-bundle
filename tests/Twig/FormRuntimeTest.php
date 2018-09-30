@@ -28,7 +28,12 @@ class FormRuntimeTest extends KernelTestCase
 
     public function testConstructor(): void
     {
-        static::assertConstructorVisibilityAndArguments(FormRuntime::class, OopVisibilityType::IS_PUBLIC, 1, 1);
+        static::assertConstructorVisibilityAndArguments(
+            FormRuntime::class,
+            OopVisibilityType::IS_PUBLIC,
+            1,
+            1
+        );
     }
 
     public function testIsInstanceOfRuntimeExtensionInterface(): void

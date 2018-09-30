@@ -31,7 +31,12 @@ class ApplicationRuntimeTest extends KernelTestCase
 
     public function testConstructor(): void
     {
-        static::assertConstructorVisibilityAndArguments(ApplicationRuntime::class, OopVisibilityType::IS_PUBLIC, 1, 1);
+        static::assertConstructorVisibilityAndArguments(
+            ApplicationRuntime::class,
+            OopVisibilityType::IS_PUBLIC,
+            1,
+            1
+        );
     }
 
     public function testIsInstanceOfRuntimeExtensionInterface(): void
@@ -42,7 +47,11 @@ class ApplicationRuntimeTest extends KernelTestCase
 
     public function testGetDescriptorUsingTestEnvironment(): void
     {
-        $expected = new Descriptor('This is a Test', 'Just for Testing', new Version(1, 2, 0));
+        $expected = new Descriptor(
+            'This is a Test',
+            'Just for Testing',
+            new Version(1, 2, 0)
+        );
 
         $descriptor = static::$container
             ->get(ApplicationRuntime::class)

@@ -28,7 +28,12 @@ class CommonRuntimeTest extends KernelTestCase
 
     public function testConstructor(): void
     {
-        static::assertConstructorVisibilityAndArguments(CommonRuntime::class, OopVisibilityType::IS_PUBLIC, 1, 1);
+        static::assertConstructorVisibilityAndArguments(
+            CommonRuntime::class,
+            OopVisibilityType::IS_PUBLIC,
+            1,
+            1
+        );
     }
 
     public function testIsInstanceOfRuntimeExtensionInterface(): void
@@ -79,8 +84,11 @@ class CommonRuntimeTest extends KernelTestCase
      *
      * @dataProvider provideValueAndValueReplacementToVerifyEmptyValue
      */
-    public function testVerifyEmptyValueUsingCustomValueReplacement($value, ?string $emptyValueReplacement, $expected): void
-    {
+    public function testVerifyEmptyValueUsingCustomValueReplacement(
+        $value,
+        ?string $emptyValueReplacement,
+        $expected
+    ): void {
         $verified = static::$container
             ->get(CommonRuntime::class)
             ->verifyEmptyValue($value, $emptyValueReplacement);

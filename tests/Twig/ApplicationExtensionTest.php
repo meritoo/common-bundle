@@ -51,7 +51,11 @@ class ApplicationExtensionTest extends BaseTwigExtensionTestCase
             'environment' => 'defaults',
         ]);
 
-        $this->verifyRenderedTemplate('anything', '{{ meritoo_common_application_descriptor() }}', 'anything');
+        $this->verifyRenderedTemplate(
+            'anything',
+            '{{ meritoo_common_application_descriptor() }}',
+            'anything'
+        );
     }
 
     /**
