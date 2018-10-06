@@ -14,7 +14,7 @@ meritoo_common:
         recommendation: Rekomendacja
         resale_shop: Komis
         directory: Katalog
-        actions: Akcje
+        action: Akcja|Akcje
         error: Błąd|Błędy
         type: Typ
         kind: Rodzaj
@@ -22,6 +22,13 @@ meritoo_common:
         description: Opis
         description_short: Krótki opis
         description_general: Opis ogólny
+        menu: Menu
+        copyrights: Prawa autorskie
+        here: Tutaj
+        now: Teraz
+        right_now: Teraz
+        advantage: Zaleta|Zalety
+        disadvantage: Wada|Wady
     area:
         country: Kraj
         county: Hrabstwo
@@ -72,3 +79,11 @@ meritoo_common:
         regards: Pozdrowienia
         i_regard: Pozdrawiam
         we_regard: Pozdrawiamy
+    weekday:
+        monday: Poniedziałek
+        tuesday: Wtorek
+        wednesday: Środa
+        thursday: Czwartek
+        friday: Piątek
+        saturday: Sobota
+        sunday: Niedziela

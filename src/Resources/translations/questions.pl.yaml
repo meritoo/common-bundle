@@ -2,3 +2,5 @@ meritoo_common:
     authentication:
         forgot_password: Czy zapomniałeś hasła?
         forgot_password_short: Zapomniałeś hasło?
+    general:
+        why: Dlaczego?

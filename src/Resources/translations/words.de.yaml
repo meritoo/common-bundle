@@ -14,7 +14,7 @@ meritoo_common:
         recommendation: Empfehlung
         resale_shop: Weiterverkauf
         directory: Verzeichnis
-        actions: Aktionen
+        action: Aktion|Aktionen
         error: Fehler|Fehler
         type: Art
         kind: Art
@@ -22,6 +22,13 @@ meritoo_common:
         description: Beschreibung
         description_short: Kurze Beschreibung
         description_general: Allgemeine Beschreibung
+        menu: Menü
+        copyrights: Urheberrechte
+        here: Hier
+        now: Jetzt
+        right_now: Jetzt sofort
+        advantage: Vorteil|Vorteile
+        disadvantage: Nachteil|Nachteile
     area:
         country: Land
         county: Bezirk
@@ -72,3 +79,11 @@ meritoo_common:
         regards: Grüße
         i_regard: Grüße
         we_regard: Freundliche Grüße
+    weekday:
+        monday: Montag
+        tuesday: Dienstag
+        wednesday: Mittwoch
+        thursday: Donnerstag
+        friday: Freitag
+        saturday: Samstag
+        sunday: Sonntag

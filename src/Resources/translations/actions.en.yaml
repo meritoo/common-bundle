@@ -4,6 +4,7 @@ meritoo_common:
         more: More
         less: Less
         edit: Edit
+        get_started: Get started
     authentication:
         repeat_password: Repeat password
         repeat_new_password: Repeat new password

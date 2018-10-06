@@ -9,6 +9,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 3. Docker > Dockerfile > remove not working the Handy Apt Terminal Progress Bar
 4. Implement Mutation Testing Framework (infection/infection package)
 5. Phing > update configuration & fix coding standard
+6. Resources > translations > add new
 
 # 0.1.15
 
