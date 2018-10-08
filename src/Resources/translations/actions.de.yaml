@@ -5,6 +5,8 @@ meritoo_common:
         less: Weniger
         edit: Bearbeiten
         get_started: Loslegen
+        close: Schließen
+        open: Öffnen
     authentication:
         repeat_password: Passwort wiederholen
         repeat_new_password: Wiederhole das neue Passwort
