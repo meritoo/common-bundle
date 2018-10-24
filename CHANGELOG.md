@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.1.17
+
+1. Phing > update configuration
+
 # 0.1.16
 
 1. Phing > tests > missing path of directory with code coverage report

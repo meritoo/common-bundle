@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project name="Meritoo Bundle" basedir="." default="build:main" phingVersion="2.16.0">
     <autoloader/>
 
     <!-- Properties -->
     <if>
-        <available file="phing/properties" property="custom.properties.available"/>
+        <available file="${project.basedir}/phing/properties" property="custom.properties.available"/>
         <then>
-            <property file="phing/properties"/>
+            <property file="${project.basedir}/phing/properties"/>
         </then>
         <else>
-            <property file="phing/properties.dist"/>
+            <property file="${project.basedir}/phing/properties.dist"/>
         </else>
     </if>
 
@@ -28,48 +29,48 @@
 
     <!-- Default / main target -->
     <target name="build:main"
-            depends="build:fix-coding-standards, build:clean, build:prepare, build:check, build:test, app:checkout"
-            description="Runs all tests and builds everything"/>
+            depends="build:fix-coding-standards,
+                    build:clean,
+                    build:prepare,
+                    build:check,
+                    build:test,
+                    app:checkout"
+    />
 
     <!-- Fixing coding standards using the PHP Coding Standards Fixer (http://cs.sensiolabs.org) -->
-    <target name="build:fix-coding-standards" description="Fixes coding standards using the PHP Coding Standards Fixer">
-        <echo msg="Fixing coding standards using the PHP Coding Standards Fixer (http://cs.sensiolabs.org)..."/>
-
-        <!--
-        Attention.
-        Rules for formatting are defined in /.php_cs.dist file.
-        -->
-
+    <target name="build:fix-coding-standards">
         <exec command="${tests.cs_fixer.command}" passthru="true"/>
     </target>
 
     <!-- Check target -->
     <target name="build:check"
-            depends="check:cs, check:md, check:cpd, check:depend, check:loc"
-            description="Analyzes code"/>
+            depends="check:cs,
+                    check:md,
+                    check:cpd,
+                    check:depend,
+                    check:loc"
+    />
 
     <!-- Test target -->
     <target name="build:test"
-            depends="test:phpunit, test:infection"
-            description="Executes all tests"/>
+            depends="test:phpunit,
+                    test:infection"
+    />
 
     <!-- Project build clean -->
-    <target name="build:clean" description="Cleans up build directories">
-        <echo msg="Cleaning docs and reports directories..."/>
+    <target name="build:clean">
         <delete dir="${dir.reports}"/>
     </target>
 
     <!-- Project build prepare -->
-    <target name="build:prepare" description="Create build directories">
-        <echo msg="Creating build directories..."/>
+    <target name="build:prepare">
         <mkdir dir="${dir.reports}"/>
         <mkdir dir="${dir.reports.pdepend}"/>
         <mkdir dir="${dir.reports.coverage}"/>
     </target>
 
     <!-- Symfony2 code sniffer -->
-    <target name="check:cs" description="Checks coding standard">
-        <echo msg="Checking coding standard..."/>
+    <target name="check:cs">
         <phpcodesniffer standard="PSR2" showWarnings="true">
             <fileset refid="sourcecode"/>
             <formatter type="checkstyle" outfile="${dir.reports}/checkstyle.xml"/>
@@ -79,8 +80,7 @@
     </target>
 
     <!-- copy/paste detector -->
-    <target name="check:cpd" description="Checks similar code blocks.">
-        <echo msg="Checking similar code blocks..."/>
+    <target name="check:cpd">
         <phpcpd>
             <fileset refid="sourcecode"/>
             <formatter type="pmd" outfile="${dir.reports}/pmd-cpd.xml"/>
@@ -88,8 +88,7 @@
     </target>
 
     <!-- Mess detector -->
-    <target name="check:md" description="Generate code metrics">
-        <echo msg="Generating code metrics..."/>
+    <target name="check:md">
         <phpmd rulesets="codesize,controversial,design,naming,unusedcode">
             <fileset refid="sourcecode"/>
             <formatter type="html" outfile="${dir.reports}/phpmd.html"/>
@@ -98,8 +97,7 @@
     </target>
 
     <!-- Code dependency -->
-    <target name="check:depend" description="Checks coupling and dependency">
-        <echo msg="Checking coupling and dependency..."/>
+    <target name="check:depend">
         <phpdepend>
             <fileset refid="sourcecode"/>
             <logger type="jdepend-xml" outfile="${dir.reports.pdepend}/jdepend.xml"/>
@@ -109,22 +107,19 @@
     </target>
 
     <!-- Measure the size and analyzing the structure of a project -->
-    <target name="check:loc" description="Measures the size and analyzes the structure of a project">
-        <echo msg="Measuring the size and analyzing the structure of a project..."/>
+    <target name="check:loc">
         <phploc reportType="txt" reportName="phploc" reportDirectory="${dir.reports}">
             <fileset refid="sourcecode"/>
         </phploc>
     </target>
 
     <!-- PHPUnit tests -->
-    <target name="test:phpunit" description="Runs PHPUnit tests">
-        <echo msg="Running PHPUnit tests..."/>
+    <target name="test:phpunit">
         <exec command="${tests.phpunit.command}" passthru="true"/>
     </target>
 
     <!-- Run mutation testing -->
-    <target name="test:infection" description="Runs mutation testing">
-        <echo msg="Running mutation testing..."/>
+    <target name="test:infection">
         <exec command="${tests.mutation.command}" passthru="true"/>
     </target>
 

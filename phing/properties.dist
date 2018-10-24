@@ -1,20 +1,4 @@
 # --------------------------------------------------------------------------------
-# Information
-# --------------------------------------------------------------------------------
-
-# Property files contain key/value pairs
-# key = value
-#
-# Property keys may contain alphanumeric chars and colons, but
-# not special chars. This way you can create pseudo-namespaces
-#
-# You can refer to values of other properties by enclosing their keys in "${}".
-# Example: dir.js = ${dir.public}/js
-#
-# Everything behind the equal sign is the value, you do
-# not have to enclose strings: text=This is some text, Your OS is ${php.os}
-
-# --------------------------------------------------------------------------------
 # Common, e.g. default environment
 # --------------------------------------------------------------------------------
 
@@ -36,19 +20,17 @@ cache.clearWithWarmup = false
 # Composer
 # --------------------------------------------------------------------------------
 
-composer.download_command = php -r "eval('?>'.file_get_contents('https://getcomposer.org/installer'));"
-
-# Path to composer executable or composer.phar file
+# Command used to download Composer
 #
-composer.path = composer.phar
+composer.download_command = bash ${project.basedir}/phing/composer-install.sh
+
+# Path to composer executable or downloaded composer.phar file
+#
+composer.path = ${project.basedir}/composer.phar
 
 # Path to php executable used by composer
 #
 composer.php = php
-
-# Self update of the composer
-#
-composer.self-update = false
 
 # --------------------------------------------------------------------------------
 # Directories

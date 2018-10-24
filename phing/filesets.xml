@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Meritoo Application" basedir="." default="build:main" phingVersion="2.16.0">
+
+<project name="Meritoo Bundle" basedir="." default="build:main" phingVersion="2.16.0">
     <!-- Filesets -->
     <fileset id="cache" dir="${dir.cache}">
         <include name="**/*"/>
