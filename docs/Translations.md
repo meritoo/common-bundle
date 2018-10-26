@@ -13,7 +13,9 @@ Located here: `Resources/translations` in `yaml` files, e.g. `Resources/translat
 Prefixed by `meritoo_common`. Grouped by translation domain:
 
 - actions, e.g. `actions.en.yaml`
+- questions, e.g. `questions.en.yaml`
 - titles, e.g. `titles.en.yaml`
+- validators, e.g. `validators.en.yaml`
 - words, e.g. `words.en.yaml`
 
 ### Examples
