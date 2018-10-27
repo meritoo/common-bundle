@@ -15,11 +15,11 @@ Development-related information
     docker-compose up -d
     ```
 
-2. Install packages by running command:
+2. Rebuild project by running command (installs packages, prepares required directories and runs tests):
 
-    ```bash
-    docker-compose run --rm composer install
-    ```
+	```bash
+	docker-compose exec php phing
+	```
 
 > [What is Docker?](https://www.docker.com/what-docker)
 
@@ -65,6 +65,12 @@ Fix coding standard by running command:
 docker-compose exec php php-cs-fixer fix
 ```
 
+or
+
+```bash
+docker-compose exec php phing -f phing/tests.xml build:fix-coding-standards
+```
+
 Omit cache and run the Fixer from scratch by running command:
 
 ```bash
@@ -79,34 +85,32 @@ docker-compose exec php rm .php_cs.cache && docker-compose exec php php-cs-fixer
 
 Install required packages by running command: `docker-compose run --rm composer install`.
 
-### Running tests
+### Running [PHPUnit](https://phpunit.de) tests
 
-#### Simply & quick, without code coverage
-
-Tests are running using Docker and `php` service defined in `docker-compose.yml`. Example:
+##### Easy (with code coverage)
 
 ```bash
-docker-compose exec php phpunit --no-coverage
+docker-compose run --rm phpunit --verbose
 ```
 
-You can also run them in container. In this case you have to run 2 commands:
-1. Enter container:
-
-    ```bash
-	docker-compose exec php bash
-    ```
-
-2. Run tests:
-
-    ```bash
-    phpunit --no-coverage
-    ```
-
-#### With code coverage
+or
 
 ```bash
-docker-compose exec php phpunit
+docker-compose exec php phing -f phing/tests.xml test:phpunit
 ```
+
+##### Quick (without code coverage)
+
+```bash
+docker-compose run --rm phpunit --verbose --no-coverage
+```
+
+# Versions of packages
+
+### squizlabs/php_codesniffer
+
+I have to use [squizlabs/php_codesniffer](https://packagist.org/packages/squizlabs/php_codesniffer) `^2.9` instead of
+`^3.3`, because [Phing doesn't support 3.x PHP_CodeSniffer](https://github.com/phingofficial/phing/issues/716).
 
 # Mutation Tests
 
@@ -116,6 +120,12 @@ Served by [Infection — Mutation Testing Framework](https://infection.githu
 
 ```bash
 docker-compose exec php vendor/bin/infection --threads=5
+```
+
+or
+
+```bash
+docker-compose exec php phing -f phing/tests.xml test:infection
 ```
 
 ### Result of testing
