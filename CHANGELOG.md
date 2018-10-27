@@ -5,6 +5,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.1.17
 
 1. Phing > update configuration
+2. Docker > docker-compose.yml > add "phpunit" service > used to run PHPUnit's tests
 
 # 0.1.16
 
@@ -18,7 +19,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.1.15
 
 1. Resources > translations > add new
-2. Service > ResponseService > service who serves responses
+2. Service > ResponseService > service that serves responses
 
 # 0.1.14
 
@@ -69,7 +70,7 @@ parameters (by make getKeysToStopLoadingParametersOn() method protected)
 1. Resources > translations > add new
 2. Resources > translations > group by destination in each translation domain
 3. Tests > verify default configuration parameters > add "defaults" environment
-4. Service > FormService > service who serves forms. Configuration > form.novalidate parameter > information if HTML5 
+4. Service > FormService > service that serves forms. Configuration > form.novalidate parameter > information if HTML5 
 inline validation is disabled.
 
 # 0.1.4
