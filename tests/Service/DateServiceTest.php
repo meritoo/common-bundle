@@ -538,7 +538,5 @@ class DateServiceTest extends KernelTestCase
     {
         parent::setUp();
         static::bootKernel();
-
-        date_default_timezone_set('Europe/Warsaw');
     }
 }
