@@ -255,7 +255,7 @@ class DateServiceTest extends KernelTestCase
     public function provideDateFormattedUsingDefaults(): \Generator
     {
         yield[
-            new \DateTime('01-02-1900 08:25:40'),
+            new \DateTime('1900-02-01 08:25:40'),
             DateLength::DATE,
             '01.02.1900',
         ];
@@ -273,7 +273,7 @@ class DateServiceTest extends KernelTestCase
         ];
 
         yield[
-            new \DateTime('01-02-1900 08:25:40'),
+            new \DateTime('1900-02-01 08:25:40'),
             DateLength::DATETIME,
             '01.02.1900 08:25',
         ];
@@ -291,7 +291,7 @@ class DateServiceTest extends KernelTestCase
         ];
 
         yield[
-            new \DateTime('01-02-1900 08:25:40'),
+            new \DateTime('1900-02-01 08:25:40'),
             DateLength::TIME,
             '08:25',
         ];
@@ -317,7 +317,7 @@ class DateServiceTest extends KernelTestCase
     public function provideDateFormattedUsingTestEnvironment(): \Generator
     {
         yield[
-            new \DateTime('01-02-1900 08:25:40'),
+            new \DateTime('1900-02-01 08:25:40'),
             DateLength::DATE,
             '1900.02.01',
         ];
@@ -335,7 +335,7 @@ class DateServiceTest extends KernelTestCase
         ];
 
         yield[
-            new \DateTime('01-02-1900 08:25:40'),
+            new \DateTime('1900-02-01 08:25:40'),
             DateLength::DATETIME,
             '1900.02.01 08:25:40',
         ];
@@ -353,7 +353,7 @@ class DateServiceTest extends KernelTestCase
         ];
 
         yield[
-            new \DateTime('01-02-1900 08:25:40'),
+            new \DateTime('1900-02-01 08:25:40'),
             DateLength::TIME,
             '08:25:40',
         ];
@@ -425,7 +425,7 @@ class DateServiceTest extends KernelTestCase
     public function provideDateFormattedUsingLocale(): \Generator
     {
         $locale = 'en_US';
-        $dateString = '01-02-1900 08:25:40';
+        $dateString = '1900-02-01 08:25:40';
 
         /*
          * Without no valid:
