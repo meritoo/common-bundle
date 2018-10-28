@@ -10,7 +10,7 @@ Located here: `Meritoo\CommonBundle\Service\FormService`. Serves forms. Provides
 
 Uses parameters:
 
-- form.novalidate
+- form.novalidate: `false` (default value)
 
 ### Methods
 

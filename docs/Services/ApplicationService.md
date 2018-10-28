@@ -10,9 +10,9 @@ Located here: `Meritoo\CommonBundle\Service\ApplicationService`. Serves applicat
 
 Uses parameters:
 
-- application.version.file_path
-- application.name
-- application.description
+- application.version.file_path: `%kernel.project_dir%/VERSION` (default value)
+- application.name: `''` (default value)
+- application.description: `''` (default value)
 
 ### Methods
 
