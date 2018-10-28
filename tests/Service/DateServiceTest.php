@@ -27,6 +27,13 @@ class DateServiceTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
 
+    /**
+     * Timezone used for operations with date
+     *
+     * @var string
+     */
+    private const TIMEZONE = 'Europe/London';
+
     public function testConstructor(): void
     {
         static::assertConstructorVisibilityAndArguments(
@@ -254,56 +261,60 @@ class DateServiceTest extends KernelTestCase
      */
     public function provideDateFormattedUsingDefaults(): \Generator
     {
+        $date1 = '1900-02-01 08:25:40';
+        $date2 = '2000-10-15 10:05:40';
+        $date3 = '2100-05-01';
+
         yield[
-            new \DateTime('1900-02-01 08:25:40', new \DateTimeZone('Europe/London')),
+            new \DateTime($date1, new \DateTimeZone(static::TIMEZONE)),
             DateLength::DATE,
             '01.02.1900',
         ];
 
         yield[
-            new \DateTime('2000-10-15 10:05:40', new \DateTimeZone('Europe/London')),
+            new \DateTime($date2, new \DateTimeZone(static::TIMEZONE)),
             DateLength::DATE,
             '15.10.2000',
         ];
 
         yield[
-            new \DateTime('2100-05-01', new \DateTimeZone('Europe/London')),
+            new \DateTime($date3, new \DateTimeZone(static::TIMEZONE)),
             DateLength::DATE,
             '01.05.2100',
         ];
 
         yield[
-            new \DateTime('1900-02-01 08:25:40', new \DateTimeZone('Europe/London')),
+            new \DateTime($date1, new \DateTimeZone(static::TIMEZONE)),
             DateLength::DATETIME,
             '01.02.1900 08:25',
         ];
 
         yield[
-            new \DateTime('2000-10-15 10:05:40', new \DateTimeZone('Europe/London')),
+            new \DateTime($date2, new \DateTimeZone(static::TIMEZONE)),
             DateLength::DATETIME,
             '15.10.2000 10:05',
         ];
 
         yield[
-            new \DateTime('2100-05-01', new \DateTimeZone('Europe/London')),
+            new \DateTime($date3, new \DateTimeZone(static::TIMEZONE)),
             DateLength::DATETIME,
             '01.05.2100 00:00',
         ];
 
         yield[
-            new \DateTime('1900-02-01 08:25:40', new \DateTimeZone('Europe/London')),
+            new \DateTime($date1, new \DateTimeZone(static::TIMEZONE)),
             DateLength::TIME,
             '08:25',
         ];
 
         yield[
-            new \DateTime('2000-10-15 10:05:40', new \DateTimeZone('Europe/London')),
+            new \DateTime($date2, new \DateTimeZone(static::TIMEZONE)),
             DateLength::TIME,
             '10:05',
         ];
 
         yield[
-            new \DateTime('2100-05-01', new \DateTimeZone('Europe/London')),
+            new \DateTime($date3, new \DateTimeZone(static::TIMEZONE)),
             DateLength::TIME,
             '00:00',
         ];
@@ -316,56 +327,60 @@ class DateServiceTest extends KernelTestCase
      */
     public function provideDateFormattedUsingTestEnvironment(): \Generator
     {
+        $date1 = '1900-02-01 08:25:40';
+        $date2 = '2000-10-15 10:05:40';
+        $date3 = '2100-05-01';
+
         yield[
-            new \DateTime('1900-02-01 08:25:40', new \DateTimeZone('Europe/London')),
+            new \DateTime($date1, new \DateTimeZone(static::TIMEZONE)),
             DateLength::DATE,
             '1900.02.01',
         ];
 
         yield[
-            new \DateTime('2000-10-15 10:05:40', new \DateTimeZone('Europe/London')),
+            new \DateTime($date2, new \DateTimeZone(static::TIMEZONE)),
             DateLength::DATE,
             '2000.10.15',
         ];
 
         yield[
-            new \DateTime('2100-05-01', new \DateTimeZone('Europe/London')),
+            new \DateTime($date3, new \DateTimeZone(static::TIMEZONE)),
             DateLength::DATE,
             '2100.05.01',
         ];
 
         yield[
-            new \DateTime('1900-02-01 08:25:40', new \DateTimeZone('Europe/London')),
+            new \DateTime($date1, new \DateTimeZone(static::TIMEZONE)),
             DateLength::DATETIME,
             '1900.02.01 08:25:40',
         ];
 
         yield[
-            new \DateTime('2000-10-15 10:05:40', new \DateTimeZone('Europe/London')),
+            new \DateTime($date2, new \DateTimeZone(static::TIMEZONE)),
             DateLength::DATETIME,
             '2000.10.15 10:05:40',
         ];
 
         yield[
-            new \DateTime('2100-05-01', new \DateTimeZone('Europe/London')),
+            new \DateTime($date3, new \DateTimeZone(static::TIMEZONE)),
             DateLength::DATETIME,
             '2100.05.01 00:00:00',
         ];
 
         yield[
-            new \DateTime('1900-02-01 08:25:40', new \DateTimeZone('Europe/London')),
+            new \DateTime($date1, new \DateTimeZone(static::TIMEZONE)),
             DateLength::TIME,
             '08:25:40',
         ];
 
         yield[
-            new \DateTime('2000-10-15 10:05:40', new \DateTimeZone('Europe/London')),
+            new \DateTime($date2, new \DateTimeZone(static::TIMEZONE)),
             DateLength::TIME,
             '10:05:40',
         ];
 
         yield[
-            new \DateTime('2100-05-01', new \DateTimeZone('Europe/London')),
+            new \DateTime($date3, new \DateTimeZone(static::TIMEZONE)),
             DateLength::TIME,
             '00:00:00',
         ];
@@ -437,7 +452,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::NONE,
             \IntlDateFormatter::NONE,
             '',
-            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
+            new \DateTime($dateString, new \DateTimeZone(static::TIMEZONE)),
             '19000201 08:25 AM',
         ];
 
@@ -448,7 +463,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::SHORT,
             \IntlDateFormatter::NONE,
             $locale,
-            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
+            new \DateTime($dateString, new \DateTimeZone(static::TIMEZONE)),
             '2/1/00',
         ];
 
@@ -456,7 +471,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::MEDIUM,
             \IntlDateFormatter::NONE,
             $locale,
-            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
+            new \DateTime($dateString, new \DateTimeZone(static::TIMEZONE)),
             'Feb 1, 1900',
         ];
 
@@ -464,7 +479,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::LONG,
             \IntlDateFormatter::NONE,
             $locale,
-            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
+            new \DateTime($dateString, new \DateTimeZone(static::TIMEZONE)),
             'February 1, 1900',
         ];
 
@@ -475,7 +490,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::FULL,
             \IntlDateFormatter::NONE,
             $locale,
-            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
+            new \DateTime($dateString, new \DateTimeZone(static::TIMEZONE)),
             'Thursday, February 1, 1900',
         ];
 
@@ -483,7 +498,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::NONE,
             \IntlDateFormatter::SHORT,
             $locale,
-            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
+            new \DateTime($dateString, new \DateTimeZone(static::TIMEZONE)),
             '8:25 AM',
         ];
 
@@ -491,7 +506,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::NONE,
             \IntlDateFormatter::MEDIUM,
             $locale,
-            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
+            new \DateTime($dateString, new \DateTimeZone(static::TIMEZONE)),
             '8:25:40 AM',
         ];
 
@@ -499,7 +514,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::NONE,
             \IntlDateFormatter::LONG,
             $locale,
-            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
+            new \DateTime($dateString, new \DateTimeZone(static::TIMEZONE)),
             '8:25:40 AM GMT',
         ];
 
@@ -507,7 +522,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::NONE,
             \IntlDateFormatter::FULL,
             $locale,
-            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
+            new \DateTime($dateString, new \DateTimeZone(static::TIMEZONE)),
             '8:25:40 AM GMT',
         ];
 
@@ -518,7 +533,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::MEDIUM,
             \IntlDateFormatter::SHORT,
             $locale,
-            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
+            new \DateTime($dateString, new \DateTimeZone(static::TIMEZONE)),
             'Feb 1, 1900, 8:25 AM',
         ];
 
@@ -526,7 +541,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::LONG,
             \IntlDateFormatter::MEDIUM,
             $locale,
-            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
+            new \DateTime($dateString, new \DateTimeZone(static::TIMEZONE)),
             'February 1, 1900 at 8:25:40 AM',
         ];
     }
