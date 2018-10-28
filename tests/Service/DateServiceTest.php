@@ -255,55 +255,55 @@ class DateServiceTest extends KernelTestCase
     public function provideDateFormattedUsingDefaults(): \Generator
     {
         yield[
-            new \DateTime('1900-02-01 08:25:40'),
+            new \DateTime('1900-02-01 08:25:40', new \DateTimeZone('Europe/London')),
             DateLength::DATE,
             '01.02.1900',
         ];
 
         yield[
-            new \DateTime('2000-10-15 10:05:40'),
+            new \DateTime('2000-10-15 10:05:40', new \DateTimeZone('Europe/London')),
             DateLength::DATE,
             '15.10.2000',
         ];
 
         yield[
-            new \DateTime('2100-05-01'),
+            new \DateTime('2100-05-01', new \DateTimeZone('Europe/London')),
             DateLength::DATE,
             '01.05.2100',
         ];
 
         yield[
-            new \DateTime('1900-02-01 08:25:40'),
+            new \DateTime('1900-02-01 08:25:40', new \DateTimeZone('Europe/London')),
             DateLength::DATETIME,
             '01.02.1900 08:25',
         ];
 
         yield[
-            new \DateTime('2000-10-15 10:05:40'),
+            new \DateTime('2000-10-15 10:05:40', new \DateTimeZone('Europe/London')),
             DateLength::DATETIME,
             '15.10.2000 10:05',
         ];
 
         yield[
-            new \DateTime('2100-05-01'),
+            new \DateTime('2100-05-01', new \DateTimeZone('Europe/London')),
             DateLength::DATETIME,
             '01.05.2100 00:00',
         ];
 
         yield[
-            new \DateTime('1900-02-01 08:25:40'),
+            new \DateTime('1900-02-01 08:25:40', new \DateTimeZone('Europe/London')),
             DateLength::TIME,
             '08:25',
         ];
 
         yield[
-            new \DateTime('2000-10-15 10:05:40'),
+            new \DateTime('2000-10-15 10:05:40', new \DateTimeZone('Europe/London')),
             DateLength::TIME,
             '10:05',
         ];
 
         yield[
-            new \DateTime('2100-05-01'),
+            new \DateTime('2100-05-01', new \DateTimeZone('Europe/London')),
             DateLength::TIME,
             '00:00',
         ];
@@ -317,55 +317,55 @@ class DateServiceTest extends KernelTestCase
     public function provideDateFormattedUsingTestEnvironment(): \Generator
     {
         yield[
-            new \DateTime('1900-02-01 08:25:40'),
+            new \DateTime('1900-02-01 08:25:40', new \DateTimeZone('Europe/London')),
             DateLength::DATE,
             '1900.02.01',
         ];
 
         yield[
-            new \DateTime('2000-10-15 10:05:40'),
+            new \DateTime('2000-10-15 10:05:40', new \DateTimeZone('Europe/London')),
             DateLength::DATE,
             '2000.10.15',
         ];
 
         yield[
-            new \DateTime('2100-05-01'),
+            new \DateTime('2100-05-01', new \DateTimeZone('Europe/London')),
             DateLength::DATE,
             '2100.05.01',
         ];
 
         yield[
-            new \DateTime('1900-02-01 08:25:40'),
+            new \DateTime('1900-02-01 08:25:40', new \DateTimeZone('Europe/London')),
             DateLength::DATETIME,
             '1900.02.01 08:25:40',
         ];
 
         yield[
-            new \DateTime('2000-10-15 10:05:40'),
+            new \DateTime('2000-10-15 10:05:40', new \DateTimeZone('Europe/London')),
             DateLength::DATETIME,
             '2000.10.15 10:05:40',
         ];
 
         yield[
-            new \DateTime('2100-05-01'),
+            new \DateTime('2100-05-01', new \DateTimeZone('Europe/London')),
             DateLength::DATETIME,
             '2100.05.01 00:00:00',
         ];
 
         yield[
-            new \DateTime('1900-02-01 08:25:40'),
+            new \DateTime('1900-02-01 08:25:40', new \DateTimeZone('Europe/London')),
             DateLength::TIME,
             '08:25:40',
         ];
 
         yield[
-            new \DateTime('2000-10-15 10:05:40'),
+            new \DateTime('2000-10-15 10:05:40', new \DateTimeZone('Europe/London')),
             DateLength::TIME,
             '10:05:40',
         ];
 
         yield[
-            new \DateTime('2100-05-01'),
+            new \DateTime('2100-05-01', new \DateTimeZone('Europe/London')),
             DateLength::TIME,
             '00:00:00',
         ];
@@ -424,7 +424,7 @@ class DateServiceTest extends KernelTestCase
      */
     public function provideDateFormattedUsingLocale(): \Generator
     {
-        $locale = 'en_US';
+        $locale = 'en_EN';
         $dateString = '1900-02-01 08:25:40';
 
         /*
@@ -437,7 +437,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::NONE,
             \IntlDateFormatter::NONE,
             '',
-            new \DateTime($dateString),
+            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
             '19000201 08:25 AM',
         ];
 
@@ -448,7 +448,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::SHORT,
             \IntlDateFormatter::NONE,
             $locale,
-            new \DateTime($dateString),
+            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
             '2/1/00',
         ];
 
@@ -456,7 +456,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::MEDIUM,
             \IntlDateFormatter::NONE,
             $locale,
-            new \DateTime($dateString),
+            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
             'Feb 1, 1900',
         ];
 
@@ -464,7 +464,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::LONG,
             \IntlDateFormatter::NONE,
             $locale,
-            new \DateTime($dateString),
+            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
             'February 1, 1900',
         ];
 
@@ -475,7 +475,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::FULL,
             \IntlDateFormatter::NONE,
             $locale,
-            new \DateTime($dateString),
+            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
             'Thursday, February 1, 1900',
         ];
 
@@ -483,7 +483,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::NONE,
             \IntlDateFormatter::SHORT,
             $locale,
-            new \DateTime($dateString),
+            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
             '8:25 AM',
         ];
 
@@ -491,7 +491,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::NONE,
             \IntlDateFormatter::MEDIUM,
             $locale,
-            new \DateTime($dateString),
+            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
             '8:25:40 AM',
         ];
 
@@ -499,16 +499,16 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::NONE,
             \IntlDateFormatter::LONG,
             $locale,
-            new \DateTime($dateString),
-            '8:25:40 AM GMT+1:24',
+            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
+            '8:25:40 AM GMT',
         ];
 
         yield[
             \IntlDateFormatter::NONE,
             \IntlDateFormatter::FULL,
             $locale,
-            new \DateTime($dateString),
-            '8:25:40 AM GMT+01:24',
+            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
+            '8:25:40 AM GMT',
         ];
 
         /*
@@ -518,7 +518,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::MEDIUM,
             \IntlDateFormatter::SHORT,
             $locale,
-            new \DateTime($dateString),
+            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
             'Feb 1, 1900, 8:25 AM',
         ];
 
@@ -526,7 +526,7 @@ class DateServiceTest extends KernelTestCase
             \IntlDateFormatter::LONG,
             \IntlDateFormatter::MEDIUM,
             $locale,
-            new \DateTime($dateString),
+            new \DateTime($dateString, new \DateTimeZone('Europe/London')),
             'February 1, 1900 at 8:25:40 AM',
         ];
     }
