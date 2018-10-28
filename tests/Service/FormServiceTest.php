@@ -17,7 +17,7 @@ use Meritoo\CommonBundle\Service\FormService;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
- * Test case for the service who serves form
+ * Test case for the service that serves form
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
@@ -28,7 +28,12 @@ class FormServiceTest extends KernelTestCase
 
     public function testConstructor(): void
     {
-        static::assertConstructorVisibilityAndArguments(FormService::class, OopVisibilityType::IS_PUBLIC, 1, 1);
+        static::assertConstructorVisibilityAndArguments(
+            FormService::class,
+            OopVisibilityType::IS_PUBLIC,
+            1,
+            1
+        );
     }
 
     public function testIsHtml5ValidationEnabledUsingTestEnvironment(): void

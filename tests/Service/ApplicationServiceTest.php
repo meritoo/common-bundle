@@ -21,7 +21,7 @@ use Meritoo\CommonBundle\Service\ApplicationService;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
- * Test case for the service who serves application
+ * Test case for the service that serves application
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
@@ -32,21 +32,31 @@ class ApplicationServiceTest extends KernelTestCase
 
     public function testConstructor(): void
     {
-        static::assertConstructorVisibilityAndArguments(ApplicationService::class, OopVisibilityType::IS_PUBLIC, 3, 3);
+        static::assertConstructorVisibilityAndArguments(
+            ApplicationService::class,
+            OopVisibilityType::IS_PUBLIC,
+            3,
+            3
+        );
     }
 
     public function testConstructorUsingUnreadableVersionFilePath(): void
     {
+        $message = 'File nibh/purus/porta/malesuada/VERSION, who contains version of the application, is not readable.'
+            . ' Does the file exist?';
+
         $this->expectException(UnreadableVersionFileException::class);
-        $this->expectExceptionMessage('File nibh/purus/porta/malesuada/VERSION, who contains version of the application, is not readable. Does the file exist?');
+        $this->expectExceptionMessage($message);
 
         new ApplicationService('nibh/purus/porta/malesuada/VERSION', '', '');
     }
 
     public function testConstructorUsingEmptyVersionFilePath(): void
     {
+        $message = 'Path of a file, who contains version of the application, is empty. Is there everything ok?';
+
         $this->expectException(EmptyVersionFilePathException::class);
-        $this->expectExceptionMessage('Path of a file, who contains version of the application, is empty. Is there everything ok?');
+        $this->expectExceptionMessage($message);
 
         new ApplicationService('', '', '');
     }
@@ -71,7 +81,11 @@ class ApplicationServiceTest extends KernelTestCase
 
     public function testGetDescriptorUsingTestEnvironment(): void
     {
-        $expected = new Descriptor('This is a Test', 'Just for Testing', new Version(1, 2, 0));
+        $expected = new Descriptor(
+            'This is a Test',
+            'Just for Testing',
+            new Version(1, 2, 0)
+        );
 
         $descriptor = static::$container
             ->get(ApplicationService::class)
@@ -128,7 +142,11 @@ class ApplicationServiceTest extends KernelTestCase
             $versionFilePath,
             'Lorem',
             'Sed posuere consectetur est at lobortis',
-            new Descriptor('Lorem', 'Sed posuere consectetur est at lobortis', new Version(5, 46, 17)),
+            new Descriptor(
+                'Lorem',
+                'Sed posuere consectetur est at lobortis',
+                new Version(5, 46, 17)
+            ),
         ];
     }
 

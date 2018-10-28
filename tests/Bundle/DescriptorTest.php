@@ -13,7 +13,6 @@ namespace Meritoo\Test\CommonBundle\Bundle;
 use Meritoo\Common\Collection\Collection;
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\Common\Type\OopVisibilityType;
-use Meritoo\Common\Utilities\Reflection;
 use Meritoo\CommonBundle\Bundle\Descriptor;
 use Meritoo\Test\CommonBundle\Bundle\Descriptor\SimpleBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
