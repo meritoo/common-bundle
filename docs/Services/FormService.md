@@ -30,6 +30,7 @@ Returns information if HTML5 inline validation is enabled.
 4. [Descriptors of bundles](../Descriptors-of-bundles.md)
 5. Services:
 	- [ApplicationService](ApplicationService.md)
+	- [DateService](DateService.md)
 	- [**FormService**](FormService.md)
 	- [ResponseService](ResponseService.md)
 6. [Tests](../Tests.md)

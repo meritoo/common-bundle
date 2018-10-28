@@ -24,6 +24,11 @@ services:
     Meritoo\CommonBundle\Service\FormService:
         arguments:
             $novalidateDisabled: '%meritoo_common.form.novalidate%'
+    Meritoo\CommonBundle\Service\DateService:
+        arguments:
+            $dateFormat: '%meritoo_common.date.format.date%'
+            $dateTimeFormat: '%meritoo_common.date.format.datetime%'
+            $timeFormat: '%meritoo_common.date.format.time%'
     Meritoo\CommonBundle\Twig\CommonRuntime:
         arguments:
             $emptyValueReplacement: '%meritoo_common.application.empty_value_replacement%'

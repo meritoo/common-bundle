@@ -6,6 +6,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 1. Phing > update configuration
 2. Docker > docker-compose.yml > add "phpunit" service > used to run PHPUnit's tests
+3. Service > DateService > service that serves dates
 
 # 0.1.16
 

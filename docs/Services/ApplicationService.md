@@ -32,6 +32,7 @@ Returns descriptor of application, instance of `Meritoo\CommonBundle\Application
 4. [Descriptors of bundles](../Descriptors-of-bundles.md)
 5. Services:
 	- [**ApplicationService**](ApplicationService.md)
+	- [DateService](DateService.md)
 	- [FormService](FormService.md)
 	- [ResponseService](ResponseService.md)
 6. [Tests](../Tests.md)

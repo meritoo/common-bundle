@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": "^7.2",
+        "ext-intl": "*",
         "ext-pcre": "*",
         "meritoo/common-library": "^0.1.0",
         "symfony/framework-bundle": "^3.4|^4.1",

@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Meritoo\CommonBundle\DependencyInjection;
 
 use Meritoo\CommonBundle\Service\ApplicationService;
+use Meritoo\CommonBundle\Type\Date\DateLength;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -34,6 +35,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->append($this->getApplicationNode())
+                ->append($this->getDateNode())
                 ->append($this->getFormNode())
             ->end()
         ;
@@ -98,6 +100,42 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('novalidate')
                     ->info('Information if HTML5 inline validation is disabled')
                     ->defaultFalse()
+                ->end()
+            ->end()
+        ;
+
+        return $rootNode;
+    }
+
+    /**
+     * Returns the "date" node
+     *
+     * @return NodeDefinition
+     */
+    private function getDateNode(): NodeDefinition
+    {
+        $treeBuilder = new TreeBuilder();
+        $rootNode = $treeBuilder->root('date');
+
+        $rootNode
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->arrayNode('format')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode(DateLength::DATE)
+                            ->info('Format of date without time')
+                            ->defaultValue('d.m.Y')
+                        ->end()
+                        ->scalarNode(DateLength::DATETIME)
+                            ->info('Format of date with time')
+                            ->defaultValue('d.m.Y H:i')
+                        ->end()
+                        ->scalarNode(DateLength::TIME)
+                            ->info('Format of time without date')
+                            ->defaultValue('H:i')
+                        ->end()
+                    ->end()
                 ->end()
             ->end()
         ;

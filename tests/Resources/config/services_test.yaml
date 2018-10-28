@@ -9,6 +9,7 @@ services:
     # test.App\Service\MyService: '@App\Service\MyService'
 
     test.meritoo_common.service.application_service: '@Meritoo\CommonBundle\Service\ApplicationService'
+    test.meritoo_common.service.date_service: '@Meritoo\CommonBundle\Service\DateService'
     test.meritoo_common.service.form_service: '@Meritoo\CommonBundle\Service\FormService'
     test.meritoo_common.service.response_service: '@Meritoo\CommonBundle\Service\ResponseService'
 

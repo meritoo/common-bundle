@@ -7,3 +7,8 @@ meritoo_common:
         empty_value_replacement: '...'
     form:
         novalidate: true
+    date:
+        format:
+            date: Y.m.d
+            datetime: Y.m.d H:i:s
+            time: H:i:s

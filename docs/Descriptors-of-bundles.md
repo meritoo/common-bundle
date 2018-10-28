@@ -209,6 +209,7 @@ $descriptor = $descriptors->toArray();
 4. [**Descriptors of bundles**](Descriptors-of-bundles.md)
 5. Services:
 	- [ApplicationService](Services/ApplicationService.md)
+	- [DateService](Services/DateService.md)
 	- [FormService](Services/FormService.md)
 	- [ResponseService](Services/ResponseService.md)
 6. [Tests](Tests.md)
