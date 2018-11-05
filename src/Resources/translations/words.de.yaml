@@ -29,6 +29,8 @@ meritoo_common:
         right_now: Jetzt sofort
         advantage: Vorteil|Vorteile
         disadvantage: Nachteil|Nachteile
+        new: Neu
+        price: Preis
     area:
         country: Land
         county: Bezirk

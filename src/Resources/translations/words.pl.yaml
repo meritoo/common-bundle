@@ -29,6 +29,8 @@ meritoo_common:
         right_now: Teraz
         advantage: Zaleta|Zalety
         disadvantage: Wada|Wady
+        new: Nowy
+        price: Cena
     area:
         country: Kraj
         county: Hrabstwo

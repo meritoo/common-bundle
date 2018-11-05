@@ -2,6 +2,14 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.1.19
+
+1. Resources > translations > add new
+
+# 0.1.18
+
+1. Tests > DateService > fix testing methods related to timezone
+
 # 0.1.17
 
 1. Phing > update configuration

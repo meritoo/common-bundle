@@ -29,6 +29,8 @@ meritoo_common:
         right_now: Right now
         advantage: Advantage|Advantages
         disadvantage: Disadvantage|Disadvantages
+        new: New
+        price: Price
     area:
         country: Country
         county: County

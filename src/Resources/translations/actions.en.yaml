@@ -7,6 +7,10 @@ meritoo_common:
         get_started: Get started
         close: Close
         open: Open
+        add: Add
+        delete: Delete
+        save: Save
+        create: Create
     authentication:
         repeat_password: Repeat password
         repeat_new_password: Repeat new password
@@ -44,3 +48,4 @@ meritoo_common:
         profile:
             show: Show profile
             edit: Edit profile
+            your: Your profile
