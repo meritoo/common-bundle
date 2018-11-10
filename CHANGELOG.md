@@ -5,6 +5,8 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.1.19
 
 1. Resources > translations > add new
+2. Validator > date > date that should be: earlier than today, earlier than or equal today, later than today, later 
+than or equal today
 
 # 0.1.18
 

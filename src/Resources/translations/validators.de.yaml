@@ -6,3 +6,8 @@ meritoo_common:
         have_to_enter: Sie müssen eine E-Mail-Adresse eingeben
         not_email: Es ist keine E-Mail-Adresse
         is_incorrect: Ungültige E-Mail-Adresse
+    date:
+        earlier_than_today: Datum früher als heute ist erforderlich
+        earlier_than_or_equal_today: Datum früher als heute oder heute ist erforderlich
+        later_than_today: Datum später als heute ist erforderlich
+        later_than_or_equal_today: Datum später als heute oder heute ist erforderlich
