@@ -15,7 +15,7 @@
         <!--<env name="APP_DEBUG" value="1"/>-->
         <!--<env name="APP_SECRET" value="s$cretf0rt3st"/>-->
         <!--<env name="SHELL_VERBOSITY" value="-1"/>-->
-        <!--<env name="APP_DEFAULT_LOCALE" value="pl"/>-->
+        <env name="APP_DEFAULT_LOCALE" value="en"/>
     </php>
 
     <testsuites>
