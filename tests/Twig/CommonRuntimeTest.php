@@ -52,7 +52,8 @@ class CommonRuntimeTest extends KernelTestCase
     {
         $verified = static::$container
             ->get(CommonRuntime::class)
-            ->verifyEmptyValue($value);
+            ->verifyEmptyValue($value)
+        ;
 
         static::assertSame($expected, $verified);
     }
@@ -71,7 +72,8 @@ class CommonRuntimeTest extends KernelTestCase
 
         $verified = static::$container
             ->get(CommonRuntime::class)
-            ->verifyEmptyValue($value);
+            ->verifyEmptyValue($value)
+        ;
 
         static::assertSame($expected, $verified);
     }
@@ -91,7 +93,8 @@ class CommonRuntimeTest extends KernelTestCase
     ): void {
         $verified = static::$container
             ->get(CommonRuntime::class)
-            ->verifyEmptyValue($value, $emptyValueReplacement);
+            ->verifyEmptyValue($value, $emptyValueReplacement)
+        ;
 
         static::assertSame($expected, $verified);
     }

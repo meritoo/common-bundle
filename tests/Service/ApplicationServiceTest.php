@@ -89,7 +89,8 @@ class ApplicationServiceTest extends KernelTestCase
 
         $descriptor = static::$container
             ->get(ApplicationService::class)
-            ->getDescriptor();
+            ->getDescriptor()
+        ;
 
         static::assertEquals($expected, $descriptor);
     }
@@ -105,7 +106,8 @@ class ApplicationServiceTest extends KernelTestCase
         static::$container
             ->get(ApplicationService::class)
             ->getDescriptor()
-            ->getVersion();
+            ->getVersion()
+        ;
     }
 
     public function testGetVersionUsingTestEnvironment(): void
@@ -115,7 +117,8 @@ class ApplicationServiceTest extends KernelTestCase
         $version = static::$container
             ->get(ApplicationService::class)
             ->getDescriptor()
-            ->getVersion();
+            ->getVersion()
+        ;
 
         static::assertEquals($expected, $version);
     }

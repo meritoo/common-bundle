@@ -54,7 +54,8 @@ class DateServiceTest extends KernelTestCase
 
         static::$container
             ->get(DateService::class)
-            ->formatDate(new \DateTime(), $dateLength);
+            ->formatDate(new \DateTime(), $dateLength)
+        ;
     }
 
     /**
@@ -75,7 +76,8 @@ class DateServiceTest extends KernelTestCase
 
         $formatted = static::$container
             ->get(DateService::class)
-            ->formatDate($dateTime, $dateLength);
+            ->formatDate($dateTime, $dateLength)
+        ;
 
         static::assertSame($expected, $formatted);
     }
@@ -94,7 +96,8 @@ class DateServiceTest extends KernelTestCase
     ): void {
         $formatted = static::$container
             ->get(DateService::class)
-            ->formatDate($dateTime, $dateLength);
+            ->formatDate($dateTime, $dateLength)
+        ;
 
         static::assertSame($expected, $formatted);
     }
@@ -109,7 +112,8 @@ class DateServiceTest extends KernelTestCase
 
         static::$container
             ->get(DateService::class)
-            ->getFormat($dateLength);
+            ->getFormat($dateLength)
+        ;
     }
 
     /**
@@ -128,7 +132,8 @@ class DateServiceTest extends KernelTestCase
 
         $format = static::$container
             ->get(DateService::class)
-            ->getFormat($dateLength);
+            ->getFormat($dateLength)
+        ;
 
         static::assertSame($expected, $format);
     }
@@ -145,7 +150,8 @@ class DateServiceTest extends KernelTestCase
     ): void {
         $format = static::$container
             ->get(DateService::class)
-            ->getFormat($dateLength);
+            ->getFormat($dateLength)
+        ;
 
         static::assertSame($expected, $format);
     }
@@ -179,7 +185,8 @@ class DateServiceTest extends KernelTestCase
                 $timeType,
                 $locale,
                 $dateTime
-            );
+            )
+        ;
 
         static::assertSame($expected, $formatted);
     }
@@ -209,7 +216,8 @@ class DateServiceTest extends KernelTestCase
                 $timeType,
                 $locale,
                 $dateTime
-            );
+            )
+        ;
 
         static::assertSame($expected, $formatted);
     }

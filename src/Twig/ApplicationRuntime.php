@@ -47,8 +47,6 @@ class ApplicationRuntime implements RuntimeExtensionInterface
      */
     public function getDescriptor(): Descriptor
     {
-        return $this
-            ->applicationService
-            ->getDescriptor();
+        return $this->applicationService->getDescriptor();
     }
 }

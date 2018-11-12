@@ -40,7 +40,8 @@ class FormServiceTest extends KernelTestCase
     {
         $enabled = static::$container
             ->get(FormService::class)
-            ->isHtml5ValidationEnabled();
+            ->isHtml5ValidationEnabled()
+        ;
 
         static::assertFalse($enabled);
     }
@@ -53,7 +54,8 @@ class FormServiceTest extends KernelTestCase
 
         $enabled = static::$container
             ->get(FormService::class)
-            ->isHtml5ValidationEnabled();
+            ->isHtml5ValidationEnabled()
+        ;
 
         static::assertTrue($enabled);
     }
@@ -68,7 +70,8 @@ class FormServiceTest extends KernelTestCase
     {
         static::$container
             ->get(FormService::class)
-            ->addFormOptions($existingOptions);
+            ->addFormOptions($existingOptions)
+        ;
 
         static::assertSame($expected, $existingOptions);
     }
@@ -87,7 +90,8 @@ class FormServiceTest extends KernelTestCase
 
         static::$container
             ->get(FormService::class)
-            ->addFormOptions($existingOptions);
+            ->addFormOptions($existingOptions)
+        ;
 
         static::assertSame($expected, $existingOptions);
     }

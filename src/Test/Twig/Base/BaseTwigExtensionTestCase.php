@@ -93,7 +93,8 @@ abstract class BaseTwigExtensionTestCase extends KernelTestCase
 
         $rendered = $this
             ->getTwigEnvironment($templates)
-            ->render($name);
+            ->render($name)
+        ;
 
         static::assertSame($expected, $rendered);
     }

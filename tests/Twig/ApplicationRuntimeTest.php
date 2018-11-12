@@ -55,7 +55,8 @@ class ApplicationRuntimeTest extends KernelTestCase
 
         $descriptor = static::$container
             ->get(ApplicationRuntime::class)
-            ->getDescriptor();
+            ->getDescriptor()
+        ;
 
         static::assertEquals($expected, $descriptor);
     }
@@ -70,7 +71,8 @@ class ApplicationRuntimeTest extends KernelTestCase
 
         static::$container
             ->get(ApplicationRuntime::class)
-            ->getDescriptor();
+            ->getDescriptor()
+        ;
     }
 
     /**

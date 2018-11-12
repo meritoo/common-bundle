@@ -46,8 +46,6 @@ class FormRuntime implements RuntimeExtensionInterface
      */
     public function isHtml5ValidationEnabled(): bool
     {
-        return $this
-            ->formService
-            ->isHtml5ValidationEnabled();
+        return $this->formService->isHtml5ValidationEnabled();
     }
 }

@@ -33,7 +33,8 @@ class ResponseServiceTest extends KernelTestCase
             ResponseService::class,
             OopVisibilityType::IS_PUBLIC,
             1,
-            1);
+            1
+        );
     }
 
     /**
@@ -52,7 +53,8 @@ class ResponseServiceTest extends KernelTestCase
     ): void {
         $redirectResponse = $this
             ->getResponseService($routeName, $routeParameters, $url)
-            ->getRedirectResponse($routeName, $routeParameters);
+            ->getRedirectResponse($routeName, $routeParameters)
+        ;
 
         static::assertSame($expected->getTargetUrl(), $redirectResponse->getTargetUrl());
         static::assertSame($expected->getContent(), $redirectResponse->getContent());
@@ -111,7 +113,8 @@ class ResponseServiceTest extends KernelTestCase
             ->expects(static::once())
             ->method('generate')
             ->with($routeName, $routeParameters)
-            ->willReturn($url);
+            ->willReturn($url)
+        ;
 
         return new ResponseService($router);
     }

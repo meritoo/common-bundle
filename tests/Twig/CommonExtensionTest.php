@@ -25,7 +25,8 @@ class CommonExtensionTest extends BaseTwigExtensionTestCase
     {
         $filters = static::$container
             ->get($this->getExtensionNamespace())
-            ->getFilters();
+            ->getFilters()
+        ;
 
         static::assertCount(1, $filters);
     }

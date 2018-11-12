@@ -10,7 +10,8 @@ $finder = PhpCsFixer\Finder::create()
     ->in([
         __DIR__ . '/src',
         __DIR__ . '/tests',
-    ]);
+    ])
+;
 
 return PhpCsFixer\Config::create()
     ->setRules([
@@ -30,4 +31,5 @@ return PhpCsFixer\Config::create()
         'phpdoc_summary'                      => false,
         'trim_array_spaces'                   => false,
     ])
-    ->setFinder($finder);
+    ->setFinder($finder)
+;

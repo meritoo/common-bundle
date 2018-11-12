@@ -25,7 +25,8 @@ class FormExtensionTest extends BaseTwigExtensionTestCase
     {
         $functions = static::$container
             ->get($this->getExtensionNamespace())
-            ->getFunctions();
+            ->getFunctions()
+        ;
 
         static::assertCount(1, $functions);
     }
@@ -41,7 +42,8 @@ class FormExtensionTest extends BaseTwigExtensionTestCase
 
         $rendered = $this
             ->getTwigEnvironment($templates)
-            ->render($name);
+            ->render($name)
+        ;
 
         static::assertRegExp('/bool\(false\)/', $rendered);
     }
@@ -61,7 +63,8 @@ class FormExtensionTest extends BaseTwigExtensionTestCase
 
         $rendered = $this
             ->getTwigEnvironment($templates)
-            ->render($name);
+            ->render($name)
+        ;
 
         static::assertRegExp('/bool\(true\)/', $rendered);
     }

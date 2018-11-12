@@ -58,7 +58,8 @@ abstract class BaseExtension extends ConfigurableExtension
     {
         $this
             ->loadParameters($mergedConfig, $container)
-            ->loadServices($container);
+            ->loadServices($container)
+        ;
     }
 
     /**
@@ -232,7 +233,8 @@ abstract class BaseExtension extends ConfigurableExtension
          */
         $this
             ->getFileLoader($container, $locator, $fileType)
-            ->load($fileName);
+            ->load($fileName)
+        ;
 
         return $this;
     }
@@ -310,7 +312,8 @@ abstract class BaseExtension extends ConfigurableExtension
         $bundleShortName = $configuration
             ->getConfigTreeBuilder()
             ->buildTree()
-            ->getName();
+            ->getName()
+        ;
 
         foreach ($parameters as $name => $value) {
             if (!\is_array($value)) {

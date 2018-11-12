@@ -46,7 +46,8 @@ class FormRuntimeTest extends KernelTestCase
     {
         $enabled = static::$container
             ->get(FormRuntime::class)
-            ->isHtml5ValidationEnabled();
+            ->isHtml5ValidationEnabled()
+        ;
 
         static::assertFalse($enabled);
     }

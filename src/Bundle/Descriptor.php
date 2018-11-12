@@ -110,7 +110,8 @@ class Descriptor
             ->setRootNamespace($rootNamespace)
             ->setPath($path)
             ->setParentBundleDescriptor($parentBundleDescriptor)
-            ->setChildBundleDescriptor($childBundleDescriptor);
+            ->setChildBundleDescriptor($childBundleDescriptor)
+        ;
 
         $this->dataFixtures = new Collection();
     }
