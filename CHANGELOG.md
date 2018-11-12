@@ -5,6 +5,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.1.20
 
 1. Fix coding standard
+2. Controller > BaseController > base controller with common and useful methods
 
 # 0.1.19
 

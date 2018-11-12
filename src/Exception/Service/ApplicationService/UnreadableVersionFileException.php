@@ -10,15 +10,13 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Exception\Service\ApplicationService;
 
-use RuntimeException;
-
 /**
  * An exception used while file, who contains version of the application, is not readable
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
  */
-class UnreadableVersionFileException extends RuntimeException
+class UnreadableVersionFileException extends \RuntimeException
 {
     /**
      * Creates exception

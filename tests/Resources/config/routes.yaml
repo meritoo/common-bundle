@@ -1,0 +1,4 @@
+test.real_controller.index:
+    path: /test/index
+    defaults:
+        _controller: Meritoo\Test\CommonBundle\Controller\Base\BaseController\RealController::index
