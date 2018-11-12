@@ -15,8 +15,8 @@ use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\Common\ValueObject\Version;
 use Meritoo\CommonBundle\Application\Descriptor;
-use Meritoo\CommonBundle\Exception\Service\EmptyVersionFilePathException;
-use Meritoo\CommonBundle\Exception\Service\UnreadableVersionFileException;
+use Meritoo\CommonBundle\Exception\Service\ApplicationService\EmptyVersionFilePathException;
+use Meritoo\CommonBundle\Exception\Service\ApplicationService\UnreadableVersionFileException;
 use Meritoo\CommonBundle\Service\ApplicationService;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 

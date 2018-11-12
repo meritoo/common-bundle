@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Meritoo\CommonBundle\Exception\Service;
+namespace Meritoo\CommonBundle\Exception\Service\ApplicationService;
 
 use RuntimeException;
 

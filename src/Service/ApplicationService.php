@@ -12,8 +12,8 @@ namespace Meritoo\CommonBundle\Service;
 
 use Meritoo\Common\ValueObject\Version;
 use Meritoo\CommonBundle\Application\Descriptor;
-use Meritoo\CommonBundle\Exception\Service\EmptyVersionFilePathException;
-use Meritoo\CommonBundle\Exception\Service\UnreadableVersionFileException;
+use Meritoo\CommonBundle\Exception\Service\ApplicationService\EmptyVersionFilePathException;
+use Meritoo\CommonBundle\Exception\Service\ApplicationService\UnreadableVersionFileException;
 use Meritoo\CommonBundle\Service\Base\BaseService;
 
 /**

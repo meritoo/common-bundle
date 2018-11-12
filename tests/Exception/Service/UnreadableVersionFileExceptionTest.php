@@ -13,7 +13,7 @@ namespace Meritoo\Test\CommonBundle\Exception\Service;
 use Generator;
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\Common\Type\OopVisibilityType;
-use Meritoo\CommonBundle\Exception\Service\UnreadableVersionFileException;
+use Meritoo\CommonBundle\Exception\Service\ApplicationService\UnreadableVersionFileException;
 
 /**
  * Test case of an exception used while file, who contains version of the application, is not readable

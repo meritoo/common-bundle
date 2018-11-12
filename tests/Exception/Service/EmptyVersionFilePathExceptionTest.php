@@ -12,7 +12,7 @@ namespace Meritoo\Test\CommonBundle\Exception\Service;
 
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\Common\Type\OopVisibilityType;
-use Meritoo\CommonBundle\Exception\Service\EmptyVersionFilePathException;
+use Meritoo\CommonBundle\Exception\Service\ApplicationService\EmptyVersionFilePathException;
 
 /**
  * Test case of an exception used while path of a file, who contains version of the application, is empty
