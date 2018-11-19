@@ -31,6 +31,8 @@ meritoo_common:
         disadvantage: Wada|Wady
         new: Nowy
         price: Cena
+        invitation: '{0}Zaproszeń|{1}Zaproszenie|[2,4]Zaproszenia|[5,20]Zaproszeń'
+        account_balance: Saldo konta
     area:
         country: Kraj
         county: Hrabstwo

@@ -11,6 +11,15 @@ meritoo_common:
         delete: Delete
         save: Save
         create: Create
+        invite: Invite
+        invite_friend: Invite friend
+        send_invitation: Send invitation
+        send: Send
+        filter: Filter
+        search: Search
+        show: Show
+        buy: Buy
+        sell: Sell
     authentication:
         repeat_password: Repeat password
         repeat_new_password: Repeat new password

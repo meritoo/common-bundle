@@ -11,6 +11,15 @@ meritoo_common:
         delete: Usuń
         save: Zapisz
         create: Utwórz
+        invite: Zaproś
+        invite_friend: Zaproś znajomego
+        send_invitation: Wyślij zaproszenie
+        send: Wyślij
+        filter: Filtruj
+        search: Szukaj
+        show: Pokaż
+        buy: Kup
+        sell: Sprzedaj
     authentication:
         repeat_password: Powtórz hasło
         repeat_new_password: Powtórz nowe hasło

@@ -31,6 +31,8 @@ meritoo_common:
         disadvantage: Nachteil|Nachteile
         new: Neu
         price: Preis
+        invitation: Einladung|Einladungen
+        account_balance: Kontostand
     area:
         country: Land
         county: Bezirk

@@ -31,6 +31,8 @@ meritoo_common:
         disadvantage: Disadvantage|Disadvantages
         new: New
         price: Price
+        invitation: Invitation|Invitations
+        account_balance: Account balance
     area:
         country: Country
         county: County
