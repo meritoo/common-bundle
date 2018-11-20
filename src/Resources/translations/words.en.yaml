@@ -31,8 +31,8 @@ meritoo_common:
         disadvantage: Disadvantage|Disadvantages
         new: New
         price: Price
+        price_amount: Amount
         invitation: Invitation|Invitations
-        account_balance: Account balance
     area:
         country: Country
         county: County
@@ -104,3 +104,8 @@ meritoo_common:
         october: October
         november: November
         december: December
+    finances:
+        account_balance: Account balance
+        transaction_history: Transaction history
+        transaction_date: Transaction date
+        transaction: Transaction|Transactions

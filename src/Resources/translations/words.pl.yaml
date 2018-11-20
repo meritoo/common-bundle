@@ -31,8 +31,8 @@ meritoo_common:
         disadvantage: Wada|Wady
         new: Nowy
         price: Cena
+        price_amount: Kwota
         invitation: '{0}Zaproszeń|{1}Zaproszenie|[2,4]Zaproszenia|[5,20]Zaproszeń'
-        account_balance: Saldo konta
     area:
         country: Kraj
         county: Hrabstwo
@@ -104,3 +104,8 @@ meritoo_common:
         october: Październik
         november: Listopad
         december: Grudzień
+    finances:
+        account_balance: Saldo konta
+        transaction_history: Historia transakcji
+        transaction_date: Data transakcji
+        transaction: Transakcja|Transakcje

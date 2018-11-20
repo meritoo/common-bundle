@@ -31,8 +31,8 @@ meritoo_common:
         disadvantage: Nachteil|Nachteile
         new: Neu
         price: Preis
+        price_amount: Betrag
         invitation: Einladung|Einladungen
-        account_balance: Kontostand
     area:
         country: Land
         county: Bezirk
@@ -104,3 +104,8 @@ meritoo_common:
         october: Oktober
         november: November
         december: Dezember
+    finances:
+        account_balance: Kontostand
+        transaction_history: Verlauf der Transaktionen
+        transaction_date: Transaktionsdatum
+        transaction: Transaktion|Transaktionen
