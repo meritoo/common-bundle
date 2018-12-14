@@ -1,0 +1,4 @@
+browser_upgrade:
+    information: You are using an <strong>outdated</strong> browser
+    cta: upgrade your browser
+    after_cta: to improve your experience

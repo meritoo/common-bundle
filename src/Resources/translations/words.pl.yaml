@@ -33,6 +33,7 @@ meritoo_common:
         price: Cena
         price_amount: Kwota
         invitation: '{0}Zaproszeń|{1}Zaproszenie|[2,4]Zaproszenia|[5,20]Zaproszeń'
+        please: Proszę
     area:
         country: Kraj
         county: Hrabstwo

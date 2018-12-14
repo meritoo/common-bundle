@@ -33,6 +33,7 @@ meritoo_common:
         price: Price
         price_amount: Amount
         invitation: Invitation|Invitations
+        please: Please
     area:
         country: Country
         county: County

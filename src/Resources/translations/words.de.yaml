@@ -33,6 +33,7 @@ meritoo_common:
         price: Preis
         price_amount: Betrag
         invitation: Einladung|Einladungen
+        please: Bitte
     area:
         country: Land
         county: Bezirk
