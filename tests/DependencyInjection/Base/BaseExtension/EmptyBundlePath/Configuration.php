@@ -26,9 +26,6 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('empty_bundle_path');
-
-        return $treeBuilder;
+        return new TreeBuilder('empty_bundle_path');
     }
 }

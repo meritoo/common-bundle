@@ -26,9 +26,6 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('no_parameters');
-
-        return $treeBuilder;
+        return new TreeBuilder('no_parameters');
     }
 }

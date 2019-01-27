@@ -29,10 +29,10 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('meritoo_common');
+        $treeBuilder = new TreeBuilder('meritoo_common');
 
-        $rootNode
+        $treeBuilder
+            ->getRootNode()
             ->children()
                 ->append($this->getApplicationNode())
                 ->append($this->getDateNode())
@@ -50,10 +50,10 @@ class Configuration implements ConfigurationInterface
      */
     private function getApplicationNode(): NodeDefinition
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('application');
+        $treeBuilder = new TreeBuilder('application');
 
-        $rootNode
+        return $treeBuilder
+            ->getRootNode()
             ->addDefaultsIfNotSet()
             ->children()
                 ->arrayNode('version')
@@ -80,8 +80,6 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end()
         ;
-
-        return $rootNode;
     }
 
     /**
@@ -91,10 +89,10 @@ class Configuration implements ConfigurationInterface
      */
     private function getFormNode(): NodeDefinition
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('form');
+        $treeBuilder = new TreeBuilder('form');
 
-        $rootNode
+        return $treeBuilder
+            ->getRootNode()
             ->addDefaultsIfNotSet()
             ->children()
                 ->scalarNode('novalidate')
@@ -103,8 +101,6 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end()
         ;
-
-        return $rootNode;
     }
 
     /**
@@ -114,10 +110,10 @@ class Configuration implements ConfigurationInterface
      */
     private function getDateNode(): NodeDefinition
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('date');
+        $treeBuilder = new TreeBuilder('date');
 
-        $rootNode
+        return $treeBuilder
+            ->getRootNode()
             ->addDefaultsIfNotSet()
             ->children()
                 ->arrayNode('format')
@@ -139,7 +135,5 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end()
         ;
-
-        return $rootNode;
     }
 }

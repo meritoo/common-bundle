@@ -26,9 +26,6 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('xml_services_file_type');
-
-        return $treeBuilder;
+        return new TreeBuilder('xml_services_file_type');
     }
 }
