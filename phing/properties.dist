@@ -24,11 +24,11 @@ cache.clearWithWarmup = false
 #
 composer.download_command = bash ${project.basedir}/phing/composer-install.sh
 
-# Path to composer executable or downloaded composer.phar file
+# Path to Composer executable or downloaded composer.phar file
 #
 composer.path = ${project.basedir}/composer.phar
 
-# Path to php executable used by composer
+# Path to PHP executable used by Composer
 #
 composer.php = php
 
@@ -81,4 +81,4 @@ tests.database = ${dir.data.temporary}/database.sqlite
 # - Infection (mutation tests)
 #
 tests.phpunit.command = ./vendor/bin/phpunit --verbose
-tests.mutation.command = ./vendor/bin/infection --threads=5
+tests.mutation.command = ./vendor/bin/infection --threads=5 --coverage=build/reports/infection

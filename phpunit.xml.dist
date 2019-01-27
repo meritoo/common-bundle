@@ -36,6 +36,8 @@
 
     <logging>
         <log type="coverage-html" target="build/reports/phpunit_coverage/html"/>
+        <log type="coverage-xml" target="build/reports/infection/coverage-xml"/>
+        <log type="junit" target="build/reports/infection/phpunit.junit.xml"/>
         <log type="coverage-clover" target="build/reports/coveralls/clover.xml"/>
     </logging>
 </phpunit>
