@@ -46,7 +46,8 @@
                     check:md,
                     check:cpd,
                     check:depend,
-                    check:loc"
+                    check:loc,
+                    check:phpstan"
     />
 
     <!-- Test target -->
@@ -97,6 +98,11 @@
         <phploc reportType="txt" reportName="phploc" reportDirectory="${dir.reports}">
             <fileset refid="sourcecode"/>
         </phploc>
+    </target>
+
+    <!-- Run static analysis -->
+    <target name="check:phpstan" depends="build:prepare">
+        <exec command="${check.phpstan.command}" passthru="true"/>
     </target>
 
     <!-- PHPUnit tests -->
