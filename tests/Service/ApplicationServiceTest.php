@@ -63,8 +63,8 @@ class ApplicationServiceTest extends KernelTestCase
 
     /**
      * @param string      $versionFilePath        Path of a file who contains version of the application
-     * @param null|string $applicationName        Name of application. May be displayed near logo.
-     * @param null|string $applicationDescription Description of application. May be displayed near logo.
+     * @param string|null $applicationName        Name of application. May be displayed near logo.
+     * @param string|null $applicationDescription Description of application. May be displayed near logo.
      * @param Descriptor  $expected               Expected descriptor of application
      *
      * @dataProvider provideConstructorArgumentsAndDescriptor

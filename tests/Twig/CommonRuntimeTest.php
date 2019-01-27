@@ -80,7 +80,7 @@ class CommonRuntimeTest extends KernelTestCase
 
     /**
      * @param mixed       $value                 The value to check
-     * @param null|string $emptyValueReplacement Custom replacement of empty value. If is set to null, the
+     * @param string|null $emptyValueReplacement Custom replacement of empty value. If is set to null, the
      *                                           replacement is retrieved from configuration (default behaviour).
      * @param mixed       $expected              Expected value
      *

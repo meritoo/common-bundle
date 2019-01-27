@@ -49,7 +49,7 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * @param Descriptor   $descriptor Descriptor of application
-     * @param null|Version $expected   Expected version of application
+     * @param Version|null $expected   Expected version of application
      *
      * @dataProvider provideDescriptorAndVersion
      */
