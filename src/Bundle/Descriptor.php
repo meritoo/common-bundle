@@ -68,14 +68,14 @@ class Descriptor
     /**
      * Descriptor of the parent bundle
      *
-     * @var Descriptor
+     * @var null|Descriptor
      */
     private $parentBundleDescriptor;
 
     /**
      * Descriptor of the child bundle
      *
-     * @var Descriptor
+     * @var null|Descriptor
      */
     private $childBundleDescriptor;
 
@@ -89,29 +89,27 @@ class Descriptor
     /**
      * Class constructor
      *
-     * @param string     $name                   (optional) Name of bundle
-     * @param string     $configurationRootName  (optional) Name of configuration root node of bundle
-     * @param string     $rootNamespace          (optional) Root namespace of bundle
-     * @param string     $path                   (optional) Physical path of bundle
-     * @param Descriptor $parentBundleDescriptor (optional) Descriptor of the parent bundle
-     * @param Descriptor $childBundleDescriptor  (optional) Descriptor of the child bundle
+     * @param string          $name                   (optional) Name of bundle
+     * @param string          $configurationRootName  (optional) Name of configuration root node of bundle
+     * @param string          $rootNamespace          (optional) Root namespace of bundle
+     * @param string          $path                   (optional) Physical path of bundle
+     * @param null|Descriptor $parentBundleDescriptor (optional) Descriptor of the parent bundle
+     * @param null|Descriptor $childBundleDescriptor  (optional) Descriptor of the child bundle
      */
     public function __construct(
         $name = '',
         $configurationRootName = '',
         $rootNamespace = '',
         $path = '',
-        Descriptor $parentBundleDescriptor = null,
-        Descriptor $childBundleDescriptor = null
+        ?Descriptor $parentBundleDescriptor = null,
+        ?Descriptor $childBundleDescriptor = null
     ) {
-        $this
-            ->setName($name)
-            ->setConfigurationRootName($configurationRootName)
-            ->setRootNamespace($rootNamespace)
-            ->setPath($path)
-            ->setParentBundleDescriptor($parentBundleDescriptor)
-            ->setChildBundleDescriptor($childBundleDescriptor)
-        ;
+        $this->name = $name;
+        $this->configurationRootName = $configurationRootName;
+        $this->rootNamespace = $rootNamespace;
+        $this->path = $path;
+        $this->parentBundleDescriptor = $parentBundleDescriptor;
+        $this->childBundleDescriptor = $childBundleDescriptor;
 
         $this->dataFixtures = new Collection();
     }

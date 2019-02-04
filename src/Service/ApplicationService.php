@@ -71,9 +71,9 @@ class ApplicationService extends BaseService
     /**
      * Returns version of application
      *
-     * @return Version
+     * @return null|Version
      */
-    private function getVersion(): Version
+    private function getVersion(): ?Version
     {
         // Oops, unknown/empty path of a file who contains version
         if (empty($this->versionFilePath)) {

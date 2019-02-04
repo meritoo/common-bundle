@@ -37,7 +37,7 @@ class Descriptor
     /**
      * Version of application
      *
-     * @var Version
+     * @var null|Version
      */
     private $version;
 

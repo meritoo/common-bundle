@@ -229,10 +229,11 @@ abstract class BaseExtension extends ConfigurableExtension
         $locator = new FileLocator($resourcesPath);
 
         // Let's load the configuration file
-        $this
-            ->getFileLoader($container, $locator, $fileType)
-            ->load($fileName)
-        ;
+        $fileLoader = $this->getFileLoader($container, $locator, $fileType);
+
+        if (null !== $fileLoader) {
+            $fileLoader->load($fileName);
+        }
 
         return $this;
     }
@@ -243,9 +244,9 @@ abstract class BaseExtension extends ConfigurableExtension
      * @param ContainerBuilder $container Container for the Dependency Injection (DI)
      * @param FileLocator      $locator   Locator used to find files
      * @param string           $fileType  Type of the configuration file
-     * @return FileLoader
+     * @return null|FileLoader
      */
-    private function getFileLoader(ContainerBuilder $container, FileLocator $locator, string $fileType): FileLoader
+    private function getFileLoader(ContainerBuilder $container, FileLocator $locator, string $fileType): ?FileLoader
     {
         $loader = null;
 

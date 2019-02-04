@@ -57,8 +57,8 @@ class CommonRuntime implements RuntimeExtensionInterface
          * It's not null?
          * Let's verify if it's empty iterable
          */
-        if (!$isNull) {
-            $isEmptyIterable = \is_iterable($value) && 0 === \count($value);
+        if (!$isNull && \is_iterable($value)) {
+            $isEmptyIterable = 0 === \count($value);
         }
 
         /*

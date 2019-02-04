@@ -31,15 +31,15 @@ abstract class BaseThanTodayValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint): void
     {
+        $difference = $this->getDifference($value);
+
         /*
          * Not a date?
          * Nothing to do
          */
-        if (!Date::isValidDate($value)) {
+        if (null === $difference) {
             return;
         }
-
-        $difference = $this->getDifference($value);
 
         /*
          * It's a valid date?
@@ -60,17 +60,20 @@ abstract class BaseThanTodayValidator extends ConstraintValidator
      * Returns difference between validated date and today
      *
      * @param mixed $value Value to validate
-     * @return int
+     * @return null|int
      */
-    private function getDifference($value): int
+    private function getDifference($value): ?int
     {
         // Let's prepare the dates...
         $now = (new \DateTime())->setTime(0, 0);
         $date = Date::getDateTime($value);
 
         // ...and make comparison with "day" as unit
+        if ($date instanceof \DateTime) {
+            return Date::getDateDifference($now, $date, Date::DATE_DIFFERENCE_UNIT_DAYS);
+        }
 
-        return Date::getDateDifference($now, $date, Date::DATE_DIFFERENCE_UNIT_DAYS);
+        return null;
     }
 
     /**
