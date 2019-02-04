@@ -7,6 +7,9 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 1. Travis CI > run many tasks using Phing (instead of PHPUnit only)
 2. Fix integration with [Coveralls](https://www.coveralls.io) (available as the badge in [README.md](README.md))
 3. Implement [PHPStan](https://github.com/phpstan/phpstan)
+4. PHP Coding Standards Fixer > configuration > update & fix coding standard
+5. Implement [Psalm] (https://github.com/vimeo/psalm)
+6. Psalm > fix code
 
 # 0.1.22
 
