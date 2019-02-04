@@ -50,9 +50,7 @@ abstract class BaseController extends AbstractController
     {
         $url = $this->requestService->fetchRefererUrl();
 
-        /*
-         * Oops, url of referer is unknown
-         */
+        // Oops, url of referer is unknown
         if ('' === $url) {
             throw CannotRedirectToEmptyRefererUrlException::create();
         }

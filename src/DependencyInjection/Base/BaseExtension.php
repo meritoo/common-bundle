@@ -228,9 +228,7 @@ abstract class BaseExtension extends ConfigurableExtension
         $fileType = ConfigurationFileType::getTypeFromFileName($fileName);
         $locator = new FileLocator($resourcesPath);
 
-        /*
-         * Let's load the configuration file
-         */
+        // Let's load the configuration file
         $this
             ->getFileLoader($container, $locator, $fileType)
             ->load($fileName)
@@ -254,14 +252,15 @@ abstract class BaseExtension extends ConfigurableExtension
         switch ($fileType) {
             case ConfigurationFileType::YAML:
                 $loader = new YamlFileLoader($container, $locator);
-                break;
 
+                break;
             case ConfigurationFileType::XML:
                 $loader = new XmlFileLoader($container, $locator);
-                break;
 
+                break;
             case ConfigurationFileType::PHP:
                 $loader = new PhpFileLoader($container, $locator);
+
                 break;
         }
 
@@ -285,30 +284,22 @@ abstract class BaseExtension extends ConfigurableExtension
             return $this;
         }
 
-        /*
-         * Getting the keys or paths on which building names of parameters should stop
-         */
+        // Getting the keys or paths on which building names of parameters should stop
         $keysToStop = $this->getKeysToStopLoadingParametersOn();
         $globalKeysToStop = $this->getGlobalKeysToStopLoadingParametersOn();
 
-        /*
-         * Merging standard with global keys and paths
-         */
+        // Merging standard with global keys and paths
         $keysToStop = Arrays::makeArray($keysToStop);
         $globalKeysToStop = Arrays::makeArray($globalKeysToStop);
         $stopIfMatchedBy = array_merge($keysToStop, $globalKeysToStop);
 
-        /*
-         * Let's get the last elements' paths and load values into container
-         */
+        // Let's get the last elements' paths and load values into container
         $parameters = Arrays::getLastElementsPaths($mergedConfig, '.', '', $stopIfMatchedBy);
 
-        /* @var ConfigurationInterface $configuration */
+        /** @var ConfigurationInterface $configuration */
         $configuration = $this->getConfiguration($mergedConfig, $container);
 
-        /*
-         * Getting slug of bundle's name
-         */
+        // Getting slug of bundle's name
         $bundleShortName = $configuration
             ->getConfigTreeBuilder()
             ->buildTree()
@@ -320,9 +311,7 @@ abstract class BaseExtension extends ConfigurableExtension
                 $value = Miscellaneous::trimSmart($value);
             }
 
-            /*
-             * Loading parameter into container, prefixed by slug of bundle's name
-             */
+            // Loading parameter into container, prefixed by slug of bundle's name
             $prefixedName = sprintf('%s.%s', $bundleShortName, $name);
             $container->setParameter($prefixedName, $value); // e.g. simple_bundle.foo.bar.something => 'my-value'
         }

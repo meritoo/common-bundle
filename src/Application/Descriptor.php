@@ -46,7 +46,7 @@ class Descriptor
      *
      * @param string       $name        Name of application
      * @param string       $description Description of application
-     * @param Version|null $version     Version of application
+     * @param null|Version $version     Version of application
      */
     public function __construct(string $name, string $description, ?Version $version)
     {
@@ -104,7 +104,7 @@ class Descriptor
     /**
      * Returns version of application
      *
-     * @return Version|null
+     * @return null|Version
      */
     public function getVersion(): ?Version
     {

@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Application;
 
-use Generator;
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\Common\ValueObject\Version;
@@ -21,6 +20,9 @@ use Meritoo\CommonBundle\Application\Descriptor;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class DescriptorTest extends BaseTestCase
 {
@@ -32,7 +34,7 @@ class DescriptorTest extends BaseTestCase
     /**
      * @param string       $name        Name of application
      * @param string       $description Description of application
-     * @param Version|null $version     Version of application
+     * @param null|Version $version     Version of application
      * @param Descriptor   $expected    Expected descriptor of application
      *
      * @dataProvider provideEmptyValuesForConstructor
@@ -49,7 +51,7 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * @param Descriptor   $descriptor Descriptor of application
-     * @param Version|null $expected   Expected version of application
+     * @param null|Version $expected   Expected version of application
      *
      * @dataProvider provideDescriptorAndVersion
      */
@@ -95,9 +97,9 @@ class DescriptorTest extends BaseTestCase
     /**
      * Provides empty values for constructor and expected descriptor
      *
-     * @return Generator
+     * @return \Generator
      */
-    public function provideEmptyValuesForConstructor(): Generator
+    public function provideEmptyValuesForConstructor(): \Generator
     {
         yield[
             '',
@@ -117,9 +119,9 @@ class DescriptorTest extends BaseTestCase
     /**
      * Provides descriptor and version of application
      *
-     * @return Generator
+     * @return \Generator
      */
-    public function provideDescriptorAndVersion(): Generator
+    public function provideDescriptorAndVersion(): \Generator
     {
         yield[
             new Descriptor('', '', null),
@@ -145,9 +147,9 @@ class DescriptorTest extends BaseTestCase
     /**
      * Provides descriptor and name of application
      *
-     * @return Generator
+     * @return \Generator
      */
-    public function provideDescriptorAndName(): Generator
+    public function provideDescriptorAndName(): \Generator
     {
         yield[
             new Descriptor('', '', new Version(1, 0, 2)),
@@ -168,9 +170,9 @@ class DescriptorTest extends BaseTestCase
     /**
      * Provides descriptor and description of application
      *
-     * @return Generator
+     * @return \Generator
      */
-    public function provideDescriptorAndDescription(): Generator
+    public function provideDescriptorAndDescription(): \Generator
     {
         yield[
             new Descriptor('', '', new Version(1, 0, 2)),
@@ -191,9 +193,9 @@ class DescriptorTest extends BaseTestCase
     /**
      * Provides descriptor as string and the instance of the descriptor
      *
-     * @return Generator
+     * @return \Generator
      */
-    public function provideDescriptorAsString(): ?Generator
+    public function provideDescriptorAsString(): \Generator
     {
         yield[
             new Descriptor('', '', null),

@@ -68,9 +68,7 @@ class FormService extends BaseService
             return;
         }
 
-        /*
-         * Let's add the "novalidate" attribute
-         */
+        // Let's add the "novalidate" attribute
         if (!isset($existingOptions['attr'])) {
             $existingOptions['attr'] = [];
         }

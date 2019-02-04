@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Exception\Type\DependencyInjection;
 
-use Generator;
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfigurationFileTypeException;
@@ -20,6 +19,9 @@ use Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfiguration
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class UnknownConfigurationFileTypeExceptionTest extends BaseTestCase
 {
@@ -45,9 +47,9 @@ class UnknownConfigurationFileTypeExceptionTest extends BaseTestCase
     /**
      * Provides unknown type and message of exception
      *
-     * @return Generator
+     * @return \Generator
      */
-    public function provideUnknownTypeAndMessage(): Generator
+    public function provideUnknownTypeAndMessage(): \Generator
     {
         $template = 'The \'%s\' type of Dependency Injection (DI) configuration file is unknown. Probably doesn\'t'
             . ' exist or there is a typo. You should use one of these types: php, xml, yaml.';

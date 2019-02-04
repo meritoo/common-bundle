@@ -22,6 +22,9 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class DateServiceTest extends KernelTestCase
 {
@@ -33,6 +36,15 @@ class DateServiceTest extends KernelTestCase
      * @var string
      */
     private const TIMEZONE = 'Europe/London';
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+        static::bootKernel();
+    }
 
     public function testConstructor(): void
     {
@@ -464,9 +476,7 @@ class DateServiceTest extends KernelTestCase
             '19000201 08:25 AM',
         ];
 
-        /*
-         * Date only
-         */
+        // Date only
         yield[
             \IntlDateFormatter::SHORT,
             \IntlDateFormatter::NONE,
@@ -491,9 +501,7 @@ class DateServiceTest extends KernelTestCase
             'February 1, 1900',
         ];
 
-        /*
-         * Time only
-         */
+        // Time only
         yield[
             \IntlDateFormatter::FULL,
             \IntlDateFormatter::NONE,
@@ -534,9 +542,7 @@ class DateServiceTest extends KernelTestCase
             '8:25:40 AM GMT',
         ];
 
-        /*
-         * Both, date & time
-         */
+        // Both, date & time
         yield[
             \IntlDateFormatter::MEDIUM,
             \IntlDateFormatter::SHORT,
@@ -552,14 +558,5 @@ class DateServiceTest extends KernelTestCase
             new \DateTime($dateString, new \DateTimeZone(static::TIMEZONE)),
             'February 1, 1900 at 8:25:40 AM',
         ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        static::bootKernel();
     }
 }

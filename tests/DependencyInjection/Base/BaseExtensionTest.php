@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\DependencyInjection\Base;
 
-use Generator;
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\CommonBundle\DependencyInjection\Base\BaseExtension;
 use Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfigurationFileTypeException;
@@ -27,6 +26,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class BaseExtensionTest extends BaseTestCase
 {
@@ -75,9 +77,9 @@ class BaseExtensionTest extends BaseTestCase
     /**
      * Provides extension
      *
-     * @return Generator
+     * @return \Generator
      */
-    public function provideExtension(): Generator
+    public function provideExtension(): \Generator
     {
         yield[
             new EmptyBundlePathExtension(),

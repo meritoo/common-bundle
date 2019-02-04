@@ -66,9 +66,7 @@ class DateService extends BaseService
      */
     public function getFormat(string $dateLength): string
     {
-        /*
-         * Oops, unknown length of date
-         */
+        // Oops, unknown length of date
         if (false === (new DateLength())->isCorrectType($dateLength)) {
             throw UnknownDateLengthException::createException($dateLength);
         }
@@ -78,14 +76,15 @@ class DateService extends BaseService
         switch ($dateLength) {
             case DateLength::DATE:
                 $format = $this->dateFormat;
-                break;
 
+                break;
             case DateLength::DATETIME:
                 $format = $this->dateTimeFormat;
-                break;
 
+                break;
             case DateLength::TIME:
                 $format = $this->timeFormat;
+
                 break;
         }
 

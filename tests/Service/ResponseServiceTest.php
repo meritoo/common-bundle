@@ -22,10 +22,22 @@ use Symfony\Component\Routing\RouterInterface;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class ResponseServiceTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+        static::bootKernel();
+    }
 
     public function testConstructor(): void
     {
@@ -86,15 +98,6 @@ class ResponseServiceTest extends KernelTestCase
             '/products/1/sort/name',
             new RedirectResponse('/products/1/sort/name'),
         ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        static::bootKernel();
     }
 
     /**

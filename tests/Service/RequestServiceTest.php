@@ -22,10 +22,22 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class RequestServiceTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+        static::bootKernel();
+    }
 
     public function testConstructor(): void
     {
@@ -163,14 +175,5 @@ class RequestServiceTest extends KernelTestCase
             ]),
             '/products/123',
         ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        static::bootKernel();
     }
 }

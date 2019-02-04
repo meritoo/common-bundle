@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Service;
 
-use Generator;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\Common\ValueObject\Version;
@@ -25,10 +24,22 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class ApplicationServiceTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+        static::bootKernel();
+    }
 
     public function testConstructor(): void
     {
@@ -63,8 +74,8 @@ class ApplicationServiceTest extends KernelTestCase
 
     /**
      * @param string      $versionFilePath        Path of a file who contains version of the application
-     * @param string|null $applicationName        Name of application. May be displayed near logo.
-     * @param string|null $applicationDescription Description of application. May be displayed near logo.
+     * @param null|string $applicationName        Name of application. May be displayed near logo.
+     * @param null|string $applicationDescription Description of application. May be displayed near logo.
      * @param Descriptor  $expected               Expected descriptor of application
      *
      * @dataProvider provideConstructorArgumentsAndDescriptor
@@ -126,9 +137,9 @@ class ApplicationServiceTest extends KernelTestCase
     /**
      * Provide arguments of constructor and descriptor
      *
-     * @return Generator
+     * @return \Generator
      */
-    public function provideConstructorArgumentsAndDescriptor(): Generator
+    public function provideConstructorArgumentsAndDescriptor(): \Generator
     {
         $versionFilePath = $this->getFilePathForTesting('VERSION');
 
@@ -151,14 +162,5 @@ class ApplicationServiceTest extends KernelTestCase
                 new Version(5, 46, 17)
             ),
         ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        static::bootKernel();
     }
 }

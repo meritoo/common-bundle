@@ -21,10 +21,22 @@ use Twig\Extension\RuntimeExtensionInterface;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class FormRuntimeTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+        static::bootKernel();
+    }
 
     public function testConstructor(): void
     {
@@ -50,14 +62,5 @@ class FormRuntimeTest extends KernelTestCase
         ;
 
         static::assertFalse($enabled);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        static::bootKernel();
     }
 }

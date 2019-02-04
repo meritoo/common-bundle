@@ -211,7 +211,7 @@ class Descriptor
     /**
      * Returns descriptor of the parent bundle
      *
-     * @return Descriptor|null
+     * @return null|Descriptor
      */
     public function getParentBundleDescriptor(): ?Descriptor
     {
@@ -234,7 +234,7 @@ class Descriptor
     /**
      * Returns descriptor of the child bundle
      *
-     * @return Descriptor|null
+     * @return null|Descriptor
      */
     public function getChildBundleDescriptor(): ?Descriptor
     {
@@ -307,7 +307,7 @@ class Descriptor
     /**
      * Returns real/full path of directory from bundle with classes for the DataFixtures
      *
-     * @return string|null
+     * @return null|string
      */
     public function getDataFixturesDirectoryPath(): ?string
     {
@@ -373,9 +373,7 @@ class Descriptor
      */
     public static function fromArray(array $data): Descriptor
     {
-        /*
-         * Default values
-         */
+        // Default values
         $name = '';
         $configurationRootName = '';
         $rootNamespace = '';
@@ -383,10 +381,7 @@ class Descriptor
         $parentBundleDescriptor = null;
         $childBundleDescriptor = null;
 
-        /*
-         * Grab values from provided array
-         */
-
+        // Grab values from provided array
         if (array_key_exists('name', $data) && !empty($data['name'])) {
             $name = $data['name'];
         }
@@ -413,10 +408,6 @@ class Descriptor
             $childBundleDescriptor = static::fromArray($childData);
         }
 
-        /*
-         * Return the descriptor
-         */
-
         return new static(
             $name,
             $configurationRootName,
@@ -435,21 +426,13 @@ class Descriptor
      */
     public static function fromBundle(Bundle $bundle): Descriptor
     {
-        /*
-         * Values from bundle
-         */
+        // Values from bundle
         $name = $bundle->getName();
         $rootNamespace = $bundle->getNamespace();
         $path = $bundle->getPath();
 
-        /*
-         * Default values, not provided by bundle directly
-         */
+        // Default values, not provided by bundle directly
         $configurationRootName = '';
-
-        /*
-         * Return the descriptor
-         */
 
         return new static($name, $configurationRootName, $rootNamespace, $path);
     }

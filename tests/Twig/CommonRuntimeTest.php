@@ -21,10 +21,22 @@ use Twig\Extension\RuntimeExtensionInterface;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class CommonRuntimeTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+        static::bootKernel();
+    }
 
     public function testConstructor(): void
     {
@@ -80,7 +92,7 @@ class CommonRuntimeTest extends KernelTestCase
 
     /**
      * @param mixed       $value                 The value to check
-     * @param string|null $emptyValueReplacement Custom replacement of empty value. If is set to null, the
+     * @param null|string $emptyValueReplacement Custom replacement of empty value. If is set to null, the
      *                                           replacement is retrieved from configuration (default behaviour).
      * @param mixed       $expected              Expected value
      *
@@ -285,14 +297,5 @@ class CommonRuntimeTest extends KernelTestCase
             '---',
             $instance,
         ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        static::bootKernel();
     }
 }

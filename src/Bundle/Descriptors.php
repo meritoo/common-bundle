@@ -25,12 +25,12 @@ class Descriptors extends Collection
      * Returns descriptor of bundle that contains given class
      *
      * @param string $classNamespace Namespace of class for which descriptor of bundle should be returned
-     * @return Descriptor|null
+     * @return null|Descriptor
      */
     public function getDescriptor(string $classNamespace): ?Descriptor
     {
         if (!$this->isEmpty()) {
-            /* @var $descriptor Descriptor */
+            /** @var Descriptor $descriptor */
             foreach ($this as $rootNamespace => $descriptor) {
                 $rootNamespace = $descriptor->getRootNamespace();
 
@@ -50,12 +50,12 @@ class Descriptors extends Collection
      * Returns descriptor of bundle with given name
      *
      * @param string $bundleName Name of bundle who descriptor should be returned
-     * @return Descriptor|null
+     * @return null|Descriptor
      */
     public function getDescriptorByName(string $bundleName): ?Descriptor
     {
         if (!$this->isEmpty()) {
-            /* @var $descriptor Descriptor */
+            /** @var Descriptor $descriptor */
             foreach ($this as $rootNamespace => $descriptor) {
                 $name = $descriptor->getName();
 
@@ -79,7 +79,7 @@ class Descriptors extends Collection
 
         $array = [];
 
-        /* @var $descriptor Descriptor */
+        /** @var Descriptor $descriptor */
         foreach ($this as $rootNamespace => $descriptor) {
             $array[$rootNamespace] = $descriptor->toArray();
         }

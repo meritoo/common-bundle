@@ -18,6 +18,9 @@ use Meritoo\CommonBundle\Twig\CommonExtension;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class CommonExtensionTest extends BaseTwigExtensionTestCase
 {

@@ -20,6 +20,9 @@ use Meritoo\CommonBundle\Bundle\Descriptors;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class DescriptorsTest extends BaseTestCase
 {

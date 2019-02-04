@@ -43,7 +43,7 @@ class CommonRuntime implements RuntimeExtensionInterface
      * Returns replacement of empty value if given value is empty. Otherwise - given value.
      *
      * @param mixed       $value                 The value to check
-     * @param string|null $emptyValueReplacement (optional) Custom replacement of empty value. If is set to null, the
+     * @param null|string $emptyValueReplacement (optional) Custom replacement of empty value. If is set to null, the
      *                                           replacement is retrieved from configuration (default behaviour).
      * @return mixed
      */

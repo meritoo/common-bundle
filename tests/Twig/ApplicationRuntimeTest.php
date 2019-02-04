@@ -24,10 +24,22 @@ use Twig\Extension\RuntimeExtensionInterface;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class ApplicationRuntimeTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+        static::bootKernel();
+    }
 
     public function testConstructor(): void
     {
@@ -73,14 +85,5 @@ class ApplicationRuntimeTest extends KernelTestCase
             ->get(ApplicationRuntime::class)
             ->getDescriptor()
         ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        static::bootKernel();
     }
 }

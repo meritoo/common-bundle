@@ -20,6 +20,9 @@ use Meritoo\CommonBundle\Validator\Constraints\Date\EarlierThanTodayValidator;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class EarlierThanTodayValidatorTest extends BaseThanTodayValidatorTestCase
 {
@@ -48,7 +51,8 @@ class EarlierThanTodayValidatorTest extends BaseThanTodayValidatorTestCase
     {
         $this
             ->validator
-            ->validate($value, static::getConstraint());
+            ->validate($value, static::getConstraint())
+        ;
 
         $this
             ->buildViolation('meritoo_common.date.earlier_than_today')
@@ -64,7 +68,8 @@ class EarlierThanTodayValidatorTest extends BaseThanTodayValidatorTestCase
     {
         $this
             ->validator
-            ->validate($value, static::getConstraint());
+            ->validate($value, static::getConstraint())
+        ;
 
         $this->assertNoViolation();
     }
@@ -77,7 +82,8 @@ class EarlierThanTodayValidatorTest extends BaseThanTodayValidatorTestCase
     {
         $this
             ->validator
-            ->validate($value, static::getConstraint());
+            ->validate($value, static::getConstraint())
+        ;
 
         $this
             ->buildViolation('meritoo_common.date.earlier_than_today')
@@ -89,7 +95,8 @@ class EarlierThanTodayValidatorTest extends BaseThanTodayValidatorTestCase
     {
         $this
             ->validator
-            ->validate(new \DateTime(), static::getConstraint());
+            ->validate(new \DateTime(), static::getConstraint())
+        ;
 
         $this
             ->buildViolation('meritoo_common.date.earlier_than_today')
@@ -105,7 +112,8 @@ class EarlierThanTodayValidatorTest extends BaseThanTodayValidatorTestCase
     {
         $this
             ->validator
-            ->validate($value, static::getConstraint());
+            ->validate($value, static::getConstraint())
+        ;
 
         $this
             ->buildViolation('meritoo_common.date.earlier_than_today')

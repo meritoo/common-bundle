@@ -29,7 +29,7 @@ class UnknownDateLengthException extends UnknownTypeException
      */
     public static function createException(string $unknownType): UnknownDateLengthException
     {
-        /* @var UnknownDateLengthException $exception */
+        /** @var UnknownDateLengthException $exception */
         $exception = static::create($unknownType, new DateLength(), 'date length for date format');
 
         return $exception;

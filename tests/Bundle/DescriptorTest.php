@@ -22,6 +22,9 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class DescriptorTest extends BaseTestCase
 {
@@ -142,7 +145,7 @@ class DescriptorTest extends BaseTestCase
     /**
      * @param Descriptor  $descriptor Descriptor of bundle who path of directory with classes for the DataFixtures
      *                                should be returned
-     * @param string|null $expected   Expected path
+     * @param null|string $expected   Expected path
      *
      * @dataProvider provideDataFixturesPath
      */
@@ -153,7 +156,7 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * @param Descriptor      $descriptor Descriptor of bundle who descriptor of the child bundle should be returned
-     * @param Descriptor|null $expected   Expected descriptor of the child bundle
+     * @param null|Descriptor $expected   Expected descriptor of the child bundle
      *
      * @dataProvider provideChildBundleDescriptor
      */
@@ -265,7 +268,7 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * @param Descriptor      $descriptor Descriptor of bundle who descriptor of the parent bundle should be returned
-     * @param Descriptor|null $expected   Expected descriptor of the parent bundle
+     * @param null|Descriptor $expected   Expected descriptor of the parent bundle
      *
      * @dataProvider provideParentBundleDescriptor
      */

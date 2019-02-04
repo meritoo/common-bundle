@@ -18,29 +18,12 @@ use Meritoo\CommonBundle\Type\Date\DateLength;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class DateLengthTest extends BaseTypeTestCase
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function getAllExpectedTypes(): array
-    {
-        return [
-            'DATE'     => DateLength::DATE,
-            'DATETIME' => DateLength::DATETIME,
-            'TIME'     => DateLength::TIME,
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getTestedTypeInstance(): DateLength
-    {
-        return new DateLength();
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -80,5 +63,25 @@ class DateLengthTest extends BaseTypeTestCase
             'time',
             true,
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getAllExpectedTypes(): array
+    {
+        return [
+            'DATE'     => DateLength::DATE,
+            'DATETIME' => DateLength::DATETIME,
+            'TIME'     => DateLength::TIME,
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getTestedTypeInstance(): DateLength
+    {
+        return new DateLength();
     }
 }

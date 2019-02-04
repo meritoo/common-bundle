@@ -64,15 +64,11 @@ abstract class BaseThanTodayValidator extends ConstraintValidator
      */
     private function getDifference($value): int
     {
-        /*
-         * Let's prepare the dates...
-         */
+        // Let's prepare the dates...
         $now = (new \DateTime())->setTime(0, 0);
         $date = Date::getDateTime($value);
 
-        /*
-         * ...and make comparison with "day" as unit
-         */
+        // ...and make comparison with "day" as unit
 
         return Date::getDateDifference($now, $date, Date::DATE_DIFFERENCE_UNIT_DAYS);
     }

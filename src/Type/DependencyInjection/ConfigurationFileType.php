@@ -54,9 +54,7 @@ class ConfigurationFileType extends BaseType
     {
         $fileExtension = strtolower(Miscellaneous::getFileExtension($fileName));
 
-        /*
-         * Oops, incorrect type/extension of configuration file
-         */
+        // Oops, incorrect type/extension of configuration file
         if (false === (new static())->isCorrectType($fileExtension)) {
             throw UnknownConfigurationFileTypeException::createException($fileExtension);
         }

@@ -20,6 +20,9 @@ use Meritoo\CommonBundle\Validator\Constraints\Date\LaterThanTodayValidator;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class LaterThanTodayValidatorTest extends BaseThanTodayValidatorTestCase
 {
@@ -48,7 +51,8 @@ class LaterThanTodayValidatorTest extends BaseThanTodayValidatorTestCase
     {
         $this
             ->validator
-            ->validate($value, static::getConstraint());
+            ->validate($value, static::getConstraint())
+        ;
 
         $this
             ->buildViolation('meritoo_common.date.later_than_today')
@@ -64,7 +68,8 @@ class LaterThanTodayValidatorTest extends BaseThanTodayValidatorTestCase
     {
         $this
             ->validator
-            ->validate($value, static::getConstraint());
+            ->validate($value, static::getConstraint())
+        ;
 
         $this
             ->buildViolation('meritoo_common.date.later_than_today')
@@ -80,7 +85,8 @@ class LaterThanTodayValidatorTest extends BaseThanTodayValidatorTestCase
     {
         $this
             ->validator
-            ->validate($value, static::getConstraint());
+            ->validate($value, static::getConstraint())
+        ;
 
         $this
             ->buildViolation('meritoo_common.date.later_than_today')
@@ -92,7 +98,8 @@ class LaterThanTodayValidatorTest extends BaseThanTodayValidatorTestCase
     {
         $this
             ->validator
-            ->validate(new \DateTime(), static::getConstraint());
+            ->validate(new \DateTime(), static::getConstraint())
+        ;
 
         $this
             ->buildViolation('meritoo_common.date.later_than_today')
@@ -108,7 +115,8 @@ class LaterThanTodayValidatorTest extends BaseThanTodayValidatorTestCase
     {
         $this
             ->validator
-            ->validate($value, static::getConstraint());
+            ->validate($value, static::getConstraint())
+        ;
 
         $this->assertNoViolation();
     }

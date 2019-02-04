@@ -75,16 +75,12 @@ class ApplicationService extends BaseService
      */
     private function getVersion(): Version
     {
-        /*
-         * Oops, unknown/empty path of a file who contains version
-         */
+        // Oops, unknown/empty path of a file who contains version
         if (empty($this->versionFilePath)) {
             throw EmptyVersionFilePathException::create();
         }
 
-        /*
-         * Oops, not readable/accessible file who contains version
-         */
+        // Oops, not readable/accessible file who contains version
         if (!is_readable($this->versionFilePath)) {
             throw UnreadableVersionFileException::create($this->versionFilePath);
         }

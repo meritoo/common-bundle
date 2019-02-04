@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Exception\Service;
 
-use Generator;
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Exception\Service\ApplicationService\UnreadableVersionFileException;
@@ -20,6 +19,9 @@ use Meritoo\CommonBundle\Exception\Service\ApplicationService\UnreadableVersionF
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class UnreadableVersionFileExceptionTest extends BaseTestCase
 {
@@ -45,9 +47,9 @@ class UnreadableVersionFileExceptionTest extends BaseTestCase
     /**
      * Provides path of a file and message of exception
      *
-     * @return Generator
+     * @return \Generator
      */
-    public function provideFilePathAndMessage(): Generator
+    public function provideFilePathAndMessage(): \Generator
     {
         $template = 'File %s, who contains version of the application, is not readable. Does the file exist?';
 

@@ -29,7 +29,7 @@ class UnknownConfigurationFileTypeException extends UnknownTypeException
      */
     public static function createException(string $unknownType): UnknownConfigurationFileTypeException
     {
-        /* @var UnknownConfigurationFileTypeException $exception */
+        /** @var UnknownConfigurationFileTypeException $exception */
         $exception = static::create($unknownType, new ConfigurationFileType(), 'Dependency Injection (DI) configuration file');
 
         return $exception;

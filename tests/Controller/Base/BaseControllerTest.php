@@ -20,9 +20,21 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class BaseControllerTest extends KernelTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+        static::bootKernel();
+    }
+
     public function testSimpleAction(): void
     {
         $controller = $this->getRealController();
@@ -42,7 +54,7 @@ class BaseControllerTest extends KernelTestCase
 
     public function testRedirectToReferer(): void
     {
-        /* @var RequestService $requestService */
+        /** @var RequestService $requestService */
         $requestService = static::$container->get(RequestService::class);
 
         $refererUrl = '/';
@@ -65,22 +77,13 @@ class BaseControllerTest extends KernelTestCase
     }
 
     /**
-     * {@inheritdoc}
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        static::bootKernel();
-    }
-
-    /**
      * Returns instance of RealController used for testing
      *
      * @return RealController
      */
     private function getRealController(): RealController
     {
-        /* @var RequestService $requestService */
+        /** @var RequestService $requestService */
         $requestService = static::$container->get(RequestService::class);
 
         /*

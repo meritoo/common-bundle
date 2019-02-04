@@ -18,9 +18,21 @@ use Meritoo\CommonBundle\Twig\FormExtension;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class FormExtensionTest extends BaseTwigExtensionTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+        static::bootKernel();
+    }
+
     public function testGetFunctions(): void
     {
         $functions = static::$container
@@ -75,14 +87,5 @@ class FormExtensionTest extends BaseTwigExtensionTestCase
     protected function getExtensionNamespace(): string
     {
         return FormExtension::class;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        static::bootKernel();
     }
 }

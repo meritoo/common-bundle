@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Type\DependencyInjection;
 
-use Generator;
 use Meritoo\Common\Test\Base\BaseTypeTestCase;
 use Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfigurationFileTypeException;
 use Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType;
@@ -20,6 +19,9 @@ use Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class ConfigurationFileTypeTest extends BaseTypeTestCase
 {
@@ -47,9 +49,9 @@ class ConfigurationFileTypeTest extends BaseTypeTestCase
     /**
      * Provides name and type of configuration file
      *
-     * @return Generator
+     * @return \Generator
      */
-    public function provideFileNameAndType(): Generator
+    public function provideFileNameAndType(): \Generator
     {
         yield[
             'example.yaml',
@@ -70,9 +72,9 @@ class ConfigurationFileTypeTest extends BaseTypeTestCase
     /**
      * Provides name of configuration file with unknown extension
      *
-     * @return Generator
+     * @return \Generator
      */
-    public function provideFileNameWithUnknownExtension(): Generator
+    public function provideFileNameWithUnknownExtension(): \Generator
     {
         yield[
             '',
@@ -98,27 +100,7 @@ class ConfigurationFileTypeTest extends BaseTypeTestCase
     /**
      * {@inheritdoc}
      */
-    protected function getAllExpectedTypes(): array
-    {
-        return [
-            'PHP'  => ConfigurationFileType::PHP,
-            'XML'  => ConfigurationFileType::XML,
-            'YAML' => ConfigurationFileType::YAML,
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getTestedTypeInstance(): ConfigurationFileType
-    {
-        return new ConfigurationFileType();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function provideTypeToVerify(): Generator
+    public function provideTypeToVerify(): \Generator
     {
         yield[
             '',
@@ -159,5 +141,25 @@ class ConfigurationFileTypeTest extends BaseTypeTestCase
             'yaml',
             true,
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getAllExpectedTypes(): array
+    {
+        return [
+            'PHP'  => ConfigurationFileType::PHP,
+            'XML'  => ConfigurationFileType::XML,
+            'YAML' => ConfigurationFileType::YAML,
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getTestedTypeInstance(): ConfigurationFileType
+    {
+        return new ConfigurationFileType();
     }
 }

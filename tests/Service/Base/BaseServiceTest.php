@@ -19,6 +19,9 @@ use Meritoo\Test\CommonBundle\Service\Base\BaseService\RealService;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class BaseServiceTest extends BaseTestCase
 {

@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Service;
 
-use Generator;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Service\FormService;
@@ -21,10 +20,22 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class FormServiceTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+        static::bootKernel();
+    }
 
     public function testConstructor(): void
     {
@@ -99,9 +110,9 @@ class FormServiceTest extends KernelTestCase
     /**
      * Provides existing form options while using default values
      *
-     * @return Generator
+     * @return \Generator
      */
-    public function provideExistingFormOptionsUsingDefaults(): Generator
+    public function provideExistingFormOptionsUsingDefaults(): \Generator
     {
         yield[
             [],
@@ -130,9 +141,9 @@ class FormServiceTest extends KernelTestCase
     /**
      * Provides existing form options while using values loaded from custom configuration
      *
-     * @return Generator
+     * @return \Generator
      */
-    public function provideExistingFormOptionsCustomConfiguration(): Generator
+    public function provideExistingFormOptionsCustomConfiguration(): \Generator
     {
         yield[
             [],
@@ -149,14 +160,5 @@ class FormServiceTest extends KernelTestCase
                 'option2' => 'value2',
             ],
         ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        static::bootKernel();
     }
 }
