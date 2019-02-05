@@ -6,7 +6,10 @@ $finder = PhpCsFixer\Finder::create()
      * - all DependencyInjection/Configuration classes: the Configuration.php files
      * - autoloader from /app directory: autoload.php
      */
-    ->notPath('/DependencyInjection\/Configuration\.php/')
+    ->notPath([
+        '/DependencyInjection\/Configuration\.php/',
+        '/tests\/Resources\/var/',
+    ])
     ->in([
         __DIR__ . '/src',
         __DIR__ . '/tests',
