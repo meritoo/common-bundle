@@ -22,7 +22,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Controller\Base\BaseController
  */
 class BaseControllerTest extends KernelTestCase
 {

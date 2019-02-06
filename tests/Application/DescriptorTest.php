@@ -22,7 +22,7 @@ use Meritoo\CommonBundle\Application\Descriptor;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Application\Descriptor
  */
 class DescriptorTest extends BaseTestCase
 {

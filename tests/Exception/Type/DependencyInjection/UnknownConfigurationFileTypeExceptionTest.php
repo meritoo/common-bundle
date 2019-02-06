@@ -21,7 +21,7 @@ use Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfiguration
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfigurationFileTypeException
  */
 class UnknownConfigurationFileTypeExceptionTest extends BaseTestCase
 {

@@ -21,7 +21,7 @@ use Meritoo\Test\CommonBundle\Service\Base\BaseService\RealService;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Service\Base\BaseService
  */
 class BaseServiceTest extends BaseTestCase
 {

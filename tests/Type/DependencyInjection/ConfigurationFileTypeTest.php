@@ -21,7 +21,7 @@ use Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType
  */
 class ConfigurationFileTypeTest extends BaseTypeTestCase
 {

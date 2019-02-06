@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Service\RequestService
  */
 class RequestServiceTest extends KernelTestCase
 {

@@ -17,6 +17,9 @@ use Meritoo\CommonBundle\DependencyInjection\Base\BaseExtension;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class Extension extends BaseExtension
 {

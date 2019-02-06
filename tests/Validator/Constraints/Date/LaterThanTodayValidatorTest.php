@@ -22,7 +22,7 @@ use Meritoo\CommonBundle\Validator\Constraints\Date\LaterThanTodayValidator;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Validator\Constraints\Date\LaterThanTodayValidator
  */
 class LaterThanTodayValidatorTest extends BaseThanTodayValidatorTestCase
 {

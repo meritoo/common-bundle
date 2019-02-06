@@ -21,7 +21,7 @@ use Twig\Error\RuntimeError;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Twig\ApplicationExtension
  */
 class ApplicationExtensionTest extends BaseTwigExtensionTestCase
 {

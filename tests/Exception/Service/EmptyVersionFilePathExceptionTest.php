@@ -21,7 +21,7 @@ use Meritoo\CommonBundle\Exception\Service\ApplicationService\EmptyVersionFilePa
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Exception\Service\ApplicationService\EmptyVersionFilePathException
  */
 class EmptyVersionFilePathExceptionTest extends BaseTestCase
 {

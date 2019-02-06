@@ -24,7 +24,7 @@ use Symfony\Component\Routing\RouterInterface;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Service\ResponseService
  */
 class ResponseServiceTest extends KernelTestCase
 {

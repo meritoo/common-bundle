@@ -23,7 +23,7 @@ use Twig\Extension\RuntimeExtensionInterface;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Twig\CommonRuntime
  */
 class CommonRuntimeTest extends KernelTestCase
 {

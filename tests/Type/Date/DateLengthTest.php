@@ -20,7 +20,7 @@ use Meritoo\CommonBundle\Type\Date\DateLength;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Type\Date\DateLength
  */
 class DateLengthTest extends BaseTypeTestCase
 {

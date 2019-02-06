@@ -24,7 +24,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Service\DateService
  */
 class DateServiceTest extends KernelTestCase
 {

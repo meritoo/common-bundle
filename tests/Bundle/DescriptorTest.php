@@ -24,7 +24,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Bundle\Descriptor
  */
 class DescriptorTest extends BaseTestCase
 {

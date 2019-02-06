@@ -17,6 +17,9 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class SimpleBundle extends Bundle
 {

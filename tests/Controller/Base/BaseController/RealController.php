@@ -19,6 +19,9 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @internal
+ * @coversNothing
  */
 class RealController extends BaseController
 {

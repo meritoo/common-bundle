@@ -20,7 +20,7 @@ use Meritoo\CommonBundle\Twig\CommonExtension;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Twig\CommonExtension
  */
 class CommonExtensionTest extends BaseTwigExtensionTestCase
 {

@@ -21,7 +21,7 @@ use Meritoo\CommonBundle\Exception\Service\ApplicationService\UnreadableVersionF
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Exception\Service\ApplicationService\UnreadableVersionFileException
  */
 class UnreadableVersionFileExceptionTest extends BaseTestCase
 {

@@ -20,7 +20,7 @@ use Meritoo\CommonBundle\Twig\FormExtension;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @coversNothing
+ * @covers \Meritoo\CommonBundle\Twig\FormExtension
  */
 class FormExtensionTest extends BaseTwigExtensionTestCase
 {
