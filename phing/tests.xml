@@ -47,7 +47,8 @@
                     check:cpd,
                     check:depend,
                     check:loc,
-                    check:phpstan"
+                    check:phpstan,
+                    check:coveralls"
     />
 
     <!-- Test target -->
@@ -103,6 +104,11 @@
     <!-- Run static analysis -->
     <target name="check:phpstan" depends="build:prepare">
         <exec command="${check.phpstan.command}" passthru="true"/>
+    </target>
+
+    <!-- Run analysis of code coverage -->
+    <target name="check:coveralls" depends="test:phpunit">
+        <exec command="${check.php_coveralls.command}" passthru="true"/>
     </target>
 
     <!-- PHPUnit tests -->
