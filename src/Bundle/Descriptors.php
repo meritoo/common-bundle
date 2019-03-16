@@ -17,7 +17,7 @@ use Meritoo\Common\Collection\Collection;
  * Collection used to store descriptors of all bundles.
  *
  * @author    Meritoo <github@meritoo.pl>
- * @copyright Meritoo.pl
+ * @copyright Meritoo <http://www.meritoo.pl>
  */
 class Descriptors extends Collection
 {

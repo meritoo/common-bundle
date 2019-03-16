@@ -19,7 +19,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * Descriptor of bundle
  *
  * @author    Meritoo <github@meritoo.pl>
- * @copyright Meritoo.pl
+ * @copyright Meritoo <http://www.meritoo.pl>
  */
 class Descriptor
 {
