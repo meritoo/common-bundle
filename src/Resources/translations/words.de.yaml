@@ -34,6 +34,10 @@ meritoo_common:
         price_amount: Betrag
         invitation: Einladung|Einladungen
         please: Bitte
+        all:
+            male: Jeder
+            female: Alles
+            neutral: Alles
     area:
         country: Land
         county: Bezirk

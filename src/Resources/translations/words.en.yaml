@@ -34,6 +34,10 @@ meritoo_common:
         price_amount: Amount
         invitation: Invitation|Invitations
         please: Please
+        all:
+            male: Everyone
+            female: All
+            neutral: Everything
     area:
         country: Country
         county: County

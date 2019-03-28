@@ -18,6 +18,11 @@ meritoo_common:
         filter: Filter
         search: Search
         show: Show
+        show_others: Show others
+        show_all:
+            male: Show everyone
+            female: Show all
+            neutral: Show everything
         buy: Buy
         sell: Sell
     authentication:
@@ -41,6 +46,8 @@ meritoo_common:
             up: Move up
             down: Move down
             anywhere: Move
+        back: Back
+        go_back: Go back
     menu:
         toggle_navigation: Toggle navigation
     web:
