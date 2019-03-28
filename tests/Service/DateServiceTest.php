@@ -24,7 +24,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Service\DateService
+ * @covers    \Meritoo\CommonBundle\Service\DateService
  */
 class DateServiceTest extends KernelTestCase
 {
@@ -36,15 +36,6 @@ class DateServiceTest extends KernelTestCase
      * @var string
      */
     private const TIMEZONE = 'Europe/London';
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        static::bootKernel();
-    }
 
     public function testConstructor(): void
     {
@@ -284,6 +275,7 @@ class DateServiceTest extends KernelTestCase
         $date1 = '1900-02-01 08:25:40';
         $date2 = '2000-10-15 10:05:40';
         $date3 = '2100-05-01';
+        $date4 = '2200-08-01T20:00:00Z';
 
         yield[
             new \DateTime($date1, new \DateTimeZone(static::TIMEZONE)),
@@ -301,6 +293,12 @@ class DateServiceTest extends KernelTestCase
             new \DateTime($date3, new \DateTimeZone(static::TIMEZONE)),
             DateLength::DATE,
             '01.05.2100',
+        ];
+
+        yield[
+            new \DateTime($date4, new \DateTimeZone(static::TIMEZONE)),
+            DateLength::DATE,
+            '01.08.2200',
         ];
 
         yield[
@@ -322,6 +320,12 @@ class DateServiceTest extends KernelTestCase
         ];
 
         yield[
+            new \DateTime($date4, new \DateTimeZone(static::TIMEZONE)),
+            DateLength::DATETIME,
+            '01.08.2200 20:00',
+        ];
+
+        yield[
             new \DateTime($date1, new \DateTimeZone(static::TIMEZONE)),
             DateLength::TIME,
             '08:25',
@@ -337,6 +341,12 @@ class DateServiceTest extends KernelTestCase
             new \DateTime($date3, new \DateTimeZone(static::TIMEZONE)),
             DateLength::TIME,
             '00:00',
+        ];
+
+        yield[
+            new \DateTime($date4, new \DateTimeZone(static::TIMEZONE)),
+            DateLength::TIME,
+            '20:00',
         ];
     }
 
@@ -558,5 +568,14 @@ class DateServiceTest extends KernelTestCase
             new \DateTime($dateString, new \DateTimeZone(static::TIMEZONE)),
             'February 1, 1900 at 8:25:40 AM',
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+        static::bootKernel();
     }
 }
