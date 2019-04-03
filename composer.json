@@ -14,7 +14,7 @@
         "ext-intl": "*",
         "ext-pcre": "*",
         "doctrine/annotations": "^1.6",
-        "meritoo/common-library": "^0.1.0",
+        "meritoo/common-library": "^1.0.0",
         "symfony/framework-bundle": "^3.4|^4.1",
         "symfony/validator": "^4.1",
         "twig/extensions": "^1.5"
