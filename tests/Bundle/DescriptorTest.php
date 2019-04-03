@@ -290,7 +290,7 @@ class DescriptorTest extends BaseTestCase
         static::assertSame($expected->getName(), $descriptor->getName());
         static::assertSame($expected->getConfigurationRootName(), $descriptor->getConfigurationRootName());
         static::assertSame($expected->getRootNamespace(), $descriptor->getRootNamespace());
-        static::assertContains($expected->getPath(), $descriptor->getPath());
+        static::assertStringContainsString($expected->getPath(), $descriptor->getPath());
         static::assertNull($descriptor->getChildBundleDescriptor());
         static::assertNull($descriptor->getParentBundleDescriptor());
     }
