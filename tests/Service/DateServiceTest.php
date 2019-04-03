@@ -260,18 +260,6 @@ class DateServiceTest extends KernelTestCase
         yield[
             '-1',
         ];
-
-        yield[
-            0,
-        ];
-
-        yield[
-            1,
-        ];
-
-        yield[
-            -1,
-        ];
     }
 
     /**
