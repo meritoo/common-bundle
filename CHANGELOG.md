@@ -10,6 +10,9 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 4. PHP Coding Standards Fixer > configuration > update & fix coding standard
 5. Implement [Psalm] (https://github.com/vimeo/psalm)
 6. Psalm > fix code
+7. Composer > meritoo/common-library package > bump version to 1.0.0 (related to PHP 7.2+)
+8. Composer > dev packages > bump versions (e.g. PHPUnit 8.0) Tests > make compatible with PHPUnit 8.0+
+9. Phing > remove old and unused tools
 
 # 0.1.22
 
