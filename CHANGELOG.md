@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.1.25
+
+1. PHPUnit > enable Symfony listener
+
 # 0.1.24
 
 1. Composer > meritoo/common-library package > bump version to 1.0.0 (related to PHP 7.2+)

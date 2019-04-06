@@ -32,9 +32,9 @@
         </whitelist>
     </filter>
 
-    <!--<listeners>-->
-    <!--<listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>-->
-    <!--</listeners>-->
+    <listeners>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
+    </listeners>
 
     <logging>
         <log type="coverage-html" target="build/reports/phpunit-coverage/html"/>
