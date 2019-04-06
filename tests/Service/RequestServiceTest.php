@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Service\RequestService
+ * @covers    \Meritoo\CommonBundle\Service\RequestService
  */
 class RequestServiceTest extends KernelTestCase
 {
@@ -50,12 +50,12 @@ class RequestServiceTest extends KernelTestCase
     }
 
     /**
-     * @param Request $request  The request (that probably contains referer)
-     * @param string  $expected Expected url of referer
+     * @param Request     $request  The request (that probably contains referer)
+     * @param null|string $expected Expected url of referer
      *
      * @dataProvider provideRequestAndRefererUrl
      */
-    public function testGetRefererUrl(Request $request, string $expected): void
+    public function testGetRefererUrl(Request $request, ?string $expected): void
     {
         $url = static::$container
             ->get(RequestService::class)
@@ -85,12 +85,12 @@ class RequestServiceTest extends KernelTestCase
     }
 
     /**
-     * @param Request $request  The request (that probably contains referer)
-     * @param string  $expected Expected url of referer
+     * @param Request     $request  The request (that probably contains referer)
+     * @param null|string $expected Expected url of referer
      *
-     * @dataProvider provideRequestAndRefererUrl
+     * @dataProvider provideRequestAndRefererUrlToStore
      */
-    public function storeRefererUrlFromRequest(Request $request, string $expected): void
+    public function testStoreRefererUrlFromRequest(Request $request, ?string $expected): void
     {
         static::$container
             ->get(RequestService::class)
@@ -160,6 +160,40 @@ class RequestServiceTest extends KernelTestCase
                 'HTTP_REFERER' => '',
             ]),
             '',
+        ];
+
+        yield[
+            new Request([], [], [], [], [], [
+                'HTTP_REFERER' => '/',
+            ]),
+            '/',
+        ];
+
+        yield[
+            new Request([], [], [], [], [], [
+                'HTTP_REFERER' => '/products/123',
+            ]),
+            '/products/123',
+        ];
+    }
+
+    /**
+     * Provide request and url of referer to store
+     *
+     * @return \Generator
+     */
+    public function provideRequestAndRefererUrlToStore(): \Generator
+    {
+        yield[
+            new Request(),
+            null,
+        ];
+
+        yield[
+            new Request([], [], [], [], [], [
+                'HTTP_REFERER' => '',
+            ]),
+            null,
         ];
 
         yield[
