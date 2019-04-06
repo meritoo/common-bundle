@@ -37,6 +37,15 @@ class DateServiceTest extends KernelTestCase
      */
     private const TIMEZONE = 'Europe/London';
 
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        static::bootKernel();
+    }
+
     public function testConstructor(): void
     {
         static::assertConstructorVisibilityAndArguments(
@@ -556,14 +565,5 @@ class DateServiceTest extends KernelTestCase
             new \DateTime($dateString, new \DateTimeZone(static::TIMEZONE)),
             'February 1, 1900 at 8:25:40 AM',
         ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-        static::bootKernel();
     }
 }
