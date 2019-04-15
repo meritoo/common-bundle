@@ -32,15 +32,6 @@ class ApplicationRuntimeTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-        static::bootKernel();
-    }
-
     public function testConstructor(): void
     {
         static::assertConstructorVisibilityAndArguments(
@@ -85,5 +76,14 @@ class ApplicationRuntimeTest extends KernelTestCase
             ->get(ApplicationRuntime::class)
             ->getDescriptor()
         ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        static::bootKernel();
     }
 }

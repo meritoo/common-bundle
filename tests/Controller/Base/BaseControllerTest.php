@@ -26,15 +26,6 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  */
 class BaseControllerTest extends KernelTestCase
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-        static::bootKernel();
-    }
-
     public function testSimpleAction(): void
     {
         $controller = $this->getRealController();
@@ -74,6 +65,15 @@ class BaseControllerTest extends KernelTestCase
 
         static::assertSame(302, $response->getStatusCode());
         static::assertSame('/test/index', $response->getTargetUrl());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        static::bootKernel();
     }
 
     /**

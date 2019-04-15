@@ -29,15 +29,6 @@ class CommonRuntimeTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-        static::bootKernel();
-    }
-
     public function testConstructor(): void
     {
         static::assertConstructorVisibilityAndArguments(
@@ -297,5 +288,14 @@ class CommonRuntimeTest extends KernelTestCase
             '---',
             $instance,
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        static::bootKernel();
     }
 }

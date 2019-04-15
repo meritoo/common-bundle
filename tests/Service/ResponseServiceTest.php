@@ -30,15 +30,6 @@ class ResponseServiceTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-        static::bootKernel();
-    }
-
     public function testConstructor(): void
     {
         static::assertConstructorVisibilityAndArguments(
@@ -98,6 +89,15 @@ class ResponseServiceTest extends KernelTestCase
             '/products/1/sort/name',
             new RedirectResponse('/products/1/sort/name'),
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        static::bootKernel();
     }
 
     /**

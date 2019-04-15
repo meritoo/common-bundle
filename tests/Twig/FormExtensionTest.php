@@ -24,15 +24,6 @@ use Meritoo\CommonBundle\Twig\FormExtension;
  */
 class FormExtensionTest extends BaseTwigExtensionTestCase
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-        static::bootKernel();
-    }
-
     public function testGetFunctions(): void
     {
         $functions = static::$container
@@ -79,6 +70,15 @@ class FormExtensionTest extends BaseTwigExtensionTestCase
         ;
 
         static::assertRegExp('/bool\(true\)/', $rendered);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        static::bootKernel();
     }
 
     /**

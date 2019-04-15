@@ -28,15 +28,6 @@ class FormServiceTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-        static::bootKernel();
-    }
-
     public function testConstructor(): void
     {
         static::assertConstructorVisibilityAndArguments(
@@ -160,5 +151,14 @@ class FormServiceTest extends KernelTestCase
                 'option2' => 'value2',
             ],
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        static::bootKernel();
     }
 }

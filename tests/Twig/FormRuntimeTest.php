@@ -29,15 +29,6 @@ class FormRuntimeTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-        static::bootKernel();
-    }
-
     public function testConstructor(): void
     {
         static::assertConstructorVisibilityAndArguments(
@@ -62,5 +53,14 @@ class FormRuntimeTest extends KernelTestCase
         ;
 
         static::assertFalse($enabled);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        static::bootKernel();
     }
 }
