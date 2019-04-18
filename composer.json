@@ -6,7 +6,8 @@
     "authors": [
         {
             "name": "Meritoo.pl",
-            "email": "github@meritoo.pl"
+            "email": "github@meritoo.pl",
+            "homepage": "http://www.meritoo.pl"
         }
     ],
     "require": {
