@@ -27,17 +27,18 @@ Returns descriptor of application, instance of `Meritoo\CommonBundle\Application
 # More
 
 1. [Configuration](../Configuration.md)
-2. [Descriptor of application](../Descriptor-of-application.md)
-3. [Descriptor of bundle](../Descriptor-of-bundle.md)
-4. [Descriptors of bundles](../Descriptors-of-bundles.md)
-5. Services:
+2. [Dependency Injection Extension](../Dependency-Injection-Extension.md)
+3. [Descriptor of application](../Descriptor-of-application.md)
+4. [Descriptor of bundle](../Descriptor-of-bundle.md)
+5. [Descriptors of bundles](../Descriptors-of-bundles.md)
+6. Services:
     - [**ApplicationService**](ApplicationService.md)
     - [DateService](DateService.md)
     - [FormService](FormService.md)
     - [ResponseService](ResponseService.md)
-6. [Tests](../Tests.md)
-7. [Translations](../Translations.md)
-8. Twig extensions:
+7. [Tests](../Tests.md)
+8. [Translations](../Translations.md)
+9. Twig extensions:
     - [ApplicationExtension](../Twig-Extensions/ApplicationExtension.md)
     - [CommonExtension](../Twig-Extensions/CommonExtension.md)
     - [FormExtension](../Twig-Extensions/FormExtension.md)

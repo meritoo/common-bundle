@@ -33,16 +33,18 @@ meritoo_common:
 
 # Usage
 
-1. [Descriptor of application](docs/Descriptor-of-application.md)
-2. [Descriptor of bundle](docs/Descriptor-of-bundle.md)
-3. [Descriptors of bundles](docs/Descriptors-of-bundles.md)
-4. Services:
+1. [Configuration](docs/Configuration.md)
+2. [Dependency Injection Extension](docs/Dependency-Injection-Extension.md)
+3. [Descriptor of application](docs/Descriptor-of-application.md)
+4. [Descriptor of bundle](docs/Descriptor-of-bundle.md)
+5. [Descriptors of bundles](docs/Descriptors-of-bundles.md)
+6. Services:
     - [ApplicationService](docs/Services/ApplicationService.md)
     - [FormService](docs/Services/FormService.md)
     - [ResponseService](docs/Services/ResponseService.md)
-5. [Tests](docs/Tests.md)
-6. [Translations](docs/Translations.md)
-7. Twig extensions:
+7. [Tests](docs/Tests.md)
+8. [Translations](docs/Translations.md)
+9. Twig extensions:
     - [ApplicationExtension](docs/Twig-Extensions/ApplicationExtension.md)
     - [CommonExtension](docs/Twig-Extensions/CommonExtension.md)
     - [FormExtension](docs/Twig-Extensions/FormExtension.md)

@@ -4,49 +4,6 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 # Configuration
 
-### Introduction
-
-Configuration parameters are loaded by `Meritoo\CommonBundle\DependencyInjection\Configuration` class that implements `Symfony\Component\Config\Definition\ConfigurationInterface` and uses `Symfony\Component\Config\Definition\Builder\TreeBuilder` to build structure of configuration parameters.
-
-If the Dependency Injection extension class extends `Meritoo\CommonBundle\DependencyInjection\Base\BaseExtension` class, each parameter is automatically loaded into container with name based on nodes from structure of configuration separated by `.`.
-
-Name of root node: `meritoo_common`.
-
-### Example
-
-```php
-// A piece of getConfigTreeBuilder() method from Configuration class
-$rootNode = $treeBuilder->root('my_main_node');
-
-$rootNode
-    ->addDefaultsIfNotSet()
-    ->children()
-        ->arrayNode('lorem')
-            ->addDefaultsIfNotSet()
-            ->children()
-                ->scalarNode('ipsum')
-                    ->defaultValue(1234)
-                    ->cannotBeEmpty()
-                ->end()
-            ->end()
-        ->end()
-        ->scalarNode('dolor')
-            ->defaultValue('')
-        ->end()
-        ->scalarNode('sit')
-        ->end()
-    ->end()
-;
-```
-
-```yaml
-# Parameters loaded into container (with values based on defaults)
-
-my_main_node.lorem.ipsum # Value: 1234
-my_main_node.dolor       # Value: ""
-my_main_node.sit         # Value: null
-```
-
 ### All parameters of this bundle with default values
 
 ```yaml
@@ -59,6 +16,11 @@ meritoo_common:
         empty_value_replacement: '-'
     form:
         novalidate: false
+    date:
+        format:
+            date: d.m.Y
+            datetime: d.m.Y H:i
+            time: H:i
 ```
 
 ### Available parameters
@@ -93,20 +55,39 @@ meritoo_common:
     
     Default value: `false`
 
+* meritoo_common.date.format.date
+
+    > Format of date without time
+    
+    Default value: `d.m.Y`
+
+* meritoo_common.date.format.datetime
+
+    > Format of date with time
+    
+    Default value: `d.m.Y H:i`
+
+* meritoo_common.date.format.time
+
+    > Format of time without date
+    
+    Default value: `H:i`
+
 # More
 
 1. [**Configuration**](Configuration.md)
-2. [Descriptor of application](Descriptor-of-application.md)
-3. [Descriptor of bundle](Descriptor-of-bundle.md)
-4. [Descriptors of bundles](Descriptors-of-bundles.md)
-5. Services:
+2. [Dependency Injection Extension](Dependency-Injection-Extension.md)
+3. [Descriptor of application](Descriptor-of-application.md)
+4. [Descriptor of bundle](Descriptor-of-bundle.md)
+5. [Descriptors of bundles](Descriptors-of-bundles.md)
+6. Services:
     - [ApplicationService](Services/ApplicationService.md)
     - [DateService](Services/DateService.md)
     - [FormService](Services/FormService.md)
     - [ResponseService](Services/ResponseService.md)
-6. [Tests](Tests.md)
-7. [Translations](Translations.md)
-8. Twig extensions:
+7. [Tests](Tests.md)
+8. [Translations](Translations.md)
+9. Twig extensions:
     - [ApplicationExtension](Twig-Extensions/ApplicationExtension.md)
     - [CommonExtension](Twig-Extensions/CommonExtension.md)
     - [FormExtension](Twig-Extensions/FormExtension.md)
