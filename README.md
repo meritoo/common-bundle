@@ -37,15 +37,15 @@ meritoo_common:
 2. [Descriptor of bundle](docs/Descriptor-of-bundle.md)
 3. [Descriptors of bundles](docs/Descriptors-of-bundles.md)
 4. Services:
-	- [ApplicationService](docs/Services/ApplicationService.md)
-	- [FormService](docs/Services/FormService.md)
-	- [ResponseService](docs/Services/ResponseService.md)
+    - [ApplicationService](docs/Services/ApplicationService.md)
+    - [FormService](docs/Services/FormService.md)
+    - [ResponseService](docs/Services/ResponseService.md)
 5. [Tests](docs/Tests.md)
 6. [Translations](docs/Translations.md)
 7. Twig extensions:
-	- [ApplicationExtension](docs/Twig-Extensions/ApplicationExtension.md)
-	- [CommonExtension](docs/Twig-Extensions/CommonExtension.md)
-	- [FormExtension](docs/Twig-Extensions/FormExtension.md)
+    - [ApplicationExtension](docs/Twig-Extensions/ApplicationExtension.md)
+    - [CommonExtension](docs/Twig-Extensions/CommonExtension.md)
+    - [FormExtension](docs/Twig-Extensions/FormExtension.md)
 
 # Development
 

@@ -17,9 +17,9 @@ Development-related information
 
 2. Rebuild project by running command (installs packages, prepares required directories and runs tests):
 
-	```bash
-	docker-compose exec php phing
-	```
+    ```bash
+    docker-compose exec php phing
+    ```
 
 > [What is Docker?](https://www.docker.com/what-docker)
 
