@@ -10,10 +10,10 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Twig;
 
-use Twig\Extension\RuntimeExtensionInterface;
 use function count;
 use function is_iterable;
 use function is_string;
+use Twig\Extension\RuntimeExtensionInterface;
 
 /**
  * Runtime class related to CommonExtension Twig Extension.

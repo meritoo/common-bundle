@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\DependencyInjection\Base;
 
+use function is_array;
 use Meritoo\Common\Utilities\Arrays;
 use Meritoo\Common\Utilities\Miscellaneous;
 use Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType;
@@ -21,7 +22,6 @@ use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
-use function is_array;
 
 /**
  * Base Dependency Injection (DI) extension
