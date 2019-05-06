@@ -21,6 +21,7 @@ use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
+use function is_array;
 
 /**
  * Base Dependency Injection (DI) extension
@@ -196,10 +197,7 @@ abstract class BaseExtension extends ConfigurableExtension
     {
         $bundlePath = $this->getBundleDirectoryPath();
 
-        /*
-         * Unknown path of bundle?
-         * Nothing to do
-         */
+        // Unknown path of bundle? Nothing to do
         if (empty($bundlePath)) {
             return $this;
         }
@@ -224,10 +222,7 @@ abstract class BaseExtension extends ConfigurableExtension
             $fileName,
         ]);
 
-        /*
-         * Configuration file doesn't exist or is not readable?
-         * Nothing to do
-         */
+        // Configuration file doesn't exist or is not readable? Nothing to do
         if (!is_readable($filePath)) {
             return $this;
         }
@@ -284,10 +279,7 @@ abstract class BaseExtension extends ConfigurableExtension
      */
     private function loadParameters(array $mergedConfig, ContainerBuilder $container): BaseExtension
     {
-        /*
-         * No configuration?
-         * Nothing to do
-         */
+        // No configuration? Nothing to do
         if (empty($mergedConfig)) {
             return $this;
         }
@@ -316,7 +308,7 @@ abstract class BaseExtension extends ConfigurableExtension
 
         if (!empty($parameters)) {
             foreach ($parameters as $name => $value) {
-                if (!\is_array($value)) {
+                if (!is_array($value)) {
                     $value = Miscellaneous::trimSmart($value);
                 }
 

@@ -11,6 +11,9 @@ declare(strict_types=1);
 namespace Meritoo\CommonBundle\Twig;
 
 use Twig\Extension\RuntimeExtensionInterface;
+use function count;
+use function is_iterable;
+use function is_string;
 
 /**
  * Runtime class related to CommonExtension Twig Extension.
@@ -53,26 +56,17 @@ class CommonRuntime implements RuntimeExtensionInterface
         $isEmptyIterable = false;
         $isEmptyString = false;
 
-        /*
-         * It's not null?
-         * Let's verify if it's empty iterable
-         */
-        if (!$isNull && \is_iterable($value)) {
-            $isEmptyIterable = 0 === \count($value);
+        // It's not null? Let's verify if it's empty iterable
+        if (!$isNull && is_iterable($value)) {
+            $isEmptyIterable = 0 === count($value);
         }
 
-        /*
-         * It's iterable, but not empty?
-         * Let's verify if it's empty string
-         */
+        // It's iterable, but not empty? Let's verify if it's empty string
         if (!$isEmptyIterable) {
-            $isEmptyString = \is_string($value) && '' === $value;
+            $isEmptyString = is_string($value) && '' === $value;
         }
 
-        /*
-         * Value is empty?
-         * Let's return the replacement of empty value
-         */
+        // Value is empty? Let's return the replacement of empty value
         if ($isNull || $isEmptyIterable || $isEmptyString) {
             if (null === $emptyValueReplacement) {
                 $emptyValueReplacement = $this->emptyValueReplacement;

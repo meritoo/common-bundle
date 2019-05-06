@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Meritoo\CommonBundle\Exception\Controller\BaseController;
 
 use Meritoo\CommonBundle\Service\RequestService;
+use RuntimeException;
 
 /**
  * An exception used while redirection to url of referer cannot be done, because this url is empty
@@ -18,7 +19,7 @@ use Meritoo\CommonBundle\Service\RequestService;
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
  */
-class CannotRedirectToEmptyRefererUrlException extends \RuntimeException
+class CannotRedirectToEmptyRefererUrlException extends RuntimeException
 {
     /**
      * Creates exception

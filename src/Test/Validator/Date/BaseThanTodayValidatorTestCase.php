@@ -10,6 +10,9 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Test\Validator\Date;
 
+use DateInterval;
+use DateTime;
+use Generator;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
 /**
@@ -23,112 +26,112 @@ abstract class BaseThanTodayValidatorTestCase extends ConstraintValidatorTestCas
     /**
      * Provides not whole day earlier date
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideNotWholeDayEarlierDate(): \Generator
+    public function provideNotWholeDayEarlierDate(): Generator
     {
         yield[
-            (new \DateTime())->sub(new \DateInterval('PT1M')),
+            (new DateTime())->sub(new DateInterval('PT1M')),
         ];
 
         yield[
-            (new \DateTime())->sub(new \DateInterval('PT10M')),
+            (new DateTime())->sub(new DateInterval('PT10M')),
         ];
 
         yield[
-            (new \DateTime())->sub(new \DateInterval('PT1S')),
+            (new DateTime())->sub(new DateInterval('PT1S')),
         ];
 
         yield[
-            (new \DateTime())->sub(new \DateInterval('PT10S')),
+            (new DateTime())->sub(new DateInterval('PT10S')),
         ];
     }
 
     /**
      * Provides earlier date
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideEarlierDate(): \Generator
+    public function provideEarlierDate(): Generator
     {
         yield[
-            (new \DateTime())->sub(new \DateInterval('P1W')),
+            (new DateTime())->sub(new DateInterval('P1W')),
         ];
 
         yield[
-            (new \DateTime())->sub(new \DateInterval('P10W')),
+            (new DateTime())->sub(new DateInterval('P10W')),
         ];
 
         yield[
-            (new \DateTime())->sub(new \DateInterval('P1M')),
+            (new DateTime())->sub(new DateInterval('P1M')),
         ];
 
         yield[
-            (new \DateTime())->sub(new \DateInterval('P10M')),
+            (new DateTime())->sub(new DateInterval('P10M')),
         ];
 
         yield[
-            (new \DateTime())->sub(new \DateInterval('P1D')),
+            (new DateTime())->sub(new DateInterval('P1D')),
         ];
 
         yield[
-            (new \DateTime())->sub(new \DateInterval('P10D')),
+            (new DateTime())->sub(new DateInterval('P10D')),
         ];
     }
 
     /**
      * Provides not whole day later date
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideNotWholeDayLaterDate(): \Generator
+    public function provideNotWholeDayLaterDate(): Generator
     {
         yield[
-            (new \DateTime())->add(new \DateInterval('PT1M')),
+            (new DateTime())->add(new DateInterval('PT1M')),
         ];
 
         yield[
-            (new \DateTime())->add(new \DateInterval('PT10M')),
+            (new DateTime())->add(new DateInterval('PT10M')),
         ];
 
         yield[
-            (new \DateTime())->add(new \DateInterval('PT1S')),
+            (new DateTime())->add(new DateInterval('PT1S')),
         ];
 
         yield[
-            (new \DateTime())->add(new \DateInterval('PT10S')),
+            (new DateTime())->add(new DateInterval('PT10S')),
         ];
     }
 
     /**
      * Provides later date
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideLaterDate(): \Generator
+    public function provideLaterDate(): Generator
     {
         yield[
-            (new \DateTime())->add(new \DateInterval('P1W')),
+            (new DateTime())->add(new DateInterval('P1W')),
         ];
 
         yield[
-            (new \DateTime())->add(new \DateInterval('P10W')),
+            (new DateTime())->add(new DateInterval('P10W')),
         ];
 
         yield[
-            (new \DateTime())->add(new \DateInterval('P1M')),
+            (new DateTime())->add(new DateInterval('P1M')),
         ];
 
         yield[
-            (new \DateTime())->add(new \DateInterval('P10M')),
+            (new DateTime())->add(new DateInterval('P10M')),
         ];
 
         yield[
-            (new \DateTime())->add(new \DateInterval('P1D')),
+            (new DateTime())->add(new DateInterval('P1D')),
         ];
 
         yield[
-            (new \DateTime())->add(new \DateInterval('P10D')),
+            (new DateTime())->add(new DateInterval('P10D')),
         ];
     }
 }

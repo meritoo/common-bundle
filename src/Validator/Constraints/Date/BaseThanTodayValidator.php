@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Validator\Constraints\Date;
 
+use DateTime;
 use Meritoo\Common\Utilities\Date;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -65,11 +66,11 @@ abstract class BaseThanTodayValidator extends ConstraintValidator
     private function getDifference($value): ?int
     {
         // Let's prepare the dates...
-        $now = (new \DateTime())->setTime(0, 0);
+        $now = (new DateTime())->setTime(0, 0);
         $date = Date::getDateTime($value);
 
         // ...and make comparison with "day" as unit
-        if ($date instanceof \DateTime) {
+        if ($date instanceof DateTime) {
             return Date::getDateDifference($now, $date, Date::DATE_DIFFERENCE_UNIT_DAYS);
         }
 

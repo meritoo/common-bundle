@@ -10,6 +10,9 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Service;
 
+use DateTimeInterface;
+use Exception;
+use IntlDateFormatter;
 use Meritoo\CommonBundle\Exception\Type\Date\UnknownDateLengthException;
 use Meritoo\CommonBundle\Service\Base\BaseService;
 use Meritoo\CommonBundle\Type\Date\DateLength;
@@ -94,11 +97,11 @@ class DateService extends BaseService
     /**
      * Returns date formatted according to given length of date
      *
-     * @param \DateTimeInterface $dateTime   The date to format
+     * @param DateTimeInterface $dateTime   The date to format
      * @param string             $dateLength Type of date length. One of the DateLength's class constants.
      * @return string
      */
-    public function formatDate(\DateTimeInterface $dateTime, string $dateLength): string
+    public function formatDate(DateTimeInterface $dateTime, string $dateLength): string
     {
         $format = $this->getFormat($dateLength);
 
@@ -114,18 +117,18 @@ class DateService extends BaseService
      * @param int                $timeType Type/length of time part in the returned string. One of constants of the
      *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::MEDIUM.
      * @param string             $locale   Locale used to format given date
-     * @param \DateTimeInterface $dateTime The date to format
-     * @throws \Exception
+     * @param DateTimeInterface $dateTime The date to format
+     * @throws Exception
      * @return string
      */
     public function formatDateUsingLocale(
         int $dateType,
         int $timeType,
         string $locale,
-        \DateTimeInterface $dateTime
+        DateTimeInterface $dateTime
     ): string {
         $timestamp = $dateTime->getTimestamp();
-        $formatter = new \IntlDateFormatter($locale, $dateType, $timeType);
+        $formatter = new IntlDateFormatter($locale, $dateType, $timeType);
 
         return $formatter->format($timestamp);
     }

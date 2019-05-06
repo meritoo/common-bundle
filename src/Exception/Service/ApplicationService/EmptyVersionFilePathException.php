@@ -10,13 +10,15 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Exception\Service\ApplicationService;
 
+use RuntimeException;
+
 /**
  * An exception used while path of a file, who contains version of the application, is empty
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
  */
-class EmptyVersionFilePathException extends \RuntimeException
+class EmptyVersionFilePathException extends RuntimeException
 {
     /**
      * Creates exception
