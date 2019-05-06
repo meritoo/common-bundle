@@ -24,7 +24,7 @@ class FormExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
-    public function getFunctions(): array
+    public function getFunctions()
     {
         $functions = [
             1 => [

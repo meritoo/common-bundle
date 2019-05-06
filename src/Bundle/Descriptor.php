@@ -111,6 +111,7 @@ class Descriptor
         $this->parentBundleDescriptor = $parentBundleDescriptor;
         $this->childBundleDescriptor = $childBundleDescriptor;
 
+        $this->shortName = '';
         $this->dataFixtures = new Collection();
     }
 
@@ -351,12 +352,15 @@ class Descriptor
         ];
 
         if ($withParentAndChild) {
-            if (null !== $this->getParentBundleDescriptor()) {
-                $array['parentBundleDescriptor'] = $this->getParentBundleDescriptor()->toArray(false);
+            $parentDescriptor = $this->getParentBundleDescriptor();
+            $childDescriptor = $this->getChildBundleDescriptor();
+
+            if (null !== $parentDescriptor) {
+                $array['parentBundleDescriptor'] = $parentDescriptor->toArray(false);
             }
 
-            if (null !== $this->getChildBundleDescriptor()) {
-                $array['childBundleDescriptor'] = $this->getChildBundleDescriptor()->toArray(false);
+            if (null !== $childDescriptor) {
+                $array['childBundleDescriptor'] = $childDescriptor->toArray(false);
             }
         }
 

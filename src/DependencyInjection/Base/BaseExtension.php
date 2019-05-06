@@ -214,8 +214,15 @@ abstract class BaseExtension extends ConfigurableExtension
             $fileName = Miscellaneous::includeFileExtension($fileName, static::CONFIGURATION_DEFAULT_EXTENSION);
         }
 
-        $resourcesPath = Miscellaneous::concatenatePaths($bundlePath, static::CONFIGURATION_PATH);
-        $filePath = Miscellaneous::concatenatePaths($resourcesPath, $fileName);
+        $resourcesPath = Miscellaneous::concatenatePaths([
+            $bundlePath,
+            static::CONFIGURATION_PATH,
+        ]);
+
+        $filePath = Miscellaneous::concatenatePaths([
+            $resourcesPath,
+            $fileName,
+        ]);
 
         /*
          * Configuration file doesn't exist or is not readable?
@@ -307,14 +314,16 @@ abstract class BaseExtension extends ConfigurableExtension
             ->getName()
         ;
 
-        foreach ($parameters as $name => $value) {
-            if (!\is_array($value)) {
-                $value = Miscellaneous::trimSmart($value);
-            }
+        if (!empty($parameters)) {
+            foreach ($parameters as $name => $value) {
+                if (!\is_array($value)) {
+                    $value = Miscellaneous::trimSmart($value);
+                }
 
-            // Loading parameter into container, prefixed by slug of bundle's name
-            $prefixedName = sprintf('%s.%s', $bundleShortName, $name);
-            $container->setParameter($prefixedName, $value); // e.g. simple_bundle.foo.bar.something => 'my-value'
+                // Loading parameter into container, prefixed by slug of bundle's name
+                $prefixedName = sprintf('%s.%s', $bundleShortName, $name);
+                $container->setParameter($prefixedName, $value); // e.g. simple_bundle.foo.bar.something => 'my-value'
+            }
         }
 
         return $this;
