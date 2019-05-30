@@ -21,7 +21,7 @@ use Meritoo\CommonBundle\Type\Date\DateLength;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Type\Date\DateLength
+ * @covers    \Meritoo\CommonBundle\Type\Date\DateLength
  */
 class DateLengthTest extends BaseTypeTestCase
 {
@@ -31,37 +31,37 @@ class DateLengthTest extends BaseTypeTestCase
     public function provideTypeToVerify(): \Generator
     {
         yield[
-            '',
+            DateLength::isCorrectType(''),
             false,
         ];
 
         yield[
-            null,
+            DateLength::isCorrectType(null),
             false,
         ];
 
         yield[
-            0,
+            DateLength::isCorrectType('0'),
             false,
         ];
 
         yield[
-            1,
+            DateLength::isCorrectType('1'),
             false,
         ];
 
         yield[
-            'date',
+            DateLength::isCorrectType('date'),
             true,
         ];
 
         yield[
-            'datetime',
+            DateLength::isCorrectType('datetime'),
             true,
         ];
 
         yield[
-            'time',
+            DateLength::isCorrectType('time'),
             true,
         ];
     }

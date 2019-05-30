@@ -22,7 +22,7 @@ use Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType
+ * @covers    \Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType
  */
 class ConfigurationFileTypeTest extends BaseTypeTestCase
 {
@@ -104,42 +104,42 @@ class ConfigurationFileTypeTest extends BaseTypeTestCase
     public function provideTypeToVerify(): \Generator
     {
         yield[
-            '',
+            ConfigurationFileType::isCorrectType(''),
             false,
         ];
 
         yield[
-            null,
+            ConfigurationFileType::isCorrectType(null),
             false,
         ];
 
         yield[
-            0,
+            ConfigurationFileType::isCorrectType('0'),
             false,
         ];
 
         yield[
-            1,
+            ConfigurationFileType::isCorrectType('1'),
             false,
         ];
 
         yield[
-            'jpg',
+            ConfigurationFileType::isCorrectType('jpg'),
             false,
         ];
 
         yield[
-            'php',
+            ConfigurationFileType::isCorrectType('php'),
             true,
         ];
 
         yield[
-            'xml',
+            ConfigurationFileType::isCorrectType('xml'),
             true,
         ];
 
         yield[
-            'yaml',
+            ConfigurationFileType::isCorrectType('yaml'),
             true,
         ];
     }
