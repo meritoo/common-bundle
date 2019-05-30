@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Meritoo\Test\CommonBundle\Type\DependencyInjection;
 
 use Meritoo\Common\Test\Base\BaseTypeTestCase;
+use Meritoo\Common\Type\Base\BaseType;
 use Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfigurationFileTypeException;
 use Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType;
 
@@ -158,7 +159,7 @@ class ConfigurationFileTypeTest extends BaseTypeTestCase
     /**
      * {@inheritdoc}
      */
-    protected function getTestedTypeInstance(): ConfigurationFileType
+    protected function getTestedTypeInstance(): BaseType
     {
         return new ConfigurationFileType();
     }

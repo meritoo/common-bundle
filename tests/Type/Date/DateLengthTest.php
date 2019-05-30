@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Meritoo\Test\CommonBundle\Type\Date;
 
 use Meritoo\Common\Test\Base\BaseTypeTestCase;
+use Meritoo\Common\Type\Base\BaseType;
 use Meritoo\CommonBundle\Type\Date\DateLength;
 
 /**
@@ -80,7 +81,7 @@ class DateLengthTest extends BaseTypeTestCase
     /**
      * {@inheritdoc}
      */
-    protected function getTestedTypeInstance(): DateLength
+    protected function getTestedTypeInstance(): BaseType
     {
         return new DateLength();
     }
