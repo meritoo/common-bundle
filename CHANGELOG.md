@@ -10,6 +10,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 4. Docker > use images (instead of Dockerfiles)
 5. composer > squizlabs/php_codesniffer package > use ^3.4 (instead of ^2.9)
 6. Do not require ext-intl, because is required by meritoo/common-library package
+7. Update Kernel used by tests
 
 # 0.1.24
 
