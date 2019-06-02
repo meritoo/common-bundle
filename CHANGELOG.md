@@ -6,6 +6,10 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 1. PHPUnit > enable Symfony listener
 2. Phing > tests > add task for Psalm (https://psalm.dev)
+3. Readme > review and fix "unknown" badges
+4. Docker > use images (instead of Dockerfiles)
+5. composer > squizlabs/php_codesniffer package > use ^3.4 (instead of ^2.9)
+6. Do not require ext-intl, because is required by meritoo/common-library package
 
 # 0.1.24
 
