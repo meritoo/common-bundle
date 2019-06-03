@@ -64,6 +64,17 @@ abstract class BaseExtension extends ConfigurableExtension
     }
 
     /**
+     * Returns name of configuration file with services, e.g. "services.yaml", "services.xml", "services.php".
+     * Extensions are defined in Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType class.
+     *
+     * @return string
+     */
+    protected function getServicesFileName(): string
+    {
+        return sprintf('%s.%s', static::CONFIGURATION_SERVICES_NAME, static::CONFIGURATION_DEFAULT_EXTENSION);
+    }
+
+    /**
      * Returns path of directory where the bundle exists.
      * It's required to load services from bundle's configuration file.
      *
@@ -74,17 +85,6 @@ abstract class BaseExtension extends ConfigurableExtension
      * @return string
      */
     abstract protected function getBundleDirectoryPath(): string;
-
-    /**
-     * Returns name of configuration file with services, e.g. "services.yaml", "services.xml", "services.php".
-     * Extensions are defined in Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType class.
-     *
-     * @return string
-     */
-    protected function getServicesFileName(): string
-    {
-        return sprintf('%s.%s', static::CONFIGURATION_SERVICES_NAME, static::CONFIGURATION_DEFAULT_EXTENSION);
-    }
 
     /**
      * Returns patterns of keys or paths from configuration that should match to stop loading parameters
@@ -141,39 +141,6 @@ abstract class BaseExtension extends ConfigurableExtension
     }
 
     /**
-     * Returns global patterns of keys or paths from configuration that should match to stop loading parameters
-     *
-     * @return array
-     * @see getKeysToStopLoadingParametersOn() method in this class
-     */
-    private function getGlobalKeysToStopLoadingParametersOn(): array
-    {
-        return [
-            /*
-             * I have to always stop on integer-based keys, the 0-based keys.
-             * It's required to proper retrieve / get values that are treated like an array.
-             *
-             * Example:
-             * -> config.yml
-             * parameter:
-             *      sub-parameter: [value1, value2, value3]
-             *
-             * -> processed array
-             * [
-             *      'parameter' => [
-             *          'sub-parameter' => [        <------ 0-based indexes
-             *              'value1',
-             *              'value2',
-             *              'value3'
-             *          ]
-             *      ]
-             * ];
-             */
-            '\d+',
-        ];
-    }
-
-    /**
      * Loads services from configuration file (located in bundle's resources)
      *
      * @param ContainerBuilder $container Container for the Dependency Injection (DI)
@@ -185,6 +152,25 @@ abstract class BaseExtension extends ConfigurableExtension
         $servicesWithExtension = $this->verifyServicesFileExtension($services);
 
         return $this->loadConfigurationFile($container, $servicesWithExtension);
+    }
+
+    /**
+     * Verifies if given services' configuration file has extension. If not, the default extension of configuration
+     * files will be used (".yaml" extension).
+     *
+     * @param string $fileName Name of the configuration file
+     * @return string
+     */
+    private function verifyServicesFileExtension(string $fileName): string
+    {
+        $fileExtension = Miscellaneous::getFileExtension($fileName);
+
+        // Use the default extension, if extension of the configuration file is unknown
+        if (empty($fileExtension)) {
+            $fileName = Miscellaneous::includeFileExtension($fileName, static::CONFIGURATION_DEFAULT_EXTENSION);
+        }
+
+        return $fileName;
     }
 
     /**
@@ -230,25 +216,6 @@ abstract class BaseExtension extends ConfigurableExtension
         }
 
         return $this;
-    }
-
-    /**
-     * Verifies if given services' configuration file has extension. If not, the default extension of configuration
-     * files will be used (".yaml" extension).
-     *
-     * @param string $fileName Name of the configuration file
-     * @return string
-     */
-    private function verifyServicesFileExtension(string $fileName): string
-    {
-        $fileExtension = Miscellaneous::getFileExtension($fileName);
-
-        // Use the default extension, if extension of the configuration file is unknown
-        if (empty($fileExtension)) {
-            $fileName = Miscellaneous::includeFileExtension($fileName, static::CONFIGURATION_DEFAULT_EXTENSION);
-        }
-
-        return $fileName;
     }
 
     /**
@@ -345,5 +312,38 @@ abstract class BaseExtension extends ConfigurableExtension
 
         // Let's get the last elements' paths and load values into container
         return Arrays::getLastElementsPaths($mergedConfig, '.', '', $stopIfMatchedBy);
+    }
+
+    /**
+     * Returns global patterns of keys or paths from configuration that should match to stop loading parameters
+     *
+     * @return array
+     * @see getKeysToStopLoadingParametersOn() method in this class
+     */
+    private function getGlobalKeysToStopLoadingParametersOn(): array
+    {
+        return [
+            /*
+             * I have to always stop on integer-based keys, the 0-based keys.
+             * It's required to proper retrieve / get values that are treated like an array.
+             *
+             * Example:
+             * -> config.yml
+             * parameter:
+             *      sub-parameter: [value1, value2, value3]
+             *
+             * -> processed array
+             * [
+             *      'parameter' => [
+             *          'sub-parameter' => [        <------ 0-based indexes
+             *              'value1',
+             *              'value2',
+             *              'value3'
+             *          ]
+             *      ]
+             * ];
+             */
+            '\d+',
+        ];
     }
 }
