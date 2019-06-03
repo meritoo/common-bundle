@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\DependencyInjection\Base;
 
-use function is_array;
 use Meritoo\Common\Utilities\Arrays;
 use Meritoo\Common\Utilities\Miscellaneous;
 use Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType;
@@ -22,6 +21,7 @@ use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
+use function is_array;
 
 /**
  * Base Dependency Injection (DI) extension
@@ -295,17 +295,11 @@ abstract class BaseExtension extends ConfigurableExtension
             return $this;
         }
 
-        // Getting the keys or paths on which building names of parameters should stop
-        $keysToStop = $this->getKeysToStopLoadingParametersOn();
-        $globalKeysToStop = $this->getGlobalKeysToStopLoadingParametersOn();
+        $flatConfig = $this->makeFlatConfig($mergedConfig);
 
-        // Merging standard with global keys and paths
-        $keysToStop = Arrays::makeArray($keysToStop);
-        $globalKeysToStop = Arrays::makeArray($globalKeysToStop);
-        $stopIfMatchedBy = array_merge($keysToStop, $globalKeysToStop);
-
-        // Let's get the last elements' paths and load values into container
-        $parameters = Arrays::getLastElementsPaths($mergedConfig, '.', '', $stopIfMatchedBy);
+        if (empty($flatConfig)) {
+            return $this;
+        }
 
         /** @var ConfigurationInterface $configuration */
         $configuration = $this->getConfiguration($mergedConfig, $container);
@@ -317,18 +311,39 @@ abstract class BaseExtension extends ConfigurableExtension
             ->getName()
         ;
 
-        if (!empty($parameters)) {
-            foreach ($parameters as $name => $value) {
-                if (!is_array($value)) {
-                    $value = Miscellaneous::trimSmart($value);
-                }
-
-                // Loading parameter into container, prefixed by slug of bundle's name
-                $prefixedName = sprintf('%s.%s', $bundleShortName, $name);
-                $container->setParameter($prefixedName, $value); // e.g. simple_bundle.foo.bar.something => 'my-value'
+        foreach ($flatConfig as $name => $value) {
+            if (!is_array($value)) {
+                $value = Miscellaneous::trimSmart($value);
             }
+
+            // Loading parameter into container, prefixed by slug of bundle's name
+            $prefixedName = sprintf('%s.%s', $bundleShortName, $name);
+            $container->setParameter($prefixedName, $value); // e.g. simple_bundle.foo.bar.something => 'my-value'
         }
 
         return $this;
+    }
+
+    /**
+     * Makes flat configuration (without nested arrays).
+     * Returns an array with key-value pairs, where key - name of parameter, value - value of parameter.
+     *
+     * @param array $mergedConfig Custom configuration merged with defaults
+     * @return null|array
+     */
+    private function makeFlatConfig(array $mergedConfig): ?array
+    {
+        // Getting the keys or paths on which building names of parameters should stop
+        $keysToStop = $this->getKeysToStopLoadingParametersOn();
+        $globalKeysToStop = $this->getGlobalKeysToStopLoadingParametersOn();
+
+        // Merging standard with global keys and paths
+        $stopIfMatchedBy = array_merge(
+            Arrays::makeArray($keysToStop),
+            Arrays::makeArray($globalKeysToStop)
+        );
+
+        // Let's get the last elements' paths and load values into container
+        return Arrays::getLastElementsPaths($mergedConfig, '.', '', $stopIfMatchedBy);
     }
 }
