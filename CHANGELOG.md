@@ -14,6 +14,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 8. BaseExtension > verify extension of services' configuration file by separate method & in the loadServices() method
 (not in loadConfigurationFile() method)
 9. BaseExtension > prepare flat configuration by separate method
+10. BaseExtension > prepare loader of configuration file by separate class
 
 # 0.1.24
 

@@ -12,14 +12,12 @@ namespace Meritoo\CommonBundle\DependencyInjection\Base;
 
 use Meritoo\Common\Utilities\Arrays;
 use Meritoo\Common\Utilities\Miscellaneous;
+use Meritoo\CommonBundle\DependencyInjection\ConfigurationFile\FileLoaderFactory;
 use Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\FileLoader;
-use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
 use function is_array;
 
@@ -158,14 +156,14 @@ abstract class BaseExtension extends ConfigurableExtension
      * Verifies if given services' configuration file has extension. If not, the default extension of configuration
      * files will be used (".yaml" extension).
      *
-     * @param string $fileName Name of the configuration file
+     * @param string $fileName Name of configuration file
      * @return string
      */
     private function verifyServicesFileExtension(string $fileName): string
     {
         $fileExtension = Miscellaneous::getFileExtension($fileName);
 
-        // Use the default extension, if extension of the configuration file is unknown
+        // Use the default extension, if extension of configuration file is unknown
         if (empty($fileExtension)) {
             $fileName = Miscellaneous::includeFileExtension($fileName, static::CONFIGURATION_DEFAULT_EXTENSION);
         }
@@ -177,7 +175,7 @@ abstract class BaseExtension extends ConfigurableExtension
      * Loads the configuration file
      *
      * @param ContainerBuilder $container Container for the Dependency Injection (DI)
-     * @param string           $fileName  Name of the configuration file. If provided without extension, the default
+     * @param string           $fileName  Name of configuration file. If provided without extension, the default
      *                                    extension of configuration files will be used.
      * @return BaseExtension
      */
@@ -219,33 +217,30 @@ abstract class BaseExtension extends ConfigurableExtension
     }
 
     /**
-     * Returns loader of the configuration file
+     * Returns loader of configuration file
      *
      * @param ContainerBuilder $container Container for the Dependency Injection (DI)
      * @param FileLocator      $locator   Locator used to find files
-     * @param string           $fileType  Type of the configuration file
+     * @param string           $fileType  Type of configuration file
      * @return null|FileLoader
      */
     private function getFileLoader(ContainerBuilder $container, FileLocator $locator, string $fileType): ?FileLoader
     {
-        $loader = null;
+        $loaderFactory = new FileLoaderFactory($container, $locator);
 
-        switch ($fileType) {
-            case ConfigurationFileType::YAML:
-                $loader = new YamlFileLoader($container, $locator);
-
-                break;
-            case ConfigurationFileType::XML:
-                $loader = new XmlFileLoader($container, $locator);
-
-                break;
-            case ConfigurationFileType::PHP:
-                $loader = new PhpFileLoader($container, $locator);
-
-                break;
+        if (ConfigurationFileType::YAML === $fileType) {
+            return $loaderFactory->createYamlFileLoader();
         }
 
-        return $loader;
+        if (ConfigurationFileType::XML === $fileType) {
+            return $loaderFactory->createXmlFileLoader();
+        }
+
+        if (ConfigurationFileType::PHP === $fileType) {
+            return $loaderFactory->createPhpFileLoader();
+        }
+
+        return null;
     }
 
     /**
