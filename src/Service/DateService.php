@@ -70,7 +70,7 @@ class DateService extends BaseService
     public function getFormat(string $dateLength): string
     {
         // Oops, unknown length of date
-        if (false === (new DateLength())->isCorrectType($dateLength)) {
+        if (false === DateLength::isCorrectType($dateLength)) {
             throw UnknownDateLengthException::createException($dateLength);
         }
 
