@@ -11,6 +11,8 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 5. composer > squizlabs/php_codesniffer package > use ^3.4 (instead of ^2.9)
 6. Do not require ext-intl, because is required by meritoo/common-library package
 7. Update Kernel used by tests
+8. BaseExtension > verify extension of services' configuration file by separate method & in the loadServices() method
+(not in loadConfigurationFile() method)
 
 # 0.1.24
 

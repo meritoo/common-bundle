@@ -76,13 +76,14 @@ abstract class BaseExtension extends ConfigurableExtension
     abstract protected function getBundleDirectoryPath(): string;
 
     /**
-     * Returns name of configuration file with services, e.g. "services", "services.yaml"
+     * Returns name of configuration file with services, e.g. "services.yaml", "services.xml", "services.php".
+     * Extensions are defined in Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType class.
      *
      * @return string
      */
     protected function getServicesFileName(): string
     {
-        return static::CONFIGURATION_SERVICES_NAME;
+        return sprintf('%s.%s', static::CONFIGURATION_SERVICES_NAME, static::CONFIGURATION_DEFAULT_EXTENSION);
     }
 
     /**
@@ -180,9 +181,10 @@ abstract class BaseExtension extends ConfigurableExtension
      */
     private function loadServices(ContainerBuilder $container): BaseExtension
     {
-        $fileName = $this->getServicesFileName();
+        $services = $this->getServicesFileName();
+        $servicesWithExtension = $this->verifyServicesFileExtension($services);
 
-        return $this->loadConfigurationFile($container, $fileName);
+        return $this->loadConfigurationFile($container, $servicesWithExtension);
     }
 
     /**
@@ -200,16 +202,6 @@ abstract class BaseExtension extends ConfigurableExtension
         // Unknown path of bundle? Nothing to do
         if (empty($bundlePath)) {
             return $this;
-        }
-
-        $fileExtension = Miscellaneous::getFileExtension($fileName);
-
-        /*
-         * Unknown extension of the configuration file?
-         * Let's use the default extension
-         */
-        if (empty($fileExtension)) {
-            $fileName = Miscellaneous::includeFileExtension($fileName, static::CONFIGURATION_DEFAULT_EXTENSION);
         }
 
         $resourcesPath = Miscellaneous::concatenatePaths([
@@ -238,6 +230,25 @@ abstract class BaseExtension extends ConfigurableExtension
         }
 
         return $this;
+    }
+
+    /**
+     * Verifies if given services' configuration file has extension. If not, the default extension of configuration
+     * files will be used (".yaml" extension).
+     *
+     * @param string $fileName Name of the configuration file
+     * @return string
+     */
+    private function verifyServicesFileExtension(string $fileName): string
+    {
+        $fileExtension = Miscellaneous::getFileExtension($fileName);
+
+        // Use the default extension, if extension of the configuration file is unknown
+        if (empty($fileExtension)) {
+            $fileName = Miscellaneous::includeFileExtension($fileName, static::CONFIGURATION_DEFAULT_EXTENSION);
+        }
+
+        return $fileName;
     }
 
     /**
