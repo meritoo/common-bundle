@@ -210,6 +210,7 @@
   <component name="PhpUnit">
     <phpunit_settings>
       <phpunit_by_interpreter interpreter_id="af02251d-e840-4b40-8ee1-7bbe3dd86a25" load_method="CUSTOM_LOADER" configuration_file_path="/var/www/application/phpunit.xml.dist" custom_loader_path="/var/www/application/vendor/autoload.php" phpunit_phar_path="" use_configuration_file="true" />
+      <PhpUnitSettings load_method="CUSTOM_LOADER" configuration_file_path="$PROJECT_DIR$/phpunit.xml.dist" custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" use_configuration_file="true" />
     </phpunit_settings>
   </component>
 </project>
