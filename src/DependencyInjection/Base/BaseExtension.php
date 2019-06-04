@@ -146,26 +146,26 @@ abstract class BaseExtension extends ConfigurableExtension
      */
     private function loadServices(ContainerBuilder $container): BaseExtension
     {
-        $services = $this->getServicesFileName();
-        $servicesWithExtension = $this->verifyServicesFileExtension($services);
+        $name = $this->getServicesFileName();
+        $nameWithExtension = $this->getConfigurationFileWithExtension($name);
 
-        return $this->loadConfigurationFile($container, $servicesWithExtension);
+        return $this->loadConfigurationFile($container, $nameWithExtension);
     }
 
     /**
-     * Verifies if given services' configuration file has extension. If not, the default extension of configuration
-     * files will be used (".yaml" extension).
+     * Returns name of given configuration file with extension.
+     * If the file name does not contain extension, default extension will be used (the ".yaml" extension).
      *
-     * @param string $fileName Name of configuration file
+     * @param string $fileName Name of configuration file (with or without extension)
      * @return string
      */
-    private function verifyServicesFileExtension(string $fileName): string
+    private function getConfigurationFileWithExtension(string $fileName): string
     {
         $fileExtension = Miscellaneous::getFileExtension($fileName);
 
         // Use the default extension, if extension of configuration file is unknown
         if (empty($fileExtension)) {
-            $fileName = Miscellaneous::includeFileExtension($fileName, static::CONFIGURATION_DEFAULT_EXTENSION);
+            return Miscellaneous::includeFileExtension($fileName, static::CONFIGURATION_DEFAULT_EXTENSION);
         }
 
         return $fileName;

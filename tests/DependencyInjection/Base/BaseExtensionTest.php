@@ -28,7 +28,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\DependencyInjection\Base\BaseExtension
+ * @covers    \Meritoo\CommonBundle\DependencyInjection\Base\BaseExtension
  */
 class BaseExtensionTest extends BaseTestCase
 {
