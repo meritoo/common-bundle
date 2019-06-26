@@ -1,6 +1,7 @@
 meritoo_common:
     general:
         name: Nazwa
+        title: Tytuł
         version: Wersja
         group: Grupa
         email: Email
@@ -32,6 +33,8 @@ meritoo_common:
         new: Nowy
         price: Cena
         price_amount: Kwota
+        weight: Waga
+        category: Kategoria
         invitation: '{0}Zaproszeń|{1}Zaproszenie|[2,4]Zaproszenia|[5,20]Zaproszeń'
         please: Proszę
         all:

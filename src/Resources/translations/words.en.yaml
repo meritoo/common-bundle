@@ -1,6 +1,7 @@
 meritoo_common:
     general:
         name: Name
+        title: Title
         version: Version
         group: Group
         email: Email
@@ -32,6 +33,8 @@ meritoo_common:
         new: New
         price: Price
         price_amount: Amount
+        weight: Weight
+        category: Category
         invitation: Invitation|Invitations
         please: Please
         all:
