@@ -41,6 +41,7 @@ meritoo_common:
             male: Wszyscy
             female: Wszystkie
             neutral: Wszystko
+        ingredient: Składnik|Składniki
     area:
         country: Kraj
         county: Hrabstwo
@@ -67,6 +68,11 @@ meritoo_common:
         end: Koniec
         no_results: Brak wyników
         quantity: Ilość
+        value: Wartość
+        nutritional_values: Wartości odżywcze
+        data:
+            basic: Dane podstawowe
+            commerce: Dane handlowe
     page:
         homepage: Strona główna
         homepage_short: Główna

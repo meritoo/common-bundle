@@ -41,6 +41,7 @@ meritoo_common:
             male: Everyone
             female: All
             neutral: Everything
+        ingredient: Ingredient|Ingredients
     area:
         country: Country
         county: County
@@ -67,6 +68,11 @@ meritoo_common:
         end: End
         no_results: No results
         quantity: Quantity
+        value: Value
+        nutritional_values: Nutritional values
+        data:
+            basic: Basic data
+            commerce: Commerce data
     page:
         homepage: Homepage
         homepage_short: Home

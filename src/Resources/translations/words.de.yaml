@@ -41,6 +41,7 @@ meritoo_common:
             male: Jeder
             female: Alles
             neutral: Alles
+        ingredient: Zutat|Zutaten
     area:
         country: Land
         county: Bezirk
@@ -67,6 +68,11 @@ meritoo_common:
         end: Ende
         no_results: Keine Ergebnisse
         quantity: Menge
+        value: Wert
+        nutritional_values: Ernährungswerte
+        data:
+            basic: Grundinformationen
+            commerce: Commerce-Daten
     page:
         homepage: Startseite
         homepage_short: Start

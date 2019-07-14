@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.1.26
+
+1. Resources > translations > add new
+
 # 0.1.25
 
 1. PHPUnit > enable Symfony listener
