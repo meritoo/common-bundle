@@ -1,18 +1,14 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-    /*
-     * Do not verify:
-     * - all DependencyInjection/Configuration classes: the Configuration.php files
-     * - autoloader from /app directory: autoload.php
-     */
-    ->notPath([
-        '/DependencyInjection\/Configuration\.php/',
-        '/tests\/Resources\/var/',
+    ->in(__DIR__)
+    ->exclude([
+        'build',
+        'vendor',
     ])
-    ->in([
-        __DIR__ . '/src',
-        __DIR__ . '/tests',
+    ->notPath([
+        'DependencyInjection/Configuration.php',
+        'tests/Resources/var/',
     ])
 ;
 
@@ -21,6 +17,7 @@ return PhpCsFixer\Config::create()
         '@Symfony'                            => true,
         '@PhpCsFixer'                         => true,
         '@PHP71Migration'                     => true,
+        'array_syntax'                        => ['syntax' => 'short'],
         'binary_operator_spaces'              => [
             'align_double_arrow' => true,
         ],
