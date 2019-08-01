@@ -5,6 +5,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.1.27
 
 1. PHP CS Fixer > configuration > make more readable & remove unnecessary code
+2. Update .gitignore, docker-compose.yml, phpunit.xml.dist
 
 # 0.1.26
 
