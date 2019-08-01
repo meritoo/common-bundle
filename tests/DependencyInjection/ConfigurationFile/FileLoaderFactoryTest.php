@@ -8,10 +8,11 @@
 
 declare(strict_types=1);
 
-namespace Meritoo\CommonBundle\DependencyInjection\ConfigurationFile;
+namespace Meritoo\Test\CommonBundle\DependencyInjection\ConfigurationFile;
 
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
 use Meritoo\Common\Type\OopVisibilityType;
+use Meritoo\CommonBundle\DependencyInjection\ConfigurationFile\FileLoaderFactory;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
