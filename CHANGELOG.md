@@ -6,6 +6,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 1. PHP CS Fixer > configuration > make more readable & remove unnecessary code
 2. Update .gitignore, docker-compose.yml, phpunit.xml.dist
+3. Trait for test case related to entity (the EntityTestCaseTrait)
 
 # 0.1.26
 
