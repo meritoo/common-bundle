@@ -42,6 +42,8 @@ meritoo_common:
             female: All
             neutral: Everything
         ingredient: Ingredient|Ingredients
+        picture: Picture|Pictures
+        photo: Photo|Photos
     area:
         country: Country
         county: County

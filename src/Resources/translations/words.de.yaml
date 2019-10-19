@@ -42,6 +42,8 @@ meritoo_common:
             female: Alles
             neutral: Alles
         ingredient: Zutat|Zutaten
+        picture: Bild|Bilder
+        photo: Foto|Fotos
     area:
         country: Land
         county: Bezirk

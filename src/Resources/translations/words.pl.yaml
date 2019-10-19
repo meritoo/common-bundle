@@ -42,6 +42,8 @@ meritoo_common:
             female: Wszystkie
             neutral: Wszystko
         ingredient: Składnik|Składniki
+        picture: Obrazek|Obrazki
+        photo: Zdjęcie|Zdjęcia
     area:
         country: Kraj
         county: Hrabstwo
