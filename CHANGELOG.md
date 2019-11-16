@@ -2,6 +2,13 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.1.28
+
+1. Add new translations (Picture, Photo)
+2. Add test of bundle's Descriptors when each Descriptor has the same root namespace (only the last one will be available)
+3. Allow to drop database schema by the trait for entity test case (the EntityTestCaseTrait)
+4. Test case for the trait for entity test case (the EntityTestCaseTrait)
+
 # 0.1.27
 
 1. PHP CS Fixer > configuration > make more readable & remove unnecessary code
