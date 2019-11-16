@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Bundle;
 
-use Meritoo\Common\Collection\Collection;
+use Meritoo\Common\Collection\BaseCollection;
 
 /**
  * Descriptors of bundles.
@@ -19,7 +19,7 @@ use Meritoo\Common\Collection\Collection;
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
  */
-class Descriptors extends Collection
+class Descriptors extends BaseCollection
 {
     /**
      * Returns descriptor of bundle that contains given class
@@ -107,5 +107,13 @@ class Descriptors extends Collection
         }
 
         return $descriptors;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function isValidType($element): bool
+    {
+        return $element instanceof Descriptor;
     }
 }

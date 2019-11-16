@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Bundle;
 
-use Meritoo\Common\Collection\Collection;
+use Meritoo\Common\Collection\StringCollection;
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Bundle\Descriptor;
@@ -24,7 +24,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Bundle\Descriptor
+ * @covers    \Meritoo\CommonBundle\Bundle\Descriptor
  */
 class DescriptorTest extends BaseTestCase
 {
@@ -199,12 +199,12 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptor $descriptor Descriptor of bundle who names of files with data fixtures from bundle
-     * @param Collection $expected   Expected names of files with data fixtures
+     * @param Descriptor       $descriptor Descriptor of bundle who names of files with data fixtures from bundle
+     * @param StringCollection $expected   Expected names of files with data fixtures
      *
      * @dataProvider provideDataFixtures
      */
-    public function testGetDataFixtures(Descriptor $descriptor, Collection $expected): void
+    public function testGetDataFixtures(Descriptor $descriptor, StringCollection $expected): void
     {
         static::assertSame($expected->count(), $descriptor->getDataFixtures()->count());
         static::assertSame($expected->toArray(), $descriptor->getDataFixtures()->toArray());
@@ -250,14 +250,14 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptor $descriptor    Descriptor of bundle for who names of files with data fixtures should be added
-     * @param array      $fixturesPaths Names of files with data fixtures to add
-     * @param Collection $expected      Expected names of files with data fixtures after add
+     * @param Descriptor       $descriptor    Descriptor of bundle for who names of files with data fixtures should be added
+     * @param array            $fixturesPaths Names of files with data fixtures to add
+     * @param StringCollection $expected      Expected names of files with data fixtures after add
      *
      * @dataProvider provideDataFixturesToAdd
      * @covers       \Meritoo\CommonBundle\Bundle\Descriptor::addDataFixtures
      */
-    public function testAddDataFixtures(Descriptor $descriptor, array $fixturesPaths, Collection $expected): void
+    public function testAddDataFixtures(Descriptor $descriptor, array $fixturesPaths, StringCollection $expected): void
     {
         $result = $descriptor->addDataFixtures($fixturesPaths);
 
@@ -1138,14 +1138,14 @@ class DescriptorTest extends BaseTestCase
     {
         yield[
             new Descriptor(),
-            new Collection(),
+            new StringCollection(),
         ];
 
         $descriptor = (new Descriptor())->addDataFixtures([]);
 
         yield[
             $descriptor,
-            new Collection(),
+            new StringCollection(),
         ];
 
         $descriptor = (new Descriptor())->addDataFixtures([
@@ -1155,7 +1155,7 @@ class DescriptorTest extends BaseTestCase
 
         yield[
             $descriptor,
-            new Collection([
+            new StringCollection([
                 'first/path/with/fixtures',
                 'second/path/with/fixtures',
             ]),
@@ -1233,7 +1233,7 @@ class DescriptorTest extends BaseTestCase
         yield[
             new Descriptor(),
             [],
-            new Collection(),
+            new StringCollection(),
         ];
 
         yield[
@@ -1242,7 +1242,7 @@ class DescriptorTest extends BaseTestCase
                 'first/path/with/fixtures',
                 'second/path/with/fixtures',
             ],
-            new Collection([
+            new StringCollection([
                 'first/path/with/fixtures',
                 'second/path/with/fixtures',
             ]),
@@ -1259,7 +1259,7 @@ class DescriptorTest extends BaseTestCase
                 'third/path/with/fixtures',
                 'fourth/path/with/fixtures',
             ],
-            new Collection([
+            new StringCollection([
                 'first/path/with/fixtures',
                 'second/path/with/fixtures',
                 'third/path/with/fixtures',

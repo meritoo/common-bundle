@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Bundle;
 
-use Meritoo\Common\Collection\Collection;
+use Meritoo\Common\Collection\StringCollection;
 use Meritoo\Common\Utilities\Miscellaneous;
 use Meritoo\Common\Utilities\Regex;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -82,7 +82,7 @@ class Descriptor
     /**
      * Names of files with data fixtures from bundle
      *
-     * @var Collection
+     * @var StringCollection
      */
     private $dataFixtures;
 
@@ -112,7 +112,7 @@ class Descriptor
         $this->childBundleDescriptor = $childBundleDescriptor;
 
         $this->shortName = '';
-        $this->dataFixtures = new Collection();
+        $this->dataFixtures = new StringCollection();
     }
 
     /**
@@ -256,9 +256,9 @@ class Descriptor
     /**
      * Returns names of files with data fixtures from bundle
      *
-     * @return Collection
+     * @return StringCollection
      */
-    public function getDataFixtures(): Collection
+    public function getDataFixtures(): StringCollection
     {
         return $this->dataFixtures;
     }

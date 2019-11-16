@@ -4,7 +4,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 # Descriptors of bundles
 
-Located here: `Meritoo\CommonBundle\Bundle\Descriptors`. It's a collection who contains descriptors of bundles. Extends `Meritoo\Common\Collection\Collection` class, so all basic methods related collection are available, e.g. `count()`, `isEmpty()`, `add()` etc.
+Located here: `Meritoo\CommonBundle\Bundle\Descriptors`. It's a collection who contains descriptors of bundles. Extends `Meritoo\Common\Collection\BaseCollection` class, so all basic methods related collection are available, e.g. `count()`, `isEmpty()`, `add()` etc.
 
 ### Create instance
 
