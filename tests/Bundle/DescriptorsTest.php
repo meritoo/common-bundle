@@ -22,7 +22,7 @@ use Meritoo\CommonBundle\Bundle\Descriptors;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Bundle\Descriptors
+ * @covers    \Meritoo\CommonBundle\Bundle\Descriptors
  */
 class DescriptorsTest extends BaseTestCase
 {
@@ -166,7 +166,6 @@ class DescriptorsTest extends BaseTestCase
             ],
             new Descriptors([
                 new Descriptor(),
-                new Descriptor(),
             ]),
         ];
 
@@ -174,15 +173,18 @@ class DescriptorsTest extends BaseTestCase
             [
                 [
                     'name'                  => 'Risus',
+                    'rootNamespace'         => 'Petierunt\Uti\Sibi',
                     'configurationRootName' => 'Ridiculus',
                 ],
                 [
                     'name'                   => 'Sollicitudin',
+                    'rootNamespace'          => 'Concilium\Totius\Galliae',
                     'configurationRootName'  => 'Vulputate',
                     'parentBundleDescriptor' => [],
                 ],
                 [
                     'name'                   => 'Pellentesque',
+                    'rootNamespace'          => 'Idque\Caesaris\Facere\Voluntate',
                     'configurationRootName'  => 'Commodo',
                     'parentBundleDescriptor' => [
                         'name'                  => 'Vulputate',
