@@ -41,11 +41,26 @@ trait EntityTestCaseTrait
      */
     protected function updateDatabaseSchema(): void
     {
-        $entityManager = $this->getEntityManager();
-        $allMetadata = $entityManager->getMetadataFactory()->getAllMetadata();
+        $allMetadata = $this->getAllEntitiesMeta();
 
-        $schemaTool = new SchemaTool($entityManager);
-        $schemaTool->updateSchema($allMetadata);
+        $this
+            ->getSchemaTool()
+            ->updateSchema($allMetadata)
+        ;
+    }
+
+    /**
+     * Drops database schema.
+     * Removes all tables based on gathered/existing metadata.
+     */
+    protected function dropDatabaseSchema(): void
+    {
+        $allMetadata = $this->getAllEntitiesMeta();
+
+        $this
+            ->getSchemaTool()
+            ->dropSchema($allMetadata)
+        ;
     }
 
     /**
@@ -74,5 +89,17 @@ trait EntityTestCaseTrait
             ->getEntityManager()
             ->getRepository($entityClass)
             ;
+    }
+
+    private function getAllEntitiesMeta(): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        return $entityManager->getMetadataFactory()->getAllMetadata();
+    }
+
+    private function getSchemaTool(): SchemaTool
+    {
+        return new SchemaTool($this->getEntityManager());
     }
 }
