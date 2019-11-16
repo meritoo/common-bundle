@@ -27,7 +27,7 @@ trait EntityTestCaseTrait
      *
      * @param mixed $entity The entity
      */
-    protected function persistAndFlush($entity): void
+    public function persistAndFlush($entity): void
     {
         $entityManager = $this->getEntityManager();
 
@@ -39,7 +39,7 @@ trait EntityTestCaseTrait
      * Updates database schema.
      * Creates all tables based on gathered/existing metadata.
      */
-    protected function updateDatabaseSchema(): void
+    public function updateDatabaseSchema(): void
     {
         $allMetadata = $this->getAllEntitiesMeta();
 
@@ -53,7 +53,7 @@ trait EntityTestCaseTrait
      * Drops database schema.
      * Removes all tables based on gathered/existing metadata.
      */
-    protected function dropDatabaseSchema(): void
+    public function dropDatabaseSchema(): void
     {
         $allMetadata = $this->getAllEntitiesMeta();
 
@@ -68,7 +68,7 @@ trait EntityTestCaseTrait
      *
      * @return EntityManagerInterface
      */
-    protected function getEntityManager(): EntityManagerInterface
+    public function getEntityManager(): EntityManagerInterface
     {
         return static::$kernel
             ->getContainer()
@@ -83,7 +83,7 @@ trait EntityTestCaseTrait
      * @param string $entityClass Fully qualified class name of entity
      * @return ObjectRepository
      */
-    protected function getRepository(string $entityClass): ObjectRepository
+    public function getRepository(string $entityClass): ObjectRepository
     {
         return $this
             ->getEntityManager()
