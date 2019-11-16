@@ -173,6 +173,40 @@ class DescriptorsTest extends BaseTestCase
             [
                 [
                     'name'                  => 'Risus',
+                    'configurationRootName' => 'Ridiculus',
+                ],
+                [
+                    'name'                   => 'Sollicitudin',
+                    'configurationRootName'  => 'Vulputate',
+                    'parentBundleDescriptor' => [],
+                ],
+                [
+                    'name'                   => 'Pellentesque',
+                    'configurationRootName'  => 'Commodo',
+                    'parentBundleDescriptor' => [
+                        'name'                  => 'Vulputate',
+                        'configurationRootName' => 'Dolor',
+                    ],
+                ],
+            ],
+            new Descriptors([
+                new Descriptor(
+                    'Pellentesque',
+                    'Commodo',
+                    '',
+                    '',
+                    new Descriptor(
+                        'Vulputate',
+                        'Dolor'
+                    )
+                ),
+            ]),
+        ];
+
+        yield[
+            [
+                [
+                    'name'                  => 'Risus',
                     'rootNamespace'         => 'Petierunt\Uti\Sibi',
                     'configurationRootName' => 'Ridiculus',
                 ],
