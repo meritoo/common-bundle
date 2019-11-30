@@ -4,6 +4,7 @@ meritoo_common:
         title: Titel
         version: Version
         group: Gruppe
+        subgroup: Untergruppe
         email: Email
         email_address: Email adresse
         phone: Telefon
@@ -44,6 +45,8 @@ meritoo_common:
         ingredient: Zutat|Zutaten
         picture: Bild|Bilder
         photo: Foto|Fotos
+        certificate: Zertifikat|Zertifikate
+        preview: Vorschau
     area:
         country: Land
         county: Bezirk

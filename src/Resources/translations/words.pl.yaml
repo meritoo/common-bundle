@@ -4,6 +4,7 @@ meritoo_common:
         title: Tytuł
         version: Wersja
         group: Grupa
+        subgroup: Podgrupa
         email: Email
         email_address: Adres email
         phone: Telefon
@@ -44,6 +45,8 @@ meritoo_common:
         ingredient: Składnik|Składniki
         picture: Obrazek|Obrazki
         photo: Zdjęcie|Zdjęcia
+        certificate: Certyfikat|Certyfikaty
+        preview: Podgląd
     area:
         country: Kraj
         county: Hrabstwo
