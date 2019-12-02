@@ -6,8 +6,13 @@ meritoo_common:
         have_to_enter: You have to enter an email address
         not_email: It's not an email address
         is_incorrect: Incorrect email address
+        not_existing_user:
+            simple: User with given email does not exist
+            with_email: User with email %email% does not exist
     date:
         earlier_than_today: Date earlier than today is required
         earlier_than_or_equal_today: Date earlier than today or today is required
         later_than_today: Date later than today is required
         later_than_or_equal_today: Date later than today or today is required
+    csrf:
+        invalid_token: The CSRF token is invalid
