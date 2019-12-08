@@ -250,7 +250,8 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptor       $descriptor    Descriptor of bundle for who names of files with data fixtures should be added
+     * @param Descriptor       $descriptor    Descriptor of bundle for who names of files with data fixtures should be
+     *                                        added
      * @param array            $fixturesPaths Names of files with data fixtures to add
      * @param StringCollection $expected      Expected names of files with data fixtures after add
      *
@@ -259,9 +260,8 @@ class DescriptorTest extends BaseTestCase
      */
     public function testAddDataFixtures(Descriptor $descriptor, array $fixturesPaths, StringCollection $expected): void
     {
-        $result = $descriptor->addDataFixtures($fixturesPaths);
+        $descriptor->addDataFixtures($fixturesPaths);
 
-        static::assertInstanceOf(Descriptor::class, $result);
         static::assertSame($expected->count(), $descriptor->getDataFixtures()->count());
         static::assertSame($expected->toArray(), $descriptor->getDataFixtures()->toArray());
     }

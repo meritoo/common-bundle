@@ -50,7 +50,8 @@ dir.tests = ${project.basedir}/tests
 #
 dir.build = ${project.basedir}/build
 dir.reports = ${dir.build}/reports
-dir.reports.coverage = ${dir.reports}/phpunit-coverage
+dir.reports.phpunit_coverage = ${dir.reports}/phpunit-coverage
+dir.reports.phpspec_coverage = ${dir.reports}/phpspec-coverage
 dir.reports.code_sniffer = ${dir.reports}/code_sniffer
 
 # Data directories
@@ -88,6 +89,8 @@ tests.database = ${dir.data.temporary}/database.sqlite
 # Paths of frameworks used to run tests:
 # - PHPUnit (unit tests)
 # - Infection (mutation tests)
+# - phpspec (Behaviour Driven Development tests)
 #
 tests.phpunit.command = ./vendor/bin/phpunit --verbose
 tests.mutation.command = ./vendor/bin/infection --ansi --threads=5 --coverage=build/reports/infection
+tests.phpspec.command = ./vendor/bin/phpspec run --ansi

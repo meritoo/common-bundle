@@ -105,6 +105,18 @@ docker-compose exec php phing -f phing/tests.xml test:phpunit
 docker-compose run --rm phpunit --verbose --no-coverage
 ```
 
+### Running [phpspec](http://www.phpspec.net) tests
+
+```bash
+docker-compose exec php php vendor/bin/phpspec run
+```
+
+or
+
+```bash
+docker-compose exec php phing -f phing/tests.xml test:phpspec
+```
+
 # Mutation Tests
 
 Served by [Infection — Mutation Testing Framework](https://infection.github.io).

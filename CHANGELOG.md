@@ -5,6 +5,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.1.30
 
 1. Add new translations
+2. Implement [phpspec](http://www.phpspec.net)
 
 # 0.1.29
 

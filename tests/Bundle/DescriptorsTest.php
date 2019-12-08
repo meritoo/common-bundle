@@ -40,7 +40,7 @@ class DescriptorsTest extends BaseTestCase
     public function testFromArray(array $data, Descriptors $expected): void
     {
         $descriptors = Descriptors::fromArray($data);
-        static::assertEquals($expected->count(), $descriptors->count());
+        static::assertEquals($expected, $descriptors);
     }
 
     /**
@@ -499,21 +499,13 @@ class DescriptorsTest extends BaseTestCase
 
         yield[
             new Descriptors([
-                new Descriptor(),
-                new Descriptor(),
+                new Descriptor('UnamIncolunt'),
+                new Descriptor('ContraLegem'),
             ]),
             [
-                [
-                    'name'                  => '',
-                    'shortName'             => '',
-                    'configurationRootName' => '',
-                    'rootNamespace'         => '',
-                    'path'                  => '',
-                    'dataFixtures'          => [],
-                ],
-                [
-                    'name'                  => '',
-                    'shortName'             => '',
+                '' => [
+                    'name'                  => 'ContraLegem',
+                    'shortName'             => 'contralegem',
                     'configurationRootName' => '',
                     'rootNamespace'         => '',
                     'path'                  => '',
@@ -524,19 +516,19 @@ class DescriptorsTest extends BaseTestCase
 
         yield[
             new Descriptors([
-                new Descriptor('LigulaBundle', '', '', 'ipsum/ridiculus/tellus'),
+                new Descriptor('LigulaBundle', '', 'Ipsum\Ridiculus\Tellus', 'ipsum/ridiculus/tellus'),
                 new Descriptor('', 'pharetra'),
             ]),
             [
-                [
+                'Ipsum\Ridiculus\Tellus' => [
                     'name'                  => 'LigulaBundle',
                     'shortName'             => 'ligula',
                     'configurationRootName' => '',
-                    'rootNamespace'         => '',
+                    'rootNamespace'         => 'Ipsum\Ridiculus\Tellus',
                     'path'                  => 'ipsum/ridiculus/tellus',
                     'dataFixtures'          => [],
                 ],
-                [
+                ''                       => [
                     'name'                  => '',
                     'shortName'             => '',
                     'configurationRootName' => 'pharetra',
@@ -561,7 +553,7 @@ class DescriptorsTest extends BaseTestCase
                 ),
             ]),
             [
-                [
+                'Euismod\Egestas\Mattis'   => [
                     'name'                  => 'MattisBundle',
                     'shortName'             => 'mattis',
                     'configurationRootName' => '',
@@ -569,7 +561,7 @@ class DescriptorsTest extends BaseTestCase
                     'path'                  => '',
                     'dataFixtures'          => [],
                 ],
-                [
+                'Vestibulum\Amet\Vehicula' => [
                     'name'                  => 'VehiculaBundle',
                     'shortName'             => 'vehicula',
                     'configurationRootName' => 'ipsummattis',

@@ -52,7 +52,8 @@
     <!-- Test target -->
     <target name="build:test"
             depends="test:phpunit,
-                    test:infection"
+                    test:infection,
+                    test:phpspec"
     />
 
     <!-- PHP_CodeSniffer -->
@@ -93,6 +94,11 @@
         <exec command="${tests.mutation.command}" passthru="true"/>
     </target>
 
+    <!-- Run phpspec tests -->
+    <target name="test:phpspec" depends="build:prepare">
+        <exec command="${tests.phpspec.command}" passthru="true"/>
+    </target>
+
     <!-- Project build clean -->
     <target name="build:clean">
         <if>
@@ -106,7 +112,8 @@
     <!-- Project build prepare -->
     <target name="build:prepare" depends="build:clean">
         <mkdir dir="${dir.reports}"/>
-        <mkdir dir="${dir.reports.coverage}"/>
+        <mkdir dir="${dir.reports.phpunit_coverage}"/>
+        <mkdir dir="${dir.reports.phpspec_coverage}"/>
         <mkdir dir="${dir.reports.code_sniffer}"/>
     </target>
 

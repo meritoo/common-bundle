@@ -1,0 +1,10 @@
+suites:
+    main_suite:
+        namespace: Meritoo\CommonBundle
+
+extensions:
+    FriendsOfPhpSpec\PhpSpec\CodeCoverage\CodeCoverageExtension:
+        output:
+            html: build/reports/phpspec-coverage
+
+verbose: true

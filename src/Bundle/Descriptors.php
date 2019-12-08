@@ -31,8 +31,16 @@ class Descriptors extends BaseCollection
     {
         if (!$this->isEmpty()) {
             /** @var Descriptor $descriptor */
-            foreach ($this as $rootNamespace => $descriptor) {
+            foreach ($this as $descriptor) {
                 $rootNamespace = $descriptor->getRootNamespace();
+
+                if ('' === $rootNamespace) {
+                    if ($classNamespace === $rootNamespace) {
+                        return $descriptor;
+                    }
+
+                    continue;
+                }
 
                 $doubleSlashed = str_replace('\\', '\\\\', $rootNamespace);
                 $pattern = sprintf('|^%s\\.*|', $doubleSlashed);
@@ -107,6 +115,26 @@ class Descriptors extends BaseCollection
         }
 
         return $descriptors;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function prepareElements(array $elements): array
+    {
+        if (empty($elements)) {
+            return [];
+        }
+
+        $result = [];
+
+        /** @var Descriptor $element */
+        foreach ($elements as $element) {
+            $rootNamespace = $element->getRootNamespace();
+            $result[$rootNamespace] = $element;
+        }
+
+        return $result;
     }
 
     /**

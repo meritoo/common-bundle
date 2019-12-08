@@ -12,15 +12,17 @@
     ],
     "require": {
         "doctrine/annotations": "^1.6",
-        "meritoo/common-library": "^1.0.0",
+        "meritoo/common-library": "^1.0",
         "symfony/framework-bundle": "^3.4|^4.1",
         "symfony/validator": "^4.1",
         "twig/extensions": "^1.5"
     },
     "require-dev": {
+        "friends-of-phpspec/phpspec-code-coverage": "^4.3",
         "friendsofphp/php-cs-fixer": "^2.15",
         "infection/infection": "^0.13.1",
         "php-coveralls/php-coveralls": "^2.1",
+        "phpspec/phpspec": "^6.0",
         "phpstan/phpstan": "^0.11.8",
         "phpunit/phpunit": "^8.1",
         "sebastian/phpcpd": "^4.1",
