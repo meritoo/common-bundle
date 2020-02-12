@@ -15,6 +15,7 @@ meritoo_common:
         invite_friend: Zaproś znajomego
         send_invitation: Wyślij zaproszenie
         send: Wyślij
+        send_message: Wyślij wiadomość
         filter: Filtruj
         search: Szukaj
         show: Pokaż
@@ -48,6 +49,8 @@ meritoo_common:
             anywhere: Przesuń
         back: Wstecz
         go_back: Wróć
+        forward: Naprzód
+        go_forward: Idź naprzód
     menu:
         toggle_navigation: Włącz/wyłącz menu
     web:
@@ -65,3 +68,7 @@ meritoo_common:
             show: Pokaż profil
             edit: Edytuj profil
             your: Twój profil
+    sort:
+        sort: Sortuj
+        by: Sortuj według
+        by_short: Sortuj wg

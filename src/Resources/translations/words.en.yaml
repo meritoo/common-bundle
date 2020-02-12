@@ -11,6 +11,7 @@ meritoo_common:
         phone_short: Tel.
         phone_optional: Phone (optional)
         phone_number: Phone number
+        phone_number_short: Tel.
         phone_contact: Contact phone
         calculator: Calculator
         recommendation: Recommendation
@@ -47,6 +48,14 @@ meritoo_common:
         photo: Photo|Photos
         certificate: Certificate|Certificates
         preview: Preview
+        help: Help
+        account: Account
+        my_account: My account
+        message: Message|Messages
+        history: History
+        day: Day|Days
+        month: Month|Months
+        year: Year|Years
     area:
         country: Country
         county: County
@@ -84,6 +93,7 @@ meritoo_common:
         contact: Contact
         login: Login
         registration: Registration
+        site_map: Site map
     adjective:
         current:
             male: Current

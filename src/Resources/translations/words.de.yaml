@@ -8,6 +8,7 @@ meritoo_common:
         email: Email
         email_address: Email adresse
         phone: Telefon
+        phone_short: Tel.
         phone_optional: Telefon (fakultativ)
         phone_number: Telefonnummer
         phone_number_short: Tel.
@@ -47,6 +48,14 @@ meritoo_common:
         photo: Foto|Fotos
         certificate: Zertifikat|Zertifikate
         preview: Vorschau
+        help: Hilfe
+        account: Konto
+        my_account: Mein Konto
+        message: Nachricht|Nachrichten
+        history: Geschichte
+        day: Tag|Tage
+        month: Monat|Monate
+        year: Jahr|Jahre
     area:
         country: Land
         county: Bezirk
@@ -84,6 +93,7 @@ meritoo_common:
         contact: Kontakt
         login: Einloggen
         registration: Anmeldung
+        site_map: Seitenverzeichnis
     adjective:
         current:
             male: Aktuell

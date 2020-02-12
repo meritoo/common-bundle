@@ -11,6 +11,7 @@ meritoo_common:
         phone_short: Tel.
         phone_optional: Telefon (opcjonalnie)
         phone_number: Numer telefonu
+        phone_number_short: Tel.
         phone_contact: Telefon kontaktowy
         calculator: Kalkulator
         recommendation: Rekomendacja
@@ -47,6 +48,14 @@ meritoo_common:
         photo: Zdjęcie|Zdjęcia
         certificate: Certyfikat|Certyfikaty
         preview: Podgląd
+        help: Pomoc
+        account: Konto
+        my_account: Moje konto
+        message: Wiadomość|Wiadomości
+        history: Historia
+        day: Dzień|Dni
+        month: Miesiąc|Miesiące
+        year: Rok|Lata
     area:
         country: Kraj
         county: Hrabstwo
@@ -84,6 +93,7 @@ meritoo_common:
         contact: Kontakt
         login: Logowanie
         registration: Rejestracja
+        site_map: Mapa strony
     adjective:
         current:
             male: Bieżący
