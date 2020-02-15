@@ -5,6 +5,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.1.31
 
 1. Upgrade HTML5 Boilerplate by using Starter Template prepared by latest Bootstrap (version 4.4)
+2. Rename blocks in HTML5 Boilerplate: stylesheet -> stylesheets, javascript_head -> javascripts_head
 
 # 0.1.30
 

@@ -77,8 +77,8 @@
             <meta name="theme-color" content="{{ theme_color }}">
         {%- endif -%}
 
-        {%- block stylesheet -%}{%- endblock -%}
-        {%- block javascript_head -%}{%- endblock -%}
+        {%- block stylesheets -%}{%- endblock -%}
+        {%- block javascripts_head -%}{%- endblock -%}
     </head>
     <body>
         {%- block body -%}
@@ -176,7 +176,7 @@
                 {% endif %}
             {%- endblock -%}
 
-            {%- block javascript_footer -%}{%- endblock -%}
+            {%- block javascripts_footer -%}{%- endblock -%}
         {%- endblock -%}
     </body>
 </html>
