@@ -1,6 +1,6 @@
 {%- trans_default_domain 'html5_boilerplate' -%}
 
-{% set lang= app.request.locale %}
+{% set lang = app.request.locale %}
 {% set html_css_class = '' %}
 {% set title = '' %}
 {% set description = '' %}
@@ -43,14 +43,11 @@
 {%- endif -%}
 
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7 {{ html_css_class }}" lang="{{ lang }}"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8 {{ html_css_class }}" lang="{{ lang }}"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9 {{ html_css_class }}" lang="{{ lang }}"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js {{ html_css_class }}" lang="{{ lang }}"> <!--<![endif]-->
+<html class="no-js {{ html_css_class }}" lang="{{ lang }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         {%- if title is not empty -%}
             <title>{{ title }}</title>
