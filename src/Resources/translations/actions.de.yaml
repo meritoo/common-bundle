@@ -72,3 +72,5 @@ meritoo_common:
         sort: Sortieren
         by: Sortiere nach
         by_short: Sortiere nach
+        ascending: Aufsteigend
+        descending: Absteigend

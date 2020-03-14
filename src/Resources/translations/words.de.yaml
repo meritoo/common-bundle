@@ -56,6 +56,9 @@ meritoo_common:
         day: Tag|Tage
         month: Monat|Monate
         year: Jahr|Jahre
+        gallery: Galerie
+        gallery_of_photos: Fotogalerie
+        date: Datum
     area:
         country: Land
         county: Bezirk

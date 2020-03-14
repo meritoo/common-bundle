@@ -56,6 +56,9 @@ meritoo_common:
         day: Day|Days
         month: Month|Months
         year: Year|Years
+        gallery: Gallery
+        gallery_photos: Photo gallery
+        date: Date
     area:
         country: Country
         county: County
