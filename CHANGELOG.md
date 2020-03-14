@@ -6,6 +6,8 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 1. Upgrade HTML5 Boilerplate by using Starter Template prepared by latest Bootstrap (version 4.4)
 2. Rename blocks in HTML5 Boilerplate: stylesheet -> stylesheets, javascript_head -> javascripts_head
+3. Add new translations
+4. The Pagination. Represents core parameters used to serve pagination.
 
 # 0.1.30
 
