@@ -227,12 +227,12 @@ class DescriptorsTest extends BaseTestCase
                 ],
             ],
             new Descriptors([
-                new Descriptor('Risus', 'Ridiculus'),
-                new Descriptor('Sollicitudin', 'Vulputate'),
+                new Descriptor('Risus', 'Ridiculus', 'Petierunt\Uti\Sibi'),
+                new Descriptor('Sollicitudin', 'Vulputate', 'Concilium\Totius\Galliae'),
                 new Descriptor(
                     'Pellentesque',
                     'Commodo',
-                    '',
+                    'Idque\Caesaris\Facere\Voluntate',
                     '',
                     new Descriptor(
                         'Vulputate',
