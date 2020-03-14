@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Service;
 
+use Meritoo\CommonBundle\Service\Base\BaseService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -19,7 +20,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
  */
-class RequestService
+class RequestService extends BaseService
 {
     /**
      * The session
