@@ -10,10 +10,10 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Twig;
 
+use Twig\Extension\RuntimeExtensionInterface;
 use function count;
 use function is_iterable;
 use function is_string;
-use Twig\Extension\RuntimeExtensionInterface;
 
 /**
  * Runtime class related to CommonExtension Twig Extension.
@@ -42,7 +42,7 @@ class CommonRuntime implements RuntimeExtensionInterface
     }
 
     /**
-     * Verifies/Filters given value if is empty.
+     * Verifies/Filters given value if it is empty.
      * Returns replacement of empty value if given value is empty. Otherwise - given value.
      *
      * @param mixed       $value                 The value to check
