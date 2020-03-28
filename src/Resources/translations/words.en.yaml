@@ -57,7 +57,7 @@ meritoo_common:
         month: Month|Months
         year: Year|Years
         gallery: Gallery
-        gallery_photos: Photo gallery
+        gallery_of_photos: Photo gallery
         date: Date
     area:
         country: Country
@@ -90,6 +90,7 @@ meritoo_common:
         data:
             basic: Basic data
             commerce: Commerce data
+        number_of_number: '%number% of %count%'
     page:
         homepage: Homepage
         homepage_short: Home
@@ -102,6 +103,12 @@ meritoo_common:
             male: Current
             female: Current
             neutral: Current
+        previous:
+            male: Previous
+            female: Previous
+        next:
+            male: Next
+            female: Next
     person:
         first_name: First name
         last_name: Last name
@@ -141,3 +148,6 @@ meritoo_common:
         transaction_history: Transaction history
         transaction_date: Transaction date
         transaction: Transaction|Transactions
+    pagination:
+        page: Page|Pages
+        page_of_pages: Page %page% of %pages%

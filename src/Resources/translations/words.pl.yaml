@@ -90,6 +90,7 @@ meritoo_common:
         data:
             basic: Dane podstawowe
             commerce: Dane handlowe
+        number_of_number: '%number% z %count%'
     page:
         homepage: Strona główna
         homepage_short: Główna
@@ -102,6 +103,12 @@ meritoo_common:
             male: Bieżący
             female: Bieżąca
             neutral: Bieżące
+        previous:
+            male: Poprzedni
+            female: Poprzednia
+        next:
+            male: Następny
+            female: Następna
     person:
         first_name: Imię
         last_name: Nazwisko
@@ -141,3 +148,6 @@ meritoo_common:
         transaction_history: Historia transakcji
         transaction_date: Data transakcji
         transaction: Transakcja|Transakcje
+    pagination:
+        page: Strona|Strony
+        page_of_pages: Strona %page% z %pages%
