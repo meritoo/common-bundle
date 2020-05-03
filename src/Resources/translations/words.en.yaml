@@ -106,9 +106,11 @@ meritoo_common:
         previous:
             male: Previous
             female: Previous
+            neutral: Previous
         next:
             male: Next
             female: Next
+            neutral: Next
     person:
         first_name: First name
         last_name: Last name

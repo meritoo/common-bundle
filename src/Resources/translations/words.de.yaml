@@ -104,11 +104,13 @@ meritoo_common:
             female: Aktuell
             neutral: Aktuell
         previous:
-            male: Früher
-            female: Früher
+            male: Frühere
+            female: Frühere
+            neutral: Früheren
         next:
-            male: Nächste
+            male: Nächster
             female: Nächste
+            neutral: Nächsten
     person:
         first_name: Vorname
         last_name: Nachname
