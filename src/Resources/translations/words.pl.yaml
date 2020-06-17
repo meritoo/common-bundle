@@ -59,6 +59,8 @@ meritoo_common:
         gallery: Galeria
         gallery_of_photos: Galeria zdjęciowa
         date: Data
+        address: Adres
+        zip_code: Kod pocztowy
     area:
         country: Kraj
         county: Hrabstwo

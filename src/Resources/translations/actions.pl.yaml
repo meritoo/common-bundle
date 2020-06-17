@@ -63,6 +63,7 @@ meritoo_common:
             in_browser: Otwórz w przeglądarce
             address: Otwórz adres
             link: Otwórz link
+        download: Pobierz
     user:
         profile:
             show: Pokaż profil

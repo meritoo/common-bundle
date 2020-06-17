@@ -59,6 +59,8 @@ meritoo_common:
         gallery: Gallery
         gallery_of_photos: Photo gallery
         date: Date
+        address: Address
+        zip_code: Post Code
     area:
         country: Country
         county: County

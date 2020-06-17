@@ -59,6 +59,8 @@ meritoo_common:
         gallery: Galerie
         gallery_of_photos: Fotogalerie
         date: Datum
+        address: Adresse
+        zip_code: Postleitzahl
     area:
         country: Land
         county: Bezirk

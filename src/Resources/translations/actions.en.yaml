@@ -63,6 +63,7 @@ meritoo_common:
             in_browser: Open in browser
             address: Open address
             link: Open link
+        download: Download
     user:
         profile:
             show: Show profile
