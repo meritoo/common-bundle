@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Service;
 
+use Generator;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Service\ResponseService;
@@ -24,7 +25,7 @@ use Symfony\Component\Routing\RouterInterface;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Service\ResponseService
+ * @covers    \Meritoo\CommonBundle\Service\ResponseService
  */
 class ResponseServiceTest extends KernelTestCase
 {
@@ -69,9 +70,9 @@ class ResponseServiceTest extends KernelTestCase
     /**
      * Provide route details to build/create the "redirect response"
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideRouteDetailsForRedirectResponse(): \Generator
+    public function provideRouteDetailsForRedirectResponse(): Generator
     {
         yield[
             'test',

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Service;
 
+use Generator;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Service\RequestService;
@@ -125,9 +126,9 @@ class RequestServiceTest extends KernelTestCase
     /**
      * Provide url to store/fetch
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideUrl(): \Generator
+    public function provideUrl(): Generator
     {
         yield[''];
         yield['/'];
@@ -137,9 +138,9 @@ class RequestServiceTest extends KernelTestCase
     /**
      * Provide request and url of referer
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideRequestAndRefererUrl(): \Generator
+    public function provideRequestAndRefererUrl(): Generator
     {
         yield[
             new Request(),
@@ -171,9 +172,9 @@ class RequestServiceTest extends KernelTestCase
     /**
      * Provide request and url of referer to store
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideRequestAndRefererUrlToStore(): \Generator
+    public function provideRequestAndRefererUrlToStore(): Generator
     {
         yield[
             new Request(),

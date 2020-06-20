@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Service;
 
+use Generator;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Service\FormService;
@@ -101,9 +102,9 @@ class FormServiceTest extends KernelTestCase
     /**
      * Provides existing form options while using default values
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideExistingFormOptionsUsingDefaults(): \Generator
+    public function provideExistingFormOptionsUsingDefaults(): Generator
     {
         yield[
             [],
@@ -132,9 +133,9 @@ class FormServiceTest extends KernelTestCase
     /**
      * Provides existing form options while using values loaded from custom configuration
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideExistingFormOptionsCustomConfiguration(): \Generator
+    public function provideExistingFormOptionsCustomConfiguration(): Generator
     {
         yield[
             [],

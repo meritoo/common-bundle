@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Service;
 
+use Generator;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\Common\ValueObject\Version;
@@ -128,9 +129,9 @@ class ApplicationServiceTest extends KernelTestCase
     /**
      * Provide arguments of constructor and descriptor
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideConstructorArgumentsAndDescriptor(): \Generator
+    public function provideConstructorArgumentsAndDescriptor(): Generator
     {
         $versionFilePath = $this->getFilePathForTesting('VERSION');
 
