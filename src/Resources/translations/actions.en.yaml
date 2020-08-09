@@ -45,7 +45,9 @@ meritoo_common:
         right: Right
         move:
             up: Move up
+            up_short: Up
             down: Move down
+            down_short: Down
             anywhere: Move
         back: Back
         go_back: Go back
