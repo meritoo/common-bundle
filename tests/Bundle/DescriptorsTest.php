@@ -151,6 +151,28 @@ class DescriptorsTest extends BaseTestCase
      */
     public function provideArrayForDescriptors(): \Generator
     {
+        $descriptors1 = new Descriptors();
+        $descriptors1->addMultiple([
+            new Descriptor(),
+            new Descriptor(),
+        ]);
+
+        $descriptors2 = new Descriptors();
+        $descriptors2->addMultiple([
+            new Descriptor('Risus', 'Ridiculus'),
+            new Descriptor('Sollicitudin', 'Vulputate'),
+            new Descriptor(
+                'Pellentesque',
+                'Commodo',
+                '',
+                '',
+                new Descriptor(
+                    'Vulputate',
+                    'Dolor'
+                )
+            ),
+        ]);
+
         yield[
             [],
             new Descriptors(),
@@ -164,9 +186,7 @@ class DescriptorsTest extends BaseTestCase
                     'configurationRootName' => '',
                 ],
             ],
-            new Descriptors([
-                new Descriptor(),
-            ]),
+            $descriptors1,
         ];
 
         yield[
@@ -189,18 +209,7 @@ class DescriptorsTest extends BaseTestCase
                     ],
                 ],
             ],
-            new Descriptors([
-                new Descriptor(
-                    'Pellentesque',
-                    'Commodo',
-                    '',
-                    '',
-                    new Descriptor(
-                        'Vulputate',
-                        'Dolor'
-                    )
-                ),
-            ]),
+            $descriptors2,
         ];
 
         yield[
