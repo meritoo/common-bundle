@@ -2,6 +2,11 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.2.1
+
+1. Do not install `hirak/prestissimo` package while running Travis CI (incompatible with your PHP version, PHP
+   extensions and Composer version)
+
 # 0.2.0
 
 1. Upgrade Symfony to 5.0 (from 4.1)
