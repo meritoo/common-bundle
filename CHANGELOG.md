@@ -2,6 +2,11 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.2.2
+
+1. Allow installing of [twig/twig](https://packagist.org/packages/twig/twig) package with `2.1` version too
+   (`^2.1|^3.2` vs `^3.2` only)
+
 # 0.2.1
 
 1. Do not install `hirak/prestissimo` package while running Travis CI (incompatible with your PHP version, PHP
