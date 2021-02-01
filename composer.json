@@ -14,9 +14,9 @@
         "ext-intl": "*",
         "doctrine/annotations": "^1.6",
         "meritoo/common-library": "^1.0",
-        "symfony/framework-bundle": "^3.4|^4.1",
-        "symfony/validator": "^4.1",
-        "twig/extensions": "^1.5"
+        "symfony/framework-bundle": "^4.0|^5.0",
+        "symfony/validator": "^4.0|^5.0",
+        "twig/twig": "^3.2"
     },
     "require-dev": {
         "friends-of-phpspec/phpspec-code-coverage": "^4.3",

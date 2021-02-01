@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.2.0
+
+1. Upgrade Symfony to 5.0 (from 4.1)
+
 # 0.1.34
 
 1. Add new translations
