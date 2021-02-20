@@ -6,6 +6,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 1. Allow installing of [twig/twig](https://packagist.org/packages/twig/twig) package with `2.1` version too
    (`^2.1|^3.2` vs `^3.2` only)
+2. Use PHP `7.4` while running build in Travis CI
 
 # 0.2.1
 
