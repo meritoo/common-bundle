@@ -6,6 +6,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 1. Use `meritoo/php` Docker image (instead of deprecated `meritoo/php7`)
 2. Use PHP `7.4` while running build in Travis CI
+3. Ability to pass custom `<meta>` tags in the `html5_boilerplate.html.twig` template
 
 # 0.2.2
 
