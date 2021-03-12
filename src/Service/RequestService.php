@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Service;
 
+use Meritoo\CommonBundle\Contract\Service\RequestServiceInterface;
 use Meritoo\CommonBundle\Service\Base\BaseService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -20,12 +21,12 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
  */
-class RequestService extends BaseService
+class RequestService extends BaseService implements RequestServiceInterface
 {
     /**
      * The session
      *
-     * @var SessionInterface
+     * @var
      */
     private $session;
 
@@ -63,7 +64,7 @@ class RequestService extends BaseService
      * @param string $url Url of referer to store
      * @return RequestService
      */
-    public function storeRefererUrl(string $url): RequestService
+    public function storeRefererUrl(string $url): RequestServiceInterface
     {
         $this->session->set($this->refererUrlKey, $url);
 
@@ -76,7 +77,7 @@ class RequestService extends BaseService
      * @param Request $request The request (that probably contains referer)
      * @return RequestService
      */
-    public function storeRefererUrlFromRequest(Request $request): RequestService
+    public function storeRefererUrlFromRequest(Request $request): RequestServiceInterface
     {
         $url = $this->getRefererUrl($request);
 
