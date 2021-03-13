@@ -40,6 +40,11 @@ abstract class BaseController extends AbstractController
         $this->requestService = $requestService;
     }
 
+    protected function getRequestService(): RequestServiceInterface
+    {
+        return $this->requestService;
+    }
+
     /**
      * Redirects to url of referer
      *

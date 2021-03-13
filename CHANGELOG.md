@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.2.6
+
+1. Make the `RequestService` service available for controllers inheriting from `BaseController`
+
 # 0.2.5
 
 1. Use `RequestServiceInterface` for type hinting of the `RequestService` service
