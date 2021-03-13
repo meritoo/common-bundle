@@ -11,8 +11,10 @@ declare(strict_types=1);
 namespace Meritoo\CommonBundle\Service;
 
 use Meritoo\CommonBundle\Contract\Service\RequestServiceInterface;
+use Meritoo\CommonBundle\Exception\Service\Request\UnknownRequestException;
 use Meritoo\CommonBundle\Service\Base\BaseService;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
@@ -23,12 +25,22 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
  */
 class RequestService extends BaseService implements RequestServiceInterface
 {
+    private const ROUTE_PARAMETER = '_route';
+    private const PARAMETERS_PARAMETER = '_route_params';
+
     /**
      * The session
      *
      * @var
      */
     private $session;
+
+    /**
+     * Request stack
+     *
+     * @var RequestStack
+     */
+    private $requestStack;
 
     /**
      * Key used to store the referer url
@@ -41,10 +53,12 @@ class RequestService extends BaseService implements RequestServiceInterface
      * Class constructor
      *
      * @param SessionInterface $session The session
+     * @param RequestStack     $requestStack
      */
-    public function __construct(SessionInterface $session)
+    public function __construct(SessionInterface $session, RequestStack $requestStack)
     {
         $this->session = $session;
+        $this->requestStack = $requestStack;
     }
 
     /**
@@ -103,5 +117,31 @@ class RequestService extends BaseService implements RequestServiceInterface
         $this->session->remove($this->refererUrlKey);
 
         return $url;
+    }
+
+    public function getCurrentRoute(): string
+    {
+        return $this->getParameter(self::ROUTE_PARAMETER);
+    }
+
+    public function getCurrentRouteParameters(): array
+    {
+        return $this->getParameter(self::PARAMETERS_PARAMETER);
+    }
+
+    public function getParameter(string $parameter)
+    {
+        return $this->getCurrentRequest()->get($parameter);
+    }
+
+    private function getCurrentRequest(): Request
+    {
+        $request = $this->requestStack->getCurrentRequest();
+
+        if ($request === null) {
+            throw new UnknownRequestException();
+        }
+
+        return $request;
     }
 }

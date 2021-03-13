@@ -21,4 +21,14 @@ interface RequestServiceInterface
     public function storeRefererUrlFromRequest(Request $request): self;
 
     public function fetchRefererUrl(): string;
+
+    public function getCurrentRoute(): string;
+
+    public function getCurrentRouteParameters(): array;
+
+    /**
+     * @param string $parameter
+     * @return mixed
+     */
+    public function getParameter(string $parameter);
 }

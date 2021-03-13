@@ -2,6 +2,13 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.2.4
+
+1. Implement 3 new methods in the `RequestService` service:
+    - `getCurrentRoute(): string`
+    - `getCurrentRouteParameters(): array`
+    - `getParameter(string $parameter)`
+
 # 0.2.3
 
 1. Use `meritoo/php` Docker image (instead of deprecated `meritoo/php7`)
