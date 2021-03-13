@@ -9,6 +9,8 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
     - `getCurrentRouteParameters(): array`
     - `getParameter(string $parameter)`
 2. Set version of `PHP` to `7.2+` in `composer.json`
+3. Change mode of `Xdebug` to `coverage` in Docker's configuration to make it possible to generate code coverage by 
+   `PHPUnit`
 
 # 0.2.3
 
