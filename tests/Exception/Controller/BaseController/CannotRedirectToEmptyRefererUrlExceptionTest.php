@@ -12,8 +12,8 @@ namespace Meritoo\Test\CommonBundle\Exception\Controller\BaseController;
 
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\Common\Type\OopVisibilityType;
+use Meritoo\CommonBundle\Contract\Service\RequestServiceInterface;
 use Meritoo\CommonBundle\Exception\Controller\BaseController\CannotRedirectToEmptyRefererUrlException;
-use Meritoo\CommonBundle\Service\RequestService;
 
 /**
  * Test case of an exception used while redirection to url of referer cannot be done, because this url is empty
@@ -40,7 +40,7 @@ class CannotRedirectToEmptyRefererUrlExceptionTest extends BaseTestCase
         $template = 'Redirection to url of referer cannot be done, because this url is empty. Did you store url of' .
             ' referer using %s::%s() method or does request provide url of referer?';
 
-        $message = sprintf($template, RequestService::class, 'storeRefererUrl');
+        $message = sprintf($template, RequestServiceInterface::class, 'storeRefererUrl');
 
         $exception = CannotRedirectToEmptyRefererUrlException::create();
         static::assertSame($message, $exception->getMessage());

@@ -76,7 +76,7 @@ class RequestService extends BaseService implements RequestServiceInterface
      * Stores url of referer in session
      *
      * @param string $url Url of referer to store
-     * @return RequestService
+     * @return RequestServiceInterface
      */
     public function storeRefererUrl(string $url): RequestServiceInterface
     {
@@ -89,7 +89,7 @@ class RequestService extends BaseService implements RequestServiceInterface
      * Stores the referer url in session grabbed from given request
      *
      * @param Request $request The request (that probably contains referer)
-     * @return RequestService
+     * @return RequestServiceInterface
      */
     public function storeRefererUrlFromRequest(Request $request): RequestServiceInterface
     {

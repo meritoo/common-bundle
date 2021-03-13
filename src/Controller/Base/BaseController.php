@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Controller\Base;
 
+use Meritoo\CommonBundle\Contract\Service\RequestServiceInterface;
 use Meritoo\CommonBundle\Exception\Controller\BaseController\CannotRedirectToEmptyRefererUrlException;
-use Meritoo\CommonBundle\Service\RequestService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -26,16 +26,16 @@ abstract class BaseController extends AbstractController
     /**
      * Serves request
      *
-     * @var RequestService
+     * @var RequestServiceInterface
      */
     private $requestService;
 
     /**
      * Class constructor
      *
-     * @param RequestService $requestService Serves request
+     * @param RequestServiceInterface $requestService Serves request
      */
-    public function __construct(RequestService $requestService)
+    public function __construct(RequestServiceInterface $requestService)
     {
         $this->requestService = $requestService;
     }
@@ -43,8 +43,8 @@ abstract class BaseController extends AbstractController
     /**
      * Redirects to url of referer
      *
-     * @throws CannotRedirectToEmptyRefererUrlException
      * @return RedirectResponse
+     * @throws CannotRedirectToEmptyRefererUrlException
      */
     protected function redirectToReferer(): RedirectResponse
     {

@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Exception\Controller\BaseController;
 
-use Meritoo\CommonBundle\Service\RequestService;
+use Meritoo\CommonBundle\Contract\Service\RequestServiceInterface;
 use RuntimeException;
 
 /**
@@ -31,7 +31,7 @@ class CannotRedirectToEmptyRefererUrlException extends RuntimeException
         $template = 'Redirection to url of referer cannot be done, because this url is empty. Did you store url of' .
             ' referer using %s::%s() method or does request provide url of referer?';
 
-        $message = sprintf($template, RequestService::class, 'storeRefererUrl');
+        $message = sprintf($template, RequestServiceInterface::class, 'storeRefererUrl');
 
         return new static($message);
     }

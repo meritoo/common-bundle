@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.2.5
+
+1. Use `RequestServiceInterface` for type hinting of the `RequestService` service
+
 # 0.2.4
 
 1. Implement 3 new methods in the `RequestService` service:

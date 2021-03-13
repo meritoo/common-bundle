@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Controller\Base;
 
+use Meritoo\CommonBundle\Contract\Service\RequestServiceInterface;
 use Meritoo\CommonBundle\Exception\Controller\BaseController\CannotRedirectToEmptyRefererUrlException;
-use Meritoo\CommonBundle\Service\RequestService;
 use Meritoo\Test\CommonBundle\Controller\Base\BaseController\RealController;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -22,7 +22,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Controller\Base\BaseController
+ * @covers    \Meritoo\CommonBundle\Controller\Base\BaseController
  */
 class BaseControllerTest extends KernelTestCase
 {
@@ -45,8 +45,8 @@ class BaseControllerTest extends KernelTestCase
 
     public function testRedirectToReferer(): void
     {
-        /** @var RequestService $requestService */
-        $requestService = static::$container->get(RequestService::class);
+        /** @var RequestServiceInterface $requestService */
+        $requestService = static::$container->get(RequestServiceInterface::class);
 
         $refererUrl = '/';
         $requestService->storeRefererUrl($refererUrl);
@@ -83,8 +83,8 @@ class BaseControllerTest extends KernelTestCase
      */
     private function getRealController(): RealController
     {
-        /** @var RequestService $requestService */
-        $requestService = static::$container->get(RequestService::class);
+        /** @var RequestServiceInterface $requestService */
+        $requestService = static::$container->get(RequestServiceInterface::class);
 
         /*
          * I have to pass container to the controller to avoid exception:
