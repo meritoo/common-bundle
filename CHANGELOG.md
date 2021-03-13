@@ -8,6 +8,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
     - `getCurrentRoute(): string`
     - `getCurrentRouteParameters(): array`
     - `getParameter(string $parameter)`
+2. Set version of `PHP` to `7.2+` in `composer.json`
 
 # 0.2.3
 
