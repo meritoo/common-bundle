@@ -176,6 +176,31 @@ class RequestServiceTest extends KernelTestCase
         $service->getCurrentRoute();
     }
 
+    public function testGetCurrentRouteIfCurrentRouteIsUnknown(): void
+    {
+        $session = $this->createMock(SessionInterface::class);
+        $requestStack = $this->createMock(RequestStack::class);
+        $request = $this->createMock(Request::class);
+
+        $requestStack
+            ->expects(self::once())
+            ->method('getCurrentRequest')
+            ->willReturn($request)
+        ;
+
+        $request
+            ->expects(self::once())
+            ->method('get')
+            ->with('_route')
+            ->willReturn(null)
+        ;
+
+        $service = new RequestService($session, $requestStack);
+        $result = $service->getCurrentRoute();
+
+        static::assertSame('', $result);
+    }
+
     public function testGetCurrentRoute(): void
     {
         $expected = 'test-route';
@@ -212,6 +237,31 @@ class RequestServiceTest extends KernelTestCase
 
         $service = new RequestService($session, $requestStack);
         $service->getCurrentRouteParameters();
+    }
+
+    public function testGetCurrentRouteParametersIfRouteParametersAreUnknown(): void
+    {
+        $session = $this->createMock(SessionInterface::class);
+        $requestStack = $this->createMock(RequestStack::class);
+        $request = $this->createMock(Request::class);
+
+        $requestStack
+            ->expects(self::once())
+            ->method('getCurrentRequest')
+            ->willReturn($request)
+        ;
+
+        $request
+            ->expects(self::once())
+            ->method('get')
+            ->with('_route_params')
+            ->willReturn(null)
+        ;
+
+        $service = new RequestService($session, $requestStack);
+        $result = $service->getCurrentRouteParameters();
+
+        static::assertSame([], $result);
     }
 
     public function testGetCurrentRouteParameters(): void

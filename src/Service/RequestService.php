@@ -121,12 +121,12 @@ class RequestService extends BaseService implements RequestServiceInterface
 
     public function getCurrentRoute(): string
     {
-        return $this->getParameter(self::ROUTE_PARAMETER);
+        return $this->getParameter(self::ROUTE_PARAMETER) ?? '';
     }
 
     public function getCurrentRouteParameters(): array
     {
-        return $this->getParameter(self::PARAMETERS_PARAMETER);
+        return $this->getParameter(self::PARAMETERS_PARAMETER) ?? [];
     }
 
     public function getParameter(string $parameter)

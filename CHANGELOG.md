@@ -5,6 +5,8 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.2.7
 
 1. Mark PHPUnit test as risky when it does not have a `@covers` annotation
+2. Return an empty string and empty array respectively while fetching route and route parameters by the 
+   `RequestService` service (if there is no value in current request)
 
 # 0.2.6
 
