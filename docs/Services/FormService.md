@@ -14,7 +14,7 @@ Uses parameters:
 
 ### Methods
 
-##### addFormOptions()
+##### addHtml5ValidationOptions()
 
 Adds related to HTML5 inline validation options into the existing options. If HTML5 inline validation is disabled, does nothing.
 

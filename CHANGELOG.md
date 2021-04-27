@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.2.8
+
+1. Rename method `FormService::addFormOptions()` -> `FormService::addHtml5ValidationOptions()`
+
 # 0.2.7
 
 1. Mark PHPUnit test as risky when it does not have a `@covers` annotation

@@ -48,17 +48,31 @@ class FormService extends BaseService
     }
 
     /**
+     * @param array $existingOptions
+     * @deprecated since meritoo/common-bundle 0.2.8, use "addHtml5ValidationOptions()" instead
+     */
+    public function addFormOptions(array &$existingOptions = []): void
+    {
+        trigger_deprecation(
+            'meritoo/common-bundle',
+            '0.2.8',
+            'The "%s()" method is deprecated, use "addHtml5ValidationOptions()" instead.',
+            __METHOD__
+        );
+    }
+
+    /**
      * Adds related to HTML5 inline validation options into the existing options.
      * If HTML5 inline validation is disabled, does nothing.
      *
      * Example of usage:
      * $formOptions = [];
-     * $formService->addFormOptions($formOptions);
+     * $formService->addHtml5ValidationOptions($formOptions);
      * $form = $formFactory->create('', MyFormType::class, [], $formOptions);
      *
      * @param array $existingOptions (optional) Existing options
      */
-    public function addFormOptions(array &$existingOptions = []): void
+    public function addHtml5ValidationOptions(array &$existingOptions = []): void
     {
         /*
          * HTML5 inline validation is enabled?

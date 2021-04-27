@@ -73,7 +73,7 @@ class FormServiceTest extends KernelTestCase
     {
         static::$container
             ->get(FormService::class)
-            ->addFormOptions($existingOptions)
+            ->addHtml5ValidationOptions($existingOptions)
         ;
 
         static::assertSame($expected, $existingOptions);
@@ -93,7 +93,7 @@ class FormServiceTest extends KernelTestCase
 
         static::$container
             ->get(FormService::class)
-            ->addFormOptions($existingOptions)
+            ->addHtml5ValidationOptions($existingOptions)
         ;
 
         static::assertSame($expected, $existingOptions);
