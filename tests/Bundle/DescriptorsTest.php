@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Bundle;
 
+use Generator;
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Bundle\Descriptor;
@@ -147,9 +148,9 @@ class DescriptorsTest extends BaseTestCase
     /**
      * Provides array with data of descriptors and the expected descriptors
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideArrayForDescriptors(): \Generator
+    public function provideArrayForDescriptors(): Generator
     {
         $descriptors1 = new Descriptors();
         $descriptors1->addMultiple([
@@ -173,12 +174,12 @@ class DescriptorsTest extends BaseTestCase
             ),
         ]);
 
-        yield[
+        yield 'An empty array' => [
             [],
             new Descriptors(),
         ];
 
-        yield[
+        yield 'Two empty descriptors' => [
             [
                 [],
                 [
@@ -189,7 +190,7 @@ class DescriptorsTest extends BaseTestCase
             $descriptors1,
         ];
 
-        yield[
+        yield 'Two simple descriptors + one nested descriptor' => [
             [
                 [
                     'name'                  => 'Risus',
@@ -212,7 +213,7 @@ class DescriptorsTest extends BaseTestCase
             $descriptors2,
         ];
 
-        yield[
+        yield 'Descriptors with more details' => [
             [
                 [
                     'name'                  => 'Risus',
@@ -255,23 +256,23 @@ class DescriptorsTest extends BaseTestCase
     /**
      * Provides not existing descriptor and class namespace
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideNotExistingDescriptorAndClassNamespace(): \Generator
+    public function provideNotExistingDescriptorAndClassNamespace(): Generator
     {
-        yield[
+        yield [
             new Descriptors(),
             '',
             null,
         ];
 
-        yield[
+        yield [
             new Descriptors(),
             'Vulputate\Commodo\Egestas',
             null,
         ];
 
-        yield[
+        yield [
             new Descriptors([
                 new Descriptor(
                     'MattisBundle',
@@ -288,7 +289,7 @@ class DescriptorsTest extends BaseTestCase
             null,
         ];
 
-        yield[
+        yield [
             new Descriptors([
                 new Descriptor(
                     'MattisBundle',
@@ -309,11 +310,11 @@ class DescriptorsTest extends BaseTestCase
     /**
      * Provides descriptor and class namespace
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideDescriptorAndClassNamespace(): \Generator
+    public function provideDescriptorAndClassNamespace(): Generator
     {
-        yield[
+        yield [
             new Descriptors([
                 new Descriptor(
                     'MattisBundle',
@@ -334,7 +335,7 @@ class DescriptorsTest extends BaseTestCase
             ),
         ];
 
-        yield[
+        yield [
             new Descriptors([
                 new Descriptor(
                     'MattisBundle',
@@ -376,23 +377,23 @@ class DescriptorsTest extends BaseTestCase
     /**
      * Provides not existing descriptor and name
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideNotExistingDescriptorAndName(): \Generator
+    public function provideNotExistingDescriptorAndName(): Generator
     {
-        yield[
+        yield [
             new Descriptors(),
             '',
             null,
         ];
 
-        yield[
+        yield [
             new Descriptors(),
             'VulputateBundle',
             null,
         ];
 
-        yield[
+        yield [
             new Descriptors([
                 new Descriptor(
                     'MattisBundle',
@@ -409,7 +410,7 @@ class DescriptorsTest extends BaseTestCase
             null,
         ];
 
-        yield[
+        yield [
             new Descriptors([
                 new Descriptor(
                     'MattisBundle',
@@ -430,11 +431,11 @@ class DescriptorsTest extends BaseTestCase
     /**
      * Provides descriptor and name
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideDescriptorAndName(): \Generator
+    public function provideDescriptorAndName(): Generator
     {
-        yield[
+        yield [
             new Descriptors([
                 new Descriptor(
                     'MattisBundle',
@@ -455,7 +456,7 @@ class DescriptorsTest extends BaseTestCase
             ),
         ];
 
-        yield[
+        yield [
             new Descriptors([
                 new Descriptor(
                     'MattisBundle',
@@ -497,22 +498,30 @@ class DescriptorsTest extends BaseTestCase
     /**
      * Provides descriptors of bundles and an array representation of the descriptors
      *
-     * @return \Generator
+     * @return Generator
      */
-    public function provideArrayFromDescriptors(): \Generator
+    public function provideArrayFromDescriptors(): Generator
     {
-        yield[
+        yield 'An empty array' => [
             new Descriptors(),
             [],
         ];
 
-        yield[
+        yield 'Two descriptors with names only' => [
             new Descriptors([
                 new Descriptor('UnamIncolunt'),
                 new Descriptor('ContraLegem'),
             ]),
             [
-                '' => [
+                0 => [
+                    'name'                  => 'UnamIncolunt',
+                    'shortName'             => 'unamincolunt',
+                    'configurationRootName' => '',
+                    'rootNamespace'         => '',
+                    'path'                  => '',
+                    'dataFixtures'          => [],
+                ],
+                1 => [
                     'name'                  => 'ContraLegem',
                     'shortName'             => 'contralegem',
                     'configurationRootName' => '',
@@ -523,7 +532,7 @@ class DescriptorsTest extends BaseTestCase
             ],
         ];
 
-        yield[
+        yield 'Two not full descriptors' => [
             new Descriptors([
                 new Descriptor('LigulaBundle', '', 'Ipsum\Ridiculus\Tellus', 'ipsum/ridiculus/tellus'),
                 new Descriptor('', 'pharetra'),
@@ -537,7 +546,7 @@ class DescriptorsTest extends BaseTestCase
                     'path'                  => 'ipsum/ridiculus/tellus',
                     'dataFixtures'          => [],
                 ],
-                ''                       => [
+                0                        => [
                     'name'                  => '',
                     'shortName'             => '',
                     'configurationRootName' => 'pharetra',
@@ -548,7 +557,7 @@ class DescriptorsTest extends BaseTestCase
             ],
         ];
 
-        yield[
+        yield 'Two full descriptors' => [
             new Descriptors([
                 new Descriptor(
                     'MattisBundle',
@@ -593,7 +602,7 @@ class DescriptorsTest extends BaseTestCase
             ],
         ]);
 
-        yield[
+        yield 'Two full descriptors - compared to result of fromArray() method' => [
             $descriptors,
             [
                 'Euismod\Egestas\Mattis'   => [

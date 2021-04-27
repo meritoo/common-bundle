@@ -103,18 +103,19 @@ class Descriptors extends BaseCollection
      */
     public static function fromArray(array $data): Descriptors
     {
-        $descriptors = new static();
+        $result = new static();
 
         if (!empty($data)) {
-            foreach ($data as $descriptorData) {
-                $descriptor = Descriptor::fromArray($descriptorData);
-                $rootNamespace = $descriptor->getRootNamespace();
+            $descriptors = [];
 
-                $descriptors->add($descriptor, $rootNamespace);
+            foreach ($data as $descriptorData) {
+                $descriptors[] = Descriptor::fromArray($descriptorData);
             }
+
+            $result->addMultiple($descriptors, true);
         }
 
-        return $descriptors;
+        return $result;
     }
 
     /**
@@ -131,6 +132,13 @@ class Descriptors extends BaseCollection
         /** @var Descriptor $element */
         foreach ($elements as $element) {
             $rootNamespace = $element->getRootNamespace();
+
+            // If root namespace is unknown, use 0-based index
+            if ($rootNamespace === '') {
+                $result[] = $element;
+                continue;
+            }
+
             $result[$rootNamespace] = $element;
         }
 
