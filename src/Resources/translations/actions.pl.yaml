@@ -77,3 +77,6 @@ meritoo_common:
         by_short: Sortuj wg
         ascending: Rosnąco
         descending: Malejąco
+    acceptance:
+        accept: Zaakceptuj
+        reject: Odrzuć

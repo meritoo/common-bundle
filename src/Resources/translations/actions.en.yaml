@@ -77,3 +77,6 @@ meritoo_common:
         by_short: Sort by
         ascending: Low to High
         descending: High to Low
+    acceptance:
+        accept: Accept
+        reject: Reject

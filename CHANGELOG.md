@@ -6,6 +6,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 1. Rename method `FormService::addFormOptions()` -> `FormService::addHtml5ValidationOptions()`
 2. Fix failed tests of the `Descriptors` class (collection of `Descriptor`)
+3. Add new translations
 
 # 0.2.7
 
