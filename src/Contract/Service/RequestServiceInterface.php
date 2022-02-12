@@ -7,7 +7,7 @@ namespace Meritoo\CommonBundle\Contract\Service;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Interface RequestServiceInterface
+ * Interface/Contract of service that serves request
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
