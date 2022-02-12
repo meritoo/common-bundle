@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.2.9
+
+1. Create RequestService::isCurrentRoute() method that returns information if given route is the current route
+
 # 0.2.8
 
 1. Rename method `FormService::addFormOptions()` -> `FormService::addHtml5ValidationOptions()`

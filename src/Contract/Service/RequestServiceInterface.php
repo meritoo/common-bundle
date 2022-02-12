@@ -31,4 +31,6 @@ interface RequestServiceInterface
      * @return mixed
      */
     public function getParameter(string $parameter);
+
+    public function isCurrentRoute(string $route): bool;
 }

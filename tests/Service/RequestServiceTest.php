@@ -294,6 +294,43 @@ class RequestServiceTest extends KernelTestCase
         static::assertSame($expected, $result);
     }
 
+    public function testIsCurrentRouteIfCurrentRequestIsUnknown(): void
+    {
+        $this->expectException(UnknownRequestException::class);
+
+        $session = $this->createMock(SessionInterface::class);
+        $requestStack = $this->createMock(RequestStack::class);
+
+        $service = new RequestService($session, $requestStack);
+        $service->isCurrentRoute('');
+    }
+
+    /**
+     * @dataProvider provideCurrentRoute
+     */
+    public function testIsCurrentRoute(string $currentRoute, string $route, bool $expected): void
+    {
+        $session = $this->createMock(SessionInterface::class);
+        $requestStack = $this->createMock(RequestStack::class);
+        $request = $this->createMock(Request::class);
+
+        $requestStack
+            ->expects(self::once())
+            ->method('getCurrentRequest')
+            ->willReturn($request)
+        ;
+
+        $request
+            ->expects(self::once())
+            ->method('get')
+            ->with('_route')
+            ->willReturn($currentRoute)
+        ;
+
+        $service = new RequestService($session, $requestStack);
+        self::assertSame($expected, $service->isCurrentRoute($route));
+    }
+
     /**
      * Provide url to store/fetch
      *
@@ -371,6 +408,27 @@ class RequestServiceTest extends KernelTestCase
                 'HTTP_REFERER' => '/products/123',
             ]),
             '/products/123',
+        ];
+    }
+
+    public function provideCurrentRoute(): ?Generator
+    {
+        yield 'Unknown current route' => [
+            '',
+            'abc',
+            false,
+        ];
+
+        yield 'Route different than current' => [
+            'abc',
+            'def',
+            false,
+        ];
+
+        yield 'Route same as current' => [
+            'abc',
+            'abc',
+            true,
         ];
     }
 

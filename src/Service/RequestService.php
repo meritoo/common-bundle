@@ -131,7 +131,13 @@ class RequestService extends BaseService implements RequestServiceInterface
 
     public function getParameter(string $parameter)
     {
-        return $this->getCurrentRequest()->get($parameter);
+        return $this->getCurrentRequest()->get($parameter)
+        ;
+    }
+
+    public function isCurrentRoute(string $route): bool
+    {
+        return $this->getCurrentRoute() === $route;
     }
 
     private function getCurrentRequest(): Request
