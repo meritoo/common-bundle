@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Traits\Test\Entity;
 
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\SchemaTool;
+use Doctrine\Persistence\ObjectRepository;
 
 /**
  * Trait for test case related to entity

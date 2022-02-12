@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Traits\Test\Entity;
 
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ObjectRepository;
 use Meritoo\CommonBundle\Traits\Test\Entity\EntityTestCaseTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -64,6 +64,7 @@ class EntityTestCaseTraitTest extends TestCase
         $entityManager = $this->createMock(EntityManagerInterface::class);
 
         $trait
+            ->expects(self::once())
             ->method('getEntityManager')
             ->willReturn($entityManager)
         ;
@@ -77,6 +78,7 @@ class EntityTestCaseTraitTest extends TestCase
         $repository = $this->createMock(ObjectRepository::class);
 
         $trait
+            ->expects(self::once())
             ->method('getRepository')
             ->willReturn($repository)
         ;
