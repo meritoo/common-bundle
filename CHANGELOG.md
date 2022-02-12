@@ -5,6 +5,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.2.9
 
 1. Create RequestService::isCurrentRoute() method that returns information if given route is the current route
+2. [Pagination] If there is no data, 1st page is allowed/valid only
 
 # 0.2.8
 

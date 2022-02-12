@@ -279,11 +279,19 @@ class PaginationTest extends BaseTestCase
             4,
         ];
 
-        yield[
+        yield [
             'Total amount: 10, per page: 4, page: 3',
             true,
             3,
             10,
+            4,
+        ];
+
+        yield [
+            'Total amount: 0, per page: 4, page: 1',
+            true,
+            1,
+            0,
             4,
         ];
     }

@@ -64,6 +64,11 @@ class Pagination
     {
         $pagesCount = $this->calculatePagesCount();
 
+        // If there is no data, 1st page is allowed/valid only
+        if ($pagesCount === 0) {
+            return $page === 1;
+        }
+
         return $page > 0 && $page <= $pagesCount;
     }
 
