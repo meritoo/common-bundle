@@ -117,20 +117,22 @@ or
 docker-compose exec php phing -f phing/tests.xml test:phpspec
 ```
 
-# Mutation Tests
+# Infection - Mutation Testing
 
 Served by [Infection — Mutation Testing Framework](https://infection.github.io).
 
 ### Running tests
 
 ```bash
-docker-compose exec php vendor/bin/infection --threads=5
+$ docker-compose exec php bash
+root@18f2f0cfaa5d:/var/www/application# XDEBUG_MODE=coverage ./vendor/bin/infection --threads=$(nproc)
 ```
 
 or
 
 ```bash
-docker-compose exec php phing -f phing/tests.xml test:infection
+$ docker-compose exec php bash
+root@18f2f0cfaa5d:/var/www/application# XDEBUG_MODE=coverage phing -f phing/tests.xml test:infection
 ```
 
 ### Result of testing

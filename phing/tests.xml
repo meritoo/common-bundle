@@ -90,8 +90,8 @@
     </target>
 
     <!-- Run mutation testing -->
-    <target name="test:infection" depends="build:prepare">
-        <exec command="${tests.mutation.command}" passthru="true"/>
+    <target name="test:infection" depends="test:phpunit">
+        <exec command="${tests.mutation.command}" passthru="true" />
     </target>
 
     <!-- Run phpspec tests -->
