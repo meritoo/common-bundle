@@ -27,8 +27,8 @@ class EntityTestCaseTraitTest extends TestCase
         $trait = $this->getMockedTrait('persistAndFlush');
 
         $trait
+            ->expects(self::once())
             ->method('persistAndFlush')
-            ->willReturn(null)
         ;
 
         static::assertNull($trait->persistAndFlush(new \stdClass()));
@@ -39,8 +39,8 @@ class EntityTestCaseTraitTest extends TestCase
         $trait = $this->getMockedTrait('updateDatabaseSchema');
 
         $trait
+            ->expects(self::once())
             ->method('updateDatabaseSchema')
-            ->willReturn(null)
         ;
 
         static::assertNull($trait->updateDatabaseSchema());
@@ -51,8 +51,8 @@ class EntityTestCaseTraitTest extends TestCase
         $trait = $this->getMockedTrait('dropDatabaseSchema');
 
         $trait
+            ->expects(self::once())
             ->method('dropDatabaseSchema')
-            ->willReturn(null)
         ;
 
         static::assertNull($trait->dropDatabaseSchema());
