@@ -34,13 +34,23 @@ abstract class BaseTwigExtensionTestCase extends KernelTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * Returns instance of Twig extension to verify
+     *
+     * @return AbstractExtension
      */
-    protected function setUp(): void
+    protected function getExtensionInstance(): AbstractExtension
     {
-        parent::setUp();
-        static::bootKernel();
+        $namespace = $this->getExtensionNamespace();
+
+        return new $namespace();
     }
+
+    /**
+     * Returns namespace of Twig extension to verify
+     *
+     * @return string
+     */
+    abstract protected function getExtensionNamespace(): string;
 
     /**
      * Returns instance of the Twig Environment
@@ -67,15 +77,12 @@ abstract class BaseTwigExtensionTestCase extends KernelTestCase
     }
 
     /**
-     * Returns instance of Twig extension to verify
-     *
-     * @return AbstractExtension
+     * {@inheritdoc}
      */
-    protected function getExtensionInstance(): AbstractExtension
+    protected function setUp(): void
     {
-        $namespace = $this->getExtensionNamespace();
-
-        return new $namespace();
+        parent::setUp();
+        static::bootKernel();
     }
 
     /**
@@ -93,16 +100,8 @@ abstract class BaseTwigExtensionTestCase extends KernelTestCase
 
         $rendered = $this
             ->getTwigEnvironment($templates)
-            ->render($name)
-        ;
+            ->render($name);
 
         static::assertSame($expected, $rendered);
     }
-
-    /**
-     * Returns namespace of Twig extension to verify
-     *
-     * @return string
-     */
-    abstract protected function getExtensionNamespace(): string;
 }

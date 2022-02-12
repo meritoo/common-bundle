@@ -11,9 +11,9 @@
          verbose="true"
 >
     <php>
-        <ini name="error_reporting" value="-1"/>
-        <env name="KERNEL_CLASS" value="Meritoo\Test\CommonBundle\Kernel"/>
-        <env name="APP_DEFAULT_LOCALE" value="en"/>
+        <ini name="error_reporting" value="-1" />
+        <env name="KERNEL_CLASS" value="Meritoo\Test\CommonBundle\Kernel" />
+        <env name="APP_DEFAULT_LOCALE" value="en" />
     </php>
 
     <testsuites>
@@ -29,13 +29,13 @@
     </filter>
 
     <listeners>
-        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
     </listeners>
 
     <logging>
-        <log type="coverage-html" target="build/reports/phpunit-coverage/html"/>
-        <log type="coverage-xml" target="build/reports/infection/coverage-xml"/>
-        <log type="junit" target="build/reports/infection/phpunit.junit.xml"/>
-        <log type="coverage-clover" target="build/reports/coveralls/clover.xml"/>
+        <log type="coverage-html" target="build/reports/phpunit-coverage/html" />
+        <log type="coverage-xml" target="build/reports/infection/coverage-xml" />
+        <log type="junit" target="build/reports/infection/phpunit.junit.xml" />
+        <log type="coverage-clover" target="build/reports/coveralls/clover.xml" />
     </logging>
 </phpunit>

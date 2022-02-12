@@ -15,6 +15,7 @@ use Doctrine\Persistence\ObjectRepository;
 use Meritoo\CommonBundle\Traits\Test\Entity\EntityTestCaseTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 /**
  * @internal
@@ -22,30 +23,6 @@ use PHPUnit\Framework\TestCase;
  */
 class EntityTestCaseTraitTest extends TestCase
 {
-    public function testPersistAndFlush(): void
-    {
-        $trait = $this->getMockedTrait('persistAndFlush');
-
-        $trait
-            ->expects(self::once())
-            ->method('persistAndFlush')
-        ;
-
-        static::assertNull($trait->persistAndFlush(new \stdClass()));
-    }
-
-    public function testUpdateDatabaseSchema(): void
-    {
-        $trait = $this->getMockedTrait('updateDatabaseSchema');
-
-        $trait
-            ->expects(self::once())
-            ->method('updateDatabaseSchema')
-        ;
-
-        static::assertNull($trait->updateDatabaseSchema());
-    }
-
     public function testDropDatabaseSchema(): void
     {
         $trait = $this->getMockedTrait('dropDatabaseSchema');
@@ -83,7 +60,31 @@ class EntityTestCaseTraitTest extends TestCase
             ->willReturn($repository)
         ;
 
-        static::assertInstanceOf(ObjectRepository::class, $trait->getRepository(\stdClass::class));
+        static::assertInstanceOf(ObjectRepository::class, $trait->getRepository(stdClass::class));
+    }
+
+    public function testPersistAndFlush(): void
+    {
+        $trait = $this->getMockedTrait('persistAndFlush');
+
+        $trait
+            ->expects(self::once())
+            ->method('persistAndFlush')
+        ;
+
+        static::assertNull($trait->persistAndFlush(new stdClass()));
+    }
+
+    public function testUpdateDatabaseSchema(): void
+    {
+        $trait = $this->getMockedTrait('updateDatabaseSchema');
+
+        $trait
+            ->expects(self::once())
+            ->method('updateDatabaseSchema')
+        ;
+
+        static::assertNull($trait->updateDatabaseSchema());
     }
 
     private function getMockedTrait(string $method): MockObject

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Exception\Type\DependencyInjection;
 
+use Generator;
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfigurationFileTypeException;
@@ -21,10 +22,41 @@ use Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfiguration
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfigurationFileTypeException
+ * @covers    \Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfigurationFileTypeException
  */
 class UnknownConfigurationFileTypeExceptionTest extends BaseTestCase
 {
+    /**
+     * Provides unknown type and message of exception
+     *
+     * @return Generator
+     */
+    public function provideUnknownTypeAndMessage(): Generator
+    {
+        $template = 'The \'%s\' type of Dependency Injection (DI) configuration file is unknown. Probably doesn\'t'
+            .' exist or there is a typo. You should use one of these types: php, xml, yaml.';
+
+        yield [
+            '',
+            sprintf($template, ''),
+        ];
+
+        yield [
+            'jpg',
+            sprintf($template, 'jpg'),
+        ];
+
+        yield [
+            'txt',
+            sprintf($template, 'txt'),
+        ];
+
+        yield [
+            'yml',
+            sprintf($template, 'yml'),
+        ];
+    }
+
     public function testConstructorVisibilityAndArguments(): void
     {
         static::assertConstructorVisibilityAndArguments(UnknownConfigurationFileTypeException::class, OopVisibilityType::IS_PUBLIC, 3);
@@ -42,36 +74,5 @@ class UnknownConfigurationFileTypeExceptionTest extends BaseTestCase
 
         static::assertInstanceOf(UnknownConfigurationFileTypeException::class, $exception);
         static::assertSame($expectedMessage, $exception->getMessage());
-    }
-
-    /**
-     * Provides unknown type and message of exception
-     *
-     * @return \Generator
-     */
-    public function provideUnknownTypeAndMessage(): \Generator
-    {
-        $template = 'The \'%s\' type of Dependency Injection (DI) configuration file is unknown. Probably doesn\'t'
-            . ' exist or there is a typo. You should use one of these types: php, xml, yaml.';
-
-        yield[
-            '',
-            sprintf($template, ''),
-        ];
-
-        yield[
-            'jpg',
-            sprintf($template, 'jpg'),
-        ];
-
-        yield[
-            'txt',
-            sprintf($template, 'txt'),
-        ];
-
-        yield[
-            'yml',
-            sprintf($template, 'yml'),
-        ];
     }
 }

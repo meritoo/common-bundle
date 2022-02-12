@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Validator\Constraints\Date;
 
+use DateTime;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
 use Meritoo\CommonBundle\Test\Validator\Date\BaseThanTodayValidatorTestCase;
 use Meritoo\CommonBundle\Validator\Constraints\Date\LaterThanOrEqualToday;
@@ -22,7 +23,7 @@ use Meritoo\CommonBundle\Validator\Constraints\Date\LaterThanOrEqualTodayValidat
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Validator\Constraints\Date\LaterThanOrEqualTodayValidator
+ * @covers    \Meritoo\CommonBundle\Validator\Constraints\Date\LaterThanOrEqualTodayValidator
  */
 class LaterThanOrEqualTodayValidatorTest extends BaseThanTodayValidatorTestCase
 {
@@ -34,34 +35,10 @@ class LaterThanOrEqualTodayValidatorTest extends BaseThanTodayValidatorTestCase
     }
 
     /**
-     * @param mixed $value An empty value
-     * @dataProvider provideEmptyValue
-     */
-    public function testValidateUsingEmptyValues($value): void
-    {
-        $this->validator->validate($value, static::getConstraint());
-        $this->assertNoViolation();
-    }
-
-    /**
-     * @param \DateTime $value The date to validate
-     * @dataProvider provideNotWholeDayEarlierDate
-     */
-    public function testValidateUsingNotWholeDayEarlierDate(\DateTime $value): void
-    {
-        $this
-            ->validator
-            ->validate($value, static::getConstraint())
-        ;
-
-        $this->assertNoViolation();
-    }
-
-    /**
-     * @param \DateTime $value The date to validate
+     * @param DateTime $value The date to validate
      * @dataProvider provideEarlierDate
      */
-    public function testValidateUsingEarlierDate(\DateTime $value): void
+    public function testValidateUsingEarlierDate(DateTime $value): void
     {
         $this
             ->validator
@@ -75,10 +52,48 @@ class LaterThanOrEqualTodayValidatorTest extends BaseThanTodayValidatorTestCase
     }
 
     /**
-     * @param \DateTime $value The date to validate
+     * @param mixed $value An empty value
+     * @dataProvider provideEmptyValue
+     */
+    public function testValidateUsingEmptyValues($value): void
+    {
+        $this->validator->validate($value, static::getConstraint());
+        $this->assertNoViolation();
+    }
+
+    /**
+     * @param DateTime $value The date to validate
+     * @dataProvider provideLaterDate
+     */
+    public function testValidateUsingLaterDate(DateTime $value): void
+    {
+        $this
+            ->validator
+            ->validate($value, static::getConstraint())
+        ;
+
+        $this->assertNoViolation();
+    }
+
+    /**
+     * @param DateTime $value The date to validate
+     * @dataProvider provideNotWholeDayEarlierDate
+     */
+    public function testValidateUsingNotWholeDayEarlierDate(DateTime $value): void
+    {
+        $this
+            ->validator
+            ->validate($value, static::getConstraint())
+        ;
+
+        $this->assertNoViolation();
+    }
+
+    /**
+     * @param DateTime $value The date to validate
      * @dataProvider provideNotWholeDayLaterDate
      */
-    public function testValidateUsingNotWholeDayLaterDate(\DateTime $value): void
+    public function testValidateUsingNotWholeDayLaterDate(DateTime $value): void
     {
         $this
             ->validator
@@ -92,21 +107,7 @@ class LaterThanOrEqualTodayValidatorTest extends BaseThanTodayValidatorTestCase
     {
         $this
             ->validator
-            ->validate(new \DateTime(), static::getConstraint())
-        ;
-
-        $this->assertNoViolation();
-    }
-
-    /**
-     * @param \DateTime $value The date to validate
-     * @dataProvider provideLaterDate
-     */
-    public function testValidateUsingLaterDate(\DateTime $value): void
-    {
-        $this
-            ->validator
-            ->validate($value, static::getConstraint())
+            ->validate(new DateTime(), static::getConstraint())
         ;
 
         $this->assertNoViolation();

@@ -51,28 +51,6 @@ abstract class BaseExtension extends ConfigurableExtension
     protected const CONFIGURATION_SERVICES_NAME = 'services';
 
     /**
-     * {@inheritdoc}
-     */
-    protected function loadInternal(array $mergedConfig, ContainerBuilder $container): void
-    {
-        $this
-            ->loadParameters($mergedConfig, $container)
-            ->loadServices($container)
-        ;
-    }
-
-    /**
-     * Returns name of configuration file with services, e.g. "services.yaml", "services.xml", "services.php".
-     * Extensions are defined in Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType class.
-     *
-     * @return string
-     */
-    protected function getServicesFileName(): string
-    {
-        return sprintf('%s.%s', static::CONFIGURATION_SERVICES_NAME, static::CONFIGURATION_DEFAULT_EXTENSION);
-    }
-
-    /**
      * Returns path of directory where the bundle exists.
      * It's required to load services from bundle's configuration file.
      *
@@ -139,17 +117,25 @@ abstract class BaseExtension extends ConfigurableExtension
     }
 
     /**
-     * Loads services from configuration file (located in bundle's resources)
+     * Returns name of configuration file with services, e.g. "services.yaml", "services.xml", "services.php".
+     * Extensions are defined in Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType class.
      *
-     * @param ContainerBuilder $container Container for the Dependency Injection (DI)
-     * @return BaseExtension
+     * @return string
      */
-    private function loadServices(ContainerBuilder $container): BaseExtension
+    protected function getServicesFileName(): string
     {
-        $name = $this->getServicesFileName();
-        $nameWithExtension = $this->getConfigurationFileWithExtension($name);
+        return sprintf('%s.%s', static::CONFIGURATION_SERVICES_NAME, static::CONFIGURATION_DEFAULT_EXTENSION);
+    }
 
-        return $this->loadConfigurationFile($container, $nameWithExtension);
+    /**
+     * {@inheritdoc}
+     */
+    protected function loadInternal(array $mergedConfig, ContainerBuilder $container): void
+    {
+        $this
+            ->loadParameters($mergedConfig, $container)
+            ->loadServices($container)
+        ;
     }
 
     /**
@@ -169,6 +155,66 @@ abstract class BaseExtension extends ConfigurableExtension
         }
 
         return $fileName;
+    }
+
+    /**
+     * Returns loader of configuration file
+     *
+     * @param ContainerBuilder $container Container for the Dependency Injection (DI)
+     * @param FileLocator      $locator   Locator used to find files
+     * @param string           $fileType  Type of configuration file
+     * @return null|FileLoader
+     */
+    private function getFileLoader(ContainerBuilder $container, FileLocator $locator, string $fileType): ?FileLoader
+    {
+        $loaderFactory = new FileLoaderFactory($container, $locator);
+
+        if (ConfigurationFileType::YAML === $fileType) {
+            return $loaderFactory->createYamlFileLoader();
+        }
+
+        if (ConfigurationFileType::XML === $fileType) {
+            return $loaderFactory->createXmlFileLoader();
+        }
+
+        if (ConfigurationFileType::PHP === $fileType) {
+            return $loaderFactory->createPhpFileLoader();
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns global patterns of keys or paths from configuration that should match to stop loading parameters
+     *
+     * @return array
+     * @see getKeysToStopLoadingParametersOn() method in this class
+     */
+    private function getGlobalKeysToStopLoadingParametersOn(): array
+    {
+        return [
+            /*
+             * I have to always stop on integer-based keys, the 0-based keys.
+             * It's required to proper retrieve / get values that are treated like an array.
+             *
+             * Example:
+             * -> config.yml
+             * parameter:
+             *      sub-parameter: [value1, value2, value3]
+             *
+             * -> processed array
+             * [
+             *      'parameter' => [
+             *          'sub-parameter' => [        <------ 0-based indexes
+             *              'value1',
+             *              'value2',
+             *              'value3'
+             *          ]
+             *      ]
+             * ];
+             */
+            '\d+',
+        ];
     }
 
     /**
@@ -217,33 +263,6 @@ abstract class BaseExtension extends ConfigurableExtension
     }
 
     /**
-     * Returns loader of configuration file
-     *
-     * @param ContainerBuilder $container Container for the Dependency Injection (DI)
-     * @param FileLocator      $locator   Locator used to find files
-     * @param string           $fileType  Type of configuration file
-     * @return null|FileLoader
-     */
-    private function getFileLoader(ContainerBuilder $container, FileLocator $locator, string $fileType): ?FileLoader
-    {
-        $loaderFactory = new FileLoaderFactory($container, $locator);
-
-        if (ConfigurationFileType::YAML === $fileType) {
-            return $loaderFactory->createYamlFileLoader();
-        }
-
-        if (ConfigurationFileType::XML === $fileType) {
-            return $loaderFactory->createXmlFileLoader();
-        }
-
-        if (ConfigurationFileType::PHP === $fileType) {
-            return $loaderFactory->createPhpFileLoader();
-        }
-
-        return null;
-    }
-
-    /**
      * Loads parameters into container
      *
      * @param array            $mergedConfig Custom configuration merged with defaults
@@ -270,8 +289,7 @@ abstract class BaseExtension extends ConfigurableExtension
         $bundleShortName = $configuration
             ->getConfigTreeBuilder()
             ->buildTree()
-            ->getName()
-        ;
+            ->getName();
 
         foreach ($flatConfig as $name => $value) {
             if (!is_array($value)) {
@@ -284,6 +302,20 @@ abstract class BaseExtension extends ConfigurableExtension
         }
 
         return $this;
+    }
+
+    /**
+     * Loads services from configuration file (located in bundle's resources)
+     *
+     * @param ContainerBuilder $container Container for the Dependency Injection (DI)
+     * @return BaseExtension
+     */
+    private function loadServices(ContainerBuilder $container): BaseExtension
+    {
+        $name = $this->getServicesFileName();
+        $nameWithExtension = $this->getConfigurationFileWithExtension($name);
+
+        return $this->loadConfigurationFile($container, $nameWithExtension);
     }
 
     /**
@@ -307,38 +339,5 @@ abstract class BaseExtension extends ConfigurableExtension
 
         // Let's get the last elements' paths and load values into container
         return Arrays::getLastElementsPaths($mergedConfig, '.', '', $stopIfMatchedBy);
-    }
-
-    /**
-     * Returns global patterns of keys or paths from configuration that should match to stop loading parameters
-     *
-     * @return array
-     * @see getKeysToStopLoadingParametersOn() method in this class
-     */
-    private function getGlobalKeysToStopLoadingParametersOn(): array
-    {
-        return [
-            /*
-             * I have to always stop on integer-based keys, the 0-based keys.
-             * It's required to proper retrieve / get values that are treated like an array.
-             *
-             * Example:
-             * -> config.yml
-             * parameter:
-             *      sub-parameter: [value1, value2, value3]
-             *
-             * -> processed array
-             * [
-             *      'parameter' => [
-             *          'sub-parameter' => [        <------ 0-based indexes
-             *              'value1',
-             *              'value2',
-             *              'value3'
-             *          ]
-             *      ]
-             * ];
-             */
-            '\d+',
-        ];
     }
 }

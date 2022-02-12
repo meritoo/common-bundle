@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Twig;
 
+use Generator;
 use Meritoo\CommonBundle\Test\Twig\Base\BaseTwigExtensionTestCase;
 use Meritoo\CommonBundle\Twig\CommonExtension;
 
@@ -20,30 +21,108 @@ use Meritoo\CommonBundle\Twig\CommonExtension;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Twig\CommonExtension
+ * @covers    \Meritoo\CommonBundle\Twig\CommonExtension
  */
 class CommonExtensionTest extends BaseTwigExtensionTestCase
 {
-    public function testGetFilters(): void
+    /**
+     * Provide template for filter empty value (using default configuration)
+     *
+     * @return Generator
+     */
+    public function provideTemplateForFilterEmptyValueUsingDefaults(): Generator
     {
-        $filters = static::$container
-            ->get($this->getExtensionNamespace())
-            ->getFilters()
-        ;
+        yield [
+            'filter_null',
+            '{{ null | meritoo_common_empty_value }}',
+            '-',
+        ];
 
-        static::assertCount(1, $filters);
+        yield [
+            'filter_iterable',
+            '{{ [] | meritoo_common_empty_value }}',
+            '-',
+        ];
+
+        yield [
+            'filter_iterable',
+            '{{ {} | meritoo_common_empty_value }}',
+            '-',
+        ];
+
+        yield [
+            'filter_string',
+            '{{ "" | meritoo_common_empty_value }}',
+            '-',
+        ];
+
+        yield [
+            'filter_not_null',
+            '{{ {1: "test 1", 2: "test 2"} | meritoo_common_empty_value | length }}',
+            '2',
+        ];
+
+        yield [
+            'filter_not_empty_iterable',
+            '{{ {test1: 1, test2: 2, test3: 3} | meritoo_common_empty_value | length }}',
+            '3',
+        ];
+
+        yield [
+            'filter_not_empty_string',
+            '{{ "test" | meritoo_common_empty_value }}',
+            'test',
+        ];
     }
 
     /**
-     * @param string $name       Name of the rendered template (used internally only)
-     * @param string $sourceCode Source code of the rendered template
-     * @param mixed  $expected   Expected result of rendering
+     * Provide template for filter empty value (using "test" environment)
      *
-     * @dataProvider provideTemplateForFilterEmptyValueUsingTestEnvironment
+     * @return Generator
      */
-    public function testFilterEmptyValueUsingTestEnvironment(string $name, string $sourceCode, $expected): void
+    public function provideTemplateForFilterEmptyValueUsingTestEnvironment(): Generator
     {
-        $this->verifyRenderedTemplate($name, $sourceCode, $expected);
+        yield [
+            'filter_null',
+            '{{ null | meritoo_common_empty_value }}',
+            '...',
+        ];
+
+        yield [
+            'filter_iterable',
+            '{{ [] | meritoo_common_empty_value }}',
+            '...',
+        ];
+
+        yield [
+            'filter_iterable',
+            '{{ {} | meritoo_common_empty_value }}',
+            '...',
+        ];
+
+        yield [
+            'filter_string',
+            '{{ "" | meritoo_common_empty_value }}',
+            '...',
+        ];
+
+        yield [
+            'filter_not_null',
+            '{{ {1: "test 1", 2: "test 2"} | meritoo_common_empty_value | length }}',
+            '2',
+        ];
+
+        yield [
+            'filter_not_empty_iterable',
+            '{{ {test1: 1, test2: 2, test3: 3} | meritoo_common_empty_value | length }}',
+            '3',
+        ];
+
+        yield [
+            'filter_not_empty_string',
+            '{{ "test" | meritoo_common_empty_value }}',
+            'test',
+        ];
     }
 
     /**
@@ -63,103 +142,24 @@ class CommonExtensionTest extends BaseTwigExtensionTestCase
     }
 
     /**
-     * Provide template for filter empty value (using "test" environment)
+     * @param string $name       Name of the rendered template (used internally only)
+     * @param string $sourceCode Source code of the rendered template
+     * @param mixed  $expected   Expected result of rendering
      *
-     * @return \Generator
+     * @dataProvider provideTemplateForFilterEmptyValueUsingTestEnvironment
      */
-    public function provideTemplateForFilterEmptyValueUsingTestEnvironment(): \Generator
+    public function testFilterEmptyValueUsingTestEnvironment(string $name, string $sourceCode, $expected): void
     {
-        yield[
-            'filter_null',
-            '{{ null | meritoo_common_empty_value }}',
-            '...',
-        ];
-
-        yield[
-            'filter_iterable',
-            '{{ [] | meritoo_common_empty_value }}',
-            '...',
-        ];
-
-        yield[
-            'filter_iterable',
-            '{{ {} | meritoo_common_empty_value }}',
-            '...',
-        ];
-
-        yield[
-            'filter_string',
-            '{{ "" | meritoo_common_empty_value }}',
-            '...',
-        ];
-
-        yield[
-            'filter_not_null',
-            '{{ {1: "test 1", 2: "test 2"} | meritoo_common_empty_value | length }}',
-            '2',
-        ];
-
-        yield[
-            'filter_not_empty_iterable',
-            '{{ {test1: 1, test2: 2, test3: 3} | meritoo_common_empty_value | length }}',
-            '3',
-        ];
-
-        yield[
-            'filter_not_empty_string',
-            '{{ "test" | meritoo_common_empty_value }}',
-            'test',
-        ];
+        $this->verifyRenderedTemplate($name, $sourceCode, $expected);
     }
 
-    /**
-     * Provide template for filter empty value (using default configuration)
-     *
-     * @return \Generator
-     */
-    public function provideTemplateForFilterEmptyValueUsingDefaults(): \Generator
+    public function testGetFilters(): void
     {
-        yield[
-            'filter_null',
-            '{{ null | meritoo_common_empty_value }}',
-            '-',
-        ];
+        $filters = static::$container
+            ->get($this->getExtensionNamespace())
+            ->getFilters();
 
-        yield[
-            'filter_iterable',
-            '{{ [] | meritoo_common_empty_value }}',
-            '-',
-        ];
-
-        yield[
-            'filter_iterable',
-            '{{ {} | meritoo_common_empty_value }}',
-            '-',
-        ];
-
-        yield[
-            'filter_string',
-            '{{ "" | meritoo_common_empty_value }}',
-            '-',
-        ];
-
-        yield[
-            'filter_not_null',
-            '{{ {1: "test 1", 2: "test 2"} | meritoo_common_empty_value | length }}',
-            '2',
-        ];
-
-        yield[
-            'filter_not_empty_iterable',
-            '{{ {test1: 1, test2: 2, test3: 3} | meritoo_common_empty_value | length }}',
-            '3',
-        ];
-
-        yield[
-            'filter_not_empty_string',
-            '{{ "test" | meritoo_common_empty_value }}',
-            'test',
-        ];
+        static::assertCount(1, $filters);
     }
 
     /**

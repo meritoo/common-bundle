@@ -47,8 +47,8 @@ class ConfigurationFileType extends BaseType
      * Returns type of configuration file based on name of the file
      *
      * @param string $fileName Name of configuration file
-     * @throws UnknownConfigurationFileTypeException
      * @return string
+     * @throws UnknownConfigurationFileTypeException
      */
     public static function getTypeFromFileName(string $fileName): string
     {

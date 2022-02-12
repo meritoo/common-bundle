@@ -44,46 +44,46 @@
 
 <!doctype html>
 <html class="no-js {{ html_css_class }}" lang="{{ lang }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        {%- if title is not empty -%}
-            <title>{{ title }}</title>
-        {%- endif -%}
+    {%- if title is not empty -%}
+        <title>{{ title }}</title>
+    {%- endif -%}
 
-        {%- if description is not empty -%}
-            <meta name="description" content="{{ description }}">
-        {%- endif -%}
+    {%- if description is not empty -%}
+        <meta name="description" content="{{ description }}">
+    {%- endif -%}
 
-        {%- if apple_touch_icon is not empty -%}
-            <link rel="apple-touch-icon" href="{{ apple_touch_icon }}">
-        {%- endif -%}
+    {%- if apple_touch_icon is not empty -%}
+        <link rel="apple-touch-icon" href="{{ apple_touch_icon }}">
+    {%- endif -%}
 
-        {%- if favicon_32 is not empty -%}
-            <link rel="icon" type="image/png" sizes="32x32" href="{{ favicon_32 }}">
-        {%- endif -%}
+    {%- if favicon_32 is not empty -%}
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ favicon_32 }}">
+    {%- endif -%}
 
-        {%- if favicon_16 is not empty -%}
-            <link rel="icon" type="image/png" sizes="16x16" href="{{ favicon_16 }}">
-        {%- endif -%}
+    {%- if favicon_16 is not empty -%}
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ favicon_16 }}">
+    {%- endif -%}
 
-        {%- if msapplication_tile_color is not empty -%}
-            <meta name="msapplication-TileColor" content="{{ msapplication_tile_color }}">
-        {%- endif -%}
+    {%- if msapplication_tile_color is not empty -%}
+        <meta name="msapplication-TileColor" content="{{ msapplication_tile_color }}">
+    {%- endif -%}
 
-        {%- if theme_color is not empty -%}
-            <meta name="theme-color" content="{{ theme_color }}">
-        {%- endif -%}
+    {%- if theme_color is not empty -%}
+        <meta name="theme-color" content="{{ theme_color }}">
+    {%- endif -%}
 
-        {%- block custom_metatags -%}{%- endblock -%}
-        {%- block stylesheets -%}{%- endblock -%}
-        {%- block javascripts_head -%}{%- endblock -%}
-    </head>
-    <body>
-        {%- block body -%}
-            <!--[if lt IE 8]>
+    {%- block custom_metatags -%}{%- endblock -%}
+    {%- block stylesheets -%}{%- endblock -%}
+    {%- block javascripts_head -%}{%- endblock -%}
+</head>
+<body>
+{%- block body -%}
+    <!--[if lt IE 8]>
                 <p class="browserupgrade">
                     {{ 'browser_upgrade.information' | trans }}.
                     {{ 'meritoo_common.general.please' | trans({}, 'words') }}
@@ -92,92 +92,92 @@
                 </p>
             <![endif]-->
 
-            {#
-             # The header
-             #}
-            {%- block header_container -%}
-                {% set header = '' %}
+    {#
+    # The header
+    #}
+    {%- block header_container -%}
+        {% set header = '' %}
 
-                {% if block('header') is defined %}
-                    {% set header = block('header') | trim %}
-                {% endif %}
+        {% if block('header') is defined %}
+            {% set header = block('header') | trim %}
+        {% endif %}
 
-                {% if header is not empty %}
-                    <div class="container header-container">
-                        {{ header | raw }}
-                    </div>
-                {% endif %}
-            {%- endblock -%}
+        {% if header is not empty %}
+            <div class="container header-container">
+                {{ header | raw }}
+            </div>
+        {% endif %}
+    {%- endblock -%}
 
-            {#
-             # Before content
-             #}
-            {% block before_content_container %}
-                {% set before_content = '' %}
+    {#
+    # Before content
+    #}
+    {% block before_content_container %}
+        {% set before_content = '' %}
 
-                {% if block('before_content') is defined %}
-                    {% set before_content = block('before_content') | trim %}
-                {% endif %}
+        {% if block('before_content') is defined %}
+            {% set before_content = block('before_content') | trim %}
+        {% endif %}
 
-                {% if before_content is not empty %}
-                    <div class="container">
-                        {{ before_content | raw }}
-                    </div>
-                {% endif %}
-            {% endblock %}
+        {% if before_content is not empty %}
+            <div class="container">
+                {{ before_content | raw }}
+            </div>
+        {% endif %}
+    {% endblock %}
 
-            {#
-             # The content
-             #}
-            {%- block content_container -%}
-                {% set content = '' %}
+    {#
+    # The content
+    #}
+    {%- block content_container -%}
+        {% set content = '' %}
 
-                {% if block('content') is defined %}
-                    {% set content = block('content') | trim %}
-                {% endif %}
+        {% if block('content') is defined %}
+            {% set content = block('content') | trim %}
+        {% endif %}
 
-                {% if content is not empty %}
-                    <div class="container main-container">
-                        {{ content | raw }}
-                    </div>
-                {% endif %}
-            {%- endblock -%}
+        {% if content is not empty %}
+            <div class="container main-container">
+                {{ content | raw }}
+            </div>
+        {% endif %}
+    {%- endblock -%}
 
-            {#
-             # After content
-             #}
-            {% block after_content_container %}
-                {% set after_content = '' %}
+    {#
+    # After content
+    #}
+    {% block after_content_container %}
+        {% set after_content = '' %}
 
-                {% if block('after_content') is defined %}
-                    {% set after_content = block('after_content') | trim %}
-                {% endif %}
+        {% if block('after_content') is defined %}
+            {% set after_content = block('after_content') | trim %}
+        {% endif %}
 
-                {% if after_content is not empty %}
-                    <div class="container">
-                        {{ after_content | raw }}
-                    </div>
-                {% endif %}
-            {% endblock %}
+        {% if after_content is not empty %}
+            <div class="container">
+                {{ after_content | raw }}
+            </div>
+        {% endif %}
+    {% endblock %}
 
-            {#
-             # The footer
-             #}
-            {%- block footer_container -%}
-                {% set footer = '' %}
+    {#
+    # The footer
+    #}
+    {%- block footer_container -%}
+        {% set footer = '' %}
 
-                {% if block('footer') is defined %}
-                    {% set footer = block('footer') | trim %}
-                {% endif %}
+        {% if block('footer') is defined %}
+            {% set footer = block('footer') | trim %}
+        {% endif %}
 
-                {% if footer is not empty %}
-                    <div class="container footer-container">
-                        {{ footer | raw }}
-                    </div>
-                {% endif %}
-            {%- endblock -%}
+        {% if footer is not empty %}
+            <div class="container footer-container">
+                {{ footer | raw }}
+            </div>
+        {% endif %}
+    {%- endblock -%}
 
-            {%- block javascripts_footer -%}{%- endblock -%}
-        {%- endblock -%}
-    </body>
+    {%- block javascripts_footer -%}{%- endblock -%}
+{%- endblock -%}
+</body>
 </html>

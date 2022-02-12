@@ -16,7 +16,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.2.7
 
 1. Mark PHPUnit test as risky when it does not have a `@covers` annotation
-2. Return an empty string and empty array respectively while fetching route and route parameters by the 
+2. Return an empty string and empty array respectively while fetching route and route parameters by the
    `RequestService` service (if there is no value in current request)
 
 # 0.2.6
@@ -34,7 +34,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
     - `getCurrentRouteParameters(): array`
     - `getParameter(string $parameter)`
 2. Set version of `PHP` to `7.2+` in `composer.json`
-3. Change mode of `Xdebug` to `coverage` in Docker's configuration to make it possible to generate code coverage by 
+3. Change mode of `Xdebug` to `coverage` in Docker's configuration to make it possible to generate code coverage by
    `PHPUnit`
 
 # 0.2.3
@@ -90,7 +90,8 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.1.28
 
 1. Add new translations (Picture, Photo)
-2. Add test of bundle's Descriptors when each Descriptor has the same root namespace (only the last one will be available)
+2. Add test of bundle's Descriptors when each Descriptor has the same root namespace (only the last one will be
+   available)
 3. Allow to drop database schema by the trait for entity test case (the EntityTestCaseTrait)
 4. Test case for the trait for entity test case (the EntityTestCaseTrait)
 
@@ -114,7 +115,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 6. Do not require ext-intl, because is required by meritoo/common-library package
 7. Update Kernel used by tests
 8. BaseExtension > verify extension of services' configuration file by separate method & in the loadServices() method
-(not in loadConfigurationFile() method)
+   (not in loadConfigurationFile() method)
 9. BaseExtension > prepare flat configuration by separate method
 10. BaseExtension > prepare loader of configuration file by separate class
 
@@ -151,8 +152,8 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.1.19
 
 1. Resources > translations > add new
-2. Validator > date > date that should be: earlier than today, earlier than or equal today, later than today, later 
-than or equal today
+2. Validator > date > date that should be: earlier than today, earlier than or equal today, later than today, later than
+   or equal today
 
 # 0.1.18
 
@@ -181,17 +182,18 @@ than or equal today
 # 0.1.14
 
 1. Travis CI > update configuration (You are using the deprecated option "dev". Dev packages are installed by default
-now.)
+   now.)
 2. Resources > translations > add new
 
 # 0.1.13
 
-1. BaseExtension > allow to define patterns of keys or paths from configuration that should match to stop loading 
-parameters (by make getKeysToStopLoadingParametersOn() method protected)
+1. BaseExtension > allow to define patterns of keys or paths from configuration that should match to stop loading
+   parameters (by make getKeysToStopLoadingParametersOn() method protected)
 
 # 0.1.12
 
-1. Configuration > form.novalidate parameter > information if HTML5 inline validation is disabled > make compatible with environment variables and Symfony 3.4
+1. Configuration > form.novalidate parameter > information if HTML5 inline validation is disabled > make compatible with
+   environment variables and Symfony 3.4
 2. Phing > implement missing configuration
 3. BaseTwigExtensionTestCase > base test case for Twig extension
 
@@ -211,11 +213,13 @@ parameters (by make getKeysToStopLoadingParametersOn() method protected)
 
 # 0.1.8
 
-1. Service > FormService > add addFormOptions() method > adds options to the existing options that may be used while creating a form
+1. Service > FormService > add addFormOptions() method > adds options to the existing options that may be used while
+   creating a form
 
 # 0.1.7
 
-1. Composer > update type > required to fix validation error of recipe (Type must be "symfony-bundle" as the manifest registers a bundle, "library" detected)
+1. Composer > update type > required to fix validation error of recipe (Type must be "symfony-bundle" as the manifest
+   registers a bundle, "library" detected)
 2. Update documentation > Configuration
 
 # 0.1.6
@@ -227,8 +231,8 @@ parameters (by make getKeysToStopLoadingParametersOn() method protected)
 1. Resources > translations > add new
 2. Resources > translations > group by destination in each translation domain
 3. Tests > verify default configuration parameters > add "defaults" environment
-4. Service > FormService > service that serves forms. Configuration > form.novalidate parameter > information if HTML5 
-inline validation is disabled.
+4. Service > FormService > service that serves forms. Configuration > form.novalidate parameter > information if HTML5
+   inline validation is disabled.
 
 # 0.1.4
 
@@ -246,10 +250,10 @@ inline validation is disabled.
 
 1. Add descriptor of application
 2. Replenish documentation:
-	- Descriptor of bundle
-	- Descriptors of bundles
-	- Descriptor of application
-	- Services: ApplicationService
+   - Descriptor of bundle
+   - Descriptors of bundles
+   - Descriptor of application
+   - Services: ApplicationService
 
 # 0.1.0
 
@@ -275,7 +279,8 @@ inline validation is disabled.
 16. Composer > require ext-pcre
 17. Documentation > Development > update
 18. Docker > rename `php-cli` service to `php`
-19. Remove `Version` class (Value Object > Version of software). Use `Version` class from `meritoo/common-library` package.
+19. Remove `Version` class (Value Object > Version of software). Use `Version` class from `meritoo/common-library`
+    package.
 20. Base Dependency Injection (DI) extension, the `BaseExtension` class
 21. Add main class of this bundle, the `MeritooCommonBundle` class
 22. Add Dependency Injection (DI) Extension (and configuration) for this bundle

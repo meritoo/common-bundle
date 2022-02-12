@@ -35,7 +35,7 @@ class IncorrectTotalAmountExceptionTest extends BaseTestCase
 
         static::assertSame(
             'The \'total amount\' parameter of pagination should be greater than or equal 0, but -1 was'
-            . ' provided. Is there everything ok?',
+            .' provided. Is there everything ok?',
             $exception->getMessage()
         );
     }

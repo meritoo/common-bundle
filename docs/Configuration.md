@@ -27,51 +27,51 @@ meritoo_common:
 
 * meritoo_common.application.version.file_path
 
-    > Path of a file who contains version of the application.
+  > Path of a file who contains version of the application.
 
-    Default value: `%kernel.project_dir%/VERSION`.
+  Default value: `%kernel.project_dir%/VERSION`.
 
 * meritoo_common.application.name
 
-    > Name of application. May be displayed near logo.
-    
-    Default value: `""`
+  > Name of application. May be displayed near logo.
+
+  Default value: `""`
 
 * meritoo_common.application.description
 
-    > Description of application. May be displayed near logo.
-    
-    Default value: `""`
+  > Description of application. May be displayed near logo.
+
+  Default value: `""`
 
 * meritoo_common.application.empty_value_replacement
 
-    > Replacement of empty value. May be used to filter values in templates/views.
-    
-    Default value: `"-"`
+  > Replacement of empty value. May be used to filter values in templates/views.
+
+  Default value: `"-"`
 
 * meritoo_common.form.novalidate
 
-    > Information if HTML5 inline validation is disabled
-    
-    Default value: `false`
+  > Information if HTML5 inline validation is disabled
+
+  Default value: `false`
 
 * meritoo_common.date.format.date
 
-    > Format of date without time
-    
-    Default value: `d.m.Y`
+  > Format of date without time
+
+  Default value: `d.m.Y`
 
 * meritoo_common.date.format.datetime
 
-    > Format of date with time
-    
-    Default value: `d.m.Y H:i`
+  > Format of date with time
+
+  Default value: `d.m.Y H:i`
 
 * meritoo_common.date.format.time
 
-    > Format of time without date
-    
-    Default value: `H:i`
+  > Format of time without date
+
+  Default value: `H:i`
 
 # More
 

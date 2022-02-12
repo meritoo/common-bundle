@@ -62,6 +62,35 @@ class RequestService extends BaseService implements RequestServiceInterface
     }
 
     /**
+     * Fetches url of referer and removes it from session
+     *
+     * @return string
+     */
+    public function fetchRefererUrl(): string
+    {
+        $url = $this->session->get($this->refererUrlKey, '');
+        $this->session->remove($this->refererUrlKey);
+
+        return $url;
+    }
+
+    public function getCurrentRoute(): string
+    {
+        return $this->getParameter(self::ROUTE_PARAMETER) ?? '';
+    }
+
+    public function getCurrentRouteParameters(): array
+    {
+        return $this->getParameter(self::PARAMETERS_PARAMETER) ?? [];
+    }
+
+    public function getParameter(string $parameter)
+    {
+        return $this->getCurrentRequest()->get($parameter)
+        ;
+    }
+
+    /**
      * Returns url of referer
      *
      * @param Request $request The request (that probably contains referer)
@@ -70,6 +99,11 @@ class RequestService extends BaseService implements RequestServiceInterface
     public function getRefererUrl(Request $request): string
     {
         return $request->headers->get('referer', '');
+    }
+
+    public function isCurrentRoute(string $route): bool
+    {
+        return $this->getCurrentRoute() === $route;
     }
 
     /**
@@ -104,40 +138,6 @@ class RequestService extends BaseService implements RequestServiceInterface
         }
 
         return $this->storeRefererUrl($url);
-    }
-
-    /**
-     * Fetches url of referer and removes it from session
-     *
-     * @return string
-     */
-    public function fetchRefererUrl(): string
-    {
-        $url = $this->session->get($this->refererUrlKey, '');
-        $this->session->remove($this->refererUrlKey);
-
-        return $url;
-    }
-
-    public function getCurrentRoute(): string
-    {
-        return $this->getParameter(self::ROUTE_PARAMETER) ?? '';
-    }
-
-    public function getCurrentRouteParameters(): array
-    {
-        return $this->getParameter(self::PARAMETERS_PARAMETER) ?? [];
-    }
-
-    public function getParameter(string $parameter)
-    {
-        return $this->getCurrentRequest()->get($parameter)
-        ;
-    }
-
-    public function isCurrentRoute(string $route): bool
-    {
-        return $this->getCurrentRoute() === $route;
     }
 
     private function getCurrentRequest(): Request

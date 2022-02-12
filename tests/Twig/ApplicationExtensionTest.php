@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Twig;
 
+use Generator;
 use Meritoo\CommonBundle\Test\Twig\Base\BaseTwigExtensionTestCase;
 use Meritoo\CommonBundle\Twig\ApplicationExtension;
 use Twig\Error\RuntimeError;
@@ -21,30 +22,40 @@ use Twig\Error\RuntimeError;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Twig\ApplicationExtension
+ * @covers    \Meritoo\CommonBundle\Twig\ApplicationExtension
  */
 class ApplicationExtensionTest extends BaseTwigExtensionTestCase
 {
-    public function testGetFunctions(): void
-    {
-        $functions = static::$container
-            ->get($this->getExtensionNamespace())
-            ->getFunctions()
-        ;
-
-        static::assertCount(1, $functions);
-    }
-
     /**
-     * @param string $name       Name of the rendered template (used internally only)
-     * @param string $sourceCode Source code of the rendered template
-     * @param string $expected   Expected result of rendering
+     * Provides templates for the "get descriptor" function
      *
-     * @dataProvider provideTemplateForGetDescriptor
+     * @return Generator
      */
-    public function testGetDescriptorUsingTestEnvironment(string $name, string $sourceCode, string $expected): void
+    public function provideTemplateForGetDescriptor(): Generator
     {
-        $this->verifyRenderedTemplate($name, $sourceCode, $expected);
+        yield [
+            'descriptor_as_string',
+            '{{ meritoo_common_application_descriptor() }}',
+            'This is a Test | Just for Testing | 1.2.0',
+        ];
+
+        yield [
+            'app_name_from_descriptor',
+            '{{ meritoo_common_application_descriptor().name }}',
+            'This is a Test',
+        ];
+
+        yield [
+            'app_description_from_descriptor',
+            '{{ meritoo_common_application_descriptor().description }}',
+            'Just for Testing',
+        ];
+
+        yield [
+            'app_version_from_descriptor',
+            '{{ meritoo_common_application_descriptor().version }}',
+            '1.2.0',
+        ];
     }
 
     public function testGetDescriptorUsingDefaults(): void
@@ -63,35 +74,24 @@ class ApplicationExtensionTest extends BaseTwigExtensionTestCase
     }
 
     /**
-     * Provides templates for the "get descriptor" function
+     * @param string $name       Name of the rendered template (used internally only)
+     * @param string $sourceCode Source code of the rendered template
+     * @param string $expected   Expected result of rendering
      *
-     * @return \Generator
+     * @dataProvider provideTemplateForGetDescriptor
      */
-    public function provideTemplateForGetDescriptor(): \Generator
+    public function testGetDescriptorUsingTestEnvironment(string $name, string $sourceCode, string $expected): void
     {
-        yield[
-            'descriptor_as_string',
-            '{{ meritoo_common_application_descriptor() }}',
-            'This is a Test | Just for Testing | 1.2.0',
-        ];
+        $this->verifyRenderedTemplate($name, $sourceCode, $expected);
+    }
 
-        yield[
-            'app_name_from_descriptor',
-            '{{ meritoo_common_application_descriptor().name }}',
-            'This is a Test',
-        ];
+    public function testGetFunctions(): void
+    {
+        $functions = static::$container
+            ->get($this->getExtensionNamespace())
+            ->getFunctions();
 
-        yield[
-            'app_description_from_descriptor',
-            '{{ meritoo_common_application_descriptor().description }}',
-            'Just for Testing',
-        ];
-
-        yield[
-            'app_version_from_descriptor',
-            '{{ meritoo_common_application_descriptor().version }}',
-            '1.2.0',
-        ];
+        static::assertCount(1, $functions);
     }
 
     /**

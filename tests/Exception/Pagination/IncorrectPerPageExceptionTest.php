@@ -35,7 +35,7 @@ class IncorrectPerPageExceptionTest extends BaseTestCase
 
         static::assertSame(
             'The \'per page\' parameter of pagination should be greater than 0, but 0 was provided. Is there'
-            . ' everything ok?',
+            .' everything ok?',
             $exception->getMessage()
         );
     }

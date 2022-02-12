@@ -23,6 +23,48 @@ use Doctrine\Persistence\ObjectRepository;
 trait EntityTestCaseTrait
 {
     /**
+     * Drops database schema.
+     * Removes all tables based on gathered/existing metadata.
+     */
+    public function dropDatabaseSchema(): void
+    {
+        $allMetadata = $this->getAllEntitiesMeta();
+
+        $this
+            ->getSchemaTool()
+            ->dropSchema($allMetadata)
+        ;
+    }
+
+    /**
+     * Returns the entity manager
+     *
+     * @return EntityManagerInterface
+     */
+    public function getEntityManager(): EntityManagerInterface
+    {
+        return static::$kernel
+            ->getContainer()
+            ->get('doctrine')
+            ->getManager()
+        ;
+    }
+
+    /**
+     * Returns repository for given entity
+     *
+     * @param string $entityClass Fully qualified class name of entity
+     * @return ObjectRepository
+     */
+    public function getRepository(string $entityClass): ObjectRepository
+    {
+        return $this
+            ->getEntityManager()
+            ->getRepository($entityClass)
+        ;
+    }
+
+    /**
      * Persists and flushes given entity
      *
      * @param mixed $entity The entity
@@ -49,53 +91,12 @@ trait EntityTestCaseTrait
         ;
     }
 
-    /**
-     * Drops database schema.
-     * Removes all tables based on gathered/existing metadata.
-     */
-    public function dropDatabaseSchema(): void
-    {
-        $allMetadata = $this->getAllEntitiesMeta();
-
-        $this
-            ->getSchemaTool()
-            ->dropSchema($allMetadata)
-        ;
-    }
-
-    /**
-     * Returns the entity manager
-     *
-     * @return EntityManagerInterface
-     */
-    public function getEntityManager(): EntityManagerInterface
-    {
-        return static::$kernel
-            ->getContainer()
-            ->get('doctrine')
-            ->getManager()
-            ;
-    }
-
-    /**
-     * Returns repository for given entity
-     *
-     * @param string $entityClass Fully qualified class name of entity
-     * @return ObjectRepository
-     */
-    public function getRepository(string $entityClass): ObjectRepository
-    {
-        return $this
-            ->getEntityManager()
-            ->getRepository($entityClass)
-            ;
-    }
-
     private function getAllEntitiesMeta(): array
     {
         $entityManager = $this->getEntityManager();
 
-        return $entityManager->getMetadataFactory()->getAllMetadata();
+        return $entityManager->getMetadataFactory()->getAllMetadata()
+        ;
     }
 
     private function getSchemaTool(): SchemaTool

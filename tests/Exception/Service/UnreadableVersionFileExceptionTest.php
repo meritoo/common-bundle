@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Exception\Service;
 
+use Generator;
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Exception\Service\ApplicationService\UnreadableVersionFileException;
@@ -21,10 +22,35 @@ use Meritoo\CommonBundle\Exception\Service\ApplicationService\UnreadableVersionF
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Exception\Service\ApplicationService\UnreadableVersionFileException
+ * @covers    \Meritoo\CommonBundle\Exception\Service\ApplicationService\UnreadableVersionFileException
  */
 class UnreadableVersionFileExceptionTest extends BaseTestCase
 {
+    /**
+     * Provides path of a file and message of exception
+     *
+     * @return Generator
+     */
+    public function provideFilePathAndMessage(): Generator
+    {
+        $template = 'File %s, who contains version of the application, is not readable. Does the file exist?';
+
+        yield [
+            '',
+            sprintf($template, ''),
+        ];
+
+        yield [
+            'abc',
+            sprintf($template, 'abc'),
+        ];
+
+        yield [
+            'purus/sit/cum/et/dis/mus',
+            sprintf($template, 'purus/sit/cum/et/dis/mus'),
+        ];
+    }
+
     public function testConstructorVisibilityAndArguments(): void
     {
         static::assertConstructorVisibilityAndArguments(UnreadableVersionFileException::class, OopVisibilityType::IS_PUBLIC, 3);
@@ -42,30 +68,5 @@ class UnreadableVersionFileExceptionTest extends BaseTestCase
 
         static::assertInstanceOf(UnreadableVersionFileException::class, $exception);
         static::assertSame($expectedMessage, $exception->getMessage());
-    }
-
-    /**
-     * Provides path of a file and message of exception
-     *
-     * @return \Generator
-     */
-    public function provideFilePathAndMessage(): \Generator
-    {
-        $template = 'File %s, who contains version of the application, is not readable. Does the file exist?';
-
-        yield[
-            '',
-            sprintf($template, ''),
-        ];
-
-        yield[
-            'abc',
-            sprintf($template, 'abc'),
-        ];
-
-        yield[
-            'purus/sit/cum/et/dis/mus',
-            sprintf($template, 'purus/sit/cum/et/dis/mus'),
-        ];
     }
 }

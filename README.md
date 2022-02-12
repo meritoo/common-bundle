@@ -21,8 +21,8 @@ composer require meritoo/common-bundle
 
 # Configuration
 
-All parameters have default values. After installation of this bundle, you have to do nothing. If you want to tweak 
-some of parameters, create proper configuration file and enter desired parameters.
+All parameters have default values. After installation of this bundle, you have to do nothing. If you want to tweak some
+parameters, create proper configuration file and enter desired parameters.
 
 Example:
 

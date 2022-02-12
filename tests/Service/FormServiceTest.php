@@ -23,60 +23,65 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Service\FormService
+ * @covers    \Meritoo\CommonBundle\Service\FormService
  */
 class FormServiceTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
 
-    public function testConstructor(): void
+    /**
+     * Provides existing form options while using values loaded from custom configuration
+     *
+     * @return Generator
+     */
+    public function provideExistingFormOptionsCustomConfiguration(): Generator
     {
-        static::assertConstructorVisibilityAndArguments(
-            FormService::class,
-            OopVisibilityType::IS_PUBLIC,
-            1,
-            1
-        );
-    }
+        yield [
+            [],
+            [],
+        ];
 
-    public function testIsHtml5ValidationEnabledUsingTestEnvironment(): void
-    {
-        $enabled = static::$container
-            ->get(FormService::class)
-            ->isHtml5ValidationEnabled()
-        ;
-
-        static::assertFalse($enabled);
-    }
-
-    public function testIsHtml5ValidationEnabledUsingDefaults(): void
-    {
-        static::bootKernel([
-            'environment' => 'defaults',
-        ]);
-
-        $enabled = static::$container
-            ->get(FormService::class)
-            ->isHtml5ValidationEnabled()
-        ;
-
-        static::assertTrue($enabled);
+        yield [
+            [
+                'option1' => 'value1',
+                'option2' => 'value2',
+            ],
+            [
+                'option1' => 'value1',
+                'option2' => 'value2',
+            ],
+        ];
     }
 
     /**
-     * @param array $existingOptions Existing options
-     * @param array $expected        Expected options
+     * Provides existing form options while using default values
      *
-     * @dataProvider provideExistingFormOptionsUsingDefaults
+     * @return Generator
      */
-    public function testAddFormOptionsUsingTestEnvironment(array $existingOptions, array $expected): void
+    public function provideExistingFormOptionsUsingDefaults(): Generator
     {
-        static::$container
-            ->get(FormService::class)
-            ->addHtml5ValidationOptions($existingOptions)
-        ;
+        yield [
+            [],
+            [
+                'attr' => [
+                    'novalidate' => 'novalidate',
+                ],
+            ],
+        ];
 
-        static::assertSame($expected, $existingOptions);
+        yield [
+            [
+                'option1' => 'value1',
+                'option2' => 'value2',
+            ],
+            [
+                'option1' => 'value1',
+                'option2' => 'value2',
+                'attr' => [
+                    'novalidate' => 'novalidate',
+                ],
+            ],
+        ];
     }
 
     /**
@@ -100,58 +105,51 @@ class FormServiceTest extends KernelTestCase
     }
 
     /**
-     * Provides existing form options while using default values
+     * @param array $existingOptions Existing options
+     * @param array $expected        Expected options
      *
-     * @return Generator
+     * @dataProvider provideExistingFormOptionsUsingDefaults
      */
-    public function provideExistingFormOptionsUsingDefaults(): Generator
+    public function testAddFormOptionsUsingTestEnvironment(array $existingOptions, array $expected): void
     {
-        yield[
-            [],
-            [
-                'attr' => [
-                    'novalidate' => 'novalidate',
-                ],
-            ],
-        ];
+        static::$container
+            ->get(FormService::class)
+            ->addHtml5ValidationOptions($existingOptions)
+        ;
 
-        yield[
-            [
-                'option1' => 'value1',
-                'option2' => 'value2',
-            ],
-            [
-                'option1' => 'value1',
-                'option2' => 'value2',
-                'attr'    => [
-                    'novalidate' => 'novalidate',
-                ],
-            ],
-        ];
+        static::assertSame($expected, $existingOptions);
     }
 
-    /**
-     * Provides existing form options while using values loaded from custom configuration
-     *
-     * @return Generator
-     */
-    public function provideExistingFormOptionsCustomConfiguration(): Generator
+    public function testConstructor(): void
     {
-        yield[
-            [],
-            [],
-        ];
+        static::assertConstructorVisibilityAndArguments(
+            FormService::class,
+            OopVisibilityType::IS_PUBLIC,
+            1,
+            1
+        );
+    }
 
-        yield[
-            [
-                'option1' => 'value1',
-                'option2' => 'value2',
-            ],
-            [
-                'option1' => 'value1',
-                'option2' => 'value2',
-            ],
-        ];
+    public function testIsHtml5ValidationEnabledUsingDefaults(): void
+    {
+        static::bootKernel([
+            'environment' => 'defaults',
+        ]);
+
+        $enabled = static::$container
+            ->get(FormService::class)
+            ->isHtml5ValidationEnabled();
+
+        static::assertTrue($enabled);
+    }
+
+    public function testIsHtml5ValidationEnabledUsingTestEnvironment(): void
+    {
+        $enabled = static::$container
+            ->get(FormService::class)
+            ->isHtml5ValidationEnabled();
+
+        static::assertFalse($enabled);
     }
 
     /**

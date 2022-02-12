@@ -61,6 +61,45 @@ class DateService extends BaseService
     }
 
     /**
+     * Returns date formatted according to given length of date
+     *
+     * @param DateTimeInterface $dateTime   The date to format
+     * @param string            $dateLength Type of date length. One of the DateLength's class constants.
+     * @return string
+     */
+    public function formatDate(DateTimeInterface $dateTime, string $dateLength): string
+    {
+        $format = $this->getFormat($dateLength);
+
+        return $dateTime->format($format);
+    }
+
+    /**
+     * Returns given date formatted with format based on locale.
+     * Uses the \IntlDateFormatter class to set proper type / length of date and time part in the returned string.
+     *
+     * @param int               $dateType  Type/length of date part in the returned string. One of constants of the
+     *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::SHORT.
+     * @param int               $timeType  Type/length of time part in the returned string. One of constants of the
+     *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::MEDIUM.
+     * @param string            $locale    Locale used to format given date
+     * @param DateTimeInterface $dateTime  The date to format
+     * @return string
+     * @throws Exception
+     */
+    public function formatDateUsingLocale(
+        int $dateType,
+        int $timeType,
+        string $locale,
+        DateTimeInterface $dateTime
+    ): string {
+        $timestamp = $dateTime->getTimestamp();
+        $formatter = new IntlDateFormatter($locale, $dateType, $timeType);
+
+        return $formatter->format($timestamp);
+    }
+
+    /**
      * Returns format of date according to given length of date
      *
      * @param string $dateLength Type of date length. One of the DateLength's class constants.
@@ -92,44 +131,5 @@ class DateService extends BaseService
         }
 
         return $format;
-    }
-
-    /**
-     * Returns date formatted according to given length of date
-     *
-     * @param DateTimeInterface $dateTime   The date to format
-     * @param string             $dateLength Type of date length. One of the DateLength's class constants.
-     * @return string
-     */
-    public function formatDate(DateTimeInterface $dateTime, string $dateLength): string
-    {
-        $format = $this->getFormat($dateLength);
-
-        return $dateTime->format($format);
-    }
-
-    /**
-     * Returns given date formatted with format based on locale.
-     * Uses the \IntlDateFormatter class to set proper type / length of date and time part in the returned string.
-     *
-     * @param int                $dateType Type/length of date part in the returned string. One of constants of the
-     *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::SHORT.
-     * @param int                $timeType Type/length of time part in the returned string. One of constants of the
-     *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::MEDIUM.
-     * @param string             $locale   Locale used to format given date
-     * @param DateTimeInterface $dateTime The date to format
-     * @throws Exception
-     * @return string
-     */
-    public function formatDateUsingLocale(
-        int $dateType,
-        int $timeType,
-        string $locale,
-        DateTimeInterface $dateTime
-    ): string {
-        $timestamp = $dateTime->getTimestamp();
-        $formatter = new IntlDateFormatter($locale, $dateType, $timeType);
-
-        return $formatter->format($timestamp);
     }
 }

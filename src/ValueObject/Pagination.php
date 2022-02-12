@@ -40,16 +40,6 @@ class Pagination
         $this->currentPage = $currentPage;
     }
 
-    public function getPerPage(): int
-    {
-        return $this->perPage;
-    }
-
-    public function getCurrentPage(): int
-    {
-        return $this->currentPage;
-    }
-
     public function calculateOffset(): int
     {
         return ($this->currentPage - 1) * $this->perPage;
@@ -57,7 +47,17 @@ class Pagination
 
     public function calculatePagesCount(): int
     {
-        return (int)ceil($this->totalAmount / $this->perPage);
+        return (int) ceil($this->totalAmount / $this->perPage);
+    }
+
+    public function getCurrentPage(): int
+    {
+        return $this->currentPage;
+    }
+
+    public function getPerPage(): int
+    {
+        return $this->perPage;
     }
 
     public function isValidPage(int $page): bool

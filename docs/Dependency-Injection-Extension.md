@@ -6,9 +6,13 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 ### Introduction
 
-Configuration parameters are loaded by `Meritoo\CommonBundle\DependencyInjection\Configuration` class that implements `Symfony\Component\Config\Definition\ConfigurationInterface` and uses `Symfony\Component\Config\Definition\Builder\TreeBuilder` to build structure of configuration parameters.
+Configuration parameters are loaded by `Meritoo\CommonBundle\DependencyInjection\Configuration` class that
+implements `Symfony\Component\Config\Definition\ConfigurationInterface` and
+uses `Symfony\Component\Config\Definition\Builder\TreeBuilder` to build structure of configuration parameters.
 
-If the Dependency Injection extension class extends `Meritoo\CommonBundle\DependencyInjection\Base\BaseExtension` class, each parameter is automatically loaded into container with name based on nodes from structure of configuration separated by `.`.
+If the Dependency Injection extension class extends `Meritoo\CommonBundle\DependencyInjection\Base\BaseExtension` class,
+each parameter is automatically loaded into container with name based on nodes from structure of configuration separated
+by `.`.
 
 ### Example
 

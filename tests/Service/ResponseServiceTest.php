@@ -31,6 +31,31 @@ class ResponseServiceTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
 
+    /**
+     * Provide route details to build/create the "redirect response"
+     *
+     * @return Generator
+     */
+    public function provideRouteDetailsForRedirectResponse(): Generator
+    {
+        yield [
+            'test',
+            [],
+            '/test',
+            new RedirectResponse('/test'),
+        ];
+
+        yield [
+            'products_list',
+            [
+                'page' => 1,
+                'order-by' => 'name',
+            ],
+            '/products/1/sort/name',
+            new RedirectResponse('/products/1/sort/name'),
+        ];
+    }
+
     public function testConstructor(): void
     {
         static::assertConstructorVisibilityAndArguments(
@@ -57,39 +82,13 @@ class ResponseServiceTest extends KernelTestCase
     ): void {
         $redirectResponse = $this
             ->getResponseService($routeName, $routeParameters, $url)
-            ->getRedirectResponse($routeName, $routeParameters)
-        ;
+            ->getRedirectResponse($routeName, $routeParameters);
 
         static::assertSame($expected->getTargetUrl(), $redirectResponse->getTargetUrl());
         static::assertSame($expected->getContent(), $redirectResponse->getContent());
         static::assertSame($expected->getProtocolVersion(), $redirectResponse->getProtocolVersion());
         static::assertSame($expected->getStatusCode(), $redirectResponse->getStatusCode());
         static::assertSame($expected->getCharset(), $redirectResponse->getCharset());
-    }
-
-    /**
-     * Provide route details to build/create the "redirect response"
-     *
-     * @return Generator
-     */
-    public function provideRouteDetailsForRedirectResponse(): Generator
-    {
-        yield[
-            'test',
-            [],
-            '/test',
-            new RedirectResponse('/test'),
-        ];
-
-        yield[
-            'products_list',
-            [
-                'page'     => 1,
-                'order-by' => 'name',
-            ],
-            '/products/1/sort/name',
-            new RedirectResponse('/products/1/sort/name'),
-        ];
     }
 
     /**

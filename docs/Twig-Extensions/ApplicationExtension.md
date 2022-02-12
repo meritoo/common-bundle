@@ -4,7 +4,9 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 # ApplicationExtension
 
-Located here: `Meritoo\CommonBundle\Twig\ApplicationExtension`. It's Twig extension related to the [ApplicationService service](../Services/ApplicationService.md). Allows to use functionality provided by the `ApplicationService` service in Twig templates.
+Located here: `Meritoo\CommonBundle\Twig\ApplicationExtension`. It's Twig extension related to
+the [ApplicationService service](../Services/ApplicationService.md). Allows to use functionality provided by
+the `ApplicationService` service in Twig templates.
 
 ### Functions
 

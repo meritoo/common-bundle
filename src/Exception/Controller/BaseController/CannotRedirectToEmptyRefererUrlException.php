@@ -28,7 +28,7 @@ class CannotRedirectToEmptyRefererUrlException extends RuntimeException
      */
     public static function create(): CannotRedirectToEmptyRefererUrlException
     {
-        $template = 'Redirection to url of referer cannot be done, because this url is empty. Did you store url of' .
+        $template = 'Redirection to url of referer cannot be done, because this url is empty. Did you store url of'.
             ' referer using %s::%s() method or does request provide url of referer?';
 
         $message = sprintf($template, RequestServiceInterface::class, 'storeRefererUrl');

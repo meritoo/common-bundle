@@ -29,6 +29,33 @@ use Meritoo\CommonBundle\Type\Date\DateLength;
  */
 class UnknownDateLengthExceptionTest extends BaseTestCase
 {
+    public function provideUnknownTypeAndMessage(): ?Generator
+    {
+        $template = 'The \'%s\' type of %s is unknown. Probably doesn\'t exist or there is a typo. You should use one'
+            .' of these types: %s.';
+
+        $allTypes = (new DateLength())->getAll();
+        $types = Arrays::values2string($allTypes, '', ', ');
+
+        yield [
+            'An empty string',
+            '',
+            sprintf($template, '', 'date length for date format', $types),
+        ];
+
+        yield [
+            'Strange type 1',
+            'xyz ;asdkq28h',
+            sprintf($template, 'xyz ;asdkq28h', 'date length for date format', $types),
+        ];
+
+        yield [
+            'Strange type 2',
+            ' _ & #---# ++;;...',
+            sprintf($template, ' _ & #---# ++;;...', 'date length for date format', $types),
+        ];
+    }
+
     public function testConstructorVisibilityAndArguments(): void
     {
         static::assertConstructorVisibilityAndArguments(
@@ -49,32 +76,5 @@ class UnknownDateLengthExceptionTest extends BaseTestCase
     {
         $exception = UnknownDateLengthException::createException($unknownType);
         static::assertSame($expectedMessage, $exception->getMessage(), $description);
-    }
-
-    public function provideUnknownTypeAndMessage(): ?Generator
-    {
-        $template = 'The \'%s\' type of %s is unknown. Probably doesn\'t exist or there is a typo. You should use one'
-            . ' of these types: %s.';
-
-        $allTypes = (new DateLength())->getAll();
-        $types = Arrays::values2string($allTypes, '', ', ');
-
-        yield[
-            'An empty string',
-            '',
-            sprintf($template, '', 'date length for date format', $types),
-        ];
-
-        yield[
-            'Strange type 1',
-            'xyz ;asdkq28h',
-            sprintf($template, 'xyz ;asdkq28h', 'date length for date format', $types),
-        ];
-
-        yield[
-            'Strange type 2',
-            ' _ & #---# ++;;...',
-            sprintf($template, ' _ & #---# ++;;...', 'date length for date format', $types),
-        ];
     }
 }

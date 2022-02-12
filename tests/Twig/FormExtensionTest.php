@@ -20,7 +20,7 @@ use Meritoo\CommonBundle\Twig\FormExtension;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Twig\FormExtension
+ * @covers    \Meritoo\CommonBundle\Twig\FormExtension
  */
 class FormExtensionTest extends BaseTwigExtensionTestCase
 {
@@ -28,27 +28,9 @@ class FormExtensionTest extends BaseTwigExtensionTestCase
     {
         $functions = static::$container
             ->get($this->getExtensionNamespace())
-            ->getFunctions()
-        ;
+            ->getFunctions();
 
         static::assertCount(1, $functions);
-    }
-
-    public function testIsHtml5ValidationEnabledUsingTestEnvironment(): void
-    {
-        $name = 'is_html5_validation_enabled';
-        $sourceCode = '{{ dump(meritoo_common_form_is_html5_validation_enabled()) }}';
-
-        $templates = [
-            $name => $sourceCode,
-        ];
-
-        $rendered = $this
-            ->getTwigEnvironment($templates)
-            ->render($name)
-        ;
-
-        static::assertRegExp('/bool\(false\)/', $rendered);
     }
 
     public function testIsHtml5ValidationEnabledUsingDefaults(): void
@@ -66,10 +48,33 @@ class FormExtensionTest extends BaseTwigExtensionTestCase
 
         $rendered = $this
             ->getTwigEnvironment($templates)
-            ->render($name)
-        ;
+            ->render($name);
 
         static::assertRegExp('/bool\(true\)/', $rendered);
+    }
+
+    public function testIsHtml5ValidationEnabledUsingTestEnvironment(): void
+    {
+        $name = 'is_html5_validation_enabled';
+        $sourceCode = '{{ dump(meritoo_common_form_is_html5_validation_enabled()) }}';
+
+        $templates = [
+            $name => $sourceCode,
+        ];
+
+        $rendered = $this
+            ->getTwigEnvironment($templates)
+            ->render($name);
+
+        static::assertRegExp('/bool\(false\)/', $rendered);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getExtensionNamespace(): string
+    {
+        return FormExtension::class;
     }
 
     /**
@@ -79,13 +84,5 @@ class FormExtensionTest extends BaseTwigExtensionTestCase
     {
         parent::setUp();
         static::bootKernel();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getExtensionNamespace(): string
-    {
-        return FormExtension::class;
     }
 }

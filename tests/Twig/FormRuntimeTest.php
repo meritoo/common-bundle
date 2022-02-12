@@ -23,7 +23,7 @@ use Twig\Extension\RuntimeExtensionInterface;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Twig\FormRuntime
+ * @covers    \Meritoo\CommonBundle\Twig\FormRuntime
  */
 class FormRuntimeTest extends KernelTestCase
 {
@@ -39,20 +39,19 @@ class FormRuntimeTest extends KernelTestCase
         );
     }
 
-    public function testIsInstanceOfRuntimeExtensionInterface(): void
-    {
-        $runtime = static::$container->get(FormRuntime::class);
-        static::assertInstanceOf(RuntimeExtensionInterface::class, $runtime);
-    }
-
     public function testIsHtml5ValidationEnabled(): void
     {
         $enabled = static::$container
             ->get(FormRuntime::class)
-            ->isHtml5ValidationEnabled()
-        ;
+            ->isHtml5ValidationEnabled();
 
         static::assertFalse($enabled);
+    }
+
+    public function testIsInstanceOfRuntimeExtensionInterface(): void
+    {
+        $runtime = static::$container->get(FormRuntime::class);
+        static::assertInstanceOf(RuntimeExtensionInterface::class, $runtime);
     }
 
     /**

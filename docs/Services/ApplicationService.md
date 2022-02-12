@@ -4,7 +4,8 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 # ApplicationService
 
-Located here: `Meritoo\CommonBundle\Service\ApplicationService`. Serves application. Provides methods related to whole application.
+Located here: `Meritoo\CommonBundle\Service\ApplicationService`. Serves application. Provides methods related to whole
+application.
 
 ### Parameters from configuration
 
@@ -18,7 +19,8 @@ Uses parameters:
 
 ##### getDescriptor()
 
-Returns descriptor of application, instance of `Meritoo\CommonBundle\Application\Descriptor` class. Descriptor delivers information about application such as:
+Returns descriptor of application, instance of `Meritoo\CommonBundle\Application\Descriptor` class. Descriptor delivers
+information about application such as:
 
 1. Name of application
 2. Description of application

@@ -27,11 +27,41 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Service\ApplicationService
+ * @covers    \Meritoo\CommonBundle\Service\ApplicationService
  */
 class ApplicationServiceTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
+
+    /**
+     * Provide arguments of constructor and descriptor
+     *
+     * @return Generator
+     */
+    public function provideConstructorArgumentsAndDescriptor(): Generator
+    {
+        $versionFilePath = $this->getFilePathForTesting('VERSION');
+
+        yield [
+            $versionFilePath,
+            '',
+            '',
+            new Descriptor('', '', new Version(1, 2, 0)),
+        ];
+
+        $versionFilePath = $this->getFilePathForTesting('VERSION_ANOTHER');
+
+        yield [
+            $versionFilePath,
+            'Lorem',
+            'Sed posuere consectetur est at lobortis',
+            new Descriptor(
+                'Lorem',
+                'Sed posuere consectetur est at lobortis',
+                new Version(5, 46, 17)
+            ),
+        ];
+    }
 
     public function testConstructor(): void
     {
@@ -43,17 +73,6 @@ class ApplicationServiceTest extends KernelTestCase
         );
     }
 
-    public function testConstructorUsingUnreadableVersionFilePath(): void
-    {
-        $message = 'File nibh/purus/porta/malesuada/VERSION, who contains version of the application, is not readable.'
-            . ' Does the file exist?';
-
-        $this->expectException(UnreadableVersionFileException::class);
-        $this->expectExceptionMessage($message);
-
-        new ApplicationService('nibh/purus/porta/malesuada/VERSION', '', '');
-    }
-
     public function testConstructorUsingEmptyVersionFilePath(): void
     {
         $message = 'Path of a file, who contains version of the application, is empty. Is there everything ok?';
@@ -62,6 +81,17 @@ class ApplicationServiceTest extends KernelTestCase
         $this->expectExceptionMessage($message);
 
         new ApplicationService('', '', '');
+    }
+
+    public function testConstructorUsingUnreadableVersionFilePath(): void
+    {
+        $message = 'File nibh/purus/porta/malesuada/VERSION, who contains version of the application, is not readable.'
+            .' Does the file exist?';
+
+        $this->expectException(UnreadableVersionFileException::class);
+        $this->expectExceptionMessage($message);
+
+        new ApplicationService('nibh/purus/porta/malesuada/VERSION', '', '');
     }
 
     /**
@@ -92,8 +122,7 @@ class ApplicationServiceTest extends KernelTestCase
 
         $descriptor = static::$container
             ->get(ApplicationService::class)
-            ->getDescriptor()
-        ;
+            ->getDescriptor();
 
         static::assertEquals($expected, $descriptor);
     }
@@ -120,40 +149,9 @@ class ApplicationServiceTest extends KernelTestCase
         $version = static::$container
             ->get(ApplicationService::class)
             ->getDescriptor()
-            ->getVersion()
-        ;
+            ->getVersion();
 
         static::assertEquals($expected, $version);
-    }
-
-    /**
-     * Provide arguments of constructor and descriptor
-     *
-     * @return Generator
-     */
-    public function provideConstructorArgumentsAndDescriptor(): Generator
-    {
-        $versionFilePath = $this->getFilePathForTesting('VERSION');
-
-        yield[
-            $versionFilePath,
-            '',
-            '',
-            new Descriptor('', '', new Version(1, 2, 0)),
-        ];
-
-        $versionFilePath = $this->getFilePathForTesting('VERSION_ANOTHER');
-
-        yield[
-            $versionFilePath,
-            'Lorem',
-            'Sed posuere consectetur est at lobortis',
-            new Descriptor(
-                'Lorem',
-                'Sed posuere consectetur est at lobortis',
-                new Version(5, 46, 17)
-            ),
-        ];
     }
 
     /**

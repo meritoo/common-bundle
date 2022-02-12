@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Type\Date;
 
+use Generator;
 use Meritoo\Common\Test\Base\BaseTypeTestCase;
 use Meritoo\Common\Type\Base\BaseType;
 use Meritoo\CommonBundle\Type\Date\DateLength;
@@ -28,39 +29,39 @@ class DateLengthTest extends BaseTypeTestCase
     /**
      * {@inheritdoc}
      */
-    public function provideTypeToVerify(): \Generator
+    public function provideTypeToVerify(): Generator
     {
-        yield[
+        yield [
             DateLength::isCorrectType(''),
             false,
         ];
 
-        yield[
+        yield [
             DateLength::isCorrectType(null),
             false,
         ];
 
-        yield[
+        yield [
             DateLength::isCorrectType('0'),
             false,
         ];
 
-        yield[
+        yield [
             DateLength::isCorrectType('1'),
             false,
         ];
 
-        yield[
+        yield [
             DateLength::isCorrectType('date'),
             true,
         ];
 
-        yield[
+        yield [
             DateLength::isCorrectType('datetime'),
             true,
         ];
 
-        yield[
+        yield [
             DateLength::isCorrectType('time'),
             true,
         ];
@@ -72,9 +73,9 @@ class DateLengthTest extends BaseTypeTestCase
     protected function getAllExpectedTypes(): array
     {
         return [
-            'DATE'     => DateLength::DATE,
+            'DATE' => DateLength::DATE,
             'DATETIME' => DateLength::DATETIME,
-            'TIME'     => DateLength::TIME,
+            'TIME' => DateLength::TIME,
         ];
     }
 

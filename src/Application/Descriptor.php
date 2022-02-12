@@ -82,16 +82,6 @@ class Descriptor
     }
 
     /**
-     * Returns name of application
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
      * Returns description of application
      *
      * @return string
@@ -99,6 +89,16 @@ class Descriptor
     public function getDescription(): string
     {
         return $this->description;
+    }
+
+    /**
+     * Returns name of application
+     *
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     /**

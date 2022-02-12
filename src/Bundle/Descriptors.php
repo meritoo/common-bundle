@@ -22,6 +22,29 @@ use Meritoo\Common\Collection\BaseCollection;
 class Descriptors extends BaseCollection
 {
     /**
+     * Returns the descriptors created from given data
+     *
+     * @param array $data Data of descriptors
+     * @return Descriptors
+     */
+    public static function fromArray(array $data): Descriptors
+    {
+        $result = new static();
+
+        if (!empty($data)) {
+            $descriptors = [];
+
+            foreach ($data as $descriptorData) {
+                $descriptors[] = Descriptor::fromArray($descriptorData);
+            }
+
+            $result->addMultiple($descriptors, true);
+        }
+
+        return $result;
+    }
+
+    /**
      * Returns descriptor of bundle that contains given class
      *
      * @param string $classNamespace Namespace of class for which descriptor of bundle should be returned
@@ -96,26 +119,11 @@ class Descriptors extends BaseCollection
     }
 
     /**
-     * Returns the descriptors created from given data
-     *
-     * @param array $data Data of descriptors
-     * @return Descriptors
+     * {@inheritdoc}
      */
-    public static function fromArray(array $data): Descriptors
+    protected function isValidType($element): bool
     {
-        $result = new static();
-
-        if (!empty($data)) {
-            $descriptors = [];
-
-            foreach ($data as $descriptorData) {
-                $descriptors[] = Descriptor::fromArray($descriptorData);
-            }
-
-            $result->addMultiple($descriptors, true);
-        }
-
-        return $result;
+        return $element instanceof Descriptor;
     }
 
     /**
@@ -143,13 +151,5 @@ class Descriptors extends BaseCollection
         }
 
         return $result;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function isValidType($element): bool
-    {
-        return $element instanceof Descriptor;
     }
 }

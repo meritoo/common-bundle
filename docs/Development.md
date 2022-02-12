@@ -140,6 +140,7 @@ root@18f2f0cfaa5d:/var/www/application# XDEBUG_MODE=coverage phing -f phing/test
 ##### Terminal
 
 Example of output:
+
 ```bash
 125 mutations were generated:
      105 mutants were killed

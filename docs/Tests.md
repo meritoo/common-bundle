@@ -44,9 +44,11 @@ $this->verifyRenderedTemplate($name, $sourceCode, $expected);
 
 ##### Custom verification of functions, filters etc.
 
-In `verifyRenderedTemplate()` method the `assertSame()` *assert* is used. If you want to use another *assert*, render your template and make proper comparison of result with expected result.
+In `verifyRenderedTemplate()` method the `assertSame()` *assert* is used. If you want to use another *assert*, render
+your template and make proper comparison of result with expected result.
 
 Example:
+
 ```php
 //...
 

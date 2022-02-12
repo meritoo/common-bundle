@@ -4,7 +4,8 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 # ResponseService
 
-Located here: `Meritoo\CommonBundle\Service\ResponseService`. Serves response. Provides methods related to whole application.
+Located here: `Meritoo\CommonBundle\Service\ResponseService`. Serves response. Provides methods related to whole
+application.
 
 ### Depends on services
 

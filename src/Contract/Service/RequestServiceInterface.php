@@ -14,12 +14,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 interface RequestServiceInterface
 {
-    public function getRefererUrl(Request $request): string;
-
-    public function storeRefererUrl(string $url): self;
-
-    public function storeRefererUrlFromRequest(Request $request): self;
-
     public function fetchRefererUrl(): string;
 
     public function getCurrentRoute(): string;
@@ -32,5 +26,11 @@ interface RequestServiceInterface
      */
     public function getParameter(string $parameter);
 
+    public function getRefererUrl(Request $request): string;
+
     public function isCurrentRoute(string $route): bool;
+
+    public function storeRefererUrl(string $url): self;
+
+    public function storeRefererUrlFromRequest(Request $request): self;
 }

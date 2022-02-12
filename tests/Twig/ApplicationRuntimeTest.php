@@ -26,7 +26,7 @@ use Twig\Extension\RuntimeExtensionInterface;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
- * @covers \Meritoo\CommonBundle\Twig\ApplicationRuntime
+ * @covers    \Meritoo\CommonBundle\Twig\ApplicationRuntime
  */
 class ApplicationRuntimeTest extends KernelTestCase
 {
@@ -42,28 +42,6 @@ class ApplicationRuntimeTest extends KernelTestCase
         );
     }
 
-    public function testIsInstanceOfRuntimeExtensionInterface(): void
-    {
-        $runtime = static::$container->get(ApplicationRuntime::class);
-        static::assertInstanceOf(RuntimeExtensionInterface::class, $runtime);
-    }
-
-    public function testGetDescriptorUsingTestEnvironment(): void
-    {
-        $expected = new Descriptor(
-            'This is a Test',
-            'Just for Testing',
-            new Version(1, 2, 0)
-        );
-
-        $descriptor = static::$container
-            ->get(ApplicationRuntime::class)
-            ->getDescriptor()
-        ;
-
-        static::assertEquals($expected, $descriptor);
-    }
-
     public function testGetDescriptorUsingDefaults(): void
     {
         $this->expectException(UnreadableVersionFileException::class);
@@ -76,6 +54,27 @@ class ApplicationRuntimeTest extends KernelTestCase
             ->get(ApplicationRuntime::class)
             ->getDescriptor()
         ;
+    }
+
+    public function testGetDescriptorUsingTestEnvironment(): void
+    {
+        $expected = new Descriptor(
+            'This is a Test',
+            'Just for Testing',
+            new Version(1, 2, 0)
+        );
+
+        $descriptor = static::$container
+            ->get(ApplicationRuntime::class)
+            ->getDescriptor();
+
+        static::assertEquals($expected, $descriptor);
+    }
+
+    public function testIsInstanceOfRuntimeExtensionInterface(): void
+    {
+        $runtime = static::$container->get(ApplicationRuntime::class);
+        static::assertInstanceOf(RuntimeExtensionInterface::class, $runtime);
     }
 
     /**

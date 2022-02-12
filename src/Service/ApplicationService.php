@@ -69,6 +69,18 @@ class ApplicationService extends BaseService
     }
 
     /**
+     * Creates descriptor of application
+     *
+     * @param string $name        Name of application. May be displayed near logo.
+     * @param string $description Description of application. May be displayed near logo.
+     */
+    private function createDescriptor(string $name, string $description): void
+    {
+        $version = $this->getVersion();
+        $this->descriptor = new Descriptor($name, $description, $version);
+    }
+
+    /**
      * Returns version of application
      *
      * @return null|Version
@@ -88,17 +100,5 @@ class ApplicationService extends BaseService
         $contents = file_get_contents($this->versionFilePath);
 
         return Version::fromString($contents);
-    }
-
-    /**
-     * Creates descriptor of application
-     *
-     * @param string $name        Name of application. May be displayed near logo.
-     * @param string $description Description of application. May be displayed near logo.
-     */
-    private function createDescriptor(string $name, string $description): void
-    {
-        $version = $this->getVersion();
-        $this->descriptor = new Descriptor($name, $description, $version);
     }
 }

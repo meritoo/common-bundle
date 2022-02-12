@@ -43,15 +43,6 @@ class FileLoaderFactoryTest extends KernelTestCase
         );
     }
 
-    public function testCreateYamlFileLoader(): void
-    {
-        $container = new ContainerBuilder();
-        $locator = new FileLocator('');
-        $factory = new FileLoaderFactory($container, $locator);
-
-        static::assertEquals(new YamlFileLoader($container, $locator), $factory->createYamlFileLoader());
-    }
-
     public function testCreatePhpFileLoader(): void
     {
         $container = new ContainerBuilder();
@@ -68,6 +59,15 @@ class FileLoaderFactoryTest extends KernelTestCase
         $factory = new FileLoaderFactory($container, $locator);
 
         static::assertEquals(new XmlFileLoader($container, $locator), $factory->createXmlFileLoader());
+    }
+
+    public function testCreateYamlFileLoader(): void
+    {
+        $container = new ContainerBuilder();
+        $locator = new FileLocator('');
+        $factory = new FileLoaderFactory($container, $locator);
+
+        static::assertEquals(new YamlFileLoader($container, $locator), $factory->createYamlFileLoader());
     }
 
     /**

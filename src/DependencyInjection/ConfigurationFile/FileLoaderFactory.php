@@ -51,13 +51,13 @@ class FileLoaderFactory
     }
 
     /**
-     * Creates and returns loader of configuration file in YAML format
+     * Creates and returns loader of configuration file in PHP format
      *
-     * @return YamlFileLoader
+     * @return PhpFileLoader
      */
-    public function createYamlFileLoader(): YamlFileLoader
+    public function createPhpFileLoader(): PhpFileLoader
     {
-        return new YamlFileLoader($this->container, $this->locator);
+        return new PhpFileLoader($this->container, $this->locator);
     }
 
     /**
@@ -71,12 +71,12 @@ class FileLoaderFactory
     }
 
     /**
-     * Creates and returns loader of configuration file in PHP format
+     * Creates and returns loader of configuration file in YAML format
      *
-     * @return PhpFileLoader
+     * @return YamlFileLoader
      */
-    public function createPhpFileLoader(): PhpFileLoader
+    public function createYamlFileLoader(): YamlFileLoader
     {
-        return new PhpFileLoader($this->container, $this->locator);
+        return new YamlFileLoader($this->container, $this->locator);
     }
 }

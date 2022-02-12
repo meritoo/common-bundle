@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\DependencyInjection\Base;
 
+use Generator;
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\CommonBundle\DependencyInjection\Base\BaseExtension;
 use Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfigurationFileTypeException;
@@ -32,24 +33,37 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class BaseExtensionTest extends BaseTestCase
 {
+    /**
+     * Provides extension
+     *
+     * @return Generator
+     */
+    public function provideExtension(): Generator
+    {
+        yield [
+            new EmptyBundlePathExtension(),
+        ];
+
+        yield [
+            new WithoutParametersExtension(),
+        ];
+
+        yield [
+            new NotExistingServicesFileExtension(),
+        ];
+
+        yield [
+            new XmlServicesFileTypeExtension(),
+        ];
+
+        yield [
+            new PhpServicesFileTypeExtension(),
+        ];
+    }
+
     public function testConstructor(): void
     {
         static::assertHasNoConstructor(BaseExtension::class);
-    }
-
-    public function testLoadingParametersWithUnknownServicesFileType(): void
-    {
-        $message = 'The \'txt\' type of Dependency Injection (DI) configuration file is unknown. Probably doesn\'t'
-            . ' exist or there is a typo. You should use one of these types: php, xml, yaml.';
-
-        $this->expectException(UnknownConfigurationFileTypeException::class);
-        $this->expectExceptionMessage($message);
-
-        $container = new ContainerBuilder();
-        $extension = new UnknownServicesFileTypeExtension();
-
-        $configuration = [];
-        $extension->load($configuration, $container);
     }
 
     /**
@@ -74,31 +88,18 @@ class BaseExtensionTest extends BaseTestCase
         static::assertCount(3, $container->getServiceIds());
     }
 
-    /**
-     * Provides extension
-     *
-     * @return \Generator
-     */
-    public function provideExtension(): \Generator
+    public function testLoadingParametersWithUnknownServicesFileType(): void
     {
-        yield[
-            new EmptyBundlePathExtension(),
-        ];
+        $message = 'The \'txt\' type of Dependency Injection (DI) configuration file is unknown. Probably doesn\'t'
+            .' exist or there is a typo. You should use one of these types: php, xml, yaml.';
 
-        yield[
-            new WithoutParametersExtension(),
-        ];
+        $this->expectException(UnknownConfigurationFileTypeException::class);
+        $this->expectExceptionMessage($message);
 
-        yield[
-            new NotExistingServicesFileExtension(),
-        ];
+        $container = new ContainerBuilder();
+        $extension = new UnknownServicesFileTypeExtension();
 
-        yield[
-            new XmlServicesFileTypeExtension(),
-        ];
-
-        yield[
-            new PhpServicesFileTypeExtension(),
-        ];
+        $configuration = [];
+        $extension->load($configuration, $container);
     }
 }

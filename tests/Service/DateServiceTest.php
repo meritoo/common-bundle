@@ -42,219 +42,49 @@ class DateServiceTest extends KernelTestCase
      */
     private const TIMEZONE = 'Europe/London';
 
-    public function testConstructor(): void
-    {
-        static::assertConstructorVisibilityAndArguments(
-            DateService::class,
-            OopVisibilityType::IS_PUBLIC,
-            3,
-            3
-        );
-    }
-
     /**
-     * @param string $dateLength Unknown type of date length
-     * @dataProvider provideUnknownDateLength
-     */
-    public function testFormatDateUsingUnknownDateLength(string $dateLength): void
-    {
-        $this->expectException(UnknownDateLengthException::class);
-
-        static::$container
-            ->get(DateService::class)
-            ->formatDate(new DateTime(), $dateLength)
-        ;
-    }
-
-    /**
-     * @param DateTimeInterface $dateTime   The date to format
-     * @param string             $dateLength Type of date length
-     * @param string             $expected   Expected date
-     *
-     * @dataProvider provideDateFormattedUsingDefaults
-     */
-    public function testFormatDateUsingDefaults(
-        DateTimeInterface $dateTime,
-        string $dateLength,
-        string $expected
-    ): void {
-        static::bootKernel([
-            'environment' => 'defaults',
-        ]);
-
-        $formatted = static::$container
-            ->get(DateService::class)
-            ->formatDate($dateTime, $dateLength)
-        ;
-
-        static::assertSame($expected, $formatted);
-    }
-
-    /**
-     * @param DateTimeInterface $dateTime   The date to format
-     * @param string             $dateLength Type of date length
-     * @param string             $expected   Expected date
-     *
-     * @dataProvider provideDateFormattedUsingTestEnvironment
-     */
-    public function testFormatDateUsingTestEnvironment(
-        DateTimeInterface $dateTime,
-        string $dateLength,
-        string $expected
-    ): void {
-        $formatted = static::$container
-            ->get(DateService::class)
-            ->formatDate($dateTime, $dateLength)
-        ;
-
-        static::assertSame($expected, $formatted);
-    }
-
-    /**
-     * @param string $dateLength Unknown type of date length
-     * @dataProvider provideUnknownDateLength
-     */
-    public function testGetFormatUsingUnknownDateLength(string $dateLength): void
-    {
-        $this->expectException(UnknownDateLengthException::class);
-
-        static::$container
-            ->get(DateService::class)
-            ->getFormat($dateLength)
-        ;
-    }
-
-    /**
-     * @param string $dateLength Type of date length
-     * @param string $expected   Expected date format
-     *
-     * @dataProvider provideDateFormatUsingDefaults
-     */
-    public function testGetFormatUsingDefaults(
-        string $dateLength,
-        string $expected
-    ): void {
-        static::bootKernel([
-            'environment' => 'defaults',
-        ]);
-
-        $format = static::$container
-            ->get(DateService::class)
-            ->getFormat($dateLength)
-        ;
-
-        static::assertSame($expected, $format);
-    }
-
-    /**
-     * @param string $dateLength Type of date length
-     * @param string $expected   Expected date format
-     *
-     * @dataProvider provideDateFormatUsingTestEnvironment
-     */
-    public function testGetFormatUsingTestEnvironment(
-        string $dateLength,
-        string $expected
-    ): void {
-        $format = static::$container
-            ->get(DateService::class)
-            ->getFormat($dateLength)
-        ;
-
-        static::assertSame($expected, $format);
-    }
-
-    /**
-     * @param int                $dateType Type/length of date part in the returned string. One of constants of the
-     *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::SHORT.
-     * @param int                $timeType Type/length of time part in the returned string. One of constants of the
-     *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::MEDIUM.
-     * @param string             $locale   Locale used to format given date
-     * @param DateTimeInterface $dateTime The date to format
-     * @param string             $expected Expected date
-     *
-     * @dataProvider provideDateFormattedUsingLocale
-     */
-    public function testFormatDateUsingLocaleAndDefaults(
-        int $dateType,
-        int $timeType,
-        string $locale,
-        DateTimeInterface $dateTime,
-        string $expected
-    ): void {
-        static::bootKernel([
-            'environment' => 'defaults',
-        ]);
-
-        $formatted = static::$container
-            ->get(DateService::class)
-            ->formatDateUsingLocale(
-                $dateType,
-                $timeType,
-                $locale,
-                $dateTime
-            )
-        ;
-
-        static::assertSame($expected, $formatted);
-    }
-
-    /**
-     * @param int                $dateType Type/length of date part in the returned string. One of constants of the
-     *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::SHORT.
-     * @param int                $timeType Type/length of time part in the returned string. One of constants of the
-     *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::MEDIUM.
-     * @param string             $locale   Locale used to format given date
-     * @param DateTimeInterface $dateTime The date to format
-     * @param string             $expected Expected date
-     *
-     * @dataProvider provideDateFormattedUsingLocale
-     */
-    public function testFormatDateUsingLocaleAndTestEnvironment(
-        int $dateType,
-        int $timeType,
-        string $locale,
-        DateTimeInterface $dateTime,
-        string $expected
-    ): void {
-        $formatted = static::$container
-            ->get(DateService::class)
-            ->formatDateUsingLocale(
-                $dateType,
-                $timeType,
-                $locale,
-                $dateTime
-            )
-        ;
-
-        static::assertSame($expected, $formatted);
-    }
-
-    /**
-     * Provide unknown date length
+     * Provide date format using default values
      *
      * @return Generator
      */
-    public function provideUnknownDateLength(): Generator
+    public function provideDateFormatUsingDefaults(): Generator
     {
-        yield[
-            '',
+        yield [
+            DateLength::DATE,
+            'd.m.Y',
         ];
 
-        yield[
-            'xyz',
+        yield [
+            DateLength::DATETIME,
+            'd.m.Y H:i',
         ];
 
-        yield[
-            '0',
+        yield [
+            DateLength::TIME,
+            'H:i',
+        ];
+    }
+
+    /**
+     * Provide date format using test environment
+     *
+     * @return Generator
+     */
+    public function provideDateFormatUsingTestEnvironment(): Generator
+    {
+        yield [
+            DateLength::DATE,
+            'Y.m.d',
         ];
 
-        yield[
-            '1',
+        yield [
+            DateLength::DATETIME,
+            'Y.m.d H:i:s',
         ];
 
-        yield[
-            '-1',
+        yield [
+            DateLength::TIME,
+            'H:i:s',
         ];
     }
 
@@ -270,188 +100,76 @@ class DateServiceTest extends KernelTestCase
         $date3 = '2100-05-01';
         $date4 = '2200-08-01T20:00:00Z';
 
-        yield[
+        yield [
             new DateTime($date1, new DateTimeZone(static::TIMEZONE)),
             DateLength::DATE,
             '01.02.1900',
         ];
 
-        yield[
+        yield [
             new DateTime($date2, new DateTimeZone(static::TIMEZONE)),
             DateLength::DATE,
             '15.10.2000',
         ];
 
-        yield[
+        yield [
             new DateTime($date3, new DateTimeZone(static::TIMEZONE)),
             DateLength::DATE,
             '01.05.2100',
         ];
 
-        yield[
+        yield [
             new DateTime($date4, new DateTimeZone(static::TIMEZONE)),
             DateLength::DATE,
             '01.08.2200',
         ];
 
-        yield[
+        yield [
             new DateTime($date1, new DateTimeZone(static::TIMEZONE)),
             DateLength::DATETIME,
             '01.02.1900 08:25',
         ];
 
-        yield[
+        yield [
             new DateTime($date2, new DateTimeZone(static::TIMEZONE)),
             DateLength::DATETIME,
             '15.10.2000 10:05',
         ];
 
-        yield[
+        yield [
             new DateTime($date3, new DateTimeZone(static::TIMEZONE)),
             DateLength::DATETIME,
             '01.05.2100 00:00',
         ];
 
-        yield[
+        yield [
             new DateTime($date4, new DateTimeZone(static::TIMEZONE)),
             DateLength::DATETIME,
             '01.08.2200 20:00',
         ];
 
-        yield[
+        yield [
             new DateTime($date1, new DateTimeZone(static::TIMEZONE)),
             DateLength::TIME,
             '08:25',
         ];
 
-        yield[
+        yield [
             new DateTime($date2, new DateTimeZone(static::TIMEZONE)),
             DateLength::TIME,
             '10:05',
         ];
 
-        yield[
+        yield [
             new DateTime($date3, new DateTimeZone(static::TIMEZONE)),
             DateLength::TIME,
             '00:00',
         ];
 
-        yield[
+        yield [
             new DateTime($date4, new DateTimeZone(static::TIMEZONE)),
             DateLength::TIME,
             '20:00',
-        ];
-    }
-
-    /**
-     * Provide date, date length and date formatted using test environment
-     *
-     * @return Generator
-     */
-    public function provideDateFormattedUsingTestEnvironment(): Generator
-    {
-        $date1 = '1900-02-01 08:25:40';
-        $date2 = '2000-10-15 10:05:40';
-        $date3 = '2100-05-01';
-
-        yield[
-            new DateTime($date1, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATE,
-            '1900.02.01',
-        ];
-
-        yield[
-            new DateTime($date2, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATE,
-            '2000.10.15',
-        ];
-
-        yield[
-            new DateTime($date3, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATE,
-            '2100.05.01',
-        ];
-
-        yield[
-            new DateTime($date1, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATETIME,
-            '1900.02.01 08:25:40',
-        ];
-
-        yield[
-            new DateTime($date2, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATETIME,
-            '2000.10.15 10:05:40',
-        ];
-
-        yield[
-            new DateTime($date3, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATETIME,
-            '2100.05.01 00:00:00',
-        ];
-
-        yield[
-            new DateTime($date1, new DateTimeZone(static::TIMEZONE)),
-            DateLength::TIME,
-            '08:25:40',
-        ];
-
-        yield[
-            new DateTime($date2, new DateTimeZone(static::TIMEZONE)),
-            DateLength::TIME,
-            '10:05:40',
-        ];
-
-        yield[
-            new DateTime($date3, new DateTimeZone(static::TIMEZONE)),
-            DateLength::TIME,
-            '00:00:00',
-        ];
-    }
-
-    /**
-     * Provide date format using default values
-     *
-     * @return Generator
-     */
-    public function provideDateFormatUsingDefaults(): Generator
-    {
-        yield[
-            DateLength::DATE,
-            'd.m.Y',
-        ];
-
-        yield[
-            DateLength::DATETIME,
-            'd.m.Y H:i',
-        ];
-
-        yield[
-            DateLength::TIME,
-            'H:i',
-        ];
-    }
-
-    /**
-     * Provide date format using test environment
-     *
-     * @return Generator
-     */
-    public function provideDateFormatUsingTestEnvironment(): Generator
-    {
-        yield[
-            DateLength::DATE,
-            'Y.m.d',
-        ];
-
-        yield[
-            DateLength::DATETIME,
-            'Y.m.d H:i:s',
-        ];
-
-        yield[
-            DateLength::TIME,
-            'H:i:s',
         ];
     }
 
@@ -471,7 +189,7 @@ class DateServiceTest extends KernelTestCase
          * - length of time
          * - locale
          */
-        yield[
+        yield [
             IntlDateFormatter::NONE,
             IntlDateFormatter::NONE,
             '',
@@ -480,7 +198,7 @@ class DateServiceTest extends KernelTestCase
         ];
 
         // Date only
-        yield[
+        yield [
             IntlDateFormatter::SHORT,
             IntlDateFormatter::NONE,
             $locale,
@@ -488,7 +206,7 @@ class DateServiceTest extends KernelTestCase
             '2/1/00',
         ];
 
-        yield[
+        yield [
             IntlDateFormatter::MEDIUM,
             IntlDateFormatter::NONE,
             $locale,
@@ -496,7 +214,7 @@ class DateServiceTest extends KernelTestCase
             'Feb 1, 1900',
         ];
 
-        yield[
+        yield [
             IntlDateFormatter::LONG,
             IntlDateFormatter::NONE,
             $locale,
@@ -505,7 +223,7 @@ class DateServiceTest extends KernelTestCase
         ];
 
         // Time only
-        yield[
+        yield [
             IntlDateFormatter::FULL,
             IntlDateFormatter::NONE,
             $locale,
@@ -513,7 +231,7 @@ class DateServiceTest extends KernelTestCase
             'Thursday, February 1, 1900',
         ];
 
-        yield[
+        yield [
             IntlDateFormatter::NONE,
             IntlDateFormatter::SHORT,
             $locale,
@@ -521,7 +239,7 @@ class DateServiceTest extends KernelTestCase
             '8:25 AM',
         ];
 
-        yield[
+        yield [
             IntlDateFormatter::NONE,
             IntlDateFormatter::MEDIUM,
             $locale,
@@ -551,7 +269,7 @@ class DateServiceTest extends KernelTestCase
 //        ];
 
         // Both, date & time
-        yield[
+        yield [
             IntlDateFormatter::MEDIUM,
             IntlDateFormatter::SHORT,
             $locale,
@@ -559,13 +277,289 @@ class DateServiceTest extends KernelTestCase
             'Feb 1, 1900, 8:25 AM',
         ];
 
-        yield[
+        yield [
             IntlDateFormatter::LONG,
             IntlDateFormatter::MEDIUM,
             $locale,
             new DateTime($dateString, new DateTimeZone(static::TIMEZONE)),
             'February 1, 1900 at 8:25:40 AM',
         ];
+    }
+
+    /**
+     * Provide date, date length and date formatted using test environment
+     *
+     * @return Generator
+     */
+    public function provideDateFormattedUsingTestEnvironment(): Generator
+    {
+        $date1 = '1900-02-01 08:25:40';
+        $date2 = '2000-10-15 10:05:40';
+        $date3 = '2100-05-01';
+
+        yield [
+            new DateTime($date1, new DateTimeZone(static::TIMEZONE)),
+            DateLength::DATE,
+            '1900.02.01',
+        ];
+
+        yield [
+            new DateTime($date2, new DateTimeZone(static::TIMEZONE)),
+            DateLength::DATE,
+            '2000.10.15',
+        ];
+
+        yield [
+            new DateTime($date3, new DateTimeZone(static::TIMEZONE)),
+            DateLength::DATE,
+            '2100.05.01',
+        ];
+
+        yield [
+            new DateTime($date1, new DateTimeZone(static::TIMEZONE)),
+            DateLength::DATETIME,
+            '1900.02.01 08:25:40',
+        ];
+
+        yield [
+            new DateTime($date2, new DateTimeZone(static::TIMEZONE)),
+            DateLength::DATETIME,
+            '2000.10.15 10:05:40',
+        ];
+
+        yield [
+            new DateTime($date3, new DateTimeZone(static::TIMEZONE)),
+            DateLength::DATETIME,
+            '2100.05.01 00:00:00',
+        ];
+
+        yield [
+            new DateTime($date1, new DateTimeZone(static::TIMEZONE)),
+            DateLength::TIME,
+            '08:25:40',
+        ];
+
+        yield [
+            new DateTime($date2, new DateTimeZone(static::TIMEZONE)),
+            DateLength::TIME,
+            '10:05:40',
+        ];
+
+        yield [
+            new DateTime($date3, new DateTimeZone(static::TIMEZONE)),
+            DateLength::TIME,
+            '00:00:00',
+        ];
+    }
+
+    /**
+     * Provide unknown date length
+     *
+     * @return Generator
+     */
+    public function provideUnknownDateLength(): Generator
+    {
+        yield [
+            '',
+        ];
+
+        yield [
+            'xyz',
+        ];
+
+        yield [
+            '0',
+        ];
+
+        yield [
+            '1',
+        ];
+
+        yield [
+            '-1',
+        ];
+    }
+
+    public function testConstructor(): void
+    {
+        static::assertConstructorVisibilityAndArguments(
+            DateService::class,
+            OopVisibilityType::IS_PUBLIC,
+            3,
+            3
+        );
+    }
+
+    /**
+     * @param DateTimeInterface $dateTime   The date to format
+     * @param string            $dateLength Type of date length
+     * @param string            $expected   Expected date
+     *
+     * @dataProvider provideDateFormattedUsingDefaults
+     */
+    public function testFormatDateUsingDefaults(
+        DateTimeInterface $dateTime,
+        string $dateLength,
+        string $expected
+    ): void {
+        static::bootKernel([
+            'environment' => 'defaults',
+        ]);
+
+        $formatted = static::$container
+            ->get(DateService::class)
+            ->formatDate($dateTime, $dateLength);
+
+        static::assertSame($expected, $formatted);
+    }
+
+    /**
+     * @param int               $dateType  Type/length of date part in the returned string. One of constants of the
+     *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::SHORT.
+     * @param int               $timeType  Type/length of time part in the returned string. One of constants of the
+     *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::MEDIUM.
+     * @param string            $locale    Locale used to format given date
+     * @param DateTimeInterface $dateTime  The date to format
+     * @param string            $expected  Expected date
+     *
+     * @dataProvider provideDateFormattedUsingLocale
+     */
+    public function testFormatDateUsingLocaleAndDefaults(
+        int $dateType,
+        int $timeType,
+        string $locale,
+        DateTimeInterface $dateTime,
+        string $expected
+    ): void {
+        static::bootKernel([
+            'environment' => 'defaults',
+        ]);
+
+        $formatted = static::$container
+            ->get(DateService::class)
+            ->formatDateUsingLocale(
+                $dateType,
+                $timeType,
+                $locale,
+                $dateTime
+            );
+
+        static::assertSame($expected, $formatted);
+    }
+
+    /**
+     * @param int               $dateType  Type/length of date part in the returned string. One of constants of the
+     *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::SHORT.
+     * @param int               $timeType  Type/length of time part in the returned string. One of constants of the
+     *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::MEDIUM.
+     * @param string            $locale    Locale used to format given date
+     * @param DateTimeInterface $dateTime  The date to format
+     * @param string            $expected  Expected date
+     *
+     * @dataProvider provideDateFormattedUsingLocale
+     */
+    public function testFormatDateUsingLocaleAndTestEnvironment(
+        int $dateType,
+        int $timeType,
+        string $locale,
+        DateTimeInterface $dateTime,
+        string $expected
+    ): void {
+        $formatted = static::$container
+            ->get(DateService::class)
+            ->formatDateUsingLocale(
+                $dateType,
+                $timeType,
+                $locale,
+                $dateTime
+            );
+
+        static::assertSame($expected, $formatted);
+    }
+
+    /**
+     * @param DateTimeInterface $dateTime   The date to format
+     * @param string            $dateLength Type of date length
+     * @param string            $expected   Expected date
+     *
+     * @dataProvider provideDateFormattedUsingTestEnvironment
+     */
+    public function testFormatDateUsingTestEnvironment(
+        DateTimeInterface $dateTime,
+        string $dateLength,
+        string $expected
+    ): void {
+        $formatted = static::$container
+            ->get(DateService::class)
+            ->formatDate($dateTime, $dateLength);
+
+        static::assertSame($expected, $formatted);
+    }
+
+    /**
+     * @param string $dateLength Unknown type of date length
+     * @dataProvider provideUnknownDateLength
+     */
+    public function testFormatDateUsingUnknownDateLength(string $dateLength): void
+    {
+        $this->expectException(UnknownDateLengthException::class);
+
+        static::$container
+            ->get(DateService::class)
+            ->formatDate(new DateTime(), $dateLength)
+        ;
+    }
+
+    /**
+     * @param string $dateLength Type of date length
+     * @param string $expected   Expected date format
+     *
+     * @dataProvider provideDateFormatUsingDefaults
+     */
+    public function testGetFormatUsingDefaults(
+        string $dateLength,
+        string $expected
+    ): void {
+        static::bootKernel([
+            'environment' => 'defaults',
+        ]);
+
+        $format = static::$container
+            ->get(DateService::class)
+            ->getFormat($dateLength);
+
+        static::assertSame($expected, $format);
+    }
+
+    /**
+     * @param string $dateLength Type of date length
+     * @param string $expected   Expected date format
+     *
+     * @dataProvider provideDateFormatUsingTestEnvironment
+     */
+    public function testGetFormatUsingTestEnvironment(
+        string $dateLength,
+        string $expected
+    ): void {
+        $format = static::$container
+            ->get(DateService::class)
+            ->getFormat($dateLength);
+
+        static::assertSame($expected, $format);
+    }
+
+    /**
+     * @param string $dateLength Unknown type of date length
+     * @dataProvider provideUnknownDateLength
+     */
+    public function testGetFormatUsingUnknownDateLength(string $dateLength): void
+    {
+        $this->expectException(UnknownDateLengthException::class);
+
+        static::$container
+            ->get(DateService::class)
+            ->getFormat($dateLength)
+        ;
     }
 
     /**

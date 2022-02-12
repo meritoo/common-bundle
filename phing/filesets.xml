@@ -3,16 +3,16 @@
 <project name="Meritoo Bundle" basedir="." default="build:main" phingVersion="2.16.0">
     <!-- Filesets -->
     <fileset id="cache" dir="${dir.cache}">
-        <include name="**/*"/>
-        <exclude name=".gitkeep"/>
+        <include name="**/*" />
+        <exclude name=".gitkeep" />
     </fileset>
     <fileset id="logs" dir="${dir.logs}">
-        <include name="**/*"/>
-        <exclude name=".gitkeep"/>
+        <include name="**/*" />
+        <exclude name=".gitkeep" />
     </fileset>
     <fileset id="sessions" dir="${dir.sessions}">
-        <include name="**/*"/>
-        <exclude name=".gitkeep"/>
+        <include name="**/*" />
+        <exclude name=".gitkeep" />
     </fileset>
 
     <!-- Directories to check -->

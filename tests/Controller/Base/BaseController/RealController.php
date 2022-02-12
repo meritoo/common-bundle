@@ -25,6 +25,11 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class RealController extends BaseController
 {
+    public function create(): RedirectResponse
+    {
+        return $this->redirectToRefererOrRoute('test.real_controller.index');
+    }
+
     public function index(): Response
     {
         return new Response('<p>Cras Vestibulum</p>');
@@ -33,10 +38,5 @@ class RealController extends BaseController
     public function read(): RedirectResponse
     {
         return $this->redirectToReferer();
-    }
-
-    public function create(): RedirectResponse
-    {
-        return $this->redirectToRefererOrRoute('test.real_controller.index');
     }
 }

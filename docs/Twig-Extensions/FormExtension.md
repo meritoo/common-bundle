@@ -4,15 +4,19 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 # FormExtension
 
-Located here: `Meritoo\CommonBundle\Twig\FormExtension`. It's Twig extension related to the [FormService service](../Services/FormService.md). Allows to use functionality provided by the `FormService` service in Twig templates.
+Located here: `Meritoo\CommonBundle\Twig\FormExtension`. It's Twig extension related to
+the [FormService service](../Services/FormService.md). Allows to use functionality provided by the `FormService` service
+in Twig templates.
 
 ### Functions
 
 ##### meritoo_common_form_is_html5_validation_enabled()
 
-Returns information if HTML5 inline validation is enabled. Exactly as `Meritoo\CommonBundle\Service\FormService::isHtml5ValidationEnabled()` method.
+Returns information if HTML5 inline validation is enabled. Exactly
+as `Meritoo\CommonBundle\Service\FormService::isHtml5ValidationEnabled()` method.
 
-The HTML5 validation may be enabled or disabled in `config/packages/meritoo_common.yaml` configuration file. By default is enabled.
+The HTML5 validation may be enabled or disabled in `config/packages/meritoo_common.yaml` configuration file. By default
+is enabled.
 
 Example below:
 

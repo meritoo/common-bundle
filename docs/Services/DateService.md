@@ -32,7 +32,8 @@ Format of date is based on those lengths of date that are stored in application'
 
 ##### getDateFormatted()
 
-Returns date formatted according to given length of date. Format of date is provided by `getDateFormat()` method (described above).
+Returns date formatted according to given length of date. Format of date is provided by `getDateFormat()` method (
+described above).
 
 # More
 

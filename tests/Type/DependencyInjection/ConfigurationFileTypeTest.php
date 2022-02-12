@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Type\DependencyInjection;
 
+use Generator;
 use Meritoo\Common\Test\Base\BaseTypeTestCase;
 use Meritoo\Common\Type\Base\BaseType;
 use Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfigurationFileTypeException;
@@ -27,13 +28,100 @@ use Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType;
 class ConfigurationFileTypeTest extends BaseTypeTestCase
 {
     /**
-     * @param string $fileName Name of configuration file
-     * @dataProvider provideFileNameWithUnknownExtension
+     * Provides name and type of configuration file
+     *
+     * @return Generator
      */
-    public function testGetTypeFromFileNameWithUnknownExtension(string $fileName): void
+    public function provideFileNameAndType(): Generator
     {
-        $this->expectException(UnknownConfigurationFileTypeException::class);
-        ConfigurationFileType::getTypeFromFileName($fileName);
+        yield [
+            'example.yaml',
+            'yaml',
+        ];
+
+        yield [
+            'example.xml',
+            'xml',
+        ];
+
+        yield [
+            'example.php',
+            'php',
+        ];
+    }
+
+    /**
+     * Provides name of configuration file with unknown extension
+     *
+     * @return Generator
+     */
+    public function provideFileNameWithUnknownExtension(): Generator
+    {
+        yield [
+            '',
+            '',
+        ];
+
+        yield [
+            '0',
+            '',
+        ];
+
+        yield [
+            'example.jpg',
+            '',
+        ];
+
+        yield [
+            'example.yml',
+            '',
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function provideTypeToVerify(): Generator
+    {
+        yield [
+            ConfigurationFileType::isCorrectType(''),
+            false,
+        ];
+
+        yield [
+            ConfigurationFileType::isCorrectType(null),
+            false,
+        ];
+
+        yield [
+            ConfigurationFileType::isCorrectType('0'),
+            false,
+        ];
+
+        yield [
+            ConfigurationFileType::isCorrectType('1'),
+            false,
+        ];
+
+        yield [
+            ConfigurationFileType::isCorrectType('jpg'),
+            false,
+        ];
+
+        yield [
+            ConfigurationFileType::isCorrectType('php'),
+            true,
+        ];
+
+        yield [
+            ConfigurationFileType::isCorrectType('xml'),
+            true,
+        ];
+
+        yield [
+            ConfigurationFileType::isCorrectType('yaml'),
+            true,
+        ];
     }
 
     /**
@@ -48,100 +136,13 @@ class ConfigurationFileTypeTest extends BaseTypeTestCase
     }
 
     /**
-     * Provides name and type of configuration file
-     *
-     * @return \Generator
+     * @param string $fileName Name of configuration file
+     * @dataProvider provideFileNameWithUnknownExtension
      */
-    public function provideFileNameAndType(): \Generator
+    public function testGetTypeFromFileNameWithUnknownExtension(string $fileName): void
     {
-        yield[
-            'example.yaml',
-            'yaml',
-        ];
-
-        yield[
-            'example.xml',
-            'xml',
-        ];
-
-        yield[
-            'example.php',
-            'php',
-        ];
-    }
-
-    /**
-     * Provides name of configuration file with unknown extension
-     *
-     * @return \Generator
-     */
-    public function provideFileNameWithUnknownExtension(): \Generator
-    {
-        yield[
-            '',
-            '',
-        ];
-
-        yield[
-            '0',
-            '',
-        ];
-
-        yield[
-            'example.jpg',
-            '',
-        ];
-
-        yield[
-            'example.yml',
-            '',
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function provideTypeToVerify(): \Generator
-    {
-        yield[
-            ConfigurationFileType::isCorrectType(''),
-            false,
-        ];
-
-        yield[
-            ConfigurationFileType::isCorrectType(null),
-            false,
-        ];
-
-        yield[
-            ConfigurationFileType::isCorrectType('0'),
-            false,
-        ];
-
-        yield[
-            ConfigurationFileType::isCorrectType('1'),
-            false,
-        ];
-
-        yield[
-            ConfigurationFileType::isCorrectType('jpg'),
-            false,
-        ];
-
-        yield[
-            ConfigurationFileType::isCorrectType('php'),
-            true,
-        ];
-
-        yield[
-            ConfigurationFileType::isCorrectType('xml'),
-            true,
-        ];
-
-        yield[
-            ConfigurationFileType::isCorrectType('yaml'),
-            true,
-        ];
+        $this->expectException(UnknownConfigurationFileTypeException::class);
+        ConfigurationFileType::getTypeFromFileName($fileName);
     }
 
     /**
@@ -150,8 +151,8 @@ class ConfigurationFileTypeTest extends BaseTypeTestCase
     protected function getAllExpectedTypes(): array
     {
         return [
-            'PHP'  => ConfigurationFileType::PHP,
-            'XML'  => ConfigurationFileType::XML,
+            'PHP' => ConfigurationFileType::PHP,
+            'XML' => ConfigurationFileType::XML,
             'YAML' => ConfigurationFileType::YAML,
         ];
     }

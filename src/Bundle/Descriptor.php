@@ -116,154 +116,6 @@ class Descriptor
     }
 
     /**
-     * Returns name of bundle
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * Sets name of bundle
-     *
-     * @param string $name The name
-     * @return Descriptor
-     */
-    public function setName(string $name): Descriptor
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Returns name of configuration root node of bundle
-     *
-     * @return string
-     */
-    public function getConfigurationRootName(): string
-    {
-        return $this->configurationRootName;
-    }
-
-    /**
-     * Sets name of configuration root node of bundle
-     *
-     * @param string $configurationRootName The name
-     * @return Descriptor
-     */
-    public function setConfigurationRootName(string $configurationRootName): Descriptor
-    {
-        $this->configurationRootName = $configurationRootName;
-
-        return $this;
-    }
-
-    /**
-     * Returns root namespace of bundle
-     *
-     * @return string
-     */
-    public function getRootNamespace(): string
-    {
-        return $this->rootNamespace;
-    }
-
-    /**
-     * Sets root namespace of bundle
-     *
-     * @param string $rootNamespace The root namespace
-     * @return Descriptor
-     */
-    public function setRootNamespace(string $rootNamespace): Descriptor
-    {
-        $this->rootNamespace = $rootNamespace;
-
-        return $this;
-    }
-
-    /**
-     * Returns physical path of bundle
-     *
-     * @return string
-     */
-    public function getPath(): string
-    {
-        return $this->path;
-    }
-
-    /**
-     * Sets physical path of bundle
-     *
-     * @param string $path The path
-     * @return Descriptor
-     */
-    public function setPath(string $path): Descriptor
-    {
-        $this->path = $path;
-
-        return $this;
-    }
-
-    /**
-     * Returns descriptor of the parent bundle
-     *
-     * @return null|Descriptor
-     */
-    public function getParentBundleDescriptor(): ?Descriptor
-    {
-        return $this->parentBundleDescriptor;
-    }
-
-    /**
-     * Sets descriptor of the parent bundle
-     *
-     * @param Descriptor $parentBundleDescriptor (optional) The parent's descriptor
-     * @return Descriptor
-     */
-    public function setParentBundleDescriptor(?Descriptor $parentBundleDescriptor): Descriptor
-    {
-        $this->parentBundleDescriptor = $parentBundleDescriptor;
-
-        return $this;
-    }
-
-    /**
-     * Returns descriptor of the child bundle
-     *
-     * @return null|Descriptor
-     */
-    public function getChildBundleDescriptor(): ?Descriptor
-    {
-        return $this->childBundleDescriptor;
-    }
-
-    /**
-     * Sets descriptor of the child bundle
-     *
-     * @param Descriptor $childBundleDescriptor (optional) The child's descriptor
-     * @return Descriptor
-     */
-    public function setChildBundleDescriptor(?Descriptor $childBundleDescriptor): Descriptor
-    {
-        $this->childBundleDescriptor = $childBundleDescriptor;
-
-        return $this;
-    }
-
-    /**
-     * Returns names of files with data fixtures from bundle
-     *
-     * @return StringCollection
-     */
-    public function getDataFixtures(): StringCollection
-    {
-        return $this->dataFixtures;
-    }
-
-    /**
      * Adds names of files with data fixtures from bundle
      *
      * @param array $fixturesPaths Names of files with data fixtures
@@ -278,93 +130,6 @@ class Descriptor
         }
 
         return $this;
-    }
-
-    /*
-     * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-     * Additional/extra methods (neither getters, nor setters)
-     * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-     */
-
-    /**
-     * Returns short, simple name of bundle
-     *
-     * @return string
-     */
-    public function getShortName(): string
-    {
-        if (empty($this->shortName)) {
-            $name = strtolower($this->getName());
-            $replaced = preg_replace('|bundle$|', '', $name);
-
-            $this->shortName = trim($replaced);
-        }
-
-        return $this->shortName;
-    }
-
-    /**
-     * Returns real/full path of directory from bundle with classes for the DataFixtures
-     *
-     * @return null|string
-     */
-    public function getDataFixturesDirectoryPath(): ?string
-    {
-        $path = $this->getPath();
-
-        if (empty($path)) {
-            return null;
-        }
-
-        return Miscellaneous::concatenatePaths([
-            $path,
-            static::PATH_DATA_FIXTURES,
-        ]);
-    }
-
-    /**
-     * Returns information if given file belongs to bundle
-     *
-     * @param string $filePath Path of file to verify
-     * @return bool
-     */
-    public function hasFile(string $filePath): bool
-    {
-        return Regex::isSubPathOf($filePath, $this->getPath());
-    }
-
-    /**
-     * Returns an array representation of the descriptor
-     *
-     * @param bool $withParentAndChild (optional) If is set to true, includes descriptor of the parent and child
-     *                                 bundle (default behaviour). Otherwise - not.
-     * @return array
-     */
-    public function toArray(bool $withParentAndChild = true): array
-    {
-        $array = [
-            'name'                  => $this->getName(),
-            'shortName'             => $this->getShortName(),
-            'configurationRootName' => $this->getConfigurationRootName(),
-            'rootNamespace'         => $this->getRootNamespace(),
-            'path'                  => $this->getPath(),
-            'dataFixtures'          => $this->getDataFixtures()->toArray(),
-        ];
-
-        if ($withParentAndChild) {
-            $parentDescriptor = $this->getParentBundleDescriptor();
-            $childDescriptor = $this->getChildBundleDescriptor();
-
-            if (null !== $parentDescriptor) {
-                $array['parentBundleDescriptor'] = $parentDescriptor->toArray(false);
-            }
-
-            if (null !== $childDescriptor) {
-                $array['childBundleDescriptor'] = $childDescriptor->toArray(false);
-            }
-        }
-
-        return $array;
     }
 
     /**
@@ -437,5 +202,234 @@ class Descriptor
         $configurationRootName = '';
 
         return new static($name, $configurationRootName, $rootNamespace, $path);
+    }
+
+    /**
+     * Returns descriptor of the child bundle
+     *
+     * @return null|Descriptor
+     */
+    public function getChildBundleDescriptor(): ?Descriptor
+    {
+        return $this->childBundleDescriptor;
+    }
+
+    /**
+     * Sets descriptor of the child bundle
+     *
+     * @param Descriptor $childBundleDescriptor (optional) The child's descriptor
+     * @return Descriptor
+     */
+    public function setChildBundleDescriptor(?Descriptor $childBundleDescriptor): Descriptor
+    {
+        $this->childBundleDescriptor = $childBundleDescriptor;
+
+        return $this;
+    }
+
+    /**
+     * Returns name of configuration root node of bundle
+     *
+     * @return string
+     */
+    public function getConfigurationRootName(): string
+    {
+        return $this->configurationRootName;
+    }
+
+    /**
+     * Sets name of configuration root node of bundle
+     *
+     * @param string $configurationRootName The name
+     * @return Descriptor
+     */
+    public function setConfigurationRootName(string $configurationRootName): Descriptor
+    {
+        $this->configurationRootName = $configurationRootName;
+
+        return $this;
+    }
+
+    /**
+     * Returns names of files with data fixtures from bundle
+     *
+     * @return StringCollection
+     */
+    public function getDataFixtures(): StringCollection
+    {
+        return $this->dataFixtures;
+    }
+
+    /**
+     * Returns real/full path of directory from bundle with classes for the DataFixtures
+     *
+     * @return null|string
+     */
+    public function getDataFixturesDirectoryPath(): ?string
+    {
+        $path = $this->getPath();
+
+        if (empty($path)) {
+            return null;
+        }
+
+        return Miscellaneous::concatenatePaths([
+            $path,
+            static::PATH_DATA_FIXTURES,
+        ]);
+    }
+
+    /**
+     * Returns name of bundle
+     *
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * Sets name of bundle
+     *
+     * @param string $name The name
+     * @return Descriptor
+     */
+    public function setName(string $name): Descriptor
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Returns descriptor of the parent bundle
+     *
+     * @return null|Descriptor
+     */
+    public function getParentBundleDescriptor(): ?Descriptor
+    {
+        return $this->parentBundleDescriptor;
+    }
+
+    /**
+     * Sets descriptor of the parent bundle
+     *
+     * @param Descriptor $parentBundleDescriptor (optional) The parent's descriptor
+     * @return Descriptor
+     */
+    public function setParentBundleDescriptor(?Descriptor $parentBundleDescriptor): Descriptor
+    {
+        $this->parentBundleDescriptor = $parentBundleDescriptor;
+
+        return $this;
+    }
+
+    /**
+     * Returns physical path of bundle
+     *
+     * @return string
+     */
+    public function getPath(): string
+    {
+        return $this->path;
+    }
+
+    /**
+     * Sets physical path of bundle
+     *
+     * @param string $path The path
+     * @return Descriptor
+     */
+    public function setPath(string $path): Descriptor
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Returns root namespace of bundle
+     *
+     * @return string
+     */
+    public function getRootNamespace(): string
+    {
+        return $this->rootNamespace;
+    }
+
+    /**
+     * Sets root namespace of bundle
+     *
+     * @param string $rootNamespace The root namespace
+     * @return Descriptor
+     */
+    public function setRootNamespace(string $rootNamespace): Descriptor
+    {
+        $this->rootNamespace = $rootNamespace;
+
+        return $this;
+    }
+
+    /**
+     * Returns short, simple name of bundle
+     *
+     * @return string
+     */
+    public function getShortName(): string
+    {
+        if (empty($this->shortName)) {
+            $name = strtolower($this->getName());
+            $replaced = preg_replace('|bundle$|', '', $name);
+
+            $this->shortName = trim($replaced);
+        }
+
+        return $this->shortName;
+    }
+
+    /**
+     * Returns information if given file belongs to bundle
+     *
+     * @param string $filePath Path of file to verify
+     * @return bool
+     */
+    public function hasFile(string $filePath): bool
+    {
+        return Regex::isSubPathOf($filePath, $this->getPath());
+    }
+
+    /**
+     * Returns an array representation of the descriptor
+     *
+     * @param bool $withParentAndChild (optional) If is set to true, includes descriptor of the parent and child
+     *                                 bundle (default behaviour). Otherwise - not.
+     * @return array
+     */
+    public function toArray(bool $withParentAndChild = true): array
+    {
+        $array = [
+            'name' => $this->getName(),
+            'shortName' => $this->getShortName(),
+            'configurationRootName' => $this->getConfigurationRootName(),
+            'rootNamespace' => $this->getRootNamespace(),
+            'path' => $this->getPath(),
+            'dataFixtures' => $this->getDataFixtures()->toArray(),
+        ];
+
+        if ($withParentAndChild) {
+            $parentDescriptor = $this->getParentBundleDescriptor();
+            $childDescriptor = $this->getChildBundleDescriptor();
+
+            if (null !== $parentDescriptor) {
+                $array['parentBundleDescriptor'] = $parentDescriptor->toArray(false);
+            }
+
+            if (null !== $childDescriptor) {
+                $array['childBundleDescriptor'] = $childDescriptor->toArray(false);
+            }
+        }
+
+        return $array;
     }
 }

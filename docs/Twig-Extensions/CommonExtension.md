@@ -4,13 +4,15 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 # CommonExtension
 
-Located here: `Meritoo\CommonBundle\Twig\CommonExtension`. It's Twig extension that provides functions and filters for common operations.
+Located here: `Meritoo\CommonBundle\Twig\CommonExtension`. It's Twig extension that provides functions and filters for
+common operations.
 
 ### Filters
 
 ##### meritoo_common_empty_value
 
-Verifies/Filters given value if is empty. Returns replacement of empty value if given value is empty. Otherwise - given value.
+Verifies/Filters given value if is empty. Returns replacement of empty value if given value is empty. Otherwise - given
+value.
 
 Example below.
 

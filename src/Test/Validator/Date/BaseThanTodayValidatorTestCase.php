@@ -24,82 +24,34 @@ use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 abstract class BaseThanTodayValidatorTestCase extends ConstraintValidatorTestCase
 {
     /**
-     * Provides not whole day earlier date
-     *
-     * @return Generator
-     */
-    public function provideNotWholeDayEarlierDate(): Generator
-    {
-        yield[
-            (new DateTime())->sub(new DateInterval('PT1M')),
-        ];
-
-        yield[
-            (new DateTime())->sub(new DateInterval('PT10M')),
-        ];
-
-        yield[
-            (new DateTime())->sub(new DateInterval('PT1S')),
-        ];
-
-        yield[
-            (new DateTime())->sub(new DateInterval('PT10S')),
-        ];
-    }
-
-    /**
      * Provides earlier date
      *
      * @return Generator
      */
     public function provideEarlierDate(): Generator
     {
-        yield[
+        yield [
             (new DateTime())->sub(new DateInterval('P1W')),
         ];
 
-        yield[
+        yield [
             (new DateTime())->sub(new DateInterval('P10W')),
         ];
 
-        yield[
+        yield [
             (new DateTime())->sub(new DateInterval('P1M')),
         ];
 
-        yield[
+        yield [
             (new DateTime())->sub(new DateInterval('P10M')),
         ];
 
-        yield[
+        yield [
             (new DateTime())->sub(new DateInterval('P1D')),
         ];
 
-        yield[
+        yield [
             (new DateTime())->sub(new DateInterval('P10D')),
-        ];
-    }
-
-    /**
-     * Provides not whole day later date
-     *
-     * @return Generator
-     */
-    public function provideNotWholeDayLaterDate(): Generator
-    {
-        yield[
-            (new DateTime())->add(new DateInterval('PT1M')),
-        ];
-
-        yield[
-            (new DateTime())->add(new DateInterval('PT10M')),
-        ];
-
-        yield[
-            (new DateTime())->add(new DateInterval('PT1S')),
-        ];
-
-        yield[
-            (new DateTime())->add(new DateInterval('PT10S')),
         ];
     }
 
@@ -110,28 +62,76 @@ abstract class BaseThanTodayValidatorTestCase extends ConstraintValidatorTestCas
      */
     public function provideLaterDate(): Generator
     {
-        yield[
+        yield [
             (new DateTime())->add(new DateInterval('P1W')),
         ];
 
-        yield[
+        yield [
             (new DateTime())->add(new DateInterval('P10W')),
         ];
 
-        yield[
+        yield [
             (new DateTime())->add(new DateInterval('P1M')),
         ];
 
-        yield[
+        yield [
             (new DateTime())->add(new DateInterval('P10M')),
         ];
 
-        yield[
+        yield [
             (new DateTime())->add(new DateInterval('P1D')),
         ];
 
-        yield[
+        yield [
             (new DateTime())->add(new DateInterval('P10D')),
+        ];
+    }
+
+    /**
+     * Provides not whole day earlier date
+     *
+     * @return Generator
+     */
+    public function provideNotWholeDayEarlierDate(): Generator
+    {
+        yield [
+            (new DateTime())->sub(new DateInterval('PT1M')),
+        ];
+
+        yield [
+            (new DateTime())->sub(new DateInterval('PT10M')),
+        ];
+
+        yield [
+            (new DateTime())->sub(new DateInterval('PT1S')),
+        ];
+
+        yield [
+            (new DateTime())->sub(new DateInterval('PT10S')),
+        ];
+    }
+
+    /**
+     * Provides not whole day later date
+     *
+     * @return Generator
+     */
+    public function provideNotWholeDayLaterDate(): Generator
+    {
+        yield [
+            (new DateTime())->add(new DateInterval('PT1M')),
+        ];
+
+        yield [
+            (new DateTime())->add(new DateInterval('PT10M')),
+        ];
+
+        yield [
+            (new DateTime())->add(new DateInterval('PT1S')),
+        ];
+
+        yield [
+            (new DateTime())->add(new DateInterval('PT10S')),
         ];
     }
 }

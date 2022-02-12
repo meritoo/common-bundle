@@ -62,8 +62,9 @@ $descriptor = Descriptor::fromBundle($bundle);
 ### Descriptor of child and parent bundle
 
 Useful when your bundle:
+
 1. Extends another bundle (has parent bundle)
-or
+   or
 2. Is extended by another bundle (has child bundle)
 
 In those situations you can access descriptors of those bundles using methods:

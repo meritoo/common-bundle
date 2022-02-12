@@ -26,23 +26,6 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  */
 class BaseControllerTest extends KernelTestCase
 {
-    public function testSimpleAction(): void
-    {
-        $controller = $this->getRealController();
-        $response = $controller->index();
-
-        static::assertSame(200, $response->getStatusCode());
-        static::assertSame('<p>Cras Vestibulum</p>', $response->getContent());
-    }
-
-    public function testRedirectToRefererUsingEmptyRefererUrl(): void
-    {
-        $this->expectException(CannotRedirectToEmptyRefererUrlException::class);
-
-        $controller = $this->getRealController();
-        $controller->read();
-    }
-
     public function testRedirectToReferer(): void
     {
         /** @var RequestServiceInterface $requestService */
@@ -65,6 +48,23 @@ class BaseControllerTest extends KernelTestCase
 
         static::assertSame(302, $response->getStatusCode());
         static::assertSame('/test/index', $response->getTargetUrl());
+    }
+
+    public function testRedirectToRefererUsingEmptyRefererUrl(): void
+    {
+        $this->expectException(CannotRedirectToEmptyRefererUrlException::class);
+
+        $controller = $this->getRealController();
+        $controller->read();
+    }
+
+    public function testSimpleAction(): void
+    {
+        $controller = $this->getRealController();
+        $response = $controller->index();
+
+        static::assertSame(200, $response->getStatusCode());
+        static::assertSame('<p>Cras Vestibulum</p>', $response->getContent());
     }
 
     /**

@@ -38,16 +38,6 @@ class FormService extends BaseService
     }
 
     /**
-     * Returns information if HTML5 inline validation is enabled
-     *
-     * @return bool
-     */
-    public function isHtml5ValidationEnabled(): bool
-    {
-        return false === $this->novalidateDisabled;
-    }
-
-    /**
      * @param array $existingOptions
      * @deprecated since meritoo/common-bundle 0.2.8, use "addHtml5ValidationOptions()" instead
      */
@@ -88,5 +78,15 @@ class FormService extends BaseService
         }
 
         $existingOptions['attr']['novalidate'] = 'novalidate';
+    }
+
+    /**
+     * Returns information if HTML5 inline validation is enabled
+     *
+     * @return bool
+     */
+    public function isHtml5ValidationEnabled(): bool
+    {
+        return false === $this->novalidateDisabled;
     }
 }
