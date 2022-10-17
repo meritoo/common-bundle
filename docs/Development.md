@@ -123,6 +123,8 @@ Served by [Infection — Mutation Testing Framework](https://infection.githu
 
 ### Running tests
 
+##### Whole project
+
 ```bash
 $ docker-compose exec php bash
 root@18f2f0cfaa5d:/var/www/application# XDEBUG_MODE=coverage ./vendor/bin/infection --threads=$(nproc)
@@ -133,6 +135,13 @@ or
 ```bash
 $ docker-compose exec php bash
 root@18f2f0cfaa5d:/var/www/application# XDEBUG_MODE=coverage phing -f phing/tests.xml test:infection
+```
+
+##### Single file
+
+```bash
+$ docker-compose exec php bash
+root@18f2f0cfaa5d:/var/www/application# XDEBUG_MODE=coverage ./vendor/bin/infection --threads=$(nproc) --filter=src/Service/PaginationService.php
 ```
 
 ### Result of testing
