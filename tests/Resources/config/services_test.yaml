@@ -11,6 +11,7 @@ services:
     test.meritoo_common.service.application_service: '@Meritoo\CommonBundle\Service\ApplicationService'
     test.meritoo_common.service.date_service: '@Meritoo\CommonBundle\Service\DateService'
     test.meritoo_common.service.form_service: '@Meritoo\CommonBundle\Service\FormService'
+    test.meritoo_common.service.pagination_service: '@Meritoo\CommonBundle\Service\PaginationService'
     test.meritoo_common.service.response_service: '@Meritoo\CommonBundle\Service\ResponseService'
     test.meritoo_common.service.session_service: '@Meritoo\CommonBundle\Service\RequestService'
 
@@ -20,3 +21,11 @@ services:
     test.meritoo_common.twig.form_extension: '@Meritoo\CommonBundle\Twig\FormExtension'
     test.meritoo_common.twig.common_runtime: '@Meritoo\CommonBundle\Twig\CommonRuntime'
     test.meritoo_common.twig.common_extension: '@Meritoo\CommonBundle\Twig\CommonExtension'
+
+    Meritoo\CommonBundle\Service\PaginationService:
+        arguments:
+            $twig: '@twig'
+            $router: '@router'
+            $templatePath: pagination.html.twig
+            $perPage: 6
+            $nearbyCurrentPageCount: 1

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\ValueObject;
 
+use Meritoo\CommonBundle\Contract\ValueObject\PaginationInterface;
 use Meritoo\CommonBundle\Exception\ValueObject\Pagination\IncorrectCurrentPageException;
 use Meritoo\CommonBundle\Exception\ValueObject\Pagination\IncorrectPerPageException;
 use Meritoo\CommonBundle\Exception\ValueObject\Pagination\IncorrectTotalAmountException;
@@ -20,7 +21,7 @@ use Meritoo\CommonBundle\Exception\ValueObject\Pagination\IncorrectTotalAmountEx
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
  */
-class Pagination
+class Pagination implements PaginationInterface
 {
     /** @var int */
     private $totalAmount;
