@@ -50,7 +50,7 @@ class FormExtensionTest extends BaseTwigExtensionTestCase
             ->getTwigEnvironment($templates)
             ->render($name);
 
-        static::assertRegExp('/bool\(true\)/', $rendered);
+        static::assertMatchesRegularExpression('/bool\(true\)/', $rendered);
     }
 
     public function testIsHtml5ValidationEnabledUsingTestEnvironment(): void
@@ -66,7 +66,7 @@ class FormExtensionTest extends BaseTwigExtensionTestCase
             ->getTwigEnvironment($templates)
             ->render($name);
 
-        static::assertRegExp('/bool\(false\)/', $rendered);
+        static::assertMatchesRegularExpression('/bool\(false\)/', $rendered);
     }
 
     /**
