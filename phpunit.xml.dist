@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!-- https://phpunit.readthedocs.io/en/8.2/configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/8.2/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
          backupGlobals="false"
          bootstrap="vendor/autoload.php"
          colors="true"
@@ -14,7 +13,20 @@
         <ini name="error_reporting" value="-1" />
         <env name="KERNEL_CLASS" value="Meritoo\Test\CommonBundle\Kernel" />
         <env name="APP_DEFAULT_LOCALE" value="en" />
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled" />
+        <env name="SYMFONY_PHPUNIT_VERSION" value="9.5" />
     </php>
+
+    <coverage>
+        <include>
+            <directory>src</directory>
+        </include>
+        <report>
+            <clover outputFile="build/reports/coveralls/clover.xml" />
+            <html outputDirectory="build/reports/phpunit-coverage/html" />
+            <xml outputDirectory="build/reports/infection/coverage-xml" />
+        </report>
+    </coverage>
 
     <testsuites>
         <testsuite name="Meritoo Package - Main Test Suite">
@@ -22,20 +34,11 @@
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist>
-            <directory>src</directory>
-        </whitelist>
-    </filter>
-
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
     </listeners>
 
     <logging>
-        <log type="coverage-html" target="build/reports/phpunit-coverage/html" />
-        <log type="coverage-xml" target="build/reports/infection/coverage-xml" />
-        <log type="junit" target="build/reports/infection/phpunit.junit.xml" />
-        <log type="coverage-clover" target="build/reports/coveralls/clover.xml" />
+        <junit outputFile="build/reports/infection/phpunit.junit.xml" />
     </logging>
 </phpunit>

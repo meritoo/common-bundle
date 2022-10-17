@@ -25,7 +25,7 @@ services:
     phpunit:
         image: meritoo/php:7.4
         container_name: ${DOCKER_CONTAINER_OWNER}-${DOCKER_CONTAINER_PROJECT}-phpunit
-        entrypoint: ./vendor/bin/phpunit
+        entrypoint: ./vendor/bin/simple-phpunit
         command: --version
         volumes:
             - .:/var/www/application:cached

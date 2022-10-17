@@ -91,6 +91,6 @@ tests.database = ${dir.data.temporary}/database.sqlite
 # - Infection (mutation tests)
 # - phpspec (Behaviour Driven Development tests)
 #
-tests.phpunit.command = ./vendor/bin/phpunit --verbose
+tests.phpunit.command = php -d memory_limit=-1 ./vendor/bin/simple-phpunit --verbose
 tests.mutation.command = ./vendor/bin/infection --ansi --threads=$(nproc) --coverage=build/reports/infection
 tests.phpspec.command = ./vendor/bin/phpspec run --ansi
