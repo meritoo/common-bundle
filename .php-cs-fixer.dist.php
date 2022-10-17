@@ -9,7 +9,8 @@ $finder = PhpCsFixer\Finder::create()
     ->notPath([
         'DependencyInjection/Configuration.php',
         'tests/Resources/var/',
-    ]);
+    ])
+;
 
 return (new PhpCsFixer\Config())
     ->setRules([
