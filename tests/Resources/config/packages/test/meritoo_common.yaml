@@ -12,3 +12,7 @@ meritoo_common:
             date: Y.m.d
             datetime: Y.m.d H:i:s
             time: H:i:s
+    pagination:
+        template_path: pagination.html.twig
+        per_page: 6
+        nearby_current_page_count: 1

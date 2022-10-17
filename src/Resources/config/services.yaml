@@ -32,3 +32,8 @@ services:
     Meritoo\CommonBundle\Twig\CommonRuntime:
         arguments:
             $emptyValueReplacement: '%meritoo_common.application.empty_value_replacement%'
+    Meritoo\CommonBundle\Service\PaginationService:
+        arguments:
+            $templatePath: '%meritoo_common.pagination.template_path%'
+            $perPage: '%meritoo_common.pagination.per_page%'
+            $nearbyCurrentPageCount: '%meritoo_common.pagination.nearby_current_page_count%'

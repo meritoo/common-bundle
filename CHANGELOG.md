@@ -2,6 +2,11 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.2.11
+
+1. Documentation for the PaginationService service
+2. Make the `PaginationService` service configurable via Container's parameters
+
 # 0.2.9
 
 1. Create RequestService::isCurrentRoute() method that returns information if given route is the current route

@@ -37,6 +37,7 @@ class Configuration implements ConfigurationInterface
                 ->append($this->getApplicationNode())
                 ->append($this->getDateNode())
                 ->append($this->getFormNode())
+                ->append($this->getPaginationNode())
             ->end()
         ;
 
@@ -132,6 +133,30 @@ class Configuration implements ConfigurationInterface
                             ->defaultValue('H:i')
                         ->end()
                     ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function getPaginationNode(): NodeDefinition
+    {
+        $treeBuilder = new TreeBuilder('pagination');
+
+        return $treeBuilder
+            ->getRootNode()
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->scalarNode('template_path')
+                    ->info('Path of template to render pagination')
+                    ->defaultValue('')
+                ->end()
+                ->scalarNode('per_page')
+                    ->info('Number of elements rendered on one page')
+                    ->defaultNull()
+                ->end()
+                ->scalarNode('nearby_current_page_count')
+                    ->info('Number of pages nearby current page')
+                    ->defaultNull()
                 ->end()
             ->end()
         ;

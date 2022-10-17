@@ -21,11 +21,3 @@ services:
     test.meritoo_common.twig.form_extension: '@Meritoo\CommonBundle\Twig\FormExtension'
     test.meritoo_common.twig.common_runtime: '@Meritoo\CommonBundle\Twig\CommonRuntime'
     test.meritoo_common.twig.common_extension: '@Meritoo\CommonBundle\Twig\CommonExtension'
-
-    Meritoo\CommonBundle\Service\PaginationService:
-        arguments:
-            $twig: '@twig'
-            $router: '@router'
-            $templatePath: pagination.html.twig
-            $perPage: 6
-            $nearbyCurrentPageCount: 1
