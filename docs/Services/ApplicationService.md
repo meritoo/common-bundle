@@ -37,6 +37,7 @@ information about application such as:
     - [**ApplicationService**](ApplicationService.md)
     - [DateService](DateService.md)
     - [FormService](FormService.md)
+    - [PaginationService](PaginationService.md)
     - [ResponseService](ResponseService.md)
 7. [Tests](../Tests.md)
 8. [Translations](../Translations.md)
