@@ -12,7 +12,7 @@ use Meritoo\CommonBundle\Exception\ValueObject\Pagination\IncorrectPerPageExcept
  * Test case of an exception used while the "per page" parameter of pagination has incorrect value
  *
  * @author    Meritoo <github@meritoo.pl>
- * @copyright Meritoo.pl <http://www.meritoo.pl>
+ * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @internal
  * @covers    \Meritoo\CommonBundle\Exception\ValueObject\Pagination\IncorrectPerPageException

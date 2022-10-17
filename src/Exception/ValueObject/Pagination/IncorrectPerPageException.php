@@ -8,7 +8,7 @@ namespace Meritoo\CommonBundle\Exception\ValueObject\Pagination;
  * An exception used while the "per page" parameter of pagination has incorrect value
  *
  * @author    Meritoo <github@meritoo.pl>
- * @copyright Meritoo.pl <http://www.meritoo.pl>
+ * @copyright Meritoo <http://www.meritoo.pl>
  */
 final class IncorrectPerPageException extends BaseIncorrectParameterException
 {
