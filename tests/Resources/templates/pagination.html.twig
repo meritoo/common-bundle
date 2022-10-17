@@ -1,0 +1,21 @@
+{% apply spaceless %}
+    <ul>
+        {% if previous_url is not empty %}
+            <li class="page-item go-to-previous">
+                <a href="{{ previous_url }}">&leftarrow;</a>
+            </li>
+        {% endif %}
+
+        {% for page_no, url in urls %}
+            <li{% if current_page == page_no %} class="current"{% endif %}>
+                <a href="{{ url }}">{{ page_no }}</a>
+            </li>
+        {% endfor %}
+
+        {% if next_url is not empty %}
+            <li class="page-item go-to-next">
+                <a href="{{ next_url }}">&rightarrow;</a>
+            </li>
+        {% endif %}
+    </ul>
+{% endapply %}

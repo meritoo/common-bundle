@@ -2,3 +2,10 @@ test.real_controller.index:
     path: /test/index
     defaults:
         _controller: Meritoo\Test\CommonBundle\Controller\Base\BaseController\RealController::index
+
+test.pagination_service.render_pagination:
+    path: /test/of/pagination/{page}
+    requirements:
+        page: \d+
+    defaults:
+        page: 1
