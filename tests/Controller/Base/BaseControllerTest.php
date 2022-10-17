@@ -26,13 +26,12 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  */
 class BaseControllerTest extends KernelTestCase
 {
+    private RequestServiceInterface $requestService;
+
     public function testRedirectToReferer(): void
     {
-        /** @var RequestServiceInterface $requestService */
-        $requestService = static::getContainer()->get(RequestServiceInterface::class);
-
         $refererUrl = '/';
-        $requestService->storeRefererUrl($refererUrl);
+        $this->requestService->storeRefererUrl($refererUrl);
 
         $controller = $this->getRealController();
         $response = $controller->read();
@@ -74,6 +73,11 @@ class BaseControllerTest extends KernelTestCase
     {
         parent::setUp();
         static::bootKernel();
+
+        /** @var RequestServiceInterface $requestService */
+        $requestService = static::getContainer()->get(RequestServiceInterface::class);
+
+        $this->requestService = $requestService;
     }
 
     /**
@@ -83,9 +87,6 @@ class BaseControllerTest extends KernelTestCase
      */
     private function getRealController(): RealController
     {
-        /** @var RequestServiceInterface $requestService */
-        $requestService = static::getContainer()->get(RequestServiceInterface::class);
-
         /*
          * I have to pass container to the controller to avoid exception:
          * Call to a member function get() on null
@@ -96,7 +97,7 @@ class BaseControllerTest extends KernelTestCase
          * caused by call of "get()" method:
          * $this->container->get()
          */
-        $controller = new RealController($requestService);
+        $controller = new RealController($this->requestService);
         $controller->setContainer(static::getContainer());
 
         return $controller;

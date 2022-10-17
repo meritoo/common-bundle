@@ -41,6 +41,7 @@ class DateServiceTest extends KernelTestCase
      * @var string
      */
     private const TIMEZONE = 'Europe/London';
+    private DateService $dateService;
 
     /**
      * Provide date format using default values
@@ -467,8 +468,8 @@ class DateServiceTest extends KernelTestCase
         DateTimeInterface $dateTime,
         string $expected
     ): void {
-        $formatted = static::getContainer()
-            ->get(DateService::class)
+        $formatted = $this
+            ->dateService
             ->formatDateUsingLocale(
                 $dateType,
                 $timeType,
@@ -492,12 +493,7 @@ class DateServiceTest extends KernelTestCase
         string $dateLength,
         string $expected
     ): void {
-        $formatted = static::getContainer()
-            ->get(DateService::class)
-            ->formatDate($dateTime, $dateLength)
-        ;
-
-        static::assertSame($expected, $formatted);
+        static::assertSame($expected, $this->dateService->formatDate($dateTime, $dateLength));
     }
 
     /**
@@ -507,11 +503,7 @@ class DateServiceTest extends KernelTestCase
     public function testFormatDateUsingUnknownDateLength(string $dateLength): void
     {
         $this->expectException(UnknownDateLengthException::class);
-
-        static::getContainer()
-            ->get(DateService::class)
-            ->formatDate(new DateTime(), $dateLength)
-        ;
+        $this->dateService->formatDate(new DateTime(), $dateLength);
     }
 
     /**
@@ -546,12 +538,7 @@ class DateServiceTest extends KernelTestCase
         string $dateLength,
         string $expected
     ): void {
-        $format = static::getContainer()
-            ->get(DateService::class)
-            ->getFormat($dateLength)
-        ;
-
-        static::assertSame($expected, $format);
+        static::assertSame($expected, $this->dateService->getFormat($dateLength));
     }
 
     /**
@@ -561,11 +548,7 @@ class DateServiceTest extends KernelTestCase
     public function testGetFormatUsingUnknownDateLength(string $dateLength): void
     {
         $this->expectException(UnknownDateLengthException::class);
-
-        static::getContainer()
-            ->get(DateService::class)
-            ->getFormat($dateLength)
-        ;
+        $this->dateService->getFormat($dateLength);
     }
 
     /**
@@ -575,5 +558,10 @@ class DateServiceTest extends KernelTestCase
     {
         parent::setUp();
         static::bootKernel();
+
+        /** @var DateService $dateService */
+        $dateService = static::getContainer()->get(DateService::class);
+
+        $this->dateService = $dateService;
     }
 }

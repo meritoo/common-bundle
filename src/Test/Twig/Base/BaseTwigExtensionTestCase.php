@@ -28,6 +28,8 @@ abstract class BaseTwigExtensionTestCase extends KernelTestCase
 {
     use BaseTestCaseTrait;
 
+    protected AbstractExtension $twigExtension;
+
     public function testConstructor(): void
     {
         static::assertHasNoConstructor($this->getExtensionNamespace());
@@ -83,6 +85,11 @@ abstract class BaseTwigExtensionTestCase extends KernelTestCase
     {
         parent::setUp();
         static::bootKernel();
+
+        /** @var AbstractExtension $twigExtension */
+        $twigExtension = static::getContainer()->get($this->getExtensionNamespace());
+
+        $this->twigExtension = $twigExtension;
     }
 
     /**

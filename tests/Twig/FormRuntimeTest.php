@@ -29,6 +29,8 @@ class FormRuntimeTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
 
+    private FormRuntime $formRuntime;
+
     public function testConstructor(): void
     {
         static::assertConstructorVisibilityAndArguments(
@@ -41,18 +43,12 @@ class FormRuntimeTest extends KernelTestCase
 
     public function testIsHtml5ValidationEnabled(): void
     {
-        $enabled = static::getContainer()
-            ->get(FormRuntime::class)
-            ->isHtml5ValidationEnabled()
-        ;
-
-        static::assertFalse($enabled);
+        static::assertFalse($this->formRuntime->isHtml5ValidationEnabled());
     }
 
     public function testIsInstanceOfRuntimeExtensionInterface(): void
     {
-        $runtime = static::getContainer()->get(FormRuntime::class);
-        static::assertInstanceOf(RuntimeExtensionInterface::class, $runtime);
+        static::assertInstanceOf(RuntimeExtensionInterface::class, $this->formRuntime);
     }
 
     /**
@@ -62,5 +58,10 @@ class FormRuntimeTest extends KernelTestCase
     {
         parent::setUp();
         static::bootKernel();
+
+        /** @var FormRuntime $formRuntime */
+        $formRuntime = static::getContainer()->get(FormRuntime::class);
+
+        $this->formRuntime = $formRuntime;
     }
 }

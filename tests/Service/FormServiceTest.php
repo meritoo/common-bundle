@@ -29,6 +29,8 @@ class FormServiceTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
 
+    private FormService $formService;
+
     /**
      * Provides existing form options while using values loaded from custom configuration
      *
@@ -112,10 +114,7 @@ class FormServiceTest extends KernelTestCase
      */
     public function testAddFormOptionsUsingTestEnvironment(array $existingOptions, array $expected): void
     {
-        static::getContainer()
-            ->get(FormService::class)
-            ->addHtml5ValidationOptions($existingOptions)
-        ;
+        $this->formService->addHtml5ValidationOptions($existingOptions);
 
         static::assertSame($expected, $existingOptions);
     }
@@ -146,12 +145,7 @@ class FormServiceTest extends KernelTestCase
 
     public function testIsHtml5ValidationEnabledUsingTestEnvironment(): void
     {
-        $enabled = static::getContainer()
-            ->get(FormService::class)
-            ->isHtml5ValidationEnabled()
-        ;
-
-        static::assertFalse($enabled);
+        static::assertFalse($this->formService->isHtml5ValidationEnabled());
     }
 
     /**
@@ -161,5 +155,10 @@ class FormServiceTest extends KernelTestCase
     {
         parent::setUp();
         static::bootKernel();
+
+        /** @var FormService $formService */
+        $formService = static::getContainer()->get(FormService::class);
+
+        $this->formService = $formService;
     }
 }

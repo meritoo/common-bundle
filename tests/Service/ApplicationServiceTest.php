@@ -33,6 +33,8 @@ class ApplicationServiceTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
 
+    private ApplicationService $applicationService;
+
     /**
      * Provide arguments of constructor and descriptor
      *
@@ -120,12 +122,7 @@ class ApplicationServiceTest extends KernelTestCase
             new Version(1, 2, 0)
         );
 
-        $descriptor = static::getContainer()
-            ->get(ApplicationService::class)
-            ->getDescriptor()
-        ;
-
-        static::assertEquals($expected, $descriptor);
+        static::assertEquals($expected, $this->applicationService->getDescriptor());
     }
 
     public function testGetVersionUsingDefaults(): void
@@ -147,8 +144,7 @@ class ApplicationServiceTest extends KernelTestCase
     {
         $expected = new Version(1, 2, 0);
 
-        $version = static::getContainer()
-            ->get(ApplicationService::class)
+        $version = $this->applicationService
             ->getDescriptor()
             ->getVersion()
         ;
@@ -163,5 +159,10 @@ class ApplicationServiceTest extends KernelTestCase
     {
         parent::setUp();
         static::bootKernel();
+
+        /** @var ApplicationService $applicationService */
+        $applicationService = static::getContainer()->get(ApplicationService::class);
+
+        $this->applicationService = $applicationService;
     }
 }

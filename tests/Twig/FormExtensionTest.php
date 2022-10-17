@@ -26,12 +26,7 @@ class FormExtensionTest extends BaseTwigExtensionTestCase
 {
     public function testGetFunctions(): void
     {
-        $functions = static::getContainer()
-            ->get($this->getExtensionNamespace())
-            ->getFunctions()
-        ;
-
-        static::assertCount(1, $functions);
+        static::assertCount(1, $this->twigExtension->getFunctions());
     }
 
     public function testIsHtml5ValidationEnabledUsingDefaults(): void
@@ -78,14 +73,5 @@ class FormExtensionTest extends BaseTwigExtensionTestCase
     protected function getExtensionNamespace(): string
     {
         return FormExtension::class;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-        static::bootKernel();
     }
 }

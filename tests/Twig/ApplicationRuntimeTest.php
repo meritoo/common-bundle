@@ -32,6 +32,8 @@ class ApplicationRuntimeTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
 
+    private ApplicationRuntime $applicationRuntime;
+
     public function testConstructor(): void
     {
         static::assertConstructorVisibilityAndArguments(
@@ -64,18 +66,12 @@ class ApplicationRuntimeTest extends KernelTestCase
             new Version(1, 2, 0)
         );
 
-        $descriptor = static::getContainer()
-            ->get(ApplicationRuntime::class)
-            ->getDescriptor()
-        ;
-
-        static::assertEquals($expected, $descriptor);
+        static::assertEquals($expected, $this->applicationRuntime->getDescriptor());
     }
 
     public function testIsInstanceOfRuntimeExtensionInterface(): void
     {
-        $runtime = static::getContainer()->get(ApplicationRuntime::class);
-        static::assertInstanceOf(RuntimeExtensionInterface::class, $runtime);
+        static::assertInstanceOf(RuntimeExtensionInterface::class, $this->applicationRuntime);
     }
 
     /**
@@ -85,5 +81,10 @@ class ApplicationRuntimeTest extends KernelTestCase
     {
         parent::setUp();
         static::bootKernel();
+
+        /** @var ApplicationRuntime $applicationRuntime */
+        $applicationRuntime = static::getContainer()->get(ApplicationRuntime::class);
+
+        $this->applicationRuntime = $applicationRuntime;
     }
 }
