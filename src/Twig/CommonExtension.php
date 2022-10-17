@@ -24,7 +24,7 @@ class CommonExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         $filters = [
             1 => [

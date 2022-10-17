@@ -406,9 +406,10 @@ class DateServiceTest extends KernelTestCase
             'environment' => 'defaults',
         ]);
 
-        $formatted = static::$container
+        $formatted = static::getContainer()
             ->get(DateService::class)
-            ->formatDate($dateTime, $dateLength);
+            ->formatDate($dateTime, $dateLength)
+        ;
 
         static::assertSame($expected, $formatted);
     }
@@ -435,14 +436,15 @@ class DateServiceTest extends KernelTestCase
             'environment' => 'defaults',
         ]);
 
-        $formatted = static::$container
+        $formatted = static::getContainer()
             ->get(DateService::class)
             ->formatDateUsingLocale(
                 $dateType,
                 $timeType,
                 $locale,
                 $dateTime
-            );
+            )
+        ;
 
         static::assertSame($expected, $formatted);
     }
@@ -465,14 +467,15 @@ class DateServiceTest extends KernelTestCase
         DateTimeInterface $dateTime,
         string $expected
     ): void {
-        $formatted = static::$container
+        $formatted = static::getContainer()
             ->get(DateService::class)
             ->formatDateUsingLocale(
                 $dateType,
                 $timeType,
                 $locale,
                 $dateTime
-            );
+            )
+        ;
 
         static::assertSame($expected, $formatted);
     }
@@ -489,9 +492,10 @@ class DateServiceTest extends KernelTestCase
         string $dateLength,
         string $expected
     ): void {
-        $formatted = static::$container
+        $formatted = static::getContainer()
             ->get(DateService::class)
-            ->formatDate($dateTime, $dateLength);
+            ->formatDate($dateTime, $dateLength)
+        ;
 
         static::assertSame($expected, $formatted);
     }
@@ -504,7 +508,7 @@ class DateServiceTest extends KernelTestCase
     {
         $this->expectException(UnknownDateLengthException::class);
 
-        static::$container
+        static::getContainer()
             ->get(DateService::class)
             ->formatDate(new DateTime(), $dateLength)
         ;
@@ -524,9 +528,10 @@ class DateServiceTest extends KernelTestCase
             'environment' => 'defaults',
         ]);
 
-        $format = static::$container
+        $format = static::getContainer()
             ->get(DateService::class)
-            ->getFormat($dateLength);
+            ->getFormat($dateLength)
+        ;
 
         static::assertSame($expected, $format);
     }
@@ -541,9 +546,10 @@ class DateServiceTest extends KernelTestCase
         string $dateLength,
         string $expected
     ): void {
-        $format = static::$container
+        $format = static::getContainer()
             ->get(DateService::class)
-            ->getFormat($dateLength);
+            ->getFormat($dateLength)
+        ;
 
         static::assertSame($expected, $format);
     }
@@ -556,7 +562,7 @@ class DateServiceTest extends KernelTestCase
     {
         $this->expectException(UnknownDateLengthException::class);
 
-        static::$container
+        static::getContainer()
             ->get(DateService::class)
             ->getFormat($dateLength)
         ;

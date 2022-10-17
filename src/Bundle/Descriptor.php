@@ -35,56 +35,56 @@ class Descriptor
      *
      * @var string
      */
-    private $name;
+    private string $name;
 
     /**
      * Short, simple name of bundle
      *
      * @var string
      */
-    private $shortName;
+    private string $shortName;
 
     /**
      * Name of configuration root node of bundle
      *
      * @var string
      */
-    private $configurationRootName;
+    private string $configurationRootName;
 
     /**
      * Root namespace of bundle
      *
      * @var string
      */
-    private $rootNamespace;
+    private string $rootNamespace;
 
     /**
      * Physical path of bundle
      *
      * @var string
      */
-    private $path;
+    private string $path;
 
     /**
      * Descriptor of the parent bundle
      *
      * @var null|Descriptor
      */
-    private $parentBundleDescriptor;
+    private ?Descriptor $parentBundleDescriptor;
 
     /**
      * Descriptor of the child bundle
      *
      * @var null|Descriptor
      */
-    private $childBundleDescriptor;
+    private ?Descriptor $childBundleDescriptor;
 
     /**
      * Names of files with data fixtures from bundle
      *
      * @var StringCollection
      */
-    private $dataFixtures;
+    private StringCollection $dataFixtures;
 
     /**
      * Class constructor
@@ -97,10 +97,10 @@ class Descriptor
      * @param null|Descriptor $childBundleDescriptor  (optional) Descriptor of the child bundle
      */
     public function __construct(
-        $name = '',
-        $configurationRootName = '',
-        $rootNamespace = '',
-        $path = '',
+        string $name = '',
+        string $configurationRootName = '',
+        string $rootNamespace = '',
+        string $path = '',
         ?Descriptor $parentBundleDescriptor = null,
         ?Descriptor $childBundleDescriptor = null
     ) {
@@ -217,7 +217,7 @@ class Descriptor
     /**
      * Sets descriptor of the child bundle
      *
-     * @param Descriptor $childBundleDescriptor (optional) The child's descriptor
+     * @param Descriptor|null $childBundleDescriptor (optional) The child's descriptor
      * @return Descriptor
      */
     public function setChildBundleDescriptor(?Descriptor $childBundleDescriptor): Descriptor
@@ -315,7 +315,7 @@ class Descriptor
     /**
      * Sets descriptor of the parent bundle
      *
-     * @param Descriptor $parentBundleDescriptor (optional) The parent's descriptor
+     * @param Descriptor|null $parentBundleDescriptor (optional) The parent's descriptor
      * @return Descriptor
      */
     public function setParentBundleDescriptor(?Descriptor $parentBundleDescriptor): Descriptor

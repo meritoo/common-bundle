@@ -29,7 +29,7 @@ class BaseControllerTest extends KernelTestCase
     public function testRedirectToReferer(): void
     {
         /** @var RequestServiceInterface $requestService */
-        $requestService = static::$container->get(RequestServiceInterface::class);
+        $requestService = static::getContainer()->get(RequestServiceInterface::class);
 
         $refererUrl = '/';
         $requestService->storeRefererUrl($refererUrl);
@@ -64,7 +64,7 @@ class BaseControllerTest extends KernelTestCase
         $response = $controller->index();
 
         static::assertSame(200, $response->getStatusCode());
-        static::assertSame('<p>Cras Vestibulum</p>', $response->getContent());
+        static::assertSame('<p>Lorem ipsum</p>', $response->getContent());
     }
 
     /**
@@ -84,7 +84,7 @@ class BaseControllerTest extends KernelTestCase
     private function getRealController(): RealController
     {
         /** @var RequestServiceInterface $requestService */
-        $requestService = static::$container->get(RequestServiceInterface::class);
+        $requestService = static::getContainer()->get(RequestServiceInterface::class);
 
         /*
          * I have to pass container to the controller to avoid exception:
@@ -97,7 +97,7 @@ class BaseControllerTest extends KernelTestCase
          * $this->container->get()
          */
         $controller = new RealController($requestService);
-        $controller->setContainer(static::$container);
+        $controller->setContainer(static::getContainer());
 
         return $controller;
     }

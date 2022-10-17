@@ -28,7 +28,7 @@ class ApplicationRuntime implements RuntimeExtensionInterface
      *
      * @var ApplicationService
      */
-    private $applicationService;
+    private ApplicationService $applicationService;
 
     /**
      * Class constructor

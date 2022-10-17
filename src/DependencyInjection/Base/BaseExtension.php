@@ -223,15 +223,15 @@ abstract class BaseExtension extends ConfigurableExtension
      * @param ContainerBuilder $container Container for the Dependency Injection (DI)
      * @param string           $fileName  Name of configuration file. If provided without extension, the default
      *                                    extension of configuration files will be used.
-     * @return BaseExtension
+     * @return void
      */
-    private function loadConfigurationFile(ContainerBuilder $container, $fileName): BaseExtension
+    private function loadConfigurationFile(ContainerBuilder $container, string $fileName): void
     {
         $bundlePath = $this->getBundleDirectoryPath();
 
         // Unknown path of bundle? Nothing to do
         if (empty($bundlePath)) {
-            return $this;
+            return;
         }
 
         $resourcesPath = Miscellaneous::concatenatePaths([
@@ -246,7 +246,7 @@ abstract class BaseExtension extends ConfigurableExtension
 
         // Configuration file doesn't exist or is not readable? Nothing to do
         if (!is_readable($filePath)) {
-            return $this;
+            return;
         }
 
         $fileType = ConfigurationFileType::getTypeFromFileName($fileName);
@@ -259,7 +259,6 @@ abstract class BaseExtension extends ConfigurableExtension
             $fileLoader->load($fileName);
         }
 
-        return $this;
     }
 
     /**
@@ -289,7 +288,8 @@ abstract class BaseExtension extends ConfigurableExtension
         $bundleShortName = $configuration
             ->getConfigTreeBuilder()
             ->buildTree()
-            ->getName();
+            ->getName()
+        ;
 
         foreach ($flatConfig as $name => $value) {
             if (!is_array($value)) {
@@ -308,14 +308,14 @@ abstract class BaseExtension extends ConfigurableExtension
      * Loads services from configuration file (located in bundle's resources)
      *
      * @param ContainerBuilder $container Container for the Dependency Injection (DI)
-     * @return BaseExtension
+     * @return void
      */
-    private function loadServices(ContainerBuilder $container): BaseExtension
+    private function loadServices(ContainerBuilder $container): void
     {
         $name = $this->getServicesFileName();
         $nameWithExtension = $this->getConfigurationFileWithExtension($name);
 
-        return $this->loadConfigurationFile($container, $nameWithExtension);
+        $this->loadConfigurationFile($container, $nameWithExtension);
     }
 
     /**

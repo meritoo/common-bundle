@@ -50,7 +50,7 @@ class ApplicationRuntimeTest extends KernelTestCase
             'environment' => 'defaults',
         ]);
 
-        static::$container
+        static::getContainer()
             ->get(ApplicationRuntime::class)
             ->getDescriptor()
         ;
@@ -64,16 +64,17 @@ class ApplicationRuntimeTest extends KernelTestCase
             new Version(1, 2, 0)
         );
 
-        $descriptor = static::$container
+        $descriptor = static::getContainer()
             ->get(ApplicationRuntime::class)
-            ->getDescriptor();
+            ->getDescriptor()
+        ;
 
         static::assertEquals($expected, $descriptor);
     }
 
     public function testIsInstanceOfRuntimeExtensionInterface(): void
     {
-        $runtime = static::$container->get(ApplicationRuntime::class);
+        $runtime = static::getContainer()->get(ApplicationRuntime::class);
         static::assertInstanceOf(RuntimeExtensionInterface::class, $runtime);
     }
 

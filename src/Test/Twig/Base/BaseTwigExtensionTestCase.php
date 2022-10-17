@@ -61,13 +61,13 @@ abstract class BaseTwigExtensionTestCase extends KernelTestCase
      */
     protected function getTwigEnvironment(array $templates = []): Environment
     {
-        $isDebugEnabled = static::$container->getParameter('kernel.debug');
+        $isDebugEnabled = static::getContainer()->getParameter('kernel.debug');
 
         $loader = new ArrayLoader($templates);
         $twigEnvironment = new Environment($loader, ['debug' => $isDebugEnabled]);
 
         $twigEnvironment->addExtension($this->getExtensionInstance());
-        $twigEnvironment->addRuntimeLoader(new ContainerRuntimeLoader(static::$container));
+        $twigEnvironment->addRuntimeLoader(new ContainerRuntimeLoader(static::getContainer()));
 
         if ($isDebugEnabled) {
             $twigEnvironment->addExtension(new DebugExtension());
@@ -100,7 +100,8 @@ abstract class BaseTwigExtensionTestCase extends KernelTestCase
 
         $rendered = $this
             ->getTwigEnvironment($templates)
-            ->render($name);
+            ->render($name)
+        ;
 
         static::assertSame($expected, $rendered);
     }

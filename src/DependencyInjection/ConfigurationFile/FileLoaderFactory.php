@@ -29,14 +29,14 @@ class FileLoaderFactory
      *
      * @var ContainerBuilder
      */
-    private $container;
+    private ContainerBuilder $container;
 
     /**
      * Locator used to find files
      *
      * @var FileLocator
      */
-    private $locator;
+    private FileLocator $locator;
 
     /**
      * Class constructor

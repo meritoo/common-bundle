@@ -113,9 +113,6 @@ class EarlierThanOrEqualTodayValidatorTest extends BaseThanTodayValidatorTestCas
         $this->assertNoViolation();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createValidator(): EarlierThanOrEqualTodayValidator
     {
         return new EarlierThanOrEqualTodayValidator();

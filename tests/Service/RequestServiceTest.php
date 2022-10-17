@@ -156,14 +156,14 @@ class RequestServiceTest extends KernelTestCase
             ->set('meritoo_common.referer_url', $expected)
         ;
 
-        $url = static::$container
+        $url = static::getContainer()
             ->get(RequestServiceInterface::class)
             ->fetchRefererUrl()
         ;
 
         static::assertSame($expected, $url);
 
-        $urlAgain = static::$container
+        $urlAgain = static::getContainer()
             ->get(RequestServiceInterface::class)
             ->fetchRefererUrl()
         ;
@@ -347,7 +347,7 @@ class RequestServiceTest extends KernelTestCase
      */
     public function testGetRefererUrl(Request $request, ?string $expected): void
     {
-        $url = static::$container
+        $url = static::getContainer()
             ->get(RequestServiceInterface::class)
             ->getRefererUrl($request)
         ;
@@ -398,12 +398,12 @@ class RequestServiceTest extends KernelTestCase
      */
     public function testStoreRefererUrl(string $url): void
     {
-        static::$container
+        static::getContainer()
             ->get(RequestServiceInterface::class)
             ->storeRefererUrl($url)
         ;
 
-        $stored = static::$container
+        $stored = static::getContainer()
             ->get(SessionInterface::class)
             ->get('meritoo_common.referer_url')
         ;
@@ -419,12 +419,12 @@ class RequestServiceTest extends KernelTestCase
      */
     public function testStoreRefererUrlFromRequest(Request $request, ?string $expected): void
     {
-        static::$container
+        static::getContainer()
             ->get(RequestServiceInterface::class)
             ->storeRefererUrlFromRequest($request)
         ;
 
-        $stored = static::$container
+        $stored = static::getContainer()
             ->get(SessionInterface::class)
             ->get('meritoo_common.referer_url')
         ;

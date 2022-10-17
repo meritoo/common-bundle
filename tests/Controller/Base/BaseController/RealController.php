@@ -32,7 +32,7 @@ class RealController extends BaseController
 
     public function index(): Response
     {
-        return new Response('<p>Cras Vestibulum</p>');
+        return new Response('<p>Lorem ipsum</p>');
     }
 
     public function read(): RedirectResponse

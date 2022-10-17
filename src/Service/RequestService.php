@@ -31,23 +31,23 @@ class RequestService extends BaseService implements RequestServiceInterface
     /**
      * The session
      *
-     * @var
+     * @var SessionInterface
      */
-    private $session;
+    private SessionInterface $session;
 
     /**
      * Request stack
      *
      * @var RequestStack
      */
-    private $requestStack;
+    private RequestStack $requestStack;
 
     /**
      * Key used to store the referer url
      *
      * @var string
      */
-    private $refererUrlKey = 'meritoo_common.referer_url';
+    private string $refererUrlKey = 'meritoo_common.referer_url';
 
     /**
      * Class constructor
@@ -86,8 +86,7 @@ class RequestService extends BaseService implements RequestServiceInterface
 
     public function getParameter(string $parameter)
     {
-        return $this->getCurrentRequest()->get($parameter)
-        ;
+        return $this->getCurrentRequest()->get($parameter);
     }
 
     /**

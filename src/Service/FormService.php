@@ -25,7 +25,7 @@ class FormService extends BaseService
      *
      * @var bool
      */
-    private $novalidateDisabled;
+    private bool $novalidateDisabled;
 
     /**
      * Class constructor

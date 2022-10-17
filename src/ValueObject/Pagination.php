@@ -23,14 +23,9 @@ use Meritoo\CommonBundle\Exception\ValueObject\Pagination\IncorrectTotalAmountEx
  */
 class Pagination implements PaginationInterface
 {
-    /** @var int */
-    private $totalAmount;
-
-    /** @var int */
-    private $perPage;
-
-    /** @var int */
-    private $currentPage;
+    private int $totalAmount;
+    private int $perPage;
+    private int $currentPage;
 
     public function __construct(int $totalAmount, int $perPage, int $currentPage = 1)
     {

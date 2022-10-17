@@ -50,6 +50,8 @@ abstract class BaseThanTodayValidator extends ConstraintValidator
             return;
         }
 
+        /** @var BaseThanTodayConstraint $constraint */
+
         $this
             ->context
             ->buildViolation($constraint->message)
@@ -88,7 +90,7 @@ abstract class BaseThanTodayValidator extends ConstraintValidator
     private function isValid(Constraint $constraint, int $difference): bool
     {
         /*
-         * It's a earlier than today date?
+         * It's an earlier than today date?
          * Nothing to do
          */
         if ($constraint instanceof EarlierThanToday && $difference < 0) {
@@ -96,7 +98,7 @@ abstract class BaseThanTodayValidator extends ConstraintValidator
         }
 
         /*
-         * It's a earlier than or equal today date?
+         * It's an earlier than or equal today date?
          * Nothing to do
          */
         if ($constraint instanceof EarlierThanOrEqualToday && $difference <= 0) {

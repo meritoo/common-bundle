@@ -27,7 +27,7 @@ class ResponseService extends BaseService
      *
      * @var RouterInterface
      */
-    private $router;
+    private RouterInterface $router;
 
     /**
      * Class constructor

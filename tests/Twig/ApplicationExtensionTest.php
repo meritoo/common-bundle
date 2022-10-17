@@ -87,9 +87,10 @@ class ApplicationExtensionTest extends BaseTwigExtensionTestCase
 
     public function testGetFunctions(): void
     {
-        $functions = static::$container
+        $functions = static::getContainer()
             ->get($this->getExtensionNamespace())
-            ->getFunctions();
+            ->getFunctions()
+        ;
 
         static::assertCount(1, $functions);
     }

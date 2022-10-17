@@ -231,7 +231,7 @@ class CommonRuntimeTest extends KernelTestCase
 
     public function testIsInstanceOfRuntimeExtensionInterface(): void
     {
-        $runtime = static::$container->get(CommonRuntime::class);
+        $runtime = static::getContainer()->get(CommonRuntime::class);
         static::assertInstanceOf(RuntimeExtensionInterface::class, $runtime);
     }
 
@@ -248,9 +248,10 @@ class CommonRuntimeTest extends KernelTestCase
         ?string $emptyValueReplacement,
         $expected
     ): void {
-        $verified = static::$container
+        $verified = static::getContainer()
             ->get(CommonRuntime::class)
-            ->verifyEmptyValue($value, $emptyValueReplacement);
+            ->verifyEmptyValue($value, $emptyValueReplacement)
+        ;
 
         static::assertSame($expected, $verified);
     }
@@ -267,9 +268,10 @@ class CommonRuntimeTest extends KernelTestCase
             'environment' => 'defaults',
         ]);
 
-        $verified = static::$container
+        $verified = static::getContainer()
             ->get(CommonRuntime::class)
-            ->verifyEmptyValue($value);
+            ->verifyEmptyValue($value)
+        ;
 
         static::assertSame($expected, $verified);
     }
@@ -282,9 +284,10 @@ class CommonRuntimeTest extends KernelTestCase
      */
     public function testVerifyEmptyValueUsingTestEnvironment($value, $expected): void
     {
-        $verified = static::$container
+        $verified = static::getContainer()
             ->get(CommonRuntime::class)
-            ->verifyEmptyValue($value);
+            ->verifyEmptyValue($value)
+        ;
 
         static::assertSame($expected, $verified);
     }

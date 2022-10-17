@@ -122,9 +122,6 @@ class LaterThanTodayValidatorTest extends BaseThanTodayValidatorTestCase
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createValidator(): LaterThanTodayValidator
     {
         return new LaterThanTodayValidator();

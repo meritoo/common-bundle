@@ -71,8 +71,6 @@ class UnknownConfigurationFileTypeExceptionTest extends BaseTestCase
     public function testCreateException(string $unknownType, string $expectedMessage): void
     {
         $exception = UnknownConfigurationFileTypeException::createException($unknownType);
-
-        static::assertInstanceOf(UnknownConfigurationFileTypeException::class, $exception);
         static::assertSame($expectedMessage, $exception->getMessage());
     }
 }

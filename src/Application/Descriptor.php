@@ -25,21 +25,21 @@ class Descriptor
      *
      * @var string
      */
-    private $name;
+    private string $name;
 
     /**
      * Description of application
      *
      * @var string
      */
-    private $description;
+    private string $description;
 
     /**
      * Version of application
      *
      * @var null|Version
      */
-    private $version;
+    private ?Version $version;
 
     /**
      * Class constructor

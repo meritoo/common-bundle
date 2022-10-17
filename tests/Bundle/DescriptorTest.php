@@ -1133,9 +1133,7 @@ class DescriptorTest extends BaseTestCase
     {
         $descriptor = Descriptor::fromArray($array);
 
-        static::assertInstanceOf(Descriptor::class, $descriptor);
         static::assertSame($expected->toArray(), $descriptor->toArray());
-
         static::assertSame($expected->getName(), $descriptor->getName());
         static::assertSame($expected->getConfigurationRootName(), $descriptor->getConfigurationRootName());
         static::assertSame($expected->getRootNamespace(), $descriptor->getRootNamespace());
@@ -1178,7 +1176,7 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptor      $descriptor Descriptor of bundle who descriptor of the child bundle should be returned
+     * @param Descriptor      $descriptor Descriptor of bundle which descriptor of the child bundle should be returned
      * @param null|Descriptor $expected   Expected descriptor of the child bundle
      *
      * @dataProvider provideChildBundleDescriptor
@@ -1213,7 +1211,7 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptor  $descriptor Descriptor of bundle who path of directory with classes for the DataFixtures
+     * @param Descriptor  $descriptor Descriptor of bundle which path of directory with classes for the DataFixtures
      *                                should be returned
      * @param null|string $expected   Expected path
      *
@@ -1236,7 +1234,7 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptor      $descriptor Descriptor of bundle who descriptor of the parent bundle should be returned
+     * @param Descriptor      $descriptor Descriptor of bundle which descriptor of the parent bundle should be returned
      * @param null|Descriptor $expected   Expected descriptor of the parent bundle
      *
      * @dataProvider provideParentBundleDescriptor
@@ -1247,7 +1245,7 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptor $descriptor Descriptor of bundle who path should be returned
+     * @param Descriptor $descriptor Descriptor of bundle which path should be returned
      * @param string     $expected   Expected physical path of the bundle
      *
      * @dataProvider providePath
@@ -1295,9 +1293,8 @@ class DescriptorTest extends BaseTestCase
     {
         $descriptor = new Descriptor('MyBundle');
         $childDescriptor = new Descriptor('MyChildBundle');
-        $result = $descriptor->setChildBundleDescriptor($childDescriptor);
+        $descriptor->setChildBundleDescriptor($childDescriptor);
 
-        static::assertInstanceOf(Descriptor::class, $result);
         static::assertInstanceOf(Descriptor::class, $descriptor->getChildBundleDescriptor());
         static::assertSame('MyBundle', $descriptor->getName());
         static::assertSame('MyChildBundle', $childDescriptor->getName());
@@ -1306,18 +1303,16 @@ class DescriptorTest extends BaseTestCase
     public function testSetConfigurationRootName(): void
     {
         $descriptor = new Descriptor();
-        $result = $descriptor->setConfigurationRootName('test');
+        $descriptor->setConfigurationRootName('test');
 
-        static::assertInstanceOf(Descriptor::class, $result);
         static::assertSame('test', $descriptor->getConfigurationRootName());
     }
 
     public function testSetName(): void
     {
         $descriptor = new Descriptor();
-        $result = $descriptor->setName('MyExtraBundle');
+        $descriptor->setName('MyExtraBundle');
 
-        static::assertInstanceOf(Descriptor::class, $result);
         static::assertSame('MyExtraBundle', $descriptor->getName());
     }
 
@@ -1339,18 +1334,16 @@ class DescriptorTest extends BaseTestCase
     public function testSetPath(): void
     {
         $descriptor = new Descriptor();
-        $result = $descriptor->setPath('this/is/path');
+        $descriptor->setPath('this/is/path');
 
-        static::assertInstanceOf(Descriptor::class, $result);
         static::assertSame('this/is/path', $descriptor->getPath());
     }
 
     public function testSetRootNamespace(): void
     {
         $descriptor = new Descriptor();
-        $result = $descriptor->setRootNamespace('test');
+        $descriptor->setRootNamespace('test');
 
-        static::assertInstanceOf(Descriptor::class, $result);
         static::assertSame('test', $descriptor->getRootNamespace());
     }
 

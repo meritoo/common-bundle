@@ -28,7 +28,7 @@ abstract class BaseController extends AbstractController
      *
      * @var RequestServiceInterface
      */
-    private $requestService;
+    private RequestServiceInterface $requestService;
 
     /**
      * Class constructor

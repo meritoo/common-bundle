@@ -36,14 +36,14 @@ class ApplicationService extends BaseService
      *
      * @var string
      */
-    private $versionFilePath;
+    private string $versionFilePath;
 
     /**
      * Descriptor of application
      *
      * @var Descriptor
      */
-    private $descriptor;
+    private Descriptor $descriptor;
 
     /**
      * Class constructor

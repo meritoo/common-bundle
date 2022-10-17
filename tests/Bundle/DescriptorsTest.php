@@ -560,7 +560,7 @@ class DescriptorsTest extends BaseTestCase
 
     /**
      * @param Descriptors $descriptors Descriptors of bundles
-     * @param string      $bundleName  Name of bundle who descriptor should be returned
+     * @param string      $bundleName  Name of bundle which descriptor should be returned
      * @param Descriptor  $expected    Expected descriptor
      *
      * @dataProvider provideDescriptorAndName
@@ -594,7 +594,7 @@ class DescriptorsTest extends BaseTestCase
 
     /**
      * @param Descriptors $descriptors Descriptors of bundles
-     * @param string      $bundleName  Name of bundle who descriptor should be returned
+     * @param string      $bundleName  Name of bundle which descriptor should be returned
      *
      * @dataProvider provideNotExistingDescriptorAndName
      */

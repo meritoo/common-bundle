@@ -286,7 +286,7 @@ class PaginationServiceTest extends KernelTestCase
         // Size of one pagination's page equals 6, so pagination is not rendered
         $this->paginationService->setTotalAmount(6);
 
-        $result = $this->paginationService->renderPagination(1);
+        $result = $this->paginationService->renderPagination();
         self::assertSame('', $result);
     }
 

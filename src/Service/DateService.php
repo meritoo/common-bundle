@@ -30,21 +30,21 @@ class DateService extends BaseService
      *
      * @var string
      */
-    private $dateFormat;
+    private string $dateFormat;
 
     /**
      * Format of date with time
      *
      * @var string
      */
-    private $dateTimeFormat;
+    private string $dateTimeFormat;
 
     /**
      * Format of time without date
      *
      * @var string
      */
-    private $timeFormat;
+    private string $timeFormat;
 
     /**
      * Class constructor
@@ -94,9 +94,8 @@ class DateService extends BaseService
         DateTimeInterface $dateTime
     ): string {
         $timestamp = $dateTime->getTimestamp();
-        $formatter = new IntlDateFormatter($locale, $dateType, $timeType);
 
-        return $formatter->format($timestamp);
+        return (new IntlDateFormatter($locale, $dateType, $timeType))->format($timestamp);
     }
 
     /**

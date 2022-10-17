@@ -27,7 +27,7 @@ class FormRuntime implements RuntimeExtensionInterface
      *
      * @var FormService
      */
-    private $formService;
+    private FormService $formService;
 
     /**
      * Class constructor

@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Validator\Constraints\Date;
 
-use Symfony\Component\Validator\Constraint;
-
 /**
  * The "date earlier than today" constraint
  *
@@ -20,12 +18,10 @@ use Symfony\Component\Validator\Constraint;
  *
  * @Annotation
  */
-class EarlierThanToday extends Constraint
+class EarlierThanToday extends BaseThanTodayConstraint
 {
     /**
-     * The error message
-     *
-     * @var string
+     * {@inheritDoc}
      */
-    public $message = 'meritoo_common.date.earlier_than_today';
+    public string $message = 'meritoo_common.date.earlier_than_today';
 }
