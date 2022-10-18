@@ -31,6 +31,10 @@ use Symfony\Component\Routing\Exception\RouteNotFoundException;
  * @copyright Meritoo <http://www.meritoo.pl>
  *
  * @covers    \Meritoo\CommonBundle\Service\PaginationService
+ * @covers    \Meritoo\CommonBundle\Exception\Pagination\MissingPerPageAmountException
+ * @covers    \Meritoo\CommonBundle\Exception\Pagination\MissingRouteNameException
+ * @covers    \Meritoo\CommonBundle\Exception\Pagination\MissingTemplatePathException
+ * @covers    \Meritoo\CommonBundle\Exception\Pagination\MissingTotalAmountException
  */
 class PaginationServiceTest extends KernelTestCase
 {
@@ -113,7 +117,12 @@ class PaginationServiceTest extends KernelTestCase
 
     public function testIsValidPageIfPerPageIsUnknown(): void
     {
+        $message = 'Cannot render pagination, because the "per page" amount is missing. Did you provide the amount in'
+            .' configuration or via Meritoo\CommonBundle\Contract\Service\PaginationServiceInterface::setPerPage()'
+            .' method?';
+
         $this->expectException(MissingPerPageAmountException::class);
+        $this->expectExceptionMessage($message);
 
         static::bootKernel([
             'environment' => 'defaults',
@@ -127,7 +136,12 @@ class PaginationServiceTest extends KernelTestCase
 
     public function testIsValidPageIfTotalAmountIsUnknown(): void
     {
+        $message = 'The total amount is missing. Did you provide the amount via'
+            .' Meritoo\CommonBundle\Contract\Service\PaginationServiceInterface::setTotalAmount() method?';
+
         $this->expectException(MissingTotalAmountException::class);
+        $this->expectExceptionMessage($message);
+
         $this->paginationService->isValidPage(1);
     }
 
@@ -136,7 +150,12 @@ class PaginationServiceTest extends KernelTestCase
      */
     public function testIsValidPageUsingDefaults(int $totalAmount, int $page, bool $expected): void
     {
+        $message = 'Cannot render pagination, because the "per page" amount is missing. Did you provide the amount in'
+            .' configuration or via Meritoo\CommonBundle\Contract\Service\PaginationServiceInterface::setPerPage()'
+            .' method?';
+
         $this->expectException(MissingPerPageAmountException::class);
+        $this->expectExceptionMessage($message);
 
         static::bootKernel([
             'environment' => 'defaults',
@@ -245,6 +264,7 @@ class PaginationServiceTest extends KernelTestCase
     public function testRenderPaginationIfRouteDoesNotExist(): void
     {
         $this->expectException(RouteNotFoundException::class);
+        $this->expectExceptionMessage('abc');
 
         $this->paginationService->setTotalAmount(10);
         $this->paginationService->setRoute('abc');
@@ -253,7 +273,11 @@ class PaginationServiceTest extends KernelTestCase
 
     public function testRenderPaginationIfRouteIsAnEmptyString(): void
     {
+        $message = 'Cannot render pagination, because name of route used to build urls is missing. Did you provide the'
+            .' route via Meritoo\CommonBundle\Contract\Service\PaginationServiceInterface::setRoute() method?';
+
         $this->expectException(MissingRouteNameException::class);
+        $this->expectExceptionMessage($message);
 
         $this->paginationService->setTotalAmount(10);
         $this->paginationService->setRoute('');
@@ -262,7 +286,11 @@ class PaginationServiceTest extends KernelTestCase
 
     public function testRenderPaginationIfRouteIsUnknown(): void
     {
+        $message = 'Cannot render pagination, because name of route used to build urls is missing. Did you provide the'
+            .' route via Meritoo\CommonBundle\Contract\Service\PaginationServiceInterface::setRoute() method?';
+
         $this->expectException(MissingRouteNameException::class);
+        $this->expectExceptionMessage($message);
 
         $this->paginationService->setTotalAmount(10);
         $this->paginationService->renderPagination();
@@ -298,7 +326,11 @@ class PaginationServiceTest extends KernelTestCase
 
     public function testRenderPaginationIfTotalAmountIsNegative(): void
     {
+        $message = 'The \'total amount\' parameter of pagination should be greater than or equal 0, but -1 was'
+            .' provided. Is there everything ok?';
+
         $this->expectException(IncorrectTotalAmountException::class);
+        $this->expectExceptionMessage($message);
 
         $this->paginationService->setTotalAmount(-1);
         $this->paginationService->renderPagination();
@@ -306,7 +338,12 @@ class PaginationServiceTest extends KernelTestCase
 
     public function testRenderPaginationIfTotalAmountIsUnknown(): void
     {
+        $message = 'The total amount is missing. Did you provide the amount via'
+            .' Meritoo\CommonBundle\Contract\Service\PaginationServiceInterface::setTotalAmount() method?';
+
         $this->expectException(MissingTotalAmountException::class);
+        $this->expectExceptionMessage($message);
+
         $this->paginationService->renderPagination();
     }
 
@@ -328,7 +365,12 @@ class PaginationServiceTest extends KernelTestCase
 
     public function testRenderPaginationUsingDefaults(): void
     {
+        $message = 'Cannot render pagination, because the "per page" amount is missing. Did you provide the amount in'
+            .' configuration or via Meritoo\CommonBundle\Contract\Service\PaginationServiceInterface::setPerPage()'
+            .' method?';
+
         $this->expectException(MissingPerPageAmountException::class);
+        $this->expectExceptionMessage($message);
 
         static::bootKernel([
             'environment' => 'defaults',
@@ -343,7 +385,12 @@ class PaginationServiceTest extends KernelTestCase
 
     public function testRenderPaginationUsingDefaultsAndCustomPerPage(): void
     {
+        $message = 'Cannot render pagination, because path of template is missing. Did you provide the path in'
+            .' configuration or via Meritoo\CommonBundle\Contract\Service\PaginationServiceInterface::setTemplatePath()'
+            .' method?';
+
         $this->expectException(MissingTemplatePathException::class);
+        $this->expectExceptionMessage($message);
 
         static::bootKernel([
             'environment' => 'defaults',

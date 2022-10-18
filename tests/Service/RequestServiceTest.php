@@ -29,6 +29,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
  *
  * @internal
  * @covers    \Meritoo\CommonBundle\Service\RequestService
+ * @covers    \Meritoo\CommonBundle\Exception\Service\Request\UnknownRequestException
  */
 class RequestServiceTest extends KernelTestCase
 {
@@ -190,6 +191,7 @@ class RequestServiceTest extends KernelTestCase
     public function testGetCurrentRouteIfCurrentRequestIsUnknown(): void
     {
         $this->expectException(UnknownRequestException::class);
+        $this->expectExceptionMessage('Cannot get current request, because it is unknown');
 
         $session = $this->createMock(SessionInterface::class);
         $requestStack = $this->createMock(RequestStack::class);
@@ -256,6 +258,7 @@ class RequestServiceTest extends KernelTestCase
     public function testGetCurrentRouteParametersIfCurrentRequestIsUnknown(): void
     {
         $this->expectException(UnknownRequestException::class);
+        $this->expectExceptionMessage('Cannot get current request, because it is unknown');
 
         $session = $this->createMock(SessionInterface::class);
         $requestStack = $this->createMock(RequestStack::class);
@@ -320,6 +323,7 @@ class RequestServiceTest extends KernelTestCase
     public function testGetParameterIfCurrentRequestIsUnknown(): void
     {
         $this->expectException(UnknownRequestException::class);
+        $this->expectExceptionMessage('Cannot get current request, because it is unknown');
 
         $session = $this->createMock(SessionInterface::class);
         $requestStack = $this->createMock(RequestStack::class);
@@ -368,6 +372,7 @@ class RequestServiceTest extends KernelTestCase
     public function testIsCurrentRouteIfCurrentRequestIsUnknown(): void
     {
         $this->expectException(UnknownRequestException::class);
+        $this->expectExceptionMessage('Cannot get current request, because it is unknown');
 
         $session = $this->createMock(SessionInterface::class);
         $requestStack = $this->createMock(RequestStack::class);
