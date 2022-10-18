@@ -95,9 +95,10 @@ trait EntityTestCaseTrait
 
     private function getAllEntitiesMeta(): array
     {
-        $entityManager = $this->getEntityManager();
-
-        return $entityManager->getMetadataFactory()->getAllMetadata()
+        return $this
+            ->getEntityManager()
+            ->getMetadataFactory()
+            ->getAllMetadata()
         ;
     }
 
