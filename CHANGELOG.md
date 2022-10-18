@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.2.12
+
+1. Create a service for menu, the MenuService
+
 # 0.2.11
 
 1. Documentation for the PaginationService service
