@@ -22,6 +22,7 @@ use Meritoo\CommonBundle\Twig\CommonExtension;
  *
  * @internal
  * @covers    \Meritoo\CommonBundle\Twig\CommonExtension
+ * @covers    \Meritoo\CommonBundle\Test\Twig\Base\BaseTwigExtensionTestCase
  */
 class CommonExtensionTest extends BaseTwigExtensionTestCase
 {

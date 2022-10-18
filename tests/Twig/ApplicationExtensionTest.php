@@ -23,6 +23,7 @@ use Twig\Error\RuntimeError;
  *
  * @internal
  * @covers    \Meritoo\CommonBundle\Twig\ApplicationExtension
+ * @covers    \Meritoo\CommonBundle\Test\Twig\Base\BaseTwigExtensionTestCase
  */
 class ApplicationExtensionTest extends BaseTwigExtensionTestCase
 {

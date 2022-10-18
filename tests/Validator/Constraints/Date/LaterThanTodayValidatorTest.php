@@ -24,6 +24,7 @@ use Meritoo\CommonBundle\Validator\Constraints\Date\LaterThanTodayValidator;
  *
  * @internal
  * @covers    \Meritoo\CommonBundle\Validator\Constraints\Date\LaterThanTodayValidator
+ * @covers    \Meritoo\CommonBundle\Validator\Constraints\Date\BaseThanTodayValidator
  */
 class LaterThanTodayValidatorTest extends BaseThanTodayValidatorTestCase
 {

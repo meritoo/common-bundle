@@ -21,6 +21,7 @@ use Meritoo\CommonBundle\Twig\FormExtension;
  *
  * @internal
  * @covers    \Meritoo\CommonBundle\Twig\FormExtension
+ * @covers    \Meritoo\CommonBundle\Test\Twig\Base\BaseTwigExtensionTestCase
  */
 class FormExtensionTest extends BaseTwigExtensionTestCase
 {

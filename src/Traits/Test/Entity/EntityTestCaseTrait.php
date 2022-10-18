@@ -19,6 +19,8 @@ use Doctrine\Persistence\ObjectRepository;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @codeCoverageIgnore
  */
 trait EntityTestCaseTrait
 {

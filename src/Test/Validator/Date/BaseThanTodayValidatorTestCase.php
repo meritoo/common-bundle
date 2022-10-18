@@ -20,6 +20,8 @@ use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
  *
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
+ *
+ * @codeCoverageIgnore
  */
 abstract class BaseThanTodayValidatorTestCase extends ConstraintValidatorTestCase
 {
