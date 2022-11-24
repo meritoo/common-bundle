@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.2.14
+
+1. Support `symfony/form` package with `4.4.*` version too
+
 # 0.2.13
 
 1. Create a service for a form, the `FormService`
