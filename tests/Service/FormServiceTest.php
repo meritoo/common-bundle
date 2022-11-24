@@ -13,8 +13,14 @@ namespace Meritoo\Test\CommonBundle\Service;
 use Generator;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
 use Meritoo\Common\Type\OopVisibilityType;
+use Meritoo\CommonBundle\Contract\Service\FormServiceInterface;
 use Meritoo\CommonBundle\Service\FormService;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Component\Form\Form;
+use Symfony\Component\Form\FormError;
+use Symfony\Component\Form\FormErrorIterator;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\Util\OrderedHashMap;
 
 /**
  * Test case for the service that serves form
@@ -99,7 +105,7 @@ class FormServiceTest extends KernelTestCase
         ]);
 
         static::getContainer()
-            ->get(FormService::class)
+            ->get(FormServiceInterface::class)
             ->addHtml5ValidationOptions($existingOptions)
         ;
 
@@ -115,7 +121,6 @@ class FormServiceTest extends KernelTestCase
     public function testAddFormOptionsUsingTestEnvironment(array $existingOptions, array $expected): void
     {
         $this->formService->addHtml5ValidationOptions($existingOptions);
-
         static::assertSame($expected, $existingOptions);
     }
 
@@ -129,6 +134,191 @@ class FormServiceTest extends KernelTestCase
         );
     }
 
+    public function testErrorsToArrayIfFormAndFieldsHaveErrors(): void
+    {
+        /** @var FormServiceInterface $service */
+        $service = static::getContainer()->get(FormServiceInterface::class);
+
+        $field1 = $this->createMock(FormInterface::class);
+        $field2 = $this->createMock(FormInterface::class);
+        $field3 = $this->createMock(FormInterface::class);
+
+        $form = $this->createConfiguredMock(Form::class, [
+            'getIterator' => new OrderedHashMap([$field1, $field2, $field3]),
+        ]);
+
+        $field1Errors = new FormErrorIterator($form, [
+            new FormError('Error 1', null, [], null, 'test-field-1'),
+        ]);
+
+        $field2Errors = new FormErrorIterator($form, [
+            new FormError('Error 2', null, [], null, 'test-field-2'),
+        ]);
+
+        $field3Errors = new FormErrorIterator($form, [
+            new FormError('Error 3', null, [], null, 'test-field-3'),
+        ]);
+
+        $field1
+            ->expects(self::once())
+            ->method('getName')
+            ->willReturn('test-field-1')
+        ;
+
+        $field1
+            ->expects(self::once())
+            ->method('getErrors')
+            ->willReturn($field1Errors)
+        ;
+
+        $field2
+            ->expects(self::once())
+            ->method('getName')
+            ->willReturn('test-field-2')
+        ;
+
+        $field2
+            ->expects(self::once())
+            ->method('getErrors')
+            ->willReturn($field2Errors)
+        ;
+
+        $field3
+            ->expects(self::once())
+            ->method('getName')
+            ->willReturn('test-field-3')
+        ;
+
+        $field3
+            ->expects(self::once())
+            ->method('getErrors')
+            ->willReturn($field3Errors)
+        ;
+
+        $errors = new FormErrorIterator($form, [
+            new FormError('Global error 1'),
+            new FormError('Global error 2'),
+        ]);
+
+        $form
+            ->expects(self::once())
+            ->method('isValid')
+            ->willReturn(false)
+        ;
+
+        $form
+            ->expects(self::once())
+            ->method('getName')
+            ->willReturn('test-form')
+        ;
+
+        $form
+            ->expects(self::once())
+            ->method('getErrors')
+            ->willReturn($errors)
+        ;
+
+        $expected = [
+            'test-form' => [
+                'Global error 1',
+                'Global error 2',
+            ],
+            'test-field-1' => [
+                'Error 1',
+            ],
+            'test-field-2' => [
+                'Error 2',
+            ],
+            'test-field-3' => [
+                'Error 3',
+            ],
+        ];
+
+        $result = $service->errorsToArray($form);
+        self::assertSame($expected, $result);
+    }
+
+    public function testErrorsToArrayIfFormHasGlobalErrorsOnly(): void
+    {
+        /** @var FormServiceInterface $service */
+        $service = static::getContainer()->get(FormServiceInterface::class);
+
+        $field1 = $this->createMock(FormInterface::class);
+        $field2 = $this->createMock(FormInterface::class);
+        $field3 = $this->createMock(FormInterface::class);
+
+        $form = $this->createConfiguredMock(Form::class, [
+            'getIterator' => new OrderedHashMap([$field1, $field2, $field3]),
+        ]);
+
+        $field1
+            ->expects(self::once())
+            ->method('isValid')
+            ->willReturn(true)
+        ;
+
+        $field2
+            ->expects(self::once())
+            ->method('isValid')
+            ->willReturn(true)
+        ;
+
+        $field3
+            ->expects(self::once())
+            ->method('isValid')
+            ->willReturn(true)
+        ;
+
+        $errors = new FormErrorIterator($form, [
+            new FormError('Global error 1'),
+            new FormError('Global error 2'),
+        ]);
+
+        $form
+            ->expects(self::once())
+            ->method('isValid')
+            ->willReturn(false)
+        ;
+
+        $form
+            ->expects(self::once())
+            ->method('getName')
+            ->willReturn('test-form')
+        ;
+
+        $form
+            ->expects(self::once())
+            ->method('getErrors')
+            ->willReturn($errors)
+        ;
+
+        $expected = [
+            'test-form' => [
+                'Global error 1',
+                'Global error 2',
+            ],
+        ];
+
+        $result = $service->errorsToArray($form);
+        self::assertSame($expected, $result);
+    }
+
+    public function testErrorsToArrayIfFormIsValid(): void
+    {
+        /** @var FormServiceInterface $service */
+        $service = static::getContainer()->get(FormServiceInterface::class);
+        $form = $this->createMock(FormInterface::class);
+
+        $form
+            ->expects(self::once())
+            ->method('isValid')
+            ->willReturn(true)
+        ;
+
+        $result = $service->errorsToArray($form);
+        self::assertSame([], $result);
+    }
+
     public function testIsHtml5ValidationEnabledUsingDefaults(): void
     {
         static::bootKernel([
@@ -136,7 +326,7 @@ class FormServiceTest extends KernelTestCase
         ]);
 
         $enabled = static::getContainer()
-            ->get(FormService::class)
+            ->get(FormServiceInterface::class)
             ->isHtml5ValidationEnabled()
         ;
 

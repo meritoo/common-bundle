@@ -10,7 +10,9 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\Service;
 
+use Meritoo\CommonBundle\Contract\Service\FormServiceInterface;
 use Meritoo\CommonBundle\Service\Base\BaseService;
+use Symfony\Component\Form\FormInterface;
 
 /**
  * Serves forms
@@ -18,7 +20,7 @@ use Meritoo\CommonBundle\Service\Base\BaseService;
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
  */
-class FormService extends BaseService
+class FormService extends BaseService implements FormServiceInterface
 {
     /**
      * Information if HTML5 inline validation is disabled
@@ -64,19 +66,11 @@ class FormService extends BaseService
      */
     public function addHtml5ValidationOptions(array &$existingOptions = []): void
     {
-        /*
-         * HTML5 inline validation is enabled?
-         * Nothing to do
-         */
         if ($this->isHtml5ValidationEnabled()) {
             return;
         }
 
         // Let's add the "novalidate" attribute
-        if (!isset($existingOptions['attr'])) {
-            $existingOptions['attr'] = [];
-        }
-
         $existingOptions['attr']['novalidate'] = 'novalidate';
     }
 
@@ -88,5 +82,38 @@ class FormService extends BaseService
     public function isHtml5ValidationEnabled(): bool
     {
         return false === $this->novalidateDisabled;
+    }
+
+    public function errorsToArray(FormInterface $form): array
+    {
+        if ($form->isValid()) {
+            return [];
+        }
+
+        $result = [];
+        $formName = $form->getName();
+        $globalErrors = $form->getErrors();
+
+        // Global
+        foreach ($globalErrors as $error) {
+            $result[$formName][] = $error->getMessage();
+        }
+
+        // Fields
+        foreach ($form as $child) {
+            /** @var FormInterface $child */
+            if ($child->isValid()) {
+                continue;
+            }
+
+            $childName = $child->getName();
+            $childErrors = $child->getErrors();
+
+            foreach ($childErrors as $error) {
+                $result[$childName][] = $error->getMessage();
+            }
+        }
+
+        return $result;
     }
 }

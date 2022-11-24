@@ -2,18 +2,22 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.2.13
+
+1. Create a service for a form, the `FormService`
+
 # 0.2.12
 
-1. Create a service for menu, the MenuService
+1. Create a service for a menu, the `MenuService`
 
 # 0.2.11
 
-1. Documentation for the PaginationService service
+1. Documentation for the `PaginationService` service
 2. Make the `PaginationService` service configurable via Container's parameters
 
 # 0.2.9
 
-1. Create RequestService::isCurrentRoute() method that returns information if given route is the current route
+1. Create `RequestService::isCurrentRoute()` method that returns information if given route is the current route
 2. [Pagination] If there is no data, 1st page is allowed/valid only
 
 # 0.2.8
@@ -65,7 +69,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 # 0.2.0
 
-1. Upgrade Symfony to 5.0 (from 4.1)
+1. Upgrade Symfony to `5.0` (from `4.1`)
 
 # 0.1.34
 
@@ -259,10 +263,10 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 1. Add descriptor of application
 2. Replenish documentation:
-   - Descriptor of bundle
-   - Descriptors of bundles
-   - Descriptor of application
-   - Services: ApplicationService
+    - Descriptor of bundle
+    - Descriptors of bundles
+    - Descriptor of application
+    - Services: ApplicationService
 
 # 0.1.0
 
