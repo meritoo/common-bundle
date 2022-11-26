@@ -33,7 +33,7 @@ class FormExtensionTest extends BaseTwigExtensionTestCase
     public function testIsHtml5ValidationEnabledUsingDefaults(): void
     {
         static::bootKernel([
-            'environment' => 'defaults',
+            'environment' => 'default',
         ]);
 
         $name = 'is_html5_validation_enabled';

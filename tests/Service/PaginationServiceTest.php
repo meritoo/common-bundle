@@ -93,7 +93,7 @@ class PaginationServiceTest extends KernelTestCase
     public function testGetPerPageUsingDefaults(): void
     {
         static::bootKernel([
-            'environment' => 'defaults',
+            'environment' => 'default',
         ]);
 
         $result = static::getContainer()
@@ -125,7 +125,7 @@ class PaginationServiceTest extends KernelTestCase
         $this->expectExceptionMessage($message);
 
         static::bootKernel([
-            'environment' => 'defaults',
+            'environment' => 'default',
         ]);
 
         static::getContainer()
@@ -158,7 +158,7 @@ class PaginationServiceTest extends KernelTestCase
         $this->expectExceptionMessage($message);
 
         static::bootKernel([
-            'environment' => 'defaults',
+            'environment' => 'default',
         ]);
 
         $service = static::getContainer()
@@ -373,7 +373,7 @@ class PaginationServiceTest extends KernelTestCase
         $this->expectExceptionMessage($message);
 
         static::bootKernel([
-            'environment' => 'defaults',
+            'environment' => 'default',
         ]);
 
         $service = static::getContainer()
@@ -393,7 +393,7 @@ class PaginationServiceTest extends KernelTestCase
         $this->expectExceptionMessage($message);
 
         static::bootKernel([
-            'environment' => 'defaults',
+            'environment' => 'default',
         ]);
 
         $service = static::getContainer()

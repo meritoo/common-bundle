@@ -101,7 +101,7 @@ class FormServiceTest extends KernelTestCase
     public function testAddFormOptionsUsingDefaults(array $existingOptions, array $expected): void
     {
         static::bootKernel([
-            'environment' => 'defaults',
+            'environment' => 'default',
         ]);
 
         static::getContainer()
@@ -322,7 +322,7 @@ class FormServiceTest extends KernelTestCase
     public function testIsHtml5ValidationEnabledUsingDefaults(): void
     {
         static::bootKernel([
-            'environment' => 'defaults',
+            'environment' => 'default',
         ]);
 
         $enabled = static::getContainer()

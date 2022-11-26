@@ -136,7 +136,7 @@ class CommonExtensionTest extends BaseTwigExtensionTestCase
     public function testFilterEmptyValueUsingDefaults(string $name, string $sourceCode, $expected): void
     {
         static::bootKernel([
-            'environment' => 'defaults',
+            'environment' => 'default',
         ]);
 
         $this->verifyRenderedTemplate($name, $sourceCode, $expected);

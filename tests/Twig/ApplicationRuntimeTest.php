@@ -49,7 +49,7 @@ class ApplicationRuntimeTest extends KernelTestCase
         $this->expectException(UnreadableVersionFileException::class);
 
         static::bootKernel([
-            'environment' => 'defaults',
+            'environment' => 'default',
         ]);
 
         static::getContainer()

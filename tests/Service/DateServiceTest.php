@@ -404,7 +404,7 @@ class DateServiceTest extends KernelTestCase
         string $expected
     ): void {
         static::bootKernel([
-            'environment' => 'defaults',
+            'environment' => 'default',
         ]);
 
         $formatted = static::getContainer()
@@ -434,7 +434,7 @@ class DateServiceTest extends KernelTestCase
         string $expected
     ): void {
         static::bootKernel([
-            'environment' => 'defaults',
+            'environment' => 'default',
         ]);
 
         $formatted = static::getContainer()
@@ -517,7 +517,7 @@ class DateServiceTest extends KernelTestCase
         string $expected
     ): void {
         static::bootKernel([
-            'environment' => 'defaults',
+            'environment' => 'default',
         ]);
 
         $format = static::getContainer()

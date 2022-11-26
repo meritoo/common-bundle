@@ -64,7 +64,7 @@ class ApplicationExtensionTest extends BaseTwigExtensionTestCase
         $this->expectException(RuntimeError::class);
 
         static::bootKernel([
-            'environment' => 'defaults',
+            'environment' => 'default',
         ]);
 
         $this->verifyRenderedTemplate(

@@ -261,7 +261,7 @@ class CommonRuntimeTest extends KernelTestCase
     public function testVerifyEmptyValueUsingDefaults($value, $expected): void
     {
         static::bootKernel([
-            'environment' => 'defaults',
+            'environment' => 'default',
         ]);
 
         $verified = static::getContainer()
