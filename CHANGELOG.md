@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.2.15
+
+1. Create a service for a carousel, the `CarouselService`
+
 # 0.2.14
 
 1. Support `symfony/form` package with `4.4.*` version too
