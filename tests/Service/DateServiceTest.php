@@ -181,7 +181,7 @@ class DateServiceTest extends KernelTestCase
      */
     public function provideDateFormattedUsingLocale(): Generator
     {
-        $locale = 'en_EN';
+        $locale = 'en_US';
         $dateString = '1900-02-01 08:25:40';
 
         /*
