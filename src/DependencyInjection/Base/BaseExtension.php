@@ -19,7 +19,6 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\FileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
-use function is_array;
 
 /**
  * Base Dependency Injection (DI) extension
@@ -258,7 +257,6 @@ abstract class BaseExtension extends ConfigurableExtension
         if (null !== $fileLoader) {
             $fileLoader->load($fileName);
         }
-
     }
 
     /**
@@ -292,7 +290,7 @@ abstract class BaseExtension extends ConfigurableExtension
         ;
 
         foreach ($flatConfig as $name => $value) {
-            if (!is_array($value)) {
+            if (is_string($value)) {
                 $value = Miscellaneous::trimSmart($value);
             }
 

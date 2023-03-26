@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.3.0
+
+1. Support PHP 8.0+
+
 # 0.2.15
 
 1. Create a service for a carousel, the `CarouselService`
