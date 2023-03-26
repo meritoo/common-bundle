@@ -98,7 +98,7 @@ class FormServiceTest extends KernelTestCase
      *
      * @dataProvider provideExistingFormOptionsCustomConfiguration
      */
-    public function testAddFormOptionsUsingDefaults(array $existingOptions, array $expected): void
+    public function testAddHtml5ValidationOptionsUsingDefaults(array $existingOptions, array $expected): void
     {
         static::bootKernel([
             'environment' => 'default',
@@ -118,7 +118,7 @@ class FormServiceTest extends KernelTestCase
      *
      * @dataProvider provideExistingFormOptionsUsingDefaults
      */
-    public function testAddFormOptionsUsingTestEnvironment(array $existingOptions, array $expected): void
+    public function testAddHtml5ValidationOptionsUsingTestEnvironment(array $existingOptions, array $expected): void
     {
         $this->formService->addHtml5ValidationOptions($existingOptions);
         static::assertSame($expected, $existingOptions);

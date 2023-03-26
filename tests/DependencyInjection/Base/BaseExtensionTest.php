@@ -85,7 +85,7 @@ class BaseExtensionTest extends BaseTestCase
          * -> "Psr\Container\ContainerInterface"
          * -> "Symfony\Component\DependencyInjection\ContainerInterface"
          */
-        static::assertCount(3, $container->getServiceIds());
+        static::assertCount(1, $container->getServiceIds());
     }
 
     public function testLoadingParametersWithUnknownServicesFileType(): void

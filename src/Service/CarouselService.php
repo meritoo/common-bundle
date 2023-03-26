@@ -13,6 +13,7 @@ namespace Meritoo\CommonBundle\Service;
 use Meritoo\CommonBundle\Contract\DataProvider\Carousel\CarouselDataProviderInterface;
 use Meritoo\CommonBundle\Contract\Service\CarouselServiceInterface;
 use Meritoo\CommonBundle\Exception\Carousel\VisibleCountNeedsToBeGreaterThanZeroException;
+use Meritoo\CommonBundle\Service\Base\BaseService;
 
 /**
  * Serves carousel
@@ -20,7 +21,7 @@ use Meritoo\CommonBundle\Exception\Carousel\VisibleCountNeedsToBeGreaterThanZero
  * @author    Meritoo <github@meritoo.pl>
  * @copyright Meritoo <http://www.meritoo.pl>
  */
-class CarouselService implements CarouselServiceInterface
+class CarouselService extends BaseService implements CarouselServiceInterface
 {
     private int $visibleCount = 0;
     private int $previousOffset = 0;

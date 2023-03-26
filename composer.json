@@ -11,10 +11,10 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^8.0",
         "ext-intl": "*",
         "doctrine/annotations": "^1.13",
-        "meritoo/common-library": "^1.1",
+        "meritoo/common-library": "^1.2",
         "symfony/form": "^4.4|^5.2",
         "symfony/framework-bundle": "^4.0|^5.4",
         "symfony/twig-bundle": "^4.0|^5.4",
@@ -45,6 +45,9 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "infection/extension-installer": true
+        }
     }
 }
