@@ -38,6 +38,14 @@ trait EntityTestCaseTrait
         ;
     }
 
+    public function dropDatabase(): void
+    {
+        $this
+            ->getSchemaTool()
+            ->dropDatabase()
+        ;
+    }
+
     /**
      * Returns the entity manager
      *
@@ -56,6 +64,7 @@ trait EntityTestCaseTrait
      * Returns repository for given entity
      *
      * @param string $entityClass Fully qualified class name of entity
+     *
      * @return ObjectRepository
      */
     public function getRepository(string $entityClass): ObjectRepository
