@@ -2,6 +2,11 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.3.1
+
+1. Create `Meritoo\CommonBundle\Traits\Test\Entity\EntityTestCaseTrait::dropDatabase()` method for removing whole
+   database in PHPUnit tests
+
 # 0.3.0
 
 1. Support PHP 8.0+
