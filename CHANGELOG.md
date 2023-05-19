@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.4.0
+
+1. Support Symfony `5.4`
+
 # 0.3.1
 
 1. Create `Meritoo\CommonBundle\Traits\Test\Entity\EntityTestCaseTrait::dropDatabase()` method for removing whole
