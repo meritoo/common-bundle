@@ -1,0 +1,79 @@
+meritoo_common:
+    general:
+        action: >-
+            {count, plural,
+                one     {Aktion}
+                other   {Aktionen}
+            }
+        error: >-
+            {count, plural,
+                one     {Fehler}
+                other   {Fehler}
+            }
+        advantage: >-
+            {count, plural,
+                one     {Vorteil}
+                other   {Vorteile}
+            }
+        disadvantage: >-
+            {count, plural,
+                one     {Nachteil}
+                other   {Nachteile}
+            }
+        invitation: >-
+            {count, plural,
+                one     {Einladung}
+                other   {Einladungen}
+            }
+        ingredient: >-
+            {count, plural,
+                one     {Zutat}
+                other   {Zutaten}
+            }
+        picture: >-
+            {count, plural,
+                one     {Bild}
+                other   {Bilder}
+            }
+        photo: >-
+            {count, plural,
+                one     {Foto}
+                other   {Fotos}
+            }
+        certificate: >-
+            {count, plural,
+                one     {Zertifikat}
+                other   {Zertifikate}
+            }
+        message: >-
+            {count, plural,
+                one     {Nachricht}
+                other   {Nachrichten}
+            }
+        day: >-
+            {count, plural,
+                one     {Tag}
+                other   {Tage}
+            }
+        month: >-
+            {count, plural,
+                one     {Monat}
+                other   {Monate}
+            }
+        year: >-
+            {count, plural,
+                one     {Jahr}
+                other   {Jahre}
+            }
+    finances:
+        transaction: >-
+            {count, plural,
+                one     {Transaktion}
+                other   {Transaktionen}
+            }
+    pagination:
+        page: >-
+            {count, plural,
+                one     {Seite}
+                other   {Seiten}
+            }

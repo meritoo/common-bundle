@@ -17,8 +17,6 @@ meritoo_common:
         recommendation: Recommendation
         resale_shop: Resale shop
         directory: Directory
-        action: Action|Actions
-        error: Error|Errors
         type: Type
         kind: Kind
         locality: Locality
@@ -30,32 +28,21 @@ meritoo_common:
         here: Here
         now: Now
         right_now: Right now
-        advantage: Advantage|Advantages
-        disadvantage: Disadvantage|Disadvantages
         new: New
         price: Price
         price_amount: Amount
         weight: Weight
         category: Category
-        invitation: Invitation|Invitations
         please: Please
         all:
             male: Everyone
             female: All
             neutral: Everything
-        ingredient: Ingredient|Ingredients
-        picture: Picture|Pictures
-        photo: Photo|Photos
-        certificate: Certificate|Certificates
         preview: Preview
         help: Help
         account: Account
         my_account: My account
-        message: Message|Messages
         history: History
-        day: Day|Days
-        month: Month|Months
-        year: Year|Years
         gallery: Gallery
         gallery_of_photos: Photo gallery
         date: Date
@@ -151,7 +138,5 @@ meritoo_common:
         account_balance: Account balance
         transaction_history: Transaction history
         transaction_date: Transaction date
-        transaction: Transaction|Transactions
     pagination:
-        page: Page|Pages
         page_of_pages: Page %page% of %pages%

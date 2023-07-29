@@ -1,0 +1,109 @@
+meritoo_common:
+    general:
+        action: >-
+            {count, plural,
+                one     {Akcja}
+                few     {Akcje}
+                many    {Akcji}
+                other   {Akcji}
+            }
+        error: >-
+            {count, plural,
+                one     {Błąd}
+                few     {Błędy}
+                many    {Błędów}
+                other   {Błędów}
+            }
+        advantage: >-
+            {count, plural,
+                one     {Zaleta}
+                few     {Zalety}
+                many    {Zalet}
+                other   {Zalety}
+            }
+        disadvantage: >-
+            {count, plural,
+                one     {Wada}
+                few     {Wady}
+                many    {Wad}
+                other   {Wady}
+            }
+        invitation: >-
+            {count, plural,
+                one     {Zaproszenie}
+                few     {Zaproszenia}
+                many    {Zaproszeń}
+                other   {Zaproszeń}
+            }
+        ingredient: >-
+            {count, plural,
+                one     {Składnik}
+                few     {Składniki}
+                many    {Składników}
+                other   {Składników}
+            }
+        picture: >-
+            {count, plural,
+                one     {Obrazek}
+                few     {Obrazki}
+                many    {Obrazków}
+                other   {Obrazków}
+            }
+        photo: >-
+            {count, plural,
+                one     {Zdjęcie}
+                few     {Zdjęcia}
+                many    {Zdjęć}
+                other   {Zdjęć}
+            }
+        certificate: >-
+            {count, plural,
+                one     {Certyfikat}
+                few     {Certyfikaty}
+                many    {Certyfikatów}
+                other   {Certyfikatów}
+            }
+        message: >-
+            {count, plural,
+                one     {Wiadomość}
+                few     {Wiadomości}
+                many    {Wiadomości}
+                other   {Wiadomości}
+            }
+        day: >-
+            {count, plural,
+                one     {Dzień}
+                few     {Dni}
+                many    {Dni}
+                other   {Dni}
+            }
+        month: >-
+            {count, plural,
+                one     {Miesiąc}
+                few     {Miesiące}
+                many    {Miesięcy}
+                other   {Miesięcy}
+            }
+        year: >-
+            {count, plural,
+                one     {Rok}
+                few     {Lata}
+                many    {Lat}
+                other   {Lat}
+            }
+    finances:
+        transaction: >-
+            {count, plural,
+                one     {Transakcja}
+                few     {Transakcje}
+                many    {Transakcji}
+                other   {Transakcji}
+            }
+    pagination:
+        page: >-
+            {count, plural,
+                one     {Strona}
+                few     {Strony}
+                many    {Stron}
+                other   {Stron}
+            }

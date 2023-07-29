@@ -5,6 +5,8 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.4.0
 
 1. Support Symfony `5.4`
+2. Pluralization in
+   translations [using the ICU MessageFormat](https://symfony.com/doc/current/reference/formats/message_format.html#pluralization)
 
 # 0.3.1
 
