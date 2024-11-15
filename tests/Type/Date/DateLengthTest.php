@@ -32,37 +32,37 @@ class DateLengthTest extends BaseTypeTestCase
     public function provideTypeToVerify(): Generator
     {
         yield [
-            DateLength::isCorrectType(''),
+            (new DateLength())->isCorrectType(''),
             false,
         ];
 
         yield [
-            DateLength::isCorrectType(null),
+            (new DateLength())->isCorrectType(null),
             false,
         ];
 
         yield [
-            DateLength::isCorrectType('0'),
+            (new DateLength())->isCorrectType('0'),
             false,
         ];
 
         yield [
-            DateLength::isCorrectType('1'),
+            (new DateLength())->isCorrectType('1'),
             false,
         ];
 
         yield [
-            DateLength::isCorrectType('date'),
+            (new DateLength())->isCorrectType('date'),
             true,
         ];
 
         yield [
-            DateLength::isCorrectType('datetime'),
+            (new DateLength())->isCorrectType('datetime'),
             true,
         ];
 
         yield [
-            DateLength::isCorrectType('time'),
+            (new DateLength())->isCorrectType('time'),
             true,
         ];
     }

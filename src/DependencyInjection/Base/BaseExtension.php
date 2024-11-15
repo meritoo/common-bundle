@@ -142,6 +142,7 @@ abstract class BaseExtension extends ConfigurableExtension
      * If the file name does not contain extension, default extension will be used (the ".yaml" extension).
      *
      * @param string $fileName Name of configuration file (with or without extension)
+     *
      * @return string
      */
     private function getConfigurationFileWithExtension(string $fileName): string
@@ -160,8 +161,9 @@ abstract class BaseExtension extends ConfigurableExtension
      * Returns loader of configuration file
      *
      * @param ContainerBuilder $container Container for the Dependency Injection (DI)
-     * @param FileLocator      $locator   Locator used to find files
-     * @param string           $fileType  Type of configuration file
+     * @param FileLocator $locator Locator used to find files
+     * @param string $fileType Type of configuration file
+     *
      * @return null|FileLoader
      */
     private function getFileLoader(ContainerBuilder $container, FileLocator $locator, string $fileType): ?FileLoader
@@ -220,8 +222,9 @@ abstract class BaseExtension extends ConfigurableExtension
      * Loads the configuration file
      *
      * @param ContainerBuilder $container Container for the Dependency Injection (DI)
-     * @param string           $fileName  Name of configuration file. If provided without extension, the default
-     *                                    extension of configuration files will be used.
+     * @param string $fileName Name of configuration file. If provided without extension, the default extension of
+     * configuration files will be used.
+     *
      * @return void
      */
     private function loadConfigurationFile(ContainerBuilder $container, string $fileName): void
@@ -248,7 +251,7 @@ abstract class BaseExtension extends ConfigurableExtension
             return;
         }
 
-        $fileType = ConfigurationFileType::getTypeFromFileName($fileName);
+        $fileType = (new ConfigurationFileType())->getTypeFromFileName($fileName);
         $locator = new FileLocator($resourcesPath);
 
         // Let's load the configuration file
@@ -262,8 +265,9 @@ abstract class BaseExtension extends ConfigurableExtension
     /**
      * Loads parameters into container
      *
-     * @param array            $mergedConfig Custom configuration merged with defaults
-     * @param ContainerBuilder $container    Container for the Dependency Injection (DI)
+     * @param array $mergedConfig Custom configuration merged with defaults
+     * @param ContainerBuilder $container Container for the Dependency Injection (DI)
+     *
      * @return BaseExtension
      */
     private function loadParameters(array $mergedConfig, ContainerBuilder $container): BaseExtension
@@ -306,6 +310,7 @@ abstract class BaseExtension extends ConfigurableExtension
      * Loads services from configuration file (located in bundle's resources)
      *
      * @param ContainerBuilder $container Container for the Dependency Injection (DI)
+     *
      * @return void
      */
     private function loadServices(ContainerBuilder $container): void
@@ -321,6 +326,7 @@ abstract class BaseExtension extends ConfigurableExtension
      * Returns an array with key-value pairs, where key - name of parameter, value - value of parameter.
      *
      * @param array $mergedConfig Custom configuration merged with defaults
+     *
      * @return null|array
      */
     private function makeFlatConfig(array $mergedConfig): ?array
@@ -332,7 +338,7 @@ abstract class BaseExtension extends ConfigurableExtension
         // Merging standard with global keys and paths
         $stopIfMatchedBy = array_merge(
             Arrays::makeArray($keysToStop),
-            Arrays::makeArray($globalKeysToStop)
+            Arrays::makeArray($globalKeysToStop),
         );
 
         // Let's get the last elements' paths and load values into container

@@ -14,7 +14,7 @@
         "php": "^8.0",
         "ext-intl": "*",
         "doctrine/annotations": "^2.0",
-        "meritoo/common-library": "dev-develop",
+        "meritoo/common-library": "^1.3",
         "symfony/form": "^5.4",
         "symfony/framework-bundle": "^5.4",
         "symfony/twig-bundle": "^5.4",

@@ -47,15 +47,16 @@ class ConfigurationFileType extends BaseType
      * Returns type of configuration file based on name of the file
      *
      * @param string $fileName Name of configuration file
+     *
      * @return string
      * @throws UnknownConfigurationFileTypeException
      */
-    public static function getTypeFromFileName(string $fileName): string
+    public function getTypeFromFileName(string $fileName): string
     {
         $fileExtension = strtolower(Miscellaneous::getFileExtension($fileName));
 
         // Oops, incorrect type/extension of configuration file
-        if (false === static::isCorrectType($fileExtension)) {
+        if (false === $this->isCorrectType($fileExtension)) {
             throw UnknownConfigurationFileTypeException::createException($fileExtension);
         }
 

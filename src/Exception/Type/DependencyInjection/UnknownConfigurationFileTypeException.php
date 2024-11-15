@@ -25,13 +25,17 @@ class UnknownConfigurationFileTypeException extends UnknownTypeException
      * Creates exception
      *
      * @param string $unknownType Unknown type of Dependency Injection (DI) configuration file
+     *
      * @return UnknownConfigurationFileTypeException
      */
     public static function createException(string $unknownType): UnknownConfigurationFileTypeException
     {
-        /** @var UnknownConfigurationFileTypeException $exception */
-        $exception = static::create($unknownType, new ConfigurationFileType(), 'Dependency Injection (DI) configuration file');
+        $message = static::createMessage(
+            $unknownType,
+            new ConfigurationFileType(),
+            'Dependency Injection (DI) configuration file',
+        );
 
-        return $exception;
+        return new self($message);
     }
 }

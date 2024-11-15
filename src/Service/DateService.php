@@ -49,9 +49,9 @@ class DateService extends BaseService
     /**
      * Class constructor
      *
-     * @param string $dateFormat     Format of date without time
+     * @param string $dateFormat Format of date without time
      * @param string $dateTimeFormat Format of date with time
-     * @param string $timeFormat     Format of time without date
+     * @param string $timeFormat Format of time without date
      */
     public function __construct(string $dateFormat, string $dateTimeFormat, string $timeFormat)
     {
@@ -63,8 +63,9 @@ class DateService extends BaseService
     /**
      * Returns date formatted according to given length of date
      *
-     * @param DateTimeInterface $dateTime   The date to format
-     * @param string            $dateLength Type of date length. One of the DateLength's class constants.
+     * @param DateTimeInterface $dateTime The date to format
+     * @param string $dateLength Type of date length. One of the DateLength's class constants.
+     *
      * @return string
      */
     public function formatDate(DateTimeInterface $dateTime, string $dateLength): string
@@ -78,12 +79,13 @@ class DateService extends BaseService
      * Returns given date formatted with format based on locale.
      * Uses the \IntlDateFormatter class to set proper type / length of date and time part in the returned string.
      *
-     * @param int               $dateType  Type/length of date part in the returned string. One of constants of the
-     *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::SHORT.
-     * @param int               $timeType  Type/length of time part in the returned string. One of constants of the
-     *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::MEDIUM.
-     * @param string            $locale    Locale used to format given date
-     * @param DateTimeInterface $dateTime  The date to format
+     * @param int $dateType Type/length of date part in the returned string. One of constants of the
+     * \IntlDateFormatter class, e.g. \IntlDateFormatter::SHORT.
+     * @param int $timeType Type/length of time part in the returned string. One of constants of the
+     * \IntlDateFormatter class, e.g. \IntlDateFormatter::MEDIUM.
+     * @param string $locale Locale used to format given date
+     * @param DateTimeInterface $dateTime The date to format
+     *
      * @return string
      * @throws Exception
      */
@@ -91,7 +93,7 @@ class DateService extends BaseService
         int $dateType,
         int $timeType,
         string $locale,
-        DateTimeInterface $dateTime
+        DateTimeInterface $dateTime,
     ): string {
         $timestamp = $dateTime->getTimestamp();
 
@@ -102,13 +104,14 @@ class DateService extends BaseService
      * Returns format of date according to given length of date
      *
      * @param string $dateLength Type of date length. One of the DateLength's class constants.
+     *
      * @throws UnknownDateLengthException
      * @return string
      */
     public function getFormat(string $dateLength): string
     {
         // Oops, unknown length of date
-        if (false === DateLength::isCorrectType($dateLength)) {
+        if (false === (new DateLength())->isCorrectType($dateLength)) {
             throw UnknownDateLengthException::createException($dateLength);
         }
 

@@ -84,42 +84,42 @@ class ConfigurationFileTypeTest extends BaseTypeTestCase
     public function provideTypeToVerify(): Generator
     {
         yield [
-            ConfigurationFileType::isCorrectType(''),
+            (new ConfigurationFileType())->isCorrectType(''),
             false,
         ];
 
         yield [
-            ConfigurationFileType::isCorrectType(null),
+            (new ConfigurationFileType())->isCorrectType(null),
             false,
         ];
 
         yield [
-            ConfigurationFileType::isCorrectType('0'),
+            (new ConfigurationFileType())->isCorrectType('0'),
             false,
         ];
 
         yield [
-            ConfigurationFileType::isCorrectType('1'),
+            (new ConfigurationFileType())->isCorrectType('1'),
             false,
         ];
 
         yield [
-            ConfigurationFileType::isCorrectType('jpg'),
+            (new ConfigurationFileType())->isCorrectType('jpg'),
             false,
         ];
 
         yield [
-            ConfigurationFileType::isCorrectType('php'),
+            (new ConfigurationFileType())->isCorrectType('php'),
             true,
         ];
 
         yield [
-            ConfigurationFileType::isCorrectType('xml'),
+            (new ConfigurationFileType())->isCorrectType('xml'),
             true,
         ];
 
         yield [
-            ConfigurationFileType::isCorrectType('yaml'),
+            (new ConfigurationFileType())->isCorrectType('yaml'),
             true,
         ];
     }
@@ -132,17 +132,18 @@ class ConfigurationFileTypeTest extends BaseTypeTestCase
      */
     public function testGetTypeFromFileName(string $fileName, string $expected): void
     {
-        static::assertSame($expected, ConfigurationFileType::getTypeFromFileName($fileName));
+        static::assertSame($expected, (new ConfigurationFileType())->getTypeFromFileName($fileName));
     }
 
     /**
      * @param string $fileName Name of configuration file
+     *
      * @dataProvider provideFileNameWithUnknownExtension
      */
     public function testGetTypeFromFileNameWithUnknownExtension(string $fileName): void
     {
         $this->expectException(UnknownConfigurationFileTypeException::class);
-        ConfigurationFileType::getTypeFromFileName($fileName);
+        (new ConfigurationFileType())->getTypeFromFileName($fileName);
     }
 
     /**

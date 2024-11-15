@@ -25,13 +25,13 @@ class UnknownDateLengthException extends UnknownTypeException
      * Creates exception
      *
      * @param string $unknownType Unknown type of date length for date format
+     *
      * @return UnknownDateLengthException
      */
     public static function createException(string $unknownType): UnknownDateLengthException
     {
-        /** @var UnknownDateLengthException $exception */
-        $exception = static::create($unknownType, new DateLength(), 'date length for date format');
+        $message = static::createMessage($unknownType, new DateLength(), 'date length for date format');
 
-        return $exception;
+        return new self($message);
     }
 }
