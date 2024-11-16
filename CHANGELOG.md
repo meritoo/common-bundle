@@ -8,6 +8,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 2. Pluralization in
    translations [using the ICU MessageFormat](https://symfony.com/doc/current/reference/formats/message_format.html#pluralization)
 3. Update the `meritoo/common-library` package to `^1.3`
+4. Fix PHPStan errors
 
 # 0.3.1
 

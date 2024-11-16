@@ -31,6 +31,6 @@ class UnreadableVersionFileException extends RuntimeException
         $template = 'File %s, who contains version of the application, is not readable. Does the file exist?';
         $message = sprintf($template, $filePath);
 
-        return new static($message);
+        return new self($message);
     }
 }

@@ -175,7 +175,7 @@ class Descriptor
             $childBundleDescriptor = static::fromArray($childData);
         }
 
-        return new static(
+        return new self(
             $name,
             $configurationRootName,
             $rootNamespace,
@@ -201,7 +201,7 @@ class Descriptor
         // Default values, not provided by bundle directly
         $configurationRootName = '';
 
-        return new static($name, $configurationRootName, $rootNamespace, $path);
+        return new self($name, $configurationRootName, $rootNamespace, $path);
     }
 
     /**

@@ -29,7 +29,7 @@ class Descriptors extends BaseCollection
      */
     public static function fromArray(array $data): Descriptors
     {
-        $result = new static();
+        $result = new self();
 
         if (!empty($data)) {
             $descriptors = [];
