@@ -181,7 +181,7 @@ class DateServiceTest extends KernelTestCase
      */
     public function provideDateFormattedUsingLocale(): Generator
     {
-        $locale = 'en_EN';
+        $locale = 'en_US';
         $dateString = '1900-02-01 08:25:40';
 
         /*
@@ -387,21 +387,21 @@ class DateServiceTest extends KernelTestCase
             DateService::class,
             OopVisibilityType::IS_PUBLIC,
             3,
-            3
+            3,
         );
     }
 
     /**
-     * @param DateTimeInterface $dateTime   The date to format
-     * @param string            $dateLength Type of date length
-     * @param string            $expected   Expected date
+     * @param DateTimeInterface $dateTime The date to format
+     * @param string $dateLength Type of date length
+     * @param string $expected Expected date
      *
      * @dataProvider provideDateFormattedUsingDefaults
      */
     public function testFormatDateUsingDefaults(
         DateTimeInterface $dateTime,
         string $dateLength,
-        string $expected
+        string $expected,
     ): void {
         static::bootKernel([
             'environment' => 'default',
@@ -416,13 +416,13 @@ class DateServiceTest extends KernelTestCase
     }
 
     /**
-     * @param int               $dateType  Type/length of date part in the returned string. One of constants of the
+     * @param int $dateType Type/length of date part in the returned string. One of constants of the
      *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::SHORT.
-     * @param int               $timeType  Type/length of time part in the returned string. One of constants of the
+     * @param int $timeType Type/length of time part in the returned string. One of constants of the
      *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::MEDIUM.
-     * @param string            $locale    Locale used to format given date
-     * @param DateTimeInterface $dateTime  The date to format
-     * @param string            $expected  Expected date
+     * @param string $locale Locale used to format given date
+     * @param DateTimeInterface $dateTime The date to format
+     * @param string $expected Expected date
      *
      * @dataProvider provideDateFormattedUsingLocale
      */
@@ -431,7 +431,7 @@ class DateServiceTest extends KernelTestCase
         int $timeType,
         string $locale,
         DateTimeInterface $dateTime,
-        string $expected
+        string $expected,
     ): void {
         static::bootKernel([
             'environment' => 'default',
@@ -443,7 +443,7 @@ class DateServiceTest extends KernelTestCase
                 $dateType,
                 $timeType,
                 $locale,
-                $dateTime
+                $dateTime,
             )
         ;
 
@@ -451,13 +451,13 @@ class DateServiceTest extends KernelTestCase
     }
 
     /**
-     * @param int               $dateType  Type/length of date part in the returned string. One of constants of the
+     * @param int $dateType Type/length of date part in the returned string. One of constants of the
      *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::SHORT.
-     * @param int               $timeType  Type/length of time part in the returned string. One of constants of the
+     * @param int $timeType Type/length of time part in the returned string. One of constants of the
      *                                     \IntlDateFormatter class, e.g. \IntlDateFormatter::MEDIUM.
-     * @param string            $locale    Locale used to format given date
-     * @param DateTimeInterface $dateTime  The date to format
-     * @param string            $expected  Expected date
+     * @param string $locale Locale used to format given date
+     * @param DateTimeInterface $dateTime The date to format
+     * @param string $expected Expected date
      *
      * @dataProvider provideDateFormattedUsingLocale
      */
@@ -466,7 +466,7 @@ class DateServiceTest extends KernelTestCase
         int $timeType,
         string $locale,
         DateTimeInterface $dateTime,
-        string $expected
+        string $expected,
     ): void {
         $formatted = $this
             ->dateService
@@ -474,7 +474,7 @@ class DateServiceTest extends KernelTestCase
                 $dateType,
                 $timeType,
                 $locale,
-                $dateTime
+                $dateTime,
             )
         ;
 
@@ -482,22 +482,23 @@ class DateServiceTest extends KernelTestCase
     }
 
     /**
-     * @param DateTimeInterface $dateTime   The date to format
-     * @param string            $dateLength Type of date length
-     * @param string            $expected   Expected date
+     * @param DateTimeInterface $dateTime The date to format
+     * @param string $dateLength Type of date length
+     * @param string $expected Expected date
      *
      * @dataProvider provideDateFormattedUsingTestEnvironment
      */
     public function testFormatDateUsingTestEnvironment(
         DateTimeInterface $dateTime,
         string $dateLength,
-        string $expected
+        string $expected,
     ): void {
         static::assertSame($expected, $this->dateService->formatDate($dateTime, $dateLength));
     }
 
     /**
      * @param string $dateLength Unknown type of date length
+     *
      * @dataProvider provideUnknownDateLength
      */
     public function testFormatDateUsingUnknownDateLength(string $dateLength): void
@@ -508,13 +509,13 @@ class DateServiceTest extends KernelTestCase
 
     /**
      * @param string $dateLength Type of date length
-     * @param string $expected   Expected date format
+     * @param string $expected Expected date format
      *
      * @dataProvider provideDateFormatUsingDefaults
      */
     public function testGetFormatUsingDefaults(
         string $dateLength,
-        string $expected
+        string $expected,
     ): void {
         static::bootKernel([
             'environment' => 'default',
@@ -530,19 +531,20 @@ class DateServiceTest extends KernelTestCase
 
     /**
      * @param string $dateLength Type of date length
-     * @param string $expected   Expected date format
+     * @param string $expected Expected date format
      *
      * @dataProvider provideDateFormatUsingTestEnvironment
      */
     public function testGetFormatUsingTestEnvironment(
         string $dateLength,
-        string $expected
+        string $expected,
     ): void {
         static::assertSame($expected, $this->dateService->getFormat($dateLength));
     }
 
     /**
      * @param string $dateLength Unknown type of date length
+     *
      * @dataProvider provideUnknownDateLength
      */
     public function testGetFormatUsingUnknownDateLength(string $dateLength): void
