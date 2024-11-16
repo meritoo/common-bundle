@@ -24,6 +24,7 @@ class UnreadableVersionFileException extends RuntimeException
      * Creates exception
      *
      * @param string $filePath Path of a file who contains version of the application
+     *
      * @return UnreadableVersionFileException
      */
     public static function create(string $filePath): UnreadableVersionFileException
