@@ -89,12 +89,12 @@ class Descriptor
     /**
      * Class constructor
      *
-     * @param string          $name                   (optional) Name of bundle
-     * @param string          $configurationRootName  (optional) Name of configuration root node of bundle
-     * @param string          $rootNamespace          (optional) Root namespace of bundle
-     * @param string          $path                   (optional) Physical path of bundle
+     * @param string $name (optional) Name of bundle
+     * @param string $configurationRootName (optional) Name of configuration root node of bundle
+     * @param string $rootNamespace (optional) Root namespace of bundle
+     * @param string $path (optional) Physical path of bundle
      * @param null|Descriptor $parentBundleDescriptor (optional) Descriptor of the parent bundle
-     * @param null|Descriptor $childBundleDescriptor  (optional) Descriptor of the child bundle
+     * @param null|Descriptor $childBundleDescriptor (optional) Descriptor of the child bundle
      */
     public function __construct(
         string $name = '',
@@ -102,7 +102,7 @@ class Descriptor
         string $rootNamespace = '',
         string $path = '',
         ?Descriptor $parentBundleDescriptor = null,
-        ?Descriptor $childBundleDescriptor = null
+        ?Descriptor $childBundleDescriptor = null,
     ) {
         $this->name = $name;
         $this->configurationRootName = $configurationRootName;
@@ -119,6 +119,7 @@ class Descriptor
      * Adds names of files with data fixtures from bundle
      *
      * @param array $fixturesPaths Names of files with data fixtures
+     *
      * @return Descriptor
      */
     public function addDataFixtures(array $fixturesPaths): Descriptor
@@ -136,6 +137,7 @@ class Descriptor
      * Creates and returns descriptor from given data
      *
      * @param array $data Data of descriptor
+     *
      * @return Descriptor
      */
     public static function fromArray(array $data): Descriptor
@@ -175,13 +177,13 @@ class Descriptor
             $childBundleDescriptor = static::fromArray($childData);
         }
 
-        return new static(
+        return new self(
             $name,
             $configurationRootName,
             $rootNamespace,
             $path,
             $parentBundleDescriptor,
-            $childBundleDescriptor
+            $childBundleDescriptor,
         );
     }
 
@@ -189,6 +191,7 @@ class Descriptor
      * Creates and returns descriptor of given bundle
      *
      * @param Bundle $bundle The bundle
+     *
      * @return Descriptor
      */
     public static function fromBundle(Bundle $bundle): Descriptor
@@ -201,7 +204,7 @@ class Descriptor
         // Default values, not provided by bundle directly
         $configurationRootName = '';
 
-        return new static($name, $configurationRootName, $rootNamespace, $path);
+        return new self($name, $configurationRootName, $rootNamespace, $path);
     }
 
     /**
@@ -218,6 +221,7 @@ class Descriptor
      * Sets descriptor of the child bundle
      *
      * @param Descriptor|null $childBundleDescriptor (optional) The child's descriptor
+     *
      * @return Descriptor
      */
     public function setChildBundleDescriptor(?Descriptor $childBundleDescriptor): Descriptor
@@ -241,6 +245,7 @@ class Descriptor
      * Sets name of configuration root node of bundle
      *
      * @param string $configurationRootName The name
+     *
      * @return Descriptor
      */
     public function setConfigurationRootName(string $configurationRootName): Descriptor
@@ -293,6 +298,7 @@ class Descriptor
      * Sets name of bundle
      *
      * @param string $name The name
+     *
      * @return Descriptor
      */
     public function setName(string $name): Descriptor
@@ -316,6 +322,7 @@ class Descriptor
      * Sets descriptor of the parent bundle
      *
      * @param Descriptor|null $parentBundleDescriptor (optional) The parent's descriptor
+     *
      * @return Descriptor
      */
     public function setParentBundleDescriptor(?Descriptor $parentBundleDescriptor): Descriptor
@@ -339,6 +346,7 @@ class Descriptor
      * Sets physical path of bundle
      *
      * @param string $path The path
+     *
      * @return Descriptor
      */
     public function setPath(string $path): Descriptor
@@ -362,6 +370,7 @@ class Descriptor
      * Sets root namespace of bundle
      *
      * @param string $rootNamespace The root namespace
+     *
      * @return Descriptor
      */
     public function setRootNamespace(string $rootNamespace): Descriptor
@@ -392,6 +401,7 @@ class Descriptor
      * Returns information if given file belongs to bundle
      *
      * @param string $filePath Path of file to verify
+     *
      * @return bool
      */
     public function hasFile(string $filePath): bool
@@ -404,6 +414,7 @@ class Descriptor
      *
      * @param bool $withParentAndChild (optional) If is set to true, includes descriptor of the parent and child
      *                                 bundle (default behaviour). Otherwise - not.
+     *
      * @return array
      */
     public function toArray(bool $withParentAndChild = true): array

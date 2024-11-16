@@ -27,6 +27,6 @@ class EmptyVersionFilePathException extends RuntimeException
      */
     public static function create(): EmptyVersionFilePathException
     {
-        return new static('Path of a file, who contains version of the application, is empty. Is there everything ok?');
+        return new self('Path of a file, who contains version of the application, is empty. Is there everything ok?');
     }
 }
