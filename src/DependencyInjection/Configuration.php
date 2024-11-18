@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Meritoo\CommonBundle\DependencyInjection;
 
+use Meritoo\CommonBundle\Enums\Date\DateLength;
 use Meritoo\CommonBundle\Service\ApplicationService;
-use Meritoo\CommonBundle\Type\Date\DateLength;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -120,15 +120,15 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('format')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode(DateLength::DATE)
+                        ->scalarNode(DateLength::Date->value)
                             ->info('Format of date without time')
                             ->defaultValue('d.m.Y')
                         ->end()
-                        ->scalarNode(DateLength::DATETIME)
+                        ->scalarNode(DateLength::DateTime->value)
                             ->info('Format of date with time')
                             ->defaultValue('d.m.Y H:i')
                         ->end()
-                        ->scalarNode(DateLength::TIME)
+                        ->scalarNode(DateLength::Time->value)
                             ->info('Format of time without date')
                             ->defaultValue('H:i')
                         ->end()

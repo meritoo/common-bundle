@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Twig;
 
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Twig\FormRuntime;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Twig\Extension\RuntimeExtensionInterface;
@@ -35,9 +35,9 @@ class FormRuntimeTest extends KernelTestCase
     {
         static::assertConstructorVisibilityAndArguments(
             FormRuntime::class,
-            OopVisibilityType::IS_PUBLIC,
+            OopVisibility::Public,
             1,
-            1
+            1,
         );
     }
 

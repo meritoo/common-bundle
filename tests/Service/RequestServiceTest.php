@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace Meritoo\Test\CommonBundle\Service;
 
 use Generator;
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Contract\Service\RequestServiceInterface;
 use Meritoo\CommonBundle\Exception\Service\Request\UnknownRequestException;
 use Meritoo\CommonBundle\Service\RequestService;
@@ -143,14 +143,15 @@ class RequestServiceTest extends KernelTestCase
     {
         static::assertConstructorVisibilityAndArguments(
             RequestService::class,
-            OopVisibilityType::IS_PUBLIC,
+            OopVisibility::Public,
             2,
-            2
+            2,
         );
     }
 
     /**
      * @param string $expected Expected url of referer
+     *
      * @dataProvider provideUrl
      */
     public function testFetchRefererUrl(string $expected): void
@@ -333,7 +334,7 @@ class RequestServiceTest extends KernelTestCase
     }
 
     /**
-     * @param Request     $request  The request (that probably contains referer)
+     * @param Request $request The request (that probably contains referer)
      * @param null|string $expected Expected url of referer
      *
      * @dataProvider provideRequestAndRefererUrl
@@ -383,6 +384,7 @@ class RequestServiceTest extends KernelTestCase
 
     /**
      * @param string $url The referer url to store
+     *
      * @dataProvider provideUrl
      */
     public function testStoreRefererUrl(string $url): void
@@ -392,7 +394,7 @@ class RequestServiceTest extends KernelTestCase
     }
 
     /**
-     * @param Request     $request  The request (that probably contains referer)
+     * @param Request $request The request (that probably contains referer)
      * @param null|string $expected Expected url of referer
      *
      * @dataProvider provideRequestAndRefererUrlToStore

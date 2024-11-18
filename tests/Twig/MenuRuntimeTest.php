@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Twig;
 
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Contract\Service\MenuServiceInterface;
 use Meritoo\CommonBundle\Twig\MenuRuntime;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -41,9 +41,9 @@ class MenuRuntimeTest extends TestCase
     {
         static::assertConstructorVisibilityAndArguments(
             MenuRuntime::class,
-            OopVisibilityType::IS_PUBLIC,
+            OopVisibility::Public,
             1,
-            1
+            1,
         );
     }
 

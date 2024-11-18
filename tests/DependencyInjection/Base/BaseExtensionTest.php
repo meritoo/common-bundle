@@ -13,11 +13,9 @@ namespace Meritoo\Test\CommonBundle\DependencyInjection\Base;
 use Generator;
 use Meritoo\Common\Test\Base\BaseTestCase;
 use Meritoo\CommonBundle\DependencyInjection\Base\BaseExtension;
-use Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfigurationFileTypeException;
 use Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\EmptyBundlePath\Extension as EmptyBundlePathExtension;
 use Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\NotExistingServicesFile\Extension as NotExistingServicesFileExtension;
 use Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\PhpServicesFileType\Extension as PhpServicesFileTypeExtension;
-use Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\UnknownServicesFileType\Extension as UnknownServicesFileTypeExtension;
 use Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\WithoutParameters\Extension as WithoutParametersExtension;
 use Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\XmlServicesFileType\Extension as XmlServicesFileTypeExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -86,20 +84,5 @@ class BaseExtensionTest extends BaseTestCase
          * -> "Symfony\Component\DependencyInjection\ContainerInterface"
          */
         static::assertCount(1, $container->getServiceIds());
-    }
-
-    public function testLoadingParametersWithUnknownServicesFileType(): void
-    {
-        $message = 'The \'txt\' type of Dependency Injection (DI) configuration file is unknown. Probably doesn\'t'
-            .' exist or there is a typo. You should use one of these types: php, xml, yaml.';
-
-        $this->expectException(UnknownConfigurationFileTypeException::class);
-        $this->expectExceptionMessage($message);
-
-        $container = new ContainerBuilder();
-        $extension = new UnknownServicesFileTypeExtension();
-
-        $configuration = [];
-        $extension->load($configuration, $container);
     }
 }

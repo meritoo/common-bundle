@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace Meritoo\Test\CommonBundle\Service;
 
 use Generator;
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\Common\ValueObject\Version;
 use Meritoo\CommonBundle\Application\Descriptor;
 use Meritoo\CommonBundle\Exception\Service\ApplicationService\EmptyVersionFilePathException;
@@ -60,7 +60,7 @@ class ApplicationServiceTest extends KernelTestCase
             new Descriptor(
                 'Lorem',
                 'Sed posuere consectetur est at lobortis',
-                new Version(5, 46, 17)
+                new Version(5, 46, 17),
             ),
         ];
     }
@@ -69,9 +69,9 @@ class ApplicationServiceTest extends KernelTestCase
     {
         static::assertConstructorVisibilityAndArguments(
             ApplicationService::class,
-            OopVisibilityType::IS_PUBLIC,
+            OopVisibility::Public,
             3,
-            3
+            3,
         );
     }
 
@@ -97,10 +97,10 @@ class ApplicationServiceTest extends KernelTestCase
     }
 
     /**
-     * @param string      $versionFilePath        Path of a file who contains version of the application
-     * @param null|string $applicationName        Name of application. May be displayed near logo.
+     * @param string $versionFilePath Path of a file who contains version of the application
+     * @param null|string $applicationName Name of application. May be displayed near logo.
      * @param null|string $applicationDescription Description of application. May be displayed near logo.
-     * @param Descriptor  $expected               Expected descriptor of application
+     * @param Descriptor $expected Expected descriptor of application
      *
      * @dataProvider provideConstructorArgumentsAndDescriptor
      */
@@ -108,7 +108,7 @@ class ApplicationServiceTest extends KernelTestCase
         string $versionFilePath,
         ?string $applicationName,
         ?string $applicationDescription,
-        Descriptor $expected
+        Descriptor $expected,
     ): void {
         $service = new ApplicationService($versionFilePath, $applicationName, $applicationDescription);
         static::assertEquals($expected, $service->getDescriptor());
@@ -119,7 +119,7 @@ class ApplicationServiceTest extends KernelTestCase
         $expected = new Descriptor(
             'This is a Test',
             'Just for Testing',
-            new Version(1, 2, 0)
+            new Version(1, 2, 0),
         );
 
         static::assertEquals($expected, $this->applicationService->getDescriptor());

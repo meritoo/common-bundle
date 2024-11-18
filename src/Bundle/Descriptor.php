@@ -278,10 +278,7 @@ class Descriptor
             return null;
         }
 
-        return Miscellaneous::concatenatePaths([
-            $path,
-            static::PATH_DATA_FIXTURES,
-        ]);
+        return Miscellaneous::concatenatePaths($path, static::PATH_DATA_FIXTURES);
     }
 
     /**

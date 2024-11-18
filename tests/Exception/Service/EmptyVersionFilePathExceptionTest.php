@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Exception\Service;
 
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Test\Base\BaseTestCase;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Exception\Service\ApplicationService\EmptyVersionFilePathException;
 
 /**
@@ -27,12 +27,15 @@ class EmptyVersionFilePathExceptionTest extends BaseTestCase
 {
     public function testConstructorVisibilityAndArguments(): void
     {
-        static::assertConstructorVisibilityAndArguments(EmptyVersionFilePathException::class, OopVisibilityType::IS_PUBLIC, 3);
+        static::assertConstructorVisibilityAndArguments(EmptyVersionFilePathException::class, OopVisibility::Public, 3);
     }
 
     public function testCreate(): void
     {
         $exception = EmptyVersionFilePathException::create();
-        static::assertSame('Path of a file, who contains version of the application, is empty. Is there everything ok?', $exception->getMessage());
+
+        static::assertSame('Path of a file, who contains version of the application, is empty. Is there everything ok?',
+            $exception->getMessage(),
+        );
     }
 }
