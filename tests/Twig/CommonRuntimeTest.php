@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace Meritoo\Test\CommonBundle\Twig;
 
 use Generator;
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Twig\CommonRuntime;
 use stdClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -225,9 +225,9 @@ class CommonRuntimeTest extends KernelTestCase
     {
         static::assertConstructorVisibilityAndArguments(
             CommonRuntime::class,
-            OopVisibilityType::IS_PUBLIC,
+            OopVisibility::Public,
             1,
-            1
+            1,
         );
     }
 
@@ -237,23 +237,23 @@ class CommonRuntimeTest extends KernelTestCase
     }
 
     /**
-     * @param mixed       $value                 The value to check
+     * @param mixed $value The value to check
      * @param null|string $emptyValueReplacement Custom replacement of empty value. If is set to null, the
-     *                                           replacement is retrieved from configuration (default behaviour).
-     * @param mixed       $expected              Expected value
+     * replacement is retrieved from configuration (default behaviour).
+     * @param mixed $expected Expected value
      *
      * @dataProvider provideValueAndValueReplacementToVerifyEmptyValue
      */
     public function testVerifyEmptyValueUsingCustomValueReplacement(
         $value,
         ?string $emptyValueReplacement,
-        $expected
+        $expected,
     ): void {
         static::assertSame($expected, $this->commonRuntime->verifyEmptyValue($value, $emptyValueReplacement));
     }
 
     /**
-     * @param mixed $value    The value to check
+     * @param mixed $value The value to check
      * @param mixed $expected Expected value
      *
      * @dataProvider provideValueToVerifyEmptyValueUsingDefaults
@@ -273,7 +273,7 @@ class CommonRuntimeTest extends KernelTestCase
     }
 
     /**
-     * @param mixed $value    The value to check
+     * @param mixed $value The value to check
      * @param mixed $expected Expected value
      *
      * @dataProvider provideValueToVerifyEmptyValue

@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace Meritoo\Test\CommonBundle\ValueObject;
 
 use Generator;
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Test\Base\BaseTestCase;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Exception\ValueObject\Pagination\IncorrectCurrentPageException;
 use Meritoo\CommonBundle\Exception\ValueObject\Pagination\IncorrectPerPageException;
 use Meritoo\CommonBundle\Exception\ValueObject\Pagination\IncorrectTotalAmountException;
@@ -181,10 +181,10 @@ class PaginationTest extends BaseTestCase
 
     /**
      * @param string $description
-     * @param int    $expected
-     * @param int    $totalAmount
-     * @param int    $perPage
-     * @param int    $currentPage
+     * @param int $expected
+     * @param int $totalAmount
+     * @param int $perPage
+     * @param int $currentPage
      *
      * @dataProvider providePaginationToCalculateOffset
      */
@@ -193,7 +193,7 @@ class PaginationTest extends BaseTestCase
         int $expected,
         int $totalAmount,
         int $perPage,
-        int $currentPage = 1
+        int $currentPage = 1,
     ): void {
         $pagination = new Pagination($totalAmount, $perPage, $currentPage);
         static::assertSame($pagination->calculateOffset(), $expected, $description);
@@ -201,10 +201,10 @@ class PaginationTest extends BaseTestCase
 
     /**
      * @param string $description
-     * @param int    $expected
-     * @param int    $totalAmount
-     * @param int    $perPage
-     * @param int    $currentPage
+     * @param int $expected
+     * @param int $totalAmount
+     * @param int $perPage
+     * @param int $currentPage
      *
      * @dataProvider providePaginationToCalculatePagesCount
      */
@@ -213,7 +213,7 @@ class PaginationTest extends BaseTestCase
         int $expected,
         int $totalAmount,
         int $perPage,
-        int $currentPage = 1
+        int $currentPage = 1,
     ): void {
         $pagination = new Pagination($totalAmount, $perPage, $currentPage);
         static::assertSame($pagination->calculatePagesCount(), $expected, $description);
@@ -223,16 +223,16 @@ class PaginationTest extends BaseTestCase
     {
         static::assertConstructorVisibilityAndArguments(
             Pagination::class,
-            OopVisibilityType::IS_PUBLIC,
+            OopVisibility::Public,
             3,
-            2
+            2,
         );
     }
 
     /**
-     * @param int    $totalAmount
-     * @param int    $perPage
-     * @param int    $currentPage
+     * @param int $totalAmount
+     * @param int $perPage
+     * @param int $currentPage
      * @param string $expectedExceptionClass
      *
      * @dataProvider provideIncorrectParametersToCreate
@@ -241,7 +241,7 @@ class PaginationTest extends BaseTestCase
         int $totalAmount,
         int $perPage,
         int $currentPage,
-        string $expectedExceptionClass
+        string $expectedExceptionClass,
     ): void {
         $this->expectException($expectedExceptionClass);
         new Pagination($totalAmount, $perPage, $currentPage);
@@ -249,10 +249,10 @@ class PaginationTest extends BaseTestCase
 
     /**
      * @param string $description
-     * @param int    $expected
-     * @param int    $totalAmount
-     * @param int    $perPage
-     * @param int    $currentPage
+     * @param int $expected
+     * @param int $totalAmount
+     * @param int $perPage
+     * @param int $currentPage
      *
      * @dataProvider providePaginationToCurrentPage
      */
@@ -261,7 +261,7 @@ class PaginationTest extends BaseTestCase
         int $expected,
         int $totalAmount,
         int $perPage,
-        int $currentPage = 1
+        int $currentPage = 1,
     ): void {
         $pagination = new Pagination($totalAmount, $perPage, $currentPage);
         static::assertSame($pagination->getCurrentPage(), $expected, $description);
@@ -277,11 +277,11 @@ class PaginationTest extends BaseTestCase
 
     /**
      * @param string $description
-     * @param bool   $expected
-     * @param int    $page
-     * @param int    $totalAmount
-     * @param int    $perPage
-     * @param int    $currentPage
+     * @param bool $expected
+     * @param int $page
+     * @param int $totalAmount
+     * @param int $perPage
+     * @param int $currentPage
      *
      * @dataProvider providePaginationToValidatePageNumber
      */
@@ -291,7 +291,7 @@ class PaginationTest extends BaseTestCase
         int $page,
         int $totalAmount,
         int $perPage,
-        int $currentPage = 1
+        int $currentPage = 1,
     ): void {
         $pagination = new Pagination($totalAmount, $perPage, $currentPage);
         static::assertSame($pagination->isValidPage($page), $expected, $description);

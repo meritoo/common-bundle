@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace Meritoo\Test\CommonBundle\Exception\Service;
 
 use Generator;
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Test\Base\BaseTestCase;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Exception\Service\ApplicationService\UnreadableVersionFileException;
 
 /**
@@ -53,11 +53,15 @@ class UnreadableVersionFileExceptionTest extends BaseTestCase
 
     public function testConstructorVisibilityAndArguments(): void
     {
-        static::assertConstructorVisibilityAndArguments(UnreadableVersionFileException::class, OopVisibilityType::IS_PUBLIC, 3);
+        static::assertConstructorVisibilityAndArguments(
+            UnreadableVersionFileException::class,
+            OopVisibility::Public,
+            3,
+        );
     }
 
     /**
-     * @param string $filePath        Path of a file who contains version of the application
+     * @param string $filePath Path of a file who contains version of the application
      * @param string $expectedMessage Expected message of exception
      *
      * @dataProvider provideFilePathAndMessage

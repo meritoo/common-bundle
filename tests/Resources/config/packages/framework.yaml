@@ -1,7 +1,7 @@
 framework:
     ide: phpstorm
     secret: '%env(APP_SECRET)%'
-    default_locale: '%env(APP_DEFAULT_LOCALE)%'
+    default_locale: '%locale%'
     #csrf_protection: true
     #http_method_override: true
 

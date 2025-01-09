@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\DependencyInjection\ConfigurationFile;
 
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\DependencyInjection\ConfigurationFile\FileLoaderFactory;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Config\FileLocator;
@@ -37,9 +37,9 @@ class FileLoaderFactoryTest extends KernelTestCase
     {
         static::assertConstructorVisibilityAndArguments(
             FileLoaderFactory::class,
-            OopVisibilityType::IS_PUBLIC,
+            OopVisibility::Public,
             2,
-            2
+            2,
         );
     }
 

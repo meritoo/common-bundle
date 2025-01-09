@@ -17,8 +17,6 @@ meritoo_common:
         recommendation: Empfehlung
         resale_shop: Weiterverkauf
         directory: Verzeichnis
-        action: Aktion|Aktionen
-        error: Fehler|Fehler
         type: Art
         kind: Art
         locality: Lokalität
@@ -30,32 +28,21 @@ meritoo_common:
         here: Hier
         now: Jetzt
         right_now: Jetzt sofort
-        advantage: Vorteil|Vorteile
-        disadvantage: Nachteil|Nachteile
         new: Neu
         price: Preis
         price_amount: Betrag
         weight: Gewicht
         category: Kategorie
-        invitation: Einladung|Einladungen
         please: Bitte
         all:
             male: Jeder
             female: Alles
             neutral: Alles
-        ingredient: Zutat|Zutaten
-        picture: Bild|Bilder
-        photo: Foto|Fotos
-        certificate: Zertifikat|Zertifikate
         preview: Vorschau
         help: Hilfe
         account: Konto
         my_account: Mein Konto
-        message: Nachricht|Nachrichten
         history: Geschichte
-        day: Tag|Tage
-        month: Monat|Monate
-        year: Jahr|Jahre
         gallery: Galerie
         gallery_of_photos: Fotogalerie
         date: Datum
@@ -151,7 +138,5 @@ meritoo_common:
         account_balance: Kontostand
         transaction_history: Verlauf der Transaktionen
         transaction_date: Transaktionsdatum
-        transaction: Transaktion|Transaktionen
     pagination:
-        page: Seite|Seiten
         page_of_pages: Seite %page% von %pages%

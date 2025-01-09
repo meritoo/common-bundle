@@ -2,6 +2,33 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.4.0
+
+1. Support Symfony `5.4`
+2. Pluralization in
+   translations [using the ICU MessageFormat](https://symfony.com/doc/current/reference/formats/message_format.html#pluralization)
+3. Update the `meritoo/common-library` package to `^1.3`
+4. Fix PHPStan errors
+5. Bump minimum PHP version: `8.0` -> `8.2`
+   1. All the `*Type` classes, that extend `Meritoo\Common\Type\Base\BaseType` class, have been replaced by enumerations
+
+      | Before                                                                | After                                                   |
+      |-----------------------------------------------------------------------|---------------------------------------------------------|
+      | `Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType` | `Meritoo\CommonBundle\Enums\Date\ConfigurationFileType` |
+      | `Meritoo\CommonBundle\Type\Date\DateLength`                           | `Meritoo\CommonBundle\Enums\Date\DateLength`            |
+      | `Meritoo\Common\Type\OopVisibilityType`                               | `Meritoo\Common\Enums\OopVisibility`                    |
+
+   2. Other than that:
+      - The following classes have been removed as not needed anymore:
+        - `Meritoo\CommonBundle\Exception\Type\Date\UnknownDateLengthException`
+        - `Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfigurationFileTypeException`
+        - `Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\UnknownServicesFileType\Extension`
+
+# 0.3.1
+
+1. Create `Meritoo\CommonBundle\Traits\Test\Entity\EntityTestCaseTrait::dropDatabase()` method for removing whole
+   database in PHPUnit tests
+
 # 0.3.0
 
 1. Support PHP 8.0+

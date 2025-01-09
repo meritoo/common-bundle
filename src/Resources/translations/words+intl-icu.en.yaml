@@ -1,0 +1,79 @@
+meritoo_common:
+    general:
+        action: >-
+            {count, plural,
+                one     {Action}
+                other   {Actions}
+            }
+        error: >-
+            {count, plural,
+                one     {Error}
+                other   {Errors}
+            }
+        advantage: >-
+            {count, plural,
+                one     {Advantage}
+                other   {Advantages}
+            }
+        disadvantage: >-
+            {count, plural,
+                one     {Disadvantage}
+                other   {Disadvantages}
+            }
+        invitation: >-
+            {count, plural,
+                one     {Invitation}
+                other   {Invitations}
+            }
+        ingredient: >-
+            {count, plural,
+                one     {Ingredient}
+                other   {Ingredients}
+            }
+        picture: >-
+            {count, plural,
+                one     {Picture}
+                other   {Pictures}
+            }
+        photo: >-
+            {count, plural,
+                one     {Photo}
+                other   {Photos}
+            }
+        certificate: >-
+            {count, plural,
+                one     {Certificate}
+                other   {Certificates}
+            }
+        message: >-
+            {count, plural,
+                one     {Message}
+                other   {Messages}
+            }
+        day: >-
+            {count, plural,
+                one     {Day}
+                other   {Days}
+            }
+        month: >-
+            {count, plural,
+                one     {Month}
+                other   {Months}
+            }
+        year: >-
+            {count, plural,
+                one     {Year}
+                other   {Years}
+            }
+    finances:
+        transaction: >-
+            {count, plural,
+                one     {Transaction}
+                other   {Transactions}
+            }
+    pagination:
+        page: >-
+            {count, plural,
+                one     {Page}
+                other   {Pages}
+            }

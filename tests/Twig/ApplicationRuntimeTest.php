@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Twig;
 
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\Common\ValueObject\Version;
 use Meritoo\CommonBundle\Application\Descriptor;
 use Meritoo\CommonBundle\Exception\Service\ApplicationService\UnreadableVersionFileException;
@@ -38,9 +38,9 @@ class ApplicationRuntimeTest extends KernelTestCase
     {
         static::assertConstructorVisibilityAndArguments(
             ApplicationRuntime::class,
-            OopVisibilityType::IS_PUBLIC,
+            OopVisibility::Public,
             1,
-            1
+            1,
         );
     }
 
@@ -63,7 +63,7 @@ class ApplicationRuntimeTest extends KernelTestCase
         $expected = new Descriptor(
             'This is a Test',
             'Just for Testing',
-            new Version(1, 2, 0)
+            new Version(1, 2, 0),
         );
 
         static::assertEquals($expected, $this->applicationRuntime->getDescriptor());

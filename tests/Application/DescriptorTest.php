@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace Meritoo\Test\CommonBundle\Application;
 
 use Generator;
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Test\Base\BaseTestCase;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\Common\ValueObject\Version;
 use Meritoo\CommonBundle\Application\Descriptor;
 
@@ -127,7 +127,7 @@ class DescriptorTest extends BaseTestCase
             new Descriptor(
                 'Ultricies',
                 'Nullam quis risus eget urna mollis ornare vel eu leo',
-                new Version(10, 99, 73)
+                new Version(10, 99, 73),
             ),
             'Ultricies | Nullam quis risus eget urna mollis ornare vel eu leo | 10.99.73',
         ];
@@ -136,7 +136,7 @@ class DescriptorTest extends BaseTestCase
             new Descriptor(
                 '',
                 'Nullam quis risus eget urna mollis ornare vel eu leo',
-                new Version(10, 99, 73)
+                new Version(10, 99, 73),
             ),
             '- | Nullam quis risus eget urna mollis ornare vel eu leo | 10.99.73',
         ];
@@ -145,7 +145,7 @@ class DescriptorTest extends BaseTestCase
             new Descriptor(
                 '',
                 'Nullam quis risus eget urna mollis ornare vel eu leo',
-                new Version(10, 99, 73)
+                new Version(10, 99, 73),
             ),
             '- | Nullam quis risus eget urna mollis ornare vel eu leo | 10.99.73',
         ];
@@ -175,14 +175,14 @@ class DescriptorTest extends BaseTestCase
 
     public function testConstructor(): void
     {
-        static::assertConstructorVisibilityAndArguments(Descriptor::class, OopVisibilityType::IS_PUBLIC, 3, 3);
+        static::assertConstructorVisibilityAndArguments(Descriptor::class, OopVisibility::Public, 3, 3);
     }
 
     /**
-     * @param string       $name        Name of application
-     * @param string       $description Description of application
-     * @param null|Version $version     Version of application
-     * @param Descriptor   $expected    Expected descriptor of application
+     * @param string $name Name of application
+     * @param string $description Description of application
+     * @param null|Version $version Version of application
+     * @param Descriptor $expected Expected descriptor of application
      *
      * @dataProvider provideEmptyValuesForConstructor
      */
@@ -190,7 +190,7 @@ class DescriptorTest extends BaseTestCase
         string $name,
         string $description,
         ?Version $version,
-        Descriptor $expected
+        Descriptor $expected,
     ): void {
         $descriptor = new Descriptor($name, $description, $version);
         static::assertEquals($expected, $descriptor);
@@ -198,7 +198,7 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * @param Descriptor $descriptor Descriptor of application
-     * @param string     $expected   Expected description of application
+     * @param string $expected Expected description of application
      *
      * @dataProvider provideDescriptorAndDescription
      */
@@ -209,7 +209,7 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * @param Descriptor $descriptor Descriptor of application
-     * @param string     $expected   Expected name of application
+     * @param string $expected Expected name of application
      *
      * @dataProvider provideDescriptorAndName
      */
@@ -219,8 +219,8 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptor   $descriptor Descriptor of application
-     * @param null|Version $expected   Expected version of application
+     * @param Descriptor $descriptor Descriptor of application
+     * @param null|Version $expected Expected version of application
      *
      * @dataProvider provideDescriptorAndVersion
      */
@@ -231,13 +231,13 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * @param Descriptor $descriptor Descriptor of application
-     * @param string     $expected   Expected string representation of descriptor
+     * @param string $expected Expected string representation of descriptor
      *
      * @dataProvider provideDescriptorAsString
      * @covers       \Meritoo\CommonBundle\Application\Descriptor::__toString
      */
     public function testToString(Descriptor $descriptor, string $expected): void
     {
-        static::assertSame($expected, (string) $descriptor);
+        static::assertSame($expected, (string)$descriptor);
     }
 }

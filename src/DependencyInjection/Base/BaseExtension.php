@@ -13,7 +13,7 @@ namespace Meritoo\CommonBundle\DependencyInjection\Base;
 use Meritoo\Common\Utilities\Arrays;
 use Meritoo\Common\Utilities\Miscellaneous;
 use Meritoo\CommonBundle\DependencyInjection\ConfigurationFile\FileLoaderFactory;
-use Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType;
+use Meritoo\CommonBundle\Enums\Date\ConfigurationFileType;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -31,7 +31,7 @@ abstract class BaseExtension extends ConfigurableExtension
     /**
      * Default extension of configuration files
      *
-     * @var string
+     * @var ConfigurationFileType
      */
     protected const CONFIGURATION_DEFAULT_EXTENSION = ConfigurationFileType::YAML;
 
@@ -123,7 +123,7 @@ abstract class BaseExtension extends ConfigurableExtension
      */
     protected function getServicesFileName(): string
     {
-        return sprintf('%s.%s', static::CONFIGURATION_SERVICES_NAME, static::CONFIGURATION_DEFAULT_EXTENSION);
+        return sprintf('%s.%s', static::CONFIGURATION_SERVICES_NAME, static::CONFIGURATION_DEFAULT_EXTENSION->value);
     }
 
     /**
@@ -142,6 +142,7 @@ abstract class BaseExtension extends ConfigurableExtension
      * If the file name does not contain extension, default extension will be used (the ".yaml" extension).
      *
      * @param string $fileName Name of configuration file (with or without extension)
+     *
      * @return string
      */
     private function getConfigurationFileWithExtension(string $fileName): string
@@ -150,7 +151,7 @@ abstract class BaseExtension extends ConfigurableExtension
 
         // Use the default extension, if extension of configuration file is unknown
         if (empty($fileExtension)) {
-            return Miscellaneous::includeFileExtension($fileName, static::CONFIGURATION_DEFAULT_EXTENSION);
+            return Miscellaneous::includeFileExtension($fileName, static::CONFIGURATION_DEFAULT_EXTENSION->value);
         }
 
         return $fileName;
@@ -160,12 +161,16 @@ abstract class BaseExtension extends ConfigurableExtension
      * Returns loader of configuration file
      *
      * @param ContainerBuilder $container Container for the Dependency Injection (DI)
-     * @param FileLocator      $locator   Locator used to find files
-     * @param string           $fileType  Type of configuration file
+     * @param FileLocator $locator Locator used to find files
+     * @param ConfigurationFileType $fileType Type of configuration file
+     *
      * @return null|FileLoader
      */
-    private function getFileLoader(ContainerBuilder $container, FileLocator $locator, string $fileType): ?FileLoader
-    {
+    private function getFileLoader(
+        ContainerBuilder $container,
+        FileLocator $locator,
+        ConfigurationFileType $fileType,
+    ): ?FileLoader {
         $loaderFactory = new FileLoaderFactory($container, $locator);
 
         if (ConfigurationFileType::YAML === $fileType) {
@@ -220,8 +225,9 @@ abstract class BaseExtension extends ConfigurableExtension
      * Loads the configuration file
      *
      * @param ContainerBuilder $container Container for the Dependency Injection (DI)
-     * @param string           $fileName  Name of configuration file. If provided without extension, the default
-     *                                    extension of configuration files will be used.
+     * @param string $fileName Name of configuration file. If provided without extension, the default extension of
+     * configuration files will be used.
+     *
      * @return void
      */
     private function loadConfigurationFile(ContainerBuilder $container, string $fileName): void
@@ -233,15 +239,8 @@ abstract class BaseExtension extends ConfigurableExtension
             return;
         }
 
-        $resourcesPath = Miscellaneous::concatenatePaths([
-            $bundlePath,
-            static::CONFIGURATION_PATH,
-        ]);
-
-        $filePath = Miscellaneous::concatenatePaths([
-            $resourcesPath,
-            $fileName,
-        ]);
+        $resourcesPath = Miscellaneous::concatenatePaths($bundlePath, static::CONFIGURATION_PATH);
+        $filePath = Miscellaneous::concatenatePaths($resourcesPath, $fileName);
 
         // Configuration file doesn't exist or is not readable? Nothing to do
         if (!is_readable($filePath)) {
@@ -262,8 +261,9 @@ abstract class BaseExtension extends ConfigurableExtension
     /**
      * Loads parameters into container
      *
-     * @param array            $mergedConfig Custom configuration merged with defaults
-     * @param ContainerBuilder $container    Container for the Dependency Injection (DI)
+     * @param array $mergedConfig Custom configuration merged with defaults
+     * @param ContainerBuilder $container Container for the Dependency Injection (DI)
+     *
      * @return BaseExtension
      */
     private function loadParameters(array $mergedConfig, ContainerBuilder $container): BaseExtension
@@ -306,6 +306,7 @@ abstract class BaseExtension extends ConfigurableExtension
      * Loads services from configuration file (located in bundle's resources)
      *
      * @param ContainerBuilder $container Container for the Dependency Injection (DI)
+     *
      * @return void
      */
     private function loadServices(ContainerBuilder $container): void
@@ -321,6 +322,7 @@ abstract class BaseExtension extends ConfigurableExtension
      * Returns an array with key-value pairs, where key - name of parameter, value - value of parameter.
      *
      * @param array $mergedConfig Custom configuration merged with defaults
+     *
      * @return null|array
      */
     private function makeFlatConfig(array $mergedConfig): ?array
@@ -332,7 +334,7 @@ abstract class BaseExtension extends ConfigurableExtension
         // Merging standard with global keys and paths
         $stopIfMatchedBy = array_merge(
             Arrays::makeArray($keysToStop),
-            Arrays::makeArray($globalKeysToStop)
+            Arrays::makeArray($globalKeysToStop),
         );
 
         // Let's get the last elements' paths and load values into container
