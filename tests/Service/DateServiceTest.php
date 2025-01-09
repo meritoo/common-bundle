@@ -15,11 +15,10 @@ use DateTimeInterface;
 use DateTimeZone;
 use Generator;
 use IntlDateFormatter;
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
-use Meritoo\Common\Type\OopVisibilityType;
-use Meritoo\CommonBundle\Exception\Type\Date\UnknownDateLengthException;
+use Meritoo\CommonBundle\Enums\Date\DateLength;
 use Meritoo\CommonBundle\Service\DateService;
-use Meritoo\CommonBundle\Type\Date\DateLength;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -51,17 +50,17 @@ class DateServiceTest extends KernelTestCase
     public function provideDateFormatUsingDefaults(): Generator
     {
         yield [
-            DateLength::DATE,
+            DateLength::Date,
             'd.m.Y',
         ];
 
         yield [
-            DateLength::DATETIME,
+            DateLength::DateTime,
             'd.m.Y H:i',
         ];
 
         yield [
-            DateLength::TIME,
+            DateLength::Time,
             'H:i',
         ];
     }
@@ -74,17 +73,17 @@ class DateServiceTest extends KernelTestCase
     public function provideDateFormatUsingTestEnvironment(): Generator
     {
         yield [
-            DateLength::DATE,
+            DateLength::Date,
             'Y.m.d',
         ];
 
         yield [
-            DateLength::DATETIME,
+            DateLength::DateTime,
             'Y.m.d H:i:s',
         ];
 
         yield [
-            DateLength::TIME,
+            DateLength::Time,
             'H:i:s',
         ];
     }
@@ -103,73 +102,73 @@ class DateServiceTest extends KernelTestCase
 
         yield [
             new DateTime($date1, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATE,
+            DateLength::Date,
             '01.02.1900',
         ];
 
         yield [
             new DateTime($date2, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATE,
+            DateLength::Date,
             '15.10.2000',
         ];
 
         yield [
             new DateTime($date3, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATE,
+            DateLength::Date,
             '01.05.2100',
         ];
 
         yield [
             new DateTime($date4, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATE,
+            DateLength::Date,
             '01.08.2200',
         ];
 
         yield [
             new DateTime($date1, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATETIME,
+            DateLength::DateTime,
             '01.02.1900 08:25',
         ];
 
         yield [
             new DateTime($date2, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATETIME,
+            DateLength::DateTime,
             '15.10.2000 10:05',
         ];
 
         yield [
             new DateTime($date3, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATETIME,
+            DateLength::DateTime,
             '01.05.2100 00:00',
         ];
 
         yield [
             new DateTime($date4, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATETIME,
+            DateLength::DateTime,
             '01.08.2200 20:00',
         ];
 
         yield [
             new DateTime($date1, new DateTimeZone(static::TIMEZONE)),
-            DateLength::TIME,
+            DateLength::Time,
             '08:25',
         ];
 
         yield [
             new DateTime($date2, new DateTimeZone(static::TIMEZONE)),
-            DateLength::TIME,
+            DateLength::Time,
             '10:05',
         ];
 
         yield [
             new DateTime($date3, new DateTimeZone(static::TIMEZONE)),
-            DateLength::TIME,
+            DateLength::Time,
             '00:00',
         ];
 
         yield [
             new DateTime($date4, new DateTimeZone(static::TIMEZONE)),
-            DateLength::TIME,
+            DateLength::Time,
             '20:00',
         ];
     }
@@ -237,7 +236,7 @@ class DateServiceTest extends KernelTestCase
             IntlDateFormatter::SHORT,
             $locale,
             new DateTime($dateString, new DateTimeZone(static::TIMEZONE)),
-            '8:25 AM',
+            '8:25 AM',
         ];
 
         yield [
@@ -245,7 +244,7 @@ class DateServiceTest extends KernelTestCase
             IntlDateFormatter::MEDIUM,
             $locale,
             new DateTime($dateString, new DateTimeZone(static::TIMEZONE)),
-            '8:25:40 AM',
+            '8:25:40 AM',
         ];
 
 //
@@ -275,7 +274,7 @@ class DateServiceTest extends KernelTestCase
             IntlDateFormatter::SHORT,
             $locale,
             new DateTime($dateString, new DateTimeZone(static::TIMEZONE)),
-            'Feb 1, 1900, 8:25 AM',
+            'Feb 1, 1900, 8:25 AM',
         ];
 
         yield [
@@ -283,7 +282,7 @@ class DateServiceTest extends KernelTestCase
             IntlDateFormatter::MEDIUM,
             $locale,
             new DateTime($dateString, new DateTimeZone(static::TIMEZONE)),
-            'February 1, 1900 at 8:25:40 AM',
+            'February 1, 1900 at 8:25:40 AM',
         ];
     }
 
@@ -300,55 +299,55 @@ class DateServiceTest extends KernelTestCase
 
         yield [
             new DateTime($date1, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATE,
+            DateLength::Date,
             '1900.02.01',
         ];
 
         yield [
             new DateTime($date2, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATE,
+            DateLength::Date,
             '2000.10.15',
         ];
 
         yield [
             new DateTime($date3, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATE,
+            DateLength::Date,
             '2100.05.01',
         ];
 
         yield [
             new DateTime($date1, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATETIME,
+            DateLength::DateTime,
             '1900.02.01 08:25:40',
         ];
 
         yield [
             new DateTime($date2, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATETIME,
+            DateLength::DateTime,
             '2000.10.15 10:05:40',
         ];
 
         yield [
             new DateTime($date3, new DateTimeZone(static::TIMEZONE)),
-            DateLength::DATETIME,
+            DateLength::DateTime,
             '2100.05.01 00:00:00',
         ];
 
         yield [
             new DateTime($date1, new DateTimeZone(static::TIMEZONE)),
-            DateLength::TIME,
+            DateLength::Time,
             '08:25:40',
         ];
 
         yield [
             new DateTime($date2, new DateTimeZone(static::TIMEZONE)),
-            DateLength::TIME,
+            DateLength::Time,
             '10:05:40',
         ];
 
         yield [
             new DateTime($date3, new DateTimeZone(static::TIMEZONE)),
-            DateLength::TIME,
+            DateLength::Time,
             '00:00:00',
         ];
     }
@@ -385,7 +384,7 @@ class DateServiceTest extends KernelTestCase
     {
         static::assertConstructorVisibilityAndArguments(
             DateService::class,
-            OopVisibilityType::IS_PUBLIC,
+            OopVisibility::Public,
             3,
             3,
         );
@@ -393,14 +392,14 @@ class DateServiceTest extends KernelTestCase
 
     /**
      * @param DateTimeInterface $dateTime The date to format
-     * @param string $dateLength Type of date length
+     * @param DateLength $dateLength Type of date length
      * @param string $expected Expected date
      *
      * @dataProvider provideDateFormattedUsingDefaults
      */
     public function testFormatDateUsingDefaults(
         DateTimeInterface $dateTime,
-        string $dateLength,
+        DateLength $dateLength,
         string $expected,
     ): void {
         static::bootKernel([
@@ -483,38 +482,27 @@ class DateServiceTest extends KernelTestCase
 
     /**
      * @param DateTimeInterface $dateTime The date to format
-     * @param string $dateLength Type of date length
+     * @param DateLength $dateLength Type of date length
      * @param string $expected Expected date
      *
      * @dataProvider provideDateFormattedUsingTestEnvironment
      */
     public function testFormatDateUsingTestEnvironment(
         DateTimeInterface $dateTime,
-        string $dateLength,
+        DateLength $dateLength,
         string $expected,
     ): void {
         static::assertSame($expected, $this->dateService->formatDate($dateTime, $dateLength));
     }
 
     /**
-     * @param string $dateLength Unknown type of date length
-     *
-     * @dataProvider provideUnknownDateLength
-     */
-    public function testFormatDateUsingUnknownDateLength(string $dateLength): void
-    {
-        $this->expectException(UnknownDateLengthException::class);
-        $this->dateService->formatDate(new DateTime(), $dateLength);
-    }
-
-    /**
-     * @param string $dateLength Type of date length
+     * @param DateLength $dateLength Type of date length
      * @param string $expected Expected date format
      *
      * @dataProvider provideDateFormatUsingDefaults
      */
     public function testGetFormatUsingDefaults(
-        string $dateLength,
+        DateLength $dateLength,
         string $expected,
     ): void {
         static::bootKernel([
@@ -530,27 +518,16 @@ class DateServiceTest extends KernelTestCase
     }
 
     /**
-     * @param string $dateLength Type of date length
+     * @param DateLength $dateLength Type of date length
      * @param string $expected Expected date format
      *
      * @dataProvider provideDateFormatUsingTestEnvironment
      */
     public function testGetFormatUsingTestEnvironment(
-        string $dateLength,
+        DateLength $dateLength,
         string $expected,
     ): void {
         static::assertSame($expected, $this->dateService->getFormat($dateLength));
-    }
-
-    /**
-     * @param string $dateLength Unknown type of date length
-     *
-     * @dataProvider provideUnknownDateLength
-     */
-    public function testGetFormatUsingUnknownDateLength(string $dateLength): void
-    {
-        $this->expectException(UnknownDateLengthException::class);
-        $this->dateService->getFormat($dateLength);
     }
 
     /**

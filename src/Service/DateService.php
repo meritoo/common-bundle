@@ -13,9 +13,8 @@ namespace Meritoo\CommonBundle\Service;
 use DateTimeInterface;
 use Exception;
 use IntlDateFormatter;
-use Meritoo\CommonBundle\Exception\Type\Date\UnknownDateLengthException;
+use Meritoo\CommonBundle\Enums\Date\DateLength;
 use Meritoo\CommonBundle\Service\Base\BaseService;
-use Meritoo\CommonBundle\Type\Date\DateLength;
 
 /**
  * Serves dates
@@ -64,11 +63,11 @@ class DateService extends BaseService
      * Returns date formatted according to given length of date
      *
      * @param DateTimeInterface $dateTime The date to format
-     * @param string $dateLength Type of date length. One of the DateLength's class constants.
+     * @param DateLength $dateLength Type of date length
      *
      * @return string
      */
-    public function formatDate(DateTimeInterface $dateTime, string $dateLength): string
+    public function formatDate(DateTimeInterface $dateTime, DateLength $dateLength): string
     {
         $format = $this->getFormat($dateLength);
 
@@ -103,30 +102,24 @@ class DateService extends BaseService
     /**
      * Returns format of date according to given length of date
      *
-     * @param string $dateLength Type of date length. One of the DateLength's class constants.
+     * @param DateLength $dateLength Type of date length
      *
-     * @throws UnknownDateLengthException
      * @return string
      */
-    public function getFormat(string $dateLength): string
+    public function getFormat(DateLength $dateLength): string
     {
-        // Oops, unknown length of date
-        if (false === (new DateLength())->isCorrectType($dateLength)) {
-            throw UnknownDateLengthException::createException($dateLength);
-        }
-
         $format = '';
 
         switch ($dateLength) {
-            case DateLength::DATE:
+            case DateLength::Date:
                 $format = $this->dateFormat;
 
                 break;
-            case DateLength::DATETIME:
+            case DateLength::DateTime:
                 $format = $this->dateTimeFormat;
 
                 break;
-            case DateLength::TIME:
+            case DateLength::Time:
                 $format = $this->timeFormat;
 
                 break;

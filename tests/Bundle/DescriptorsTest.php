@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace Meritoo\Test\CommonBundle\Bundle;
 
 use Generator;
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Test\Base\BaseTestCase;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Bundle\Descriptor;
 use Meritoo\CommonBundle\Bundle\Descriptors;
 
@@ -51,8 +51,8 @@ class DescriptorsTest extends BaseTestCase
                 '',
                 new Descriptor(
                     'Vulputate',
-                    'Dolor'
-                )
+                    'Dolor',
+                ),
             ),
         ]);
 
@@ -128,8 +128,8 @@ class DescriptorsTest extends BaseTestCase
                     '',
                     new Descriptor(
                         'Vulputate',
-                        'Dolor'
-                    )
+                        'Dolor',
+                    ),
                 ),
             ]),
         ];
@@ -202,12 +202,12 @@ class DescriptorsTest extends BaseTestCase
                 new Descriptor(
                     'MattisBundle',
                     '',
-                    'Euismod\Egestas\Mattis'
+                    'Euismod\Egestas\Mattis',
                 ),
                 new Descriptor(
                     'VehiculaBundle',
                     'ipsummattis',
-                    'Vestibulum\Amet\Vehicula'
+                    'Vestibulum\Amet\Vehicula',
                 ),
             ]),
             [
@@ -277,19 +277,19 @@ class DescriptorsTest extends BaseTestCase
                 new Descriptor(
                     'MattisBundle',
                     '',
-                    'Euismod\Egestas\Mattis'
+                    'Euismod\Egestas\Mattis',
                 ),
                 new Descriptor(
                     'VehiculaBundle',
                     'ipsummattis',
-                    'Vestibulum\Amet\Vehicula'
+                    'Vestibulum\Amet\Vehicula',
                 ),
             ]),
             'Vestibulum\Amet\Vehicula\Egestas',
             new Descriptor(
                 'VehiculaBundle',
                 'ipsummattis',
-                'Vestibulum\Amet\Vehicula'
+                'Vestibulum\Amet\Vehicula',
             ),
         ];
 
@@ -298,12 +298,12 @@ class DescriptorsTest extends BaseTestCase
                 new Descriptor(
                     'MattisBundle',
                     '',
-                    'Euismod\Egestas\Mattis'
+                    'Euismod\Egestas\Mattis',
                 ),
                 new Descriptor(
                     'VehiculaBundle',
                     'ipsummattis',
-                    'Vestibulum\Amet\Vehicula'
+                    'Vestibulum\Amet\Vehicula',
                 ),
                 new Descriptor(
                     'SollicitudinBundle',
@@ -313,8 +313,8 @@ class DescriptorsTest extends BaseTestCase
                     new Descriptor(
                         'SemBundle',
                         '',
-                        'Fringilla\Quam\Mollis'
-                    )
+                        'Fringilla\Quam\Mollis',
+                    ),
                 ),
             ]),
             'Cras\Risus\Amet\Vehicula\Egestas',
@@ -326,8 +326,8 @@ class DescriptorsTest extends BaseTestCase
                 new Descriptor(
                     'SemBundle',
                     '',
-                    'Fringilla\Quam\Mollis'
-                )
+                    'Fringilla\Quam\Mollis',
+                ),
             ),
         ];
     }
@@ -344,19 +344,19 @@ class DescriptorsTest extends BaseTestCase
                 new Descriptor(
                     'MattisBundle',
                     '',
-                    'Euismod\Egestas\Mattis'
+                    'Euismod\Egestas\Mattis',
                 ),
                 new Descriptor(
                     'VehiculaBundle',
                     'ipsummattis',
-                    'Vestibulum\Amet\Vehicula'
+                    'Vestibulum\Amet\Vehicula',
                 ),
             ]),
             'VehiculaBundle',
             new Descriptor(
                 'VehiculaBundle',
                 'ipsummattis',
-                'Vestibulum\Amet\Vehicula'
+                'Vestibulum\Amet\Vehicula',
             ),
         ];
 
@@ -365,12 +365,12 @@ class DescriptorsTest extends BaseTestCase
                 new Descriptor(
                     'MattisBundle',
                     '',
-                    'Euismod\Egestas\Mattis'
+                    'Euismod\Egestas\Mattis',
                 ),
                 new Descriptor(
                     'VehiculaBundle',
                     'ipsummattis',
-                    'Vestibulum\Amet\Vehicula'
+                    'Vestibulum\Amet\Vehicula',
                 ),
                 new Descriptor(
                     'SollicitudinBundle',
@@ -380,8 +380,8 @@ class DescriptorsTest extends BaseTestCase
                     new Descriptor(
                         'SemBundle',
                         '',
-                        'Fringilla\Quam\Mollis'
-                    )
+                        'Fringilla\Quam\Mollis',
+                    ),
                 ),
             ]),
             'SollicitudinBundle',
@@ -393,8 +393,8 @@ class DescriptorsTest extends BaseTestCase
                 new Descriptor(
                     'SemBundle',
                     '',
-                    'Fringilla\Quam\Mollis'
-                )
+                    'Fringilla\Quam\Mollis',
+                ),
             ),
         ];
     }
@@ -423,12 +423,12 @@ class DescriptorsTest extends BaseTestCase
                 new Descriptor(
                     'MattisBundle',
                     '',
-                    'Euismod\Egestas\Mattis'
+                    'Euismod\Egestas\Mattis',
                 ),
                 new Descriptor(
                     'VehiculaBundle',
                     'ipsummattis',
-                    'Vestibulum\Amet\Vehicula'
+                    'Vestibulum\Amet\Vehicula',
                 ),
             ]),
             'Vulputate\Commodo\Egestas',
@@ -440,12 +440,12 @@ class DescriptorsTest extends BaseTestCase
                 new Descriptor(
                     'MattisBundle',
                     '',
-                    'Euismod\Egestas\Mattis'
+                    'Euismod\Egestas\Mattis',
                 ),
                 new Descriptor(
                     'VehiculaBundle',
                     'ipsummattis',
-                    'Vestibulum\Amet\Vehicula'
+                    'Vestibulum\Amet\Vehicula',
                 ),
             ]),
             'Vulputate\Commodo\Egestas',
@@ -477,12 +477,12 @@ class DescriptorsTest extends BaseTestCase
                 new Descriptor(
                     'MattisBundle',
                     '',
-                    'Euismod\Egestas\Mattis'
+                    'Euismod\Egestas\Mattis',
                 ),
                 new Descriptor(
                     'VehiculaBundle',
                     'ipsummattis',
-                    'Vestibulum\Amet\Vehicula'
+                    'Vestibulum\Amet\Vehicula',
                 ),
             ]),
             'CommodoBundle',
@@ -494,12 +494,12 @@ class DescriptorsTest extends BaseTestCase
                 new Descriptor(
                     'MattisBundle',
                     '',
-                    'Euismod\Egestas\Mattis'
+                    'Euismod\Egestas\Mattis',
                 ),
                 new Descriptor(
                     'VehiculaBundle',
                     'ipsummattis',
-                    'Vestibulum\Amet\Vehicula'
+                    'Vestibulum\Amet\Vehicula',
                 ),
             ]),
             'EgestasBundle',
@@ -509,11 +509,11 @@ class DescriptorsTest extends BaseTestCase
 
     public function testConstructor(): void
     {
-        static::assertConstructorVisibilityAndArguments(Descriptors::class, OopVisibilityType::IS_PUBLIC, 1);
+        static::assertConstructorVisibilityAndArguments(Descriptors::class, OopVisibility::Public, 1);
     }
 
     /**
-     * @param array       $data     Data of descriptors
+     * @param array $data Data of descriptors
      * @param Descriptors $expected Expected descriptors
      *
      * @dataProvider provideArrayForDescriptors
@@ -525,9 +525,9 @@ class DescriptorsTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptors $descriptors    Descriptors of bundles
-     * @param string      $classNamespace Namespace of class for which descriptor of bundle should be returned
-     * @param Descriptor  $expected       Expected descriptor
+     * @param Descriptors $descriptors Descriptors of bundles
+     * @param string $classNamespace Namespace of class for which descriptor of bundle should be returned
+     * @param Descriptor $expected Expected descriptor
      *
      * @dataProvider provideDescriptorAndClassNamespace
      */
@@ -546,22 +546,22 @@ class DescriptorsTest extends BaseTestCase
         if (null !== $expected->getParentBundleDescriptor()) {
             static::assertSame(
                 $expected->getParentBundleDescriptor()->toArray(),
-                $descriptor->getParentBundleDescriptor()->toArray()
+                $descriptor->getParentBundleDescriptor()->toArray(),
             );
         }
 
         if (null !== $expected->getChildBundleDescriptor()) {
             static::assertSame(
                 $expected->getChildBundleDescriptor()->toArray(),
-                $descriptor->getChildBundleDescriptor()->toArray()
+                $descriptor->getChildBundleDescriptor()->toArray(),
             );
         }
     }
 
     /**
      * @param Descriptors $descriptors Descriptors of bundles
-     * @param string      $bundleName  Name of bundle which descriptor should be returned
-     * @param Descriptor  $expected    Expected descriptor
+     * @param string $bundleName Name of bundle which descriptor should be returned
+     * @param Descriptor $expected Expected descriptor
      *
      * @dataProvider provideDescriptorAndName
      */
@@ -580,21 +580,21 @@ class DescriptorsTest extends BaseTestCase
         if (null !== $expected->getParentBundleDescriptor()) {
             static::assertSame(
                 $expected->getParentBundleDescriptor()->toArray(),
-                $descriptor->getParentBundleDescriptor()->toArray()
+                $descriptor->getParentBundleDescriptor()->toArray(),
             );
         }
 
         if (null !== $expected->getChildBundleDescriptor()) {
             static::assertSame(
                 $expected->getChildBundleDescriptor()->toArray(),
-                $descriptor->getChildBundleDescriptor()->toArray()
+                $descriptor->getChildBundleDescriptor()->toArray(),
             );
         }
     }
 
     /**
      * @param Descriptors $descriptors Descriptors of bundles
-     * @param string      $bundleName  Name of bundle which descriptor should be returned
+     * @param string $bundleName Name of bundle which descriptor should be returned
      *
      * @dataProvider provideNotExistingDescriptorAndName
      */
@@ -604,8 +604,8 @@ class DescriptorsTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptors $descriptors    Descriptors of bundles
-     * @param string      $classNamespace Namespace of class for which descriptor of bundle should be returned
+     * @param Descriptors $descriptors Descriptors of bundles
+     * @param string $classNamespace Namespace of class for which descriptor of bundle should be returned
      *
      * @dataProvider provideNotExistingDescriptorAndClassNamespace
      */
@@ -616,7 +616,7 @@ class DescriptorsTest extends BaseTestCase
 
     /**
      * @param Descriptors $descriptors Descriptors of bundles
-     * @param array       $expected    Expected array
+     * @param array $expected Expected array
      *
      * @dataProvider provideArrayFromDescriptors
      */

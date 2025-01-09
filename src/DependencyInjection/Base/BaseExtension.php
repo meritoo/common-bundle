@@ -13,7 +13,7 @@ namespace Meritoo\CommonBundle\DependencyInjection\Base;
 use Meritoo\Common\Utilities\Arrays;
 use Meritoo\Common\Utilities\Miscellaneous;
 use Meritoo\CommonBundle\DependencyInjection\ConfigurationFile\FileLoaderFactory;
-use Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType;
+use Meritoo\CommonBundle\Enums\Date\ConfigurationFileType;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -31,7 +31,7 @@ abstract class BaseExtension extends ConfigurableExtension
     /**
      * Default extension of configuration files
      *
-     * @var string
+     * @var ConfigurationFileType
      */
     protected const CONFIGURATION_DEFAULT_EXTENSION = ConfigurationFileType::YAML;
 
@@ -123,7 +123,7 @@ abstract class BaseExtension extends ConfigurableExtension
      */
     protected function getServicesFileName(): string
     {
-        return sprintf('%s.%s', static::CONFIGURATION_SERVICES_NAME, static::CONFIGURATION_DEFAULT_EXTENSION);
+        return sprintf('%s.%s', static::CONFIGURATION_SERVICES_NAME, static::CONFIGURATION_DEFAULT_EXTENSION->value);
     }
 
     /**
@@ -151,7 +151,7 @@ abstract class BaseExtension extends ConfigurableExtension
 
         // Use the default extension, if extension of configuration file is unknown
         if (empty($fileExtension)) {
-            return Miscellaneous::includeFileExtension($fileName, static::CONFIGURATION_DEFAULT_EXTENSION);
+            return Miscellaneous::includeFileExtension($fileName, static::CONFIGURATION_DEFAULT_EXTENSION->value);
         }
 
         return $fileName;
@@ -162,12 +162,15 @@ abstract class BaseExtension extends ConfigurableExtension
      *
      * @param ContainerBuilder $container Container for the Dependency Injection (DI)
      * @param FileLocator $locator Locator used to find files
-     * @param string $fileType Type of configuration file
+     * @param ConfigurationFileType $fileType Type of configuration file
      *
      * @return null|FileLoader
      */
-    private function getFileLoader(ContainerBuilder $container, FileLocator $locator, string $fileType): ?FileLoader
-    {
+    private function getFileLoader(
+        ContainerBuilder $container,
+        FileLocator $locator,
+        ConfigurationFileType $fileType,
+    ): ?FileLoader {
         $loaderFactory = new FileLoaderFactory($container, $locator);
 
         if (ConfigurationFileType::YAML === $fileType) {
@@ -236,22 +239,15 @@ abstract class BaseExtension extends ConfigurableExtension
             return;
         }
 
-        $resourcesPath = Miscellaneous::concatenatePaths([
-            $bundlePath,
-            static::CONFIGURATION_PATH,
-        ]);
-
-        $filePath = Miscellaneous::concatenatePaths([
-            $resourcesPath,
-            $fileName,
-        ]);
+        $resourcesPath = Miscellaneous::concatenatePaths($bundlePath, static::CONFIGURATION_PATH);
+        $filePath = Miscellaneous::concatenatePaths($resourcesPath, $fileName);
 
         // Configuration file doesn't exist or is not readable? Nothing to do
         if (!is_readable($filePath)) {
             return;
         }
 
-        $fileType = (new ConfigurationFileType())->getTypeFromFileName($fileName);
+        $fileType = ConfigurationFileType::getTypeFromFileName($fileName);
         $locator = new FileLocator($resourcesPath);
 
         // Let's load the configuration file

@@ -9,6 +9,20 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
    translations [using the ICU MessageFormat](https://symfony.com/doc/current/reference/formats/message_format.html#pluralization)
 3. Update the `meritoo/common-library` package to `^1.3`
 4. Fix PHPStan errors
+5. Bump minimum PHP version: `8.0` -> `8.2`
+   1. All the `*Type` classes, that extend `Meritoo\Common\Type\Base\BaseType` class, have been replaced by enumerations
+
+      | Before                                                                | After                                                   |
+      |-----------------------------------------------------------------------|---------------------------------------------------------|
+      | `Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType` | `Meritoo\CommonBundle\Enums\Date\ConfigurationFileType` |
+      | `Meritoo\CommonBundle\Type\Date\DateLength`                           | `Meritoo\CommonBundle\Enums\Date\DateLength`            |
+      | `Meritoo\Common\Type\OopVisibilityType`                               | `Meritoo\Common\Enums\OopVisibility`                    |
+
+   2. Other than that:
+      - The following classes have been removed as not needed anymore:
+        - `Meritoo\CommonBundle\Exception\Type\Date\UnknownDateLengthException`
+        - `Meritoo\CommonBundle\Exception\Type\DependencyInjection\UnknownConfigurationFileTypeException`
+        - `Meritoo\Test\CommonBundle\DependencyInjection\Base\BaseExtension\UnknownServicesFileType\Extension`
 
 # 0.3.1
 

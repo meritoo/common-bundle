@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Exception\Controller\BaseController;
 
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Test\Base\BaseTestCase;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Contract\Service\RequestServiceInterface;
 use Meritoo\CommonBundle\Exception\Controller\BaseController\CannotRedirectToEmptyRefererUrlException;
 
@@ -30,8 +30,8 @@ class CannotRedirectToEmptyRefererUrlExceptionTest extends BaseTestCase
     {
         static::assertConstructorVisibilityAndArguments(
             CannotRedirectToEmptyRefererUrlException::class,
-            OopVisibilityType::IS_PUBLIC,
-            3
+            OopVisibility::Public,
+            3,
         );
     }
 

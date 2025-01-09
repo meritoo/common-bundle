@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace Meritoo\Test\CommonBundle\Service;
 
 use Generator;
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\Common\Utilities\Reflection;
 use Meritoo\CommonBundle\Contract\Service\PaginationServiceInterface;
 use Meritoo\CommonBundle\Exception\Pagination\MissingPerPageAmountException;
@@ -79,9 +79,9 @@ class PaginationServiceTest extends KernelTestCase
     {
         static::assertConstructorVisibilityAndArguments(
             PaginationService::class,
-            OopVisibilityType::IS_PUBLIC,
+            OopVisibility::Public,
             5,
-            2
+            2,
         );
     }
 
