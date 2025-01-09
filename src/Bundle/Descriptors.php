@@ -25,11 +25,12 @@ class Descriptors extends BaseCollection
      * Returns the descriptors created from given data
      *
      * @param array $data Data of descriptors
+     *
      * @return Descriptors
      */
     public static function fromArray(array $data): Descriptors
     {
-        $result = new static();
+        $result = new self();
 
         if (!empty($data)) {
             $descriptors = [];
@@ -48,6 +49,7 @@ class Descriptors extends BaseCollection
      * Returns descriptor of bundle that contains given class
      *
      * @param string $classNamespace Namespace of class for which descriptor of bundle should be returned
+     *
      * @return null|Descriptor
      */
     public function getDescriptor(string $classNamespace): ?Descriptor
@@ -81,6 +83,7 @@ class Descriptors extends BaseCollection
      * Returns descriptor of bundle with given name
      *
      * @param string $bundleName Name of bundle who descriptor should be returned
+     *
      * @return null|Descriptor
      */
     public function getDescriptorByName(string $bundleName): ?Descriptor

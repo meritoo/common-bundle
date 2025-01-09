@@ -24,6 +24,7 @@ class UnreadableVersionFileException extends RuntimeException
      * Creates exception
      *
      * @param string $filePath Path of a file who contains version of the application
+     *
      * @return UnreadableVersionFileException
      */
     public static function create(string $filePath): UnreadableVersionFileException
@@ -31,6 +32,6 @@ class UnreadableVersionFileException extends RuntimeException
         $template = 'File %s, who contains version of the application, is not readable. Does the file exist?';
         $message = sprintf($template, $filePath);
 
-        return new static($message);
+        return new self($message);
     }
 }

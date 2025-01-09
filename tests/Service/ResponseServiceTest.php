@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace Meritoo\Test\CommonBundle\Service;
 
 use Generator;
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Service\ResponseService;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -60,17 +60,17 @@ class ResponseServiceTest extends KernelTestCase
     {
         static::assertConstructorVisibilityAndArguments(
             ResponseService::class,
-            OopVisibilityType::IS_PUBLIC,
+            OopVisibility::Public,
             1,
-            1
+            1,
         );
     }
 
     /**
-     * @param string           $routeName       The name of the route. Used to build url used for redirection.
-     * @param array            $routeParameters An array of parameters. Used to build url used for redirection.
-     * @param string           $url             Url that should be generated and used for redirection
-     * @param RedirectResponse $expected        Expected instance of RedirectResponse
+     * @param string $routeName The name of the route. Used to build url used for redirection.
+     * @param array $routeParameters An array of parameters. Used to build url used for redirection.
+     * @param string $url Url that should be generated and used for redirection
+     * @param RedirectResponse $expected Expected instance of RedirectResponse
      *
      * @dataProvider provideRouteDetailsForRedirectResponse
      */
@@ -78,11 +78,12 @@ class ResponseServiceTest extends KernelTestCase
         string $routeName,
         array $routeParameters,
         string $url,
-        RedirectResponse $expected
+        RedirectResponse $expected,
     ): void {
         $redirectResponse = $this
             ->getResponseService($routeName, $routeParameters, $url)
-            ->getRedirectResponse($routeName, $routeParameters);
+            ->getRedirectResponse($routeName, $routeParameters)
+        ;
 
         static::assertSame($expected->getTargetUrl(), $redirectResponse->getTargetUrl());
         static::assertSame($expected->getContent(), $redirectResponse->getContent());
@@ -103,9 +104,10 @@ class ResponseServiceTest extends KernelTestCase
     /**
      * Returns instance of ResponseService with all related and mocked instances
      *
-     * @param string $routeName       The name of the route. Used to build url used for redirection.
-     * @param array  $routeParameters An array of parameters. Used to build url used for redirection.
-     * @param string $url             Url that should be generated and used for redirection
+     * @param string $routeName The name of the route. Used to build url used for redirection.
+     * @param array $routeParameters An array of parameters. Used to build url used for redirection.
+     * @param string $url Url that should be generated and used for redirection
+     *
      * @return ResponseService
      */
     private function getResponseService(string $routeName, array $routeParameters, string $url): ResponseService

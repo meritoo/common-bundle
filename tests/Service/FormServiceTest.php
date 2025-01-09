@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace Meritoo\Test\CommonBundle\Service;
 
 use Generator;
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Traits\Test\Base\BaseTestCaseTrait;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Contract\Service\FormServiceInterface;
 use Meritoo\CommonBundle\Service\FormService;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -94,7 +94,7 @@ class FormServiceTest extends KernelTestCase
 
     /**
      * @param array $existingOptions Existing options
-     * @param array $expected        Expected options
+     * @param array $expected Expected options
      *
      * @dataProvider provideExistingFormOptionsCustomConfiguration
      */
@@ -114,7 +114,7 @@ class FormServiceTest extends KernelTestCase
 
     /**
      * @param array $existingOptions Existing options
-     * @param array $expected        Expected options
+     * @param array $expected Expected options
      *
      * @dataProvider provideExistingFormOptionsUsingDefaults
      */
@@ -128,9 +128,9 @@ class FormServiceTest extends KernelTestCase
     {
         static::assertConstructorVisibilityAndArguments(
             FormService::class,
-            OopVisibilityType::IS_PUBLIC,
+            OopVisibility::Public,
             1,
-            1
+            1,
         );
     }
 

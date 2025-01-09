@@ -33,6 +33,6 @@ class CannotRedirectToEmptyRefererUrlException extends RuntimeException
 
         $message = sprintf($template, RequestServiceInterface::class, 'storeRefererUrl');
 
-        return new static($message);
+        return new self($message);
     }
 }

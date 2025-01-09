@@ -17,8 +17,6 @@ meritoo_common:
         recommendation: Rekomendacja
         resale_shop: Komis
         directory: Katalog
-        action: Akcja|Akcje
-        error: Błąd|Błędy
         type: Typ
         kind: Rodzaj
         locality: Miejscowość
@@ -30,32 +28,21 @@ meritoo_common:
         here: Tutaj
         now: Teraz
         right_now: Teraz
-        advantage: Zaleta|Zalety
-        disadvantage: Wada|Wady
         new: Nowy
         price: Cena
         price_amount: Kwota
         weight: Waga
         category: Kategoria
-        invitation: '{0}Zaproszeń|{1}Zaproszenie|[2,4]Zaproszenia|[5,20]Zaproszeń'
         please: Proszę
         all:
             male: Wszyscy
             female: Wszystkie
             neutral: Wszystko
-        ingredient: Składnik|Składniki
-        picture: Obrazek|Obrazki
-        photo: Zdjęcie|Zdjęcia
-        certificate: Certyfikat|Certyfikaty
         preview: Podgląd
         help: Pomoc
         account: Konto
         my_account: Moje konto
-        message: Wiadomość|Wiadomości
         history: Historia
-        day: Dzień|Dni
-        month: Miesiąc|Miesiące
-        year: Rok|Lata
         gallery: Galeria
         gallery_of_photos: Galeria zdjęciowa
         date: Data
@@ -151,7 +138,5 @@ meritoo_common:
         account_balance: Saldo konta
         transaction_history: Historia transakcji
         transaction_date: Data transakcji
-        transaction: Transakcja|Transakcje
     pagination:
-        page: Strona|Strony
         page_of_pages: Strona %page% z %pages%

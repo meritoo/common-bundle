@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Meritoo\Test\CommonBundle\Exception\Pagination;
 
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Test\Base\BaseTestCase;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Exception\ValueObject\Pagination\IncorrectCurrentPageException;
 
 /**
@@ -23,9 +23,9 @@ class IncorrectCurrentPageExceptionTest extends BaseTestCase
     {
         static::assertConstructorVisibilityAndArguments(
             IncorrectCurrentPageException::class,
-            OopVisibilityType::IS_PUBLIC,
+            OopVisibility::Public,
             1,
-            1
+            1,
         );
     }
 
@@ -36,7 +36,7 @@ class IncorrectCurrentPageExceptionTest extends BaseTestCase
         static::assertSame(
             'The \'current page\' parameter of pagination should be greater than 0, but 0 was provided. Is there'
             .' everything ok?',
-            $exception->getMessage()
+            $exception->getMessage(),
         );
     }
 }

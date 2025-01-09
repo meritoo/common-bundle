@@ -12,8 +12,8 @@ namespace Meritoo\Test\CommonBundle\Bundle;
 
 use Generator;
 use Meritoo\Common\Collection\StringCollection;
+use Meritoo\Common\Enums\OopVisibility;
 use Meritoo\Common\Test\Base\BaseTestCase;
-use Meritoo\Common\Type\OopVisibilityType;
 use Meritoo\CommonBundle\Bundle\Descriptor;
 use Meritoo\Test\CommonBundle\Bundle\Descriptor\SimpleBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -92,8 +92,8 @@ class DescriptorTest extends BaseTestCase
                 '',
                 new Descriptor(
                     'Vulputate',
-                    'Dolor'
-                )
+                    'Dolor',
+                ),
             ),
         ];
 
@@ -114,8 +114,8 @@ class DescriptorTest extends BaseTestCase
                 null,
                 new Descriptor(
                     'Euismod',
-                    'Quam'
-                )
+                    'Quam',
+                ),
             ),
         ];
 
@@ -142,13 +142,13 @@ class DescriptorTest extends BaseTestCase
                 'pellentesque/tortor/ultricies/quam',
                 new Descriptor(
                     'Venenatis',
-                    'Sem'
+                    'Sem',
                 ),
                 new Descriptor(
                     'Adipiscing',
                     'Etiam',
-                    'Ornare\Malesuada\Venenatis\Consectetur'
-                )
+                    'Ornare\Malesuada\Venenatis\Consectetur',
+                ),
             ),
         ];
     }
@@ -191,7 +191,7 @@ class DescriptorTest extends BaseTestCase
                 'PortaCommodoBundle',
                 'Commodo',
                 'Porta\CommodoBundle',
-                'etiam/risus/parturient'
+                'etiam/risus/parturient',
             ),
             true,
             [
@@ -209,7 +209,7 @@ class DescriptorTest extends BaseTestCase
                 'PortaCommodoBundle',
                 'Commodo',
                 'Porta\CommodoBundle',
-                'etiam/risus/parturient'
+                'etiam/risus/parturient',
             ),
             false,
             [
@@ -228,7 +228,7 @@ class DescriptorTest extends BaseTestCase
                 'Commodo',
                 'Porta\CommodoBundle',
                 'etiam/risus/parturient',
-                new Descriptor()
+                new Descriptor(),
             ),
             true,
             [
@@ -255,7 +255,7 @@ class DescriptorTest extends BaseTestCase
                 'Commodo',
                 'Porta\CommodoBundle',
                 'etiam/risus/parturient',
-                new Descriptor()
+                new Descriptor(),
             ),
             false,
             [
@@ -275,7 +275,7 @@ class DescriptorTest extends BaseTestCase
                 'Porta\CommodoBundle',
                 'etiam/risus/parturient',
                 null,
-                new Descriptor()
+                new Descriptor(),
             ),
             true,
             [
@@ -303,7 +303,7 @@ class DescriptorTest extends BaseTestCase
                 'Porta\CommodoBundle',
                 'etiam/risus/parturient',
                 null,
-                new Descriptor()
+                new Descriptor(),
             ),
             false,
             [
@@ -323,7 +323,7 @@ class DescriptorTest extends BaseTestCase
                 'Porta\CommodoBundle',
                 'etiam/risus/parturient',
                 new Descriptor(),
-                new Descriptor()
+                new Descriptor(),
             ),
             true,
             [
@@ -359,7 +359,7 @@ class DescriptorTest extends BaseTestCase
                 'Porta\CommodoBundle',
                 'etiam/risus/parturient',
                 new Descriptor(),
-                new Descriptor()
+                new Descriptor(),
             ),
             false,
             [
@@ -382,9 +382,9 @@ class DescriptorTest extends BaseTestCase
                     'OrnareEgestasBundle',
                     'Ornare',
                     'Ornare\EgestasBundle',
-                    'condimentum/fusce/risus'
+                    'condimentum/fusce/risus',
                 ),
-                new Descriptor()
+                new Descriptor(),
             ),
             true,
             [
@@ -423,9 +423,9 @@ class DescriptorTest extends BaseTestCase
                     'OrnareEgestasBundle',
                     'Ornare',
                     'Ornare\EgestasBundle',
-                    'condimentum/fusce/risus'
+                    'condimentum/fusce/risus',
                 ),
-                new Descriptor()
+                new Descriptor(),
             ),
             false,
             [
@@ -448,14 +448,14 @@ class DescriptorTest extends BaseTestCase
                     'OrnareEgestasBundle',
                     'Ornare',
                     'Ornare\EgestasBundle',
-                    'condimentum/fusce/risus'
+                    'condimentum/fusce/risus',
                 ),
                 new Descriptor(
                     'ParturientPharetraBundle',
                     'OrnareMattis',
                     'Parturient\PharetraBundle',
-                    'tortor/ullamcorper/mattis'
-                )
+                    'tortor/ullamcorper/mattis',
+                ),
             ),
             true,
             [
@@ -494,14 +494,14 @@ class DescriptorTest extends BaseTestCase
                     'OrnareEgestasBundle',
                     'Ornare',
                     'Ornare\EgestasBundle',
-                    'condimentum/fusce/risus'
+                    'condimentum/fusce/risus',
                 ),
                 new Descriptor(
                     'ParturientPharetraBundle',
                     'OrnareMattis',
                     'Parturient\PharetraBundle',
-                    'tortor/ullamcorper/mattis'
-                )
+                    'tortor/ullamcorper/mattis',
+                ),
             ),
             false,
             [
@@ -541,7 +541,7 @@ class DescriptorTest extends BaseTestCase
                 'PortaCommodoBundle',
                 'Commodo',
                 'Porta\CommodoBundle',
-                'etiam/risus/parturient'
+                'etiam/risus/parturient',
             ),
             [
                 'name' => 'PortaCommodoBundle',
@@ -561,7 +561,7 @@ class DescriptorTest extends BaseTestCase
                 'Commodo',
                 'Porta\CommodoBundle',
                 'etiam/risus/parturient',
-                new Descriptor()
+                new Descriptor(),
             ),
             [
                 'name' => 'PortaCommodoBundle',
@@ -589,7 +589,7 @@ class DescriptorTest extends BaseTestCase
                 'Porta\CommodoBundle',
                 'etiam/risus/parturient',
                 new Descriptor(),
-                new Descriptor()
+                new Descriptor(),
             ),
             [
                 'name' => 'PortaCommodoBundle',
@@ -627,9 +627,9 @@ class DescriptorTest extends BaseTestCase
                     'OrnareEgestasBundle',
                     'Ornare',
                     'Ornare\EgestasBundle',
-                    'condimentum/fusce/risus'
+                    'condimentum/fusce/risus',
                 ),
-                new Descriptor()
+                new Descriptor(),
             ),
             [
                 'name' => 'PortaCommodoBundle',
@@ -667,14 +667,14 @@ class DescriptorTest extends BaseTestCase
                     'OrnareEgestasBundle',
                     'Ornare',
                     'Ornare\EgestasBundle',
-                    'condimentum/fusce/risus'
+                    'condimentum/fusce/risus',
                 ),
                 new Descriptor(
                     'ParturientPharetraBundle',
                     'OrnareMattis',
                     'Parturient\PharetraBundle',
-                    'tortor/ullamcorper/mattis'
-                )
+                    'tortor/ullamcorper/mattis',
+                ),
             ),
             [
                 'name' => 'PortaCommodoBundle',
@@ -716,7 +716,7 @@ class DescriptorTest extends BaseTestCase
                 'SimpleBundle',
                 '',
                 'Meritoo\Test\CommonBundle\Bundle\Descriptor',
-                '/tests/Bundle/Descriptor'
+                '/tests/Bundle/Descriptor',
             ),
         ];
     }
@@ -740,7 +740,7 @@ class DescriptorTest extends BaseTestCase
                 '',
                 'path/of/bundle',
                 null,
-                null
+                null,
             ),
             null,
         ];
@@ -754,7 +754,7 @@ class DescriptorTest extends BaseTestCase
                 '',
                 'path/of/bundle',
                 null,
-                $childBundleDescriptor
+                $childBundleDescriptor,
             ),
             $childBundleDescriptor,
         ];
@@ -762,7 +762,7 @@ class DescriptorTest extends BaseTestCase
         $childBundleDescriptor = new Descriptor(
             'Test',
             '',
-            'This/Is/Namespace'
+            'This/Is/Namespace',
         );
 
         yield [
@@ -772,7 +772,7 @@ class DescriptorTest extends BaseTestCase
                 '',
                 'path/of/bundle',
                 null,
-                $childBundleDescriptor
+                $childBundleDescriptor,
             ),
             $childBundleDescriptor,
         ];
@@ -977,7 +977,7 @@ class DescriptorTest extends BaseTestCase
                 '',
                 'path/of/bundle',
                 null,
-                null
+                null,
             ),
             null,
         ];
@@ -991,7 +991,7 @@ class DescriptorTest extends BaseTestCase
                 '',
                 'path/of/bundle',
                 $parentBundleDescriptor,
-                null
+                null,
             ),
             $parentBundleDescriptor,
         ];
@@ -999,7 +999,7 @@ class DescriptorTest extends BaseTestCase
         $parentBundleDescriptor = new Descriptor(
             'Test',
             '',
-            'This/Is/Namespace'
+            'This/Is/Namespace',
         );
 
         yield [
@@ -1009,7 +1009,7 @@ class DescriptorTest extends BaseTestCase
                 '',
                 'path/of/bundle',
                 $parentBundleDescriptor,
-                null
+                null,
             ),
             $parentBundleDescriptor,
         ];
@@ -1090,10 +1090,9 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptor       $descriptor    Descriptor of bundle for who names of files with data fixtures should be
-     *                                        added
-     * @param array            $fixturesPaths Names of files with data fixtures to add
-     * @param StringCollection $expected      Expected names of files with data fixtures after add
+     * @param Descriptor $descriptor Descriptor of bundle for who names of files with data fixtures should be added
+     * @param array $fixturesPaths Names of files with data fixtures to add
+     * @param StringCollection $expected Expected names of files with data fixtures after add
      *
      * @dataProvider provideDataFixturesToAdd
      * @covers       \Meritoo\CommonBundle\Bundle\Descriptor::addDataFixtures
@@ -1108,7 +1107,7 @@ class DescriptorTest extends BaseTestCase
 
     public function testConstructor(): void
     {
-        static::assertConstructorVisibilityAndArguments(Descriptor::class, OopVisibilityType::IS_PUBLIC, 6);
+        static::assertConstructorVisibilityAndArguments(Descriptor::class, OopVisibility::Public, 6);
     }
 
     public function testConstructorUsingDefaults(): void
@@ -1124,7 +1123,7 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * @param array      $array    Data of descriptor
+     * @param array $array Data of descriptor
      * @param Descriptor $expected Expected descriptor
      *
      * @dataProvider provideArrayForDescriptor
@@ -1145,20 +1144,20 @@ class DescriptorTest extends BaseTestCase
         if (null !== $expected->getParentBundleDescriptor()) {
             static::assertSame(
                 $expected->getParentBundleDescriptor()->toArray(),
-                $descriptor->getParentBundleDescriptor()->toArray()
+                $descriptor->getParentBundleDescriptor()->toArray(),
             );
         }
 
         if (null !== $expected->getChildBundleDescriptor()) {
             static::assertSame(
                 $expected->getChildBundleDescriptor()->toArray(),
-                $descriptor->getChildBundleDescriptor()->toArray()
+                $descriptor->getChildBundleDescriptor()->toArray(),
             );
         }
     }
 
     /**
-     * @param Bundle     $bundle   The bundle
+     * @param Bundle $bundle The bundle
      * @param Descriptor $expected Expected descriptor
      *
      * @dataProvider provideBundle
@@ -1176,8 +1175,8 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptor      $descriptor Descriptor of bundle which descriptor of the child bundle should be returned
-     * @param null|Descriptor $expected   Expected descriptor of the child bundle
+     * @param Descriptor $descriptor Descriptor of bundle which descriptor of the child bundle should be returned
+     * @param null|Descriptor $expected Expected descriptor of the child bundle
      *
      * @dataProvider provideChildBundleDescriptor
      */
@@ -1189,7 +1188,7 @@ class DescriptorTest extends BaseTestCase
     /**
      * @param Descriptor $descriptor Descriptor of bundle who name of configuration root node of bundle should be
      *                               returned
-     * @param string     $expected   Expected name of configuration root node
+     * @param string $expected Expected name of configuration root node
      *
      * @dataProvider provideConfigurationRootName
      */
@@ -1199,8 +1198,8 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptor       $descriptor Descriptor of bundle who names of files with data fixtures from bundle
-     * @param StringCollection $expected   Expected names of files with data fixtures
+     * @param Descriptor $descriptor Descriptor of bundle who names of files with data fixtures from bundle
+     * @param StringCollection $expected Expected names of files with data fixtures
      *
      * @dataProvider provideDataFixtures
      */
@@ -1211,9 +1210,9 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptor  $descriptor Descriptor of bundle which path of directory with classes for the DataFixtures
-     *                                should be returned
-     * @param null|string $expected   Expected path
+     * @param Descriptor $descriptor Descriptor of bundle which path of directory with classes for the DataFixtures
+     * should be returned
+     * @param null|string $expected Expected path
      *
      * @dataProvider provideDataFixturesPath
      */
@@ -1224,7 +1223,7 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * @param Descriptor $descriptor Descriptor of bundle who name should be returned
-     * @param string     $expected   Expected name
+     * @param string $expected Expected name
      *
      * @dataProvider provideName
      */
@@ -1234,8 +1233,8 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptor      $descriptor Descriptor of bundle which descriptor of the parent bundle should be returned
-     * @param null|Descriptor $expected   Expected descriptor of the parent bundle
+     * @param Descriptor $descriptor Descriptor of bundle which descriptor of the parent bundle should be returned
+     * @param null|Descriptor $expected Expected descriptor of the parent bundle
      *
      * @dataProvider provideParentBundleDescriptor
      */
@@ -1246,7 +1245,7 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * @param Descriptor $descriptor Descriptor of bundle which path should be returned
-     * @param string     $expected   Expected physical path of the bundle
+     * @param string $expected Expected physical path of the bundle
      *
      * @dataProvider providePath
      */
@@ -1257,7 +1256,7 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * @param Descriptor $descriptor Descriptor of bundle who root namespace of bundle should be returned
-     * @param string     $expected   Expected root namespace of bundle
+     * @param string $expected Expected root namespace of bundle
      *
      * @dataProvider provideRootNamespace
      */
@@ -1268,7 +1267,7 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * @param Descriptor $descriptor Descriptor of bundle who short, simple name should be returned
-     * @param string     $expected   Expected short, simple name of the bundle
+     * @param string $expected Expected short, simple name of the bundle
      *
      * @dataProvider provideShortName
      */
@@ -1279,8 +1278,8 @@ class DescriptorTest extends BaseTestCase
 
     /**
      * @param Descriptor $descriptor Descriptor of bundle who should be verified if file belongs to the bundle
-     * @param string     $filePath   Path of file to verify
-     * @param bool       $expected   Expected result of verification
+     * @param string $filePath Path of file to verify
+     * @param bool $expected Expected result of verification
      *
      * @dataProvider provideFilePath
      */
@@ -1348,10 +1347,10 @@ class DescriptorTest extends BaseTestCase
     }
 
     /**
-     * @param Descriptor $descriptor         Descriptor of bundle who an array representation should be returned
-     * @param bool       $withParentAndChild If is set to true, includes descriptor of the parent and child bundle
-     *                                       (default behaviour). Otherwise - not.
-     * @param array      $expected           Expected array
+     * @param Descriptor $descriptor Descriptor of bundle who an array representation should be returned
+     * @param bool $withParentAndChild If is set to true, includes descriptor of the parent and child bundle (default
+     * behaviour). Otherwise - not.
+     * @param array $expected Expected array
      *
      * @dataProvider provideArrayFromDescriptor
      */
