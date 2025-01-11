@@ -14,6 +14,9 @@ use Meritoo\CommonBundle\Contract\Service\RequestServiceInterface;
 use Meritoo\CommonBundle\Exception\Controller\BaseController\CannotRedirectToEmptyRefererUrlException;
 use Meritoo\Test\CommonBundle\Controller\Base\BaseController\RealController;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Test case for the base controller with common and useful methods
@@ -28,6 +31,7 @@ class BaseControllerTest extends KernelTestCase
 {
     private RequestServiceInterface $requestService;
 
+    /** @runInSeparateProcess */
     public function testRedirectToReferer(): void
     {
         $refererUrl = '/';
@@ -40,6 +44,7 @@ class BaseControllerTest extends KernelTestCase
         static::assertSame($refererUrl, $response->getTargetUrl());
     }
 
+    /** @runInSeparateProcess */
     public function testRedirectToRefererOrRoute(): void
     {
         $controller = $this->getRealController();
@@ -49,6 +54,7 @@ class BaseControllerTest extends KernelTestCase
         static::assertSame('/test/index', $response->getTargetUrl());
     }
 
+    /** @runInSeparateProcess */
     public function testRedirectToRefererUsingEmptyRefererUrl(): void
     {
         $this->expectException(CannotRedirectToEmptyRefererUrlException::class);
@@ -74,10 +80,26 @@ class BaseControllerTest extends KernelTestCase
         parent::setUp();
         static::bootKernel();
 
+        /** @var RequestStack $requestStack */
+        $requestStack = static::getContainer()->get(RequestStack::class);
+
         /** @var RequestServiceInterface $requestService */
         $requestService = static::getContainer()->get(RequestServiceInterface::class);
 
+        $request = $this->createRequestWithSession();
+        $requestStack->push($request);
+
         $this->requestService = $requestService;
+    }
+
+    private function createRequestWithSession(): Request
+    {
+        $session = new Session();
+
+        $request = new Request();
+        $request->setSession($session);
+
+        return $request;
     }
 
     /**

@@ -19,7 +19,7 @@ use Meritoo\CommonBundle\Service\RequestService;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Test case for the service that serves request
@@ -35,7 +35,7 @@ class RequestServiceTest extends KernelTestCase
 {
     use BaseTestCaseTrait;
 
-    private SessionInterface $session;
+    private RequestStack $requestStack;
     private RequestServiceInterface $requestService;
 
     public function provideCurrentRoute(): ?Generator
@@ -100,26 +100,26 @@ class RequestServiceTest extends KernelTestCase
      */
     public function provideRequestAndRefererUrlToStore(): Generator
     {
-        yield [
+        yield 'no referer data' => [
             new Request(),
             null,
         ];
 
-        yield [
+        yield 'an empty string as referer' => [
             new Request([], [], [], [], [], [
                 'HTTP_REFERER' => '',
             ]),
             null,
         ];
 
-        yield [
+        yield '"/" as referer' => [
             new Request([], [], [], [], [], [
                 'HTTP_REFERER' => '/',
             ]),
             '/',
         ];
 
-        yield [
+        yield '"/products/123" as referer' => [
             new Request([], [], [], [], [], [
                 'HTTP_REFERER' => '/products/123',
             ]),
@@ -144,8 +144,8 @@ class RequestServiceTest extends KernelTestCase
         static::assertConstructorVisibilityAndArguments(
             RequestService::class,
             OopVisibility::Public,
-            2,
-            2,
+            1,
+            1,
         );
     }
 
@@ -153,10 +153,15 @@ class RequestServiceTest extends KernelTestCase
      * @param string $expected Expected url of referer
      *
      * @dataProvider provideUrl
+     * @runInSeparateProcess
      */
     public function testFetchRefererUrl(string $expected): void
     {
-        $this->session->set('meritoo_common.referer_url', $expected);
+        $this
+            ->requestStack
+            ->getSession()
+            ->set('meritoo_common.referer_url', $expected)
+        ;
 
         static::assertSame($expected, $this->requestService->fetchRefererUrl());
         static::assertSame('', $this->requestService->fetchRefererUrl());
@@ -166,7 +171,6 @@ class RequestServiceTest extends KernelTestCase
     {
         $expected = 'test-route';
 
-        $session = $this->createMock(SessionInterface::class);
         $requestStack = $this->createMock(RequestStack::class);
         $request = $this->createMock(Request::class);
 
@@ -183,7 +187,7 @@ class RequestServiceTest extends KernelTestCase
             ->willReturn($expected)
         ;
 
-        $service = new RequestService($session, $requestStack);
+        $service = new RequestService($requestStack);
         $result = $service->getCurrentRoute();
 
         static::assertSame($expected, $result);
@@ -194,16 +198,14 @@ class RequestServiceTest extends KernelTestCase
         $this->expectException(UnknownRequestException::class);
         $this->expectExceptionMessage('Cannot get current request, because it is unknown');
 
-        $session = $this->createMock(SessionInterface::class);
         $requestStack = $this->createMock(RequestStack::class);
 
-        $service = new RequestService($session, $requestStack);
+        $service = new RequestService($requestStack);
         $service->getCurrentRoute();
     }
 
     public function testGetCurrentRouteIfCurrentRouteIsUnknown(): void
     {
-        $session = $this->createMock(SessionInterface::class);
         $requestStack = $this->createMock(RequestStack::class);
         $request = $this->createMock(Request::class);
 
@@ -220,7 +222,7 @@ class RequestServiceTest extends KernelTestCase
             ->willReturn(null)
         ;
 
-        $service = new RequestService($session, $requestStack);
+        $service = new RequestService($requestStack);
         $result = $service->getCurrentRoute();
 
         static::assertSame('', $result);
@@ -233,7 +235,6 @@ class RequestServiceTest extends KernelTestCase
             'parameter2' => 'test2',
         ];
 
-        $session = $this->createMock(SessionInterface::class);
         $requestStack = $this->createMock(RequestStack::class);
         $request = $this->createMock(Request::class);
 
@@ -250,7 +251,7 @@ class RequestServiceTest extends KernelTestCase
             ->willReturn($expected)
         ;
 
-        $service = new RequestService($session, $requestStack);
+        $service = new RequestService($requestStack);
         $result = $service->getCurrentRouteParameters();
 
         static::assertSame($expected, $result);
@@ -261,16 +262,14 @@ class RequestServiceTest extends KernelTestCase
         $this->expectException(UnknownRequestException::class);
         $this->expectExceptionMessage('Cannot get current request, because it is unknown');
 
-        $session = $this->createMock(SessionInterface::class);
         $requestStack = $this->createMock(RequestStack::class);
 
-        $service = new RequestService($session, $requestStack);
+        $service = new RequestService($requestStack);
         $service->getCurrentRouteParameters();
     }
 
     public function testGetCurrentRouteParametersIfRouteParametersAreUnknown(): void
     {
-        $session = $this->createMock(SessionInterface::class);
         $requestStack = $this->createMock(RequestStack::class);
         $request = $this->createMock(Request::class);
 
@@ -287,7 +286,7 @@ class RequestServiceTest extends KernelTestCase
             ->willReturn(null)
         ;
 
-        $service = new RequestService($session, $requestStack);
+        $service = new RequestService($requestStack);
         $result = $service->getCurrentRouteParameters();
 
         static::assertSame([], $result);
@@ -298,7 +297,6 @@ class RequestServiceTest extends KernelTestCase
         $expected = 'test-value';
         $parameter = 'test-parameter';
 
-        $session = $this->createMock(SessionInterface::class);
         $requestStack = $this->createMock(RequestStack::class);
         $request = $this->createMock(Request::class);
 
@@ -315,7 +313,7 @@ class RequestServiceTest extends KernelTestCase
             ->willReturn($expected)
         ;
 
-        $service = new RequestService($session, $requestStack);
+        $service = new RequestService($requestStack);
         $result = $service->getParameter('test-parameter');
 
         static::assertSame($expected, $result);
@@ -326,10 +324,9 @@ class RequestServiceTest extends KernelTestCase
         $this->expectException(UnknownRequestException::class);
         $this->expectExceptionMessage('Cannot get current request, because it is unknown');
 
-        $session = $this->createMock(SessionInterface::class);
         $requestStack = $this->createMock(RequestStack::class);
 
-        $service = new RequestService($session, $requestStack);
+        $service = new RequestService($requestStack);
         $service->getParameter('test');
     }
 
@@ -349,7 +346,6 @@ class RequestServiceTest extends KernelTestCase
      */
     public function testIsCurrentRoute(string $currentRoute, string $route, bool $expected): void
     {
-        $session = $this->createMock(SessionInterface::class);
         $requestStack = $this->createMock(RequestStack::class);
         $request = $this->createMock(Request::class);
 
@@ -366,7 +362,7 @@ class RequestServiceTest extends KernelTestCase
             ->willReturn($currentRoute)
         ;
 
-        $service = new RequestService($session, $requestStack);
+        $service = new RequestService($requestStack);
         self::assertSame($expected, $service->isCurrentRoute($route));
     }
 
@@ -375,10 +371,9 @@ class RequestServiceTest extends KernelTestCase
         $this->expectException(UnknownRequestException::class);
         $this->expectExceptionMessage('Cannot get current request, because it is unknown');
 
-        $session = $this->createMock(SessionInterface::class);
         $requestStack = $this->createMock(RequestStack::class);
 
-        $service = new RequestService($session, $requestStack);
+        $service = new RequestService($requestStack);
         $service->isCurrentRoute('');
     }
 
@@ -386,11 +381,19 @@ class RequestServiceTest extends KernelTestCase
      * @param string $url The referer url to store
      *
      * @dataProvider provideUrl
+     * @runInSeparateProcess
      */
     public function testStoreRefererUrl(string $url): void
     {
         $this->requestService->storeRefererUrl($url);
-        static::assertSame($url, $this->session->get('meritoo_common.referer_url'));
+
+        $refererUrl = $this
+            ->requestStack
+            ->getSession()
+            ->get('meritoo_common.referer_url')
+        ;
+
+        static::assertSame($url, $refererUrl);
     }
 
     /**
@@ -398,6 +401,7 @@ class RequestServiceTest extends KernelTestCase
      * @param null|string $expected Expected url of referer
      *
      * @dataProvider provideRequestAndRefererUrlToStore
+     * @runInSeparateProcess
      */
     public function testStoreRefererUrlFromRequest(Request $request, ?string $expected): void
     {
@@ -406,7 +410,13 @@ class RequestServiceTest extends KernelTestCase
             ->storeRefererUrlFromRequest($request)
         ;
 
-        static::assertSame($expected, $this->session->get('meritoo_common.referer_url'));
+        $refererUrl = $this
+            ->requestStack
+            ->getSession()
+            ->get('meritoo_common.referer_url')
+        ;
+
+        static::assertSame($expected, $refererUrl);
     }
 
     /**
@@ -417,13 +427,26 @@ class RequestServiceTest extends KernelTestCase
         parent::setUp();
         static::bootKernel();
 
-        /** @var SessionInterface $session */
-        $session = static::getContainer()->get(SessionInterface::class);
+        /** @var RequestStack $requestStack */
+        $requestStack = static::getContainer()->get(RequestStack::class);
 
         /** @var RequestServiceInterface $requestService */
         $requestService = static::getContainer()->get(RequestServiceInterface::class);
 
-        $this->session = $session;
+        $request = $this->createRequestWithSession();
+        $requestStack->push($request);
+
+        $this->requestStack = $requestStack;
         $this->requestService = $requestService;
+    }
+
+    private function createRequestWithSession(): Request
+    {
+        $session = new Session();
+
+        $request = new Request();
+        $request->setSession($session);
+
+        return $request;
     }
 }

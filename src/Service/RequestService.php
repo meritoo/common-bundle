@@ -15,7 +15,6 @@ use Meritoo\CommonBundle\Exception\Service\Request\UnknownRequestException;
 use Meritoo\CommonBundle\Service\Base\BaseService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Serves request
@@ -27,13 +26,6 @@ class RequestService extends BaseService implements RequestServiceInterface
 {
     private const ROUTE_PARAMETER = '_route';
     private const PARAMETERS_PARAMETER = '_route_params';
-
-    /**
-     * The session
-     *
-     * @var SessionInterface
-     */
-    private SessionInterface $session;
 
     /**
      * Request stack
@@ -52,12 +44,10 @@ class RequestService extends BaseService implements RequestServiceInterface
     /**
      * Class constructor
      *
-     * @param SessionInterface $session The session
-     * @param RequestStack     $requestStack
+     * @param RequestStack $requestStack
      */
-    public function __construct(SessionInterface $session, RequestStack $requestStack)
+    public function __construct(RequestStack $requestStack)
     {
-        $this->session = $session;
         $this->requestStack = $requestStack;
     }
 
@@ -68,15 +58,19 @@ class RequestService extends BaseService implements RequestServiceInterface
      */
     public function fetchRefererUrl(): string
     {
-        $url = $this->session->get($this->refererUrlKey, '');
-        $this->session->remove($this->refererUrlKey);
+        $url = $this
+            ->requestStack
+            ->getSession()
+            ->get($this->refererUrlKey, '')
+        ;
+
+        $this
+            ->requestStack
+            ->getSession()
+            ->remove($this->refererUrlKey)
+        ;
 
         return $url;
-    }
-
-    public function getCurrentRoute(): string
-    {
-        return $this->getParameter(self::ROUTE_PARAMETER) ?? '';
     }
 
     public function getCurrentRouteParameters(): array
@@ -89,39 +83,21 @@ class RequestService extends BaseService implements RequestServiceInterface
         return $this->getCurrentRequest()->get($parameter);
     }
 
-    /**
-     * Returns url of referer
-     *
-     * @param Request $request The request (that probably contains referer)
-     * @return string
-     */
-    public function getRefererUrl(Request $request): string
-    {
-        return $request->headers->get('referer', '');
-    }
-
     public function isCurrentRoute(string $route): bool
     {
         return $this->getCurrentRoute() === $route;
     }
 
-    /**
-     * Stores url of referer in session
-     *
-     * @param string $url Url of referer to store
-     * @return RequestServiceInterface
-     */
-    public function storeRefererUrl(string $url): RequestServiceInterface
+    public function getCurrentRoute(): string
     {
-        $this->session->set($this->refererUrlKey, $url);
-
-        return $this;
+        return $this->getParameter(self::ROUTE_PARAMETER) ?? '';
     }
 
     /**
      * Stores the referer url in session grabbed from given request
      *
      * @param Request $request The request (that probably contains referer)
+     *
      * @return RequestServiceInterface
      */
     public function storeRefererUrlFromRequest(Request $request): RequestServiceInterface
@@ -137,6 +113,36 @@ class RequestService extends BaseService implements RequestServiceInterface
         }
 
         return $this->storeRefererUrl($url);
+    }
+
+    /**
+     * Returns url of referer
+     *
+     * @param Request $request The request (that probably contains referer)
+     *
+     * @return string
+     */
+    public function getRefererUrl(Request $request): string
+    {
+        return $request->headers->get('referer', '');
+    }
+
+    /**
+     * Stores url of referer in session
+     *
+     * @param string $url Url of referer to store
+     *
+     * @return RequestServiceInterface
+     */
+    public function storeRefererUrl(string $url): RequestServiceInterface
+    {
+        $this
+            ->requestStack
+            ->getSession()
+            ->set($this->refererUrlKey, $url)
+        ;
+
+        return $this;
     }
 
     private function getCurrentRequest(): Request
