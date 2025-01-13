@@ -48,6 +48,7 @@ meritoo_common:
         address: Adresse
         zip_code: Postleitzahl
         configuration: Konfiguration
+        settings: Einstellungen
     area:
         country: Land
         county: Bezirk
