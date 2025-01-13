@@ -70,6 +70,11 @@ meritoo_common:
                 one     {Category}
                 other   {Categories}
             }
+        photography: >-
+            {count, plural,
+                one     {Photography}
+                other   {Photographs}
+            }
     finances:
         transaction: >-
             {count, plural,

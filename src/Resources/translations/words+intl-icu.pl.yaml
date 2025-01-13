@@ -98,6 +98,13 @@ meritoo_common:
                 many    {Kategorii}
                 other   {Kategorii}
             }
+        photography: >-
+            {count, plural,
+                one     {Fotografia}
+                few     {Fotografie}
+                many    {Fotografii}
+                other   {Fotografii}
+            }
     finances:
         transaction: >-
             {count, plural,
