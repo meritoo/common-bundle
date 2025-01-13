@@ -65,6 +65,28 @@ meritoo_common:
                 one     {Jahr}
                 other   {Jahre}
             }
+        category: >-
+            {count, plural,
+                one     {Kategorie}
+                other   {Kategorien}
+            }
+        photography: >-
+            {count, plural,
+                one     {Fotografie}
+                other   {Fotos}
+            }
+        created_at: >-
+            {gender, select,
+                female  {Erstellt am}
+                male    {Erstellt am}
+                other   {Erstellt am}
+            }
+        updated_at: >-
+            {gender, select,
+                female  {Geändert am}
+                male    {Geändert am}
+                other   {Geändert am}
+            }
     finances:
         transaction: >-
             {count, plural,
