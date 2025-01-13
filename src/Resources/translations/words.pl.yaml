@@ -48,6 +48,7 @@ meritoo_common:
         address: Adres
         zip_code: Kod pocztowy
         configuration: Konfiguracja
+        settings: Ustawienia
     area:
         country: Kraj
         county: Hrabstwo
