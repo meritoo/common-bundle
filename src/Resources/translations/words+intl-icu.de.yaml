@@ -75,6 +75,12 @@ meritoo_common:
                 one     {Fotografie}
                 other   {Fotos}
             }
+        created_at: >-
+            {gender, select,
+                female  {Erstellt am}
+                male    {Erstellt am}
+                other   {Erstellt am}
+            }
         updated_at: >-
             {gender, select,
                 female  {Geändert am}

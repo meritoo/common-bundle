@@ -63,7 +63,6 @@ meritoo_common:
         yes: Tak
         no: Nie
     information:
-        created_at: Utworzono
         uploaded_at: Przesłano
         disabled_at: Zablokowano
         downloaded_at: Pobrano

@@ -105,6 +105,12 @@ meritoo_common:
                 many    {Fotografii}
                 other   {Fotografii}
             }
+        created_at: >-
+            {gender, select,
+                female  {Utworzona}
+                male    {Utworzony}
+                other   {Utworzono}
+            }
         updated_at: >-
             {gender, select,
                 female  {Zmodyfikowana}
