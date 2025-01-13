@@ -75,6 +75,7 @@ meritoo_common:
                 one     {Photography}
                 other   {Photographs}
             }
+    information:
         created_at: >-
             {gender, select,
                 female  {Created at}

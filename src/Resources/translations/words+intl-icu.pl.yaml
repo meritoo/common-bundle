@@ -105,6 +105,7 @@ meritoo_common:
                 many    {Fotografii}
                 other   {Fotografii}
             }
+    information:
         created_at: >-
             {gender, select,
                 female  {Utworzona}
