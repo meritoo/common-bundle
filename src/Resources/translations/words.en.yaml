@@ -32,7 +32,6 @@ meritoo_common:
         price: Price
         price_amount: Amount
         weight: Weight
-        category: Category
         please: Please
         all:
             male: Everyone

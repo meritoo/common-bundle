@@ -91,6 +91,13 @@ meritoo_common:
                 many    {Lat}
                 other   {Lat}
             }
+        category: >-
+            {count, plural,
+                one     {Kategoria}
+                few     {Kategorie}
+                many    {Kategorii}
+                other   {Kategorii}
+            }
     finances:
         transaction: >-
             {count, plural,

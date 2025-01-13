@@ -32,7 +32,6 @@ meritoo_common:
         price: Cena
         price_amount: Kwota
         weight: Waga
-        category: Kategoria
         please: Proszę
         all:
             male: Wszyscy

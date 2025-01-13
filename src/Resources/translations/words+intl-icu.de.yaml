@@ -65,6 +65,11 @@ meritoo_common:
                 one     {Jahr}
                 other   {Jahre}
             }
+        category: >-
+            {count, plural,
+                one     {Kategorie}
+                other   {Kategorien}
+            }
     finances:
         transaction: >-
             {count, plural,
