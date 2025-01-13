@@ -64,7 +64,6 @@ meritoo_common:
         no: No
     information:
         created_at: Created at
-        updated_at: Updated at
         uploaded_at: Uploaded at
         disabled_at: Disabled at
         downloaded_at: Downloaded at

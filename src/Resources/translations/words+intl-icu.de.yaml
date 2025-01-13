@@ -75,6 +75,12 @@ meritoo_common:
                 one     {Fotografie}
                 other   {Fotos}
             }
+        updated_at: >-
+            {gender, select,
+                female  {Geändert am}
+                male    {Geändert am}
+                other   {Geändert am}
+            }
     finances:
         transaction: >-
             {count, plural,
