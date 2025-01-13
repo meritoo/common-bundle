@@ -47,6 +47,7 @@ meritoo_common:
         date: Datum
         address: Adresse
         zip_code: Postleitzahl
+        configuration: Konfiguration
     area:
         country: Land
         county: Bezirk
