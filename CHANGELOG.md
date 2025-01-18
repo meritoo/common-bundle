@@ -2,6 +2,14 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.5.4
+
+1. Add the "File" translation
+
+# 0.5.3
+
+1. Add the "Settings" translation
+
 # 0.5.2
 
 1. Add translations
@@ -31,7 +39,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
        enumerations
 
        | Before                                                                | After                                                   |
-                                                                                                        |-----------------------------------------------------------------------|---------------------------------------------------------|
+                                                                                                               |-----------------------------------------------------------------------|---------------------------------------------------------|
        | `Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType` | `Meritoo\CommonBundle\Enums\Date\ConfigurationFileType` |
        | `Meritoo\CommonBundle\Type\Date\DateLength`                           | `Meritoo\CommonBundle\Enums\Date\DateLength`            |
        | `Meritoo\Common\Type\OopVisibilityType`                               | `Meritoo\Common\Enums\OopVisibility`                    |

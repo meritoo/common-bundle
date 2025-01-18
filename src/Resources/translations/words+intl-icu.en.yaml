@@ -100,3 +100,9 @@ meritoo_common:
                 one     {Page}
                 other   {Pages}
             }
+    computer:
+        file: >-
+            {count, plural,
+                one     {File}
+                other   {Files}
+            }

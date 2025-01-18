@@ -100,3 +100,9 @@ meritoo_common:
                 one     {Seite}
                 other   {Seiten}
             }
+    computer:
+        file: >-
+            {count, plural,
+                one     {Datei}
+                other   {Dateien}
+            }
