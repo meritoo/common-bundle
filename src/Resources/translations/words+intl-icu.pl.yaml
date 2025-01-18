@@ -91,6 +91,33 @@ meritoo_common:
                 many    {Lat}
                 other   {Lat}
             }
+        category: >-
+            {count, plural,
+                one     {Kategoria}
+                few     {Kategorie}
+                many    {Kategorii}
+                other   {Kategorii}
+            }
+        photography: >-
+            {count, plural,
+                one     {Fotografia}
+                few     {Fotografie}
+                many    {Fotografii}
+                other   {Fotografii}
+            }
+    information:
+        created_at: >-
+            {gender, select,
+                female  {Utworzona}
+                male    {Utworzony}
+                other   {Utworzono}
+            }
+        updated_at: >-
+            {gender, select,
+                female  {Zmodyfikowana}
+                male    {Zmodyfikowany}
+                other   {Zmodyfikowano}
+            }
     finances:
         transaction: >-
             {count, plural,

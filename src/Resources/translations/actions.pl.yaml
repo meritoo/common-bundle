@@ -50,7 +50,9 @@ meritoo_common:
             down_short: Niżej
             anywhere: Przesuń
         back: Wstecz
+        back_to: Wstecz do
         go_back: Wróć
+        go_back_to: Wróć do
         forward: Naprzód
         go_forward: Idź naprzód
     menu:

@@ -32,7 +32,6 @@ meritoo_common:
         price: Price
         price_amount: Amount
         weight: Weight
-        category: Category
         please: Please
         all:
             male: Everyone
@@ -48,6 +47,8 @@ meritoo_common:
         date: Date
         address: Address
         zip_code: Post Code
+        configuration: Configuration
+        settings: Settings
     area:
         country: Country
         county: County
@@ -63,8 +64,6 @@ meritoo_common:
         yes: Yes
         no: No
     information:
-        created_at: Created at
-        updated_at: Updated at
         uploaded_at: Uploaded at
         disabled_at: Disabled at
         downloaded_at: Downloaded at
