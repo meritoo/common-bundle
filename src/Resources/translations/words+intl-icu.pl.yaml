@@ -107,3 +107,11 @@ meritoo_common:
                 many    {Stron}
                 other   {Stron}
             }
+    computer:
+        file: >-
+            {count, plural,
+                one     {Plik}
+                few     {Pliki}
+                many    {Plików}
+                other   {Pliki}
+            }
