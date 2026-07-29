@@ -2,6 +2,10 @@
 
 Common & useful classes, resources, extensions. Based on Symfony framework.
 
+# 0.6.0
+
+1. Support Symfony `7.4.*`
+
 # 0.5.4
 
 1. Add the "File" translation
@@ -39,7 +43,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
        enumerations
 
        | Before                                                                | After                                                   |
-                                                                                                               |-----------------------------------------------------------------------|---------------------------------------------------------|
+                                                                                                                      |-----------------------------------------------------------------------|---------------------------------------------------------|
        | `Meritoo\CommonBundle\Type\DependencyInjection\ConfigurationFileType` | `Meritoo\CommonBundle\Enums\Date\ConfigurationFileType` |
        | `Meritoo\CommonBundle\Type\Date\DateLength`                           | `Meritoo\CommonBundle\Enums\Date\DateLength`            |
        | `Meritoo\Common\Type\OopVisibilityType`                               | `Meritoo\Common\Enums\OopVisibility`                    |
@@ -123,8 +127,8 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 # 0.2.2
 
-1. Allow installing of [twig/twig](https://packagist.org/packages/twig/twig) package with `2.1` version too
-   (`^2.1|^3.2` vs `^3.2` only)
+1. Allow installing of [twig/twig](https://packagist.org/packages/twig/twig) package with `2.1` version too (`^2.1|^3.2`
+   vs `^3.2` only)
 2. Use PHP `7.4` while running build in Travis CI
 
 # 0.2.1
@@ -192,8 +196,8 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 5. composer > squizlabs/php_codesniffer package > use ^3.4 (instead of ^2.9)
 6. Do not require ext-intl, because is required by meritoo/common-library package
 7. Update Kernel used by tests
-8. BaseExtension > verify extension of services' configuration file by separate method & in the loadServices() method
-   (not in loadConfigurationFile() method)
+8. BaseExtension > verify extension of services' configuration file by separate method & in the loadServices () method
+   (not in loadConfigurationFile () method)
 9. BaseExtension > prepare flat configuration by separate method
 10. BaseExtension > prepare loader of configuration file by separate class
 
@@ -266,7 +270,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 # 0.1.13
 
 1. BaseExtension > allow to define patterns of keys or paths from configuration that should match to stop loading
-   parameters (by make getKeysToStopLoadingParametersOn() method protected)
+   parameters (by make getKeysToStopLoadingParametersOn () method protected)
 
 # 0.1.12
 
@@ -291,7 +295,7 @@ Common & useful classes, resources, extensions. Based on Symfony framework.
 
 # 0.1.8
 
-1. Service > FormService > add addFormOptions() method > adds options to the existing options that may be used while
+1. Service > FormService > add addFormOptions () method > adds options to the existing options that may be used while
    creating a form
 
 # 0.1.7
